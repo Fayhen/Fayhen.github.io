@@ -17,6 +17,11 @@
 
         <q-tabs shrink>
           <q-route-tab
+            name="home"
+            label="Home"
+            to="/"
+          />
+          <q-route-tab
             name="academic"
             label="Academic background"
             to="/academic"
@@ -24,12 +29,17 @@
           <q-route-tab
             name="frontend"
             label="Frontend"
-            to="/"
+            to="/frontend"
           />
           <q-route-tab
             name="backend"
             label="Backend"
-            to="/"
+            to="/backend"
+          />
+          <q-route-tab
+            name="fullstack"
+            label="FullStack"
+            to="/fullstack"
           />
         </q-tabs>
 

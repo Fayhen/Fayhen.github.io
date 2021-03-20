@@ -6,7 +6,10 @@ const routes: RouteConfig[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/academic', component: () => import('pages/Academic.vue') }
+      { path: '/academic', component: () => import('pages/Academic.vue') },
+      { path: '/frontend', component: () => import('pages/Frontend.vue') },
+      { path: '/backend', component: () => import('pages/Backend.vue') },
+      { path: '/fullstack', component: () => import('pages/Fullstack.vue') }
     ]
   },
 

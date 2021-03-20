@@ -1,66 +1,89 @@
 <template>
   <q-page class="column items-center justify-evenly">
-    <!-- <lang-switch /> -->
-    <p>{{ $t('main.hello') }}</p>
-    <q-img
-      class="profile-pic"
-      src="45882000.png"
-      :ratio="1"
-    />
-    <p>{{ $t('main.myName') }}</p>
-    <p>{{ $t('main.myJob') }}</p>
-    <p>{{ $t('intro.abstract1') }}</p>
-    <p>{{ $t('intro.abstract2') }}</p>
-    <!-- <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component> -->
+    <!-- <transition
+      appear
+      enter-active-class="animated fadeInUp"
+    >
+      <p style="animation-delay: 0.1s;">
+        {{ $t('main.hello') }}
+      </p>
+    </transition>
+    <transition
+      appear
+      enter-active-class="animated fadeInUp"
+    >
+      <q-img
+        class="profile-pic"
+        src="45882000.png"
+        :ratio="1"
+        style="animation-delay: 0.2s;"
+      />
+    </transition>
+    <transition
+      appear
+      enter-active-class="animated fadeInUp"
+    >
+      <div
+        style="display: flex; flex-direction: column; text-align: center; animation-delay: 0.3s;"
+      >
+        <p>{{ $t('main.myName') }}</p>
+        <p>{{ $t('main.myJob') }}</p>
+      </div>
+    </transition> --> 
+    <!-- It's possible to add classes to the trasition-group tag -->
+    <transition-group
+      appear
+      tag="div"
+      class="home-wrapper"
+      enter-active-class="animated fadeInUp"
+    >
+      <p
+        key="text-home-hello"
+        style="animation-delay: 0.1s;"
+      >
+        {{ $t('main.hello') }}
+      </p>
+      <q-img
+        class="profile-pic"
+        src="45882000.png"
+        :ratio="1"
+        key="profile-picture"
+        style="animation-delay: 0.2s;"
+      />
+      <div
+        key="text-home-intro"
+        style="animation-delay: 0.3s;"
+      >
+        <p>{{ $t('main.myName') }}</p>
+        <p>{{ $t('main.myJob') }}</p>
+      </div>
+    </transition-group>
+    <!-- <p>{{ $t('intro.abstract1') }}</p>
+    <p>{{ $t('intro.abstract2') }}</p> -->
   </q-page>
 </template>
 
 <script lang="ts">
-// import { Todo, Meta } from 'components/models';
-// import ExampleComponent from 'components/ClassComponent.vue';
 import { Vue, Component } from 'vue-property-decorator';
-// import LangSwitch from 'components/LangSwitch.vue';
 
 @Component
-export default class PageIndex extends Vue {
-  // todos: Todo[] = [
-  //   {
-  //     id: 1,
-  //     content: 'ct1'
-  //   },
-  //   {
-  //     id: 2,
-  //     content: 'ct2'
-  //   },
-  //   {
-  //     id: 3,
-  //     content: 'ct3'
-  //   },
-  //   {
-  //     id: 4,
-  //     content: 'ct4'
-  //   },
-  //   {
-  //     id: 5,
-  //     content: 'ct5'
-  //   }
-  // ];
-  // meta: Meta = {
-  //   totalCount: 1200
-  // };
-};
+export default class PageIndex extends Vue {};
 </script>
 
 <style lang="sass" scoped>
+.home-wrapper
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  font-size: 2em
+
 .profile-pic
   height: 250px
   width: 250px
   border-radius: 100%
+  margin-top: 1em
+  margin-bottom: 1.5em
 
   &:hover
     cursor: pointer
