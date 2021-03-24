@@ -6,19 +6,19 @@
       class="academic-wrapper"
       enter-active-class="animated fadeInUp"
     >
-      <p key="text-academic-title animation-delay: 0.1s;">
+      <!-- <p key="text-academic-title" style="animation-delay: 0.1s;">
         {{ $t('academic.title') }}
-      </p>
-      <p key="text-academic-intro" style="animation-delay: 0.2s;">
+      </p> -->
+      <p key="text-academic-intro" style="animation-delay: 0.1s;">
         {{ $t('academic.intro') }}
       </p>
-      <p key="text-academic-detail" style="animation-delay: 0.3s;">
+      <p key="text-academic-detail" style="animation-delay: 0.2s;">
         {{ $t('academic.detail') }}
       </p>
-      <p key="text-academic-expertise" style="animation-delay: 0.4s;">
+      <p key="text-academic-expertise" style="animation-delay: 0.3s;">
         {{ $t('academic.expertise') }}
       </p>
-      <p key="text-academic-conclusion" style="animation-delay: 0.5s;">
+      <p key="text-academic-conclusion" style="animation-delay: 0.4s;">
         {{ $t('academic.conclusion') }}
       </p>
     </transition-group>
@@ -38,4 +38,13 @@ export default class Academic extends Vue{}
   flex-direction: column
   align-items: center
   text-align: center
+  width: 50%
+
+@media (max-width: $breakpoint-md-max)
+  .academic-wrapper
+    width: 70%
+
+@media (max-width: $breakpoint-xs-max)
+  .academic-wrapper
+    width: 90%
 </style>

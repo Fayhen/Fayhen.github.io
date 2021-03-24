@@ -2,13 +2,14 @@
   <q-select
     v-model="lang"
     :options="langOptions"
-    label="Change Language"
+    :label="$t('menus.langSwitchLabel')"
     dense
     borderless
     emit-value
     map-options
     options-dense
-    style="min-width: 150px"
+    bg-color="indigo-1"
+    style="min-width: 150px;"
   />
 </template>
 
@@ -25,7 +26,7 @@ export default class LangSwitch extends Vue {
 
   @Watch('lang')
   langChange(newLang: string) {
-    this.$i18n.locale = newLang
+    this.$i18n.locale = newLang;
   }
 }
 </script>

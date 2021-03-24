@@ -5,11 +5,12 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: '/academic', component: () => import('pages/Academic.vue') },
-      { path: '/frontend', component: () => import('pages/Frontend.vue') },
-      { path: '/backend', component: () => import('pages/Backend.vue') },
-      { path: '/fullstack', component: () => import('pages/Fullstack.vue') }
+      { path: '', name: 'home', component: () => import('pages/Index.vue') },
+      { path: '/stacks', name: 'stacks', component: () => import('pages/Stacks.vue') },
+      { path: '/academic', name: 'academic', component: () => import('pages/Academic.vue') },
+      { path: '/frontend', name: 'frontend', component: () => import('pages/Frontend.vue') },
+      { path: '/backend', name: 'backend', component: () => import('pages/Backend.vue') },
+      { path: '/fullstack', name: 'fullstack', component: () => import('pages/Fullstack.vue') }
     ]
   },
 

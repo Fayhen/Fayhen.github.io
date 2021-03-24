@@ -1,7 +1,7 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr fFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="justify-between">
         <q-btn
           flat
           dense
@@ -11,82 +11,54 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-          Diego Souza
-        </q-toolbar-title>
-
-        <q-tabs shrink>
-          <q-route-tab
-            name="home"
-            label="Home"
-            to="/"
-          />
-          <q-route-tab
-            name="academic"
-            label="Academic background"
-            to="/academic"
-          />
-          <q-route-tab
-            name="frontend"
-            label="Frontend"
-            to="/frontend"
-          />
-          <q-route-tab
-            name="backend"
-            label="Backend"
-            to="/backend"
-          />
-          <q-route-tab
-            name="fullstack"
-            label="FullStack"
-            to="/fullstack"
-          />
+        <q-tabs class="absolute-center">
+          <q-tab :label="$route.name" />
         </q-tabs>
 
-        <a
-          href="https://github.com/Fayhen"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <q-btn
-            flat
-            dense
-            round
-            :icon="fabGithub"
-            aria-label="GitHub"
-            style="color: #f2f2f2"
-          />
-        </a>
-
-        <a
-          href="https://github.com/Fayhen"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <q-btn
-            flat
-            dense
-            round
-            :icon="fabTwitter"
-            aria-label="Twitter"
-            style="color: #f2f2f2"
-          />
-        </a>
-
-        <a
-          href="https://github.com/Fayhen"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <q-btn
-            flat
-            dense
-            round
-            :icon="fabLinkedin"
-            aria-label="LinkedIn"
-            style="color: #f2f2f2"
-          />
-        </a>
+        <div>
+          <a
+            href="https://github.com/Fayhen"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <q-btn
+              flat
+              dense
+              round
+              :icon="fabGithub"
+              aria-label="GitHub"
+              color="indigo-1"
+            />
+          </a>
+          <a
+            href="https://github.com/Fayhen"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <q-btn
+              flat
+              dense
+              round
+              :icon="fabTwitter"
+              aria-label="Twitter"
+              color="indigo-1"
+            />
+          </a>
+          <a
+            href="https://github.com/Fayhen"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <q-btn
+              flat
+              dense
+              round
+              :icon="fabLinkedin"
+              aria-label="LinkedIn"
+              color="indigo-1"
+            />
+          </a>
+        </div>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
@@ -95,20 +67,24 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-indigo-1"
     >
       <q-list>
         <q-item-label
           header
           class="text-grey-8"
         >
-          Essential Links
+          Navigation
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
+
+        <NavigationItem
+          v-for="item in navigationItems"
+          :key="item.route"
+          v-bind="item"
         />
       </q-list>
     </q-drawer>
@@ -117,85 +93,82 @@
       <router-view />
     </q-page-container>
 
-    <q-footer>
+    <q-footer class="row no-wrap justify-between items-center">
       <div style="display: block;">
         <lang-switch />
       </div>
+        <q-toolbar-title style="padding: 0 0.5em 0 0; text-align: right;">
+          Diego Souza
+        </q-toolbar-title>
     </q-footer>
   </q-layout>
 </template>
 
 <script lang="ts">
-import EssentialLink from 'components/EssentialLink.vue'
+import {
+  fabGithub,
+  fabTwitter,
+  fabLinkedin,
+  fasHome,
+  fasLayerGroup,
+  fasGraduationCap,
+  fasCode,
+  fasCogs,
+  fasProjectDiagram
+} from '@quasar/extras/fontawesome-v5'
 
-const linksData = [
+const navigationData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    icon: fasHome,
+    route: '/',
+    label: 'menus.homeNavigationLabel',
+    caption: 'menus.homeNavigationCaption'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    icon: fasLayerGroup,
+    route: '/stacks',
+    label: 'menus.stacksNavigationLabel',
+    caption: 'menus.stacksNavigationCaption'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    icon: fasGraduationCap,
+    route: '/academic',
+    label: 'menus.academicNavigationLabel',
+    caption: 'menus.academicNavigationCaption'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    icon: fasCode,
+    route: '/frontend',
+    label: 'menus.frontendNavigationLabel',
+    caption: 'menus.frontendNavigationCaption'
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    icon: fasCogs,
+    route: '/backend',
+    label: 'menus.backendNavigationLabel',
+    caption: 'menus.backendNavigationCaption'
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    icon: fasProjectDiagram,
+    route: '/fullstack',
+    label: 'menus.fullstackNavigationLabel',
+    caption: 'menus.fullstackNavigationCaption'
   }
 ];
 
 import { Vue, Component } from 'vue-property-decorator';
-import {
-  fabGithub,
-  fabTwitter,
-  fabLinkedin
-} from '@quasar/extras/fontawesome-v5'
 import LangSwitch from 'components/LangSwitch.vue';
+import NavigationItem from 'components/NavigationItem.vue';
 
 @Component({
-  components: { EssentialLink, LangSwitch }
+  components: { NavigationItem, LangSwitch }
 })
 export default class MainLayout extends Vue {
   leftDrawerOpen = false;
-  essentialLinks = linksData;
-  fabGithub = '';
-  fabTwitter = '';
-  fabLinkedin = '';
-
-  created() {
-    this.fabGithub = fabGithub;
-    this.fabTwitter = fabTwitter;
-    this.fabLinkedin = fabLinkedin;
-    console.log(typeof(this.fabGithub))
-  }
+  miniState = true;
+  navigationItems = navigationData;
+  fabGithub = fabGithub;
+  fabTwitter = fabTwitter;
+  fabLinkedin = fabLinkedin;
 }
 </script>

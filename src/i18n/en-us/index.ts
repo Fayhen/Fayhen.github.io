@@ -1,13 +1,28 @@
 export default {
+  menus: {
+    langSwitchLabel: 'Change Language',
+    homeNavigationLabel: 'HOME',
+    homeNavigationCaption: 'Return to homepage',
+    stacksNavigationLabel: 'STACKS',
+    stacksNavigationCaption: 'The stacks I\'m experienced with',
+    academicNavigationLabel: 'ACADEMIC',
+    academicNavigationCaption: 'My Academic background',
+    frontendNavigationLabel: 'FRONTEND',
+    frontendNavigationCaption: 'Some of my Frontend projects',
+    backendNavigationLabel: 'BACKEND',
+    backendNavigationCaption: 'Some of my Backend projects',
+    fullstackNavigationLabel: 'FULLSTACK',
+    fullstackNavigationCaption: 'Some of my FullStack projects'
+  },
   main: {
     hello: 'Hello!',
     myName: 'I\'m Diego',
     myJob: 'FullStack Developer'
   },
-  intro: {
-    title: 'Introduction',
-    abstract1: 'My name is Diego Garcia Cordeiro Souza. I\'m a Brazillian junior developer, graduated in Biology and self-taught programmer.',
-    abstract2: 'I am experienced with FullStack development, having used the following technologies:'
+  stacks: {
+    intro: 'I\'m a Brazillian Junior programmer, building knowledge in several areas of FullStack development.',
+    detail: 'I graduated in Biological Sciences, and became a developer along the way. I am currently working as a Freelancer, dealing in both Backend and Frontend tasks.',
+    techs: 'My current experience involves the following technologies:'
   },
   academic: {
     title: 'Academic',

@@ -1,13 +1,28 @@
 export default {
+  menus: {
+    langSwitchLabel: 'Mudar Idioma',
+    homeNavigationLabel: 'HOME',
+    homeNavigationCaption: 'Voltar para a homepage',
+    stacksNavigationLabel: 'STACKS',
+    stacksNavigationCaption: 'Stacks com as quais tenho experiência',
+    academicNavigationLabel: 'ACADÊMICO',
+    academicNavigationCaption: 'Meu background acadêmico',
+    frontendNavigationLabel: 'FRONTEND',
+    frontendNavigationCaption: 'Alguns de meus projetos Frontend',
+    backendNavigationLabel: 'BACKEND',
+    backendNavigationCaption: 'Alguns de meus projetos Backend',
+    fullstackNavigationLabel: 'FULLSTACK',
+    fullstackNavigationCaption: 'Alguns de meus projetos FullStack'
+  },
   main: {
     hello: 'Olá!',
     myName: 'Sou o Diego',
     myJob: 'Desenvolvedor FullStack'
   },
-  intro: {
-    title: 'Introdução',
-    abstract1: 'Meu nome é Diego Garcia Cordeiro Souza. Sou um desenvolvedor Júnior brasileiro, graduado em Ciencias Biolôgicas e programador autodidata.',
-    abstract2: 'Possuo experiência com desenvolvimento FullStack, tendo usado as seguintes tecnologias:'
+  stacks: {
+    intro: 'Sou um programador Júnior brasileiro, construindo conhecimentos em desenvolvimento FullStack.',
+    detail: 'Sou graduado em Ciências Biológicas, e me tornei Desenvolvedor ao longo do caminho. No momento, trabalho como Freelancer, trabalhando tanto com Backend quanto Frontend.',
+    techs: 'Minha atual experiência envolve as seguintes tecnologias:'
   },
   academic: {
     title: 'Acadêmico',

@@ -13,13 +13,17 @@
         {{ $t('frontend.intro') }}
       </p>
     </transition-group>
+    <ProjectCard />
   </q-page>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import ProjectCard from 'components/ProjectCard.vue';
 
-@Component
+@Component({
+  components: { ProjectCard }
+})
 export default class Frontend extends Vue{}
 </script>
 
