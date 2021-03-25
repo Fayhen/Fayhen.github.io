@@ -1,32 +1,48 @@
 <template>
   <q-page class="column items-center justify-evenly">
-    <transition-group
-      appear
-      tag="div"
-      class="fullstack-wrapper"
-      enter-active-class="animated fadeInUp"
-    >
-      <p key="text-fullstack-title animation-delay: 0.1s;">
-        {{ $t('fullstack.title') }}
-      </p>
-      <p key="text-fullstack-intro" style="animation-delay: 0.2s;">
-        {{ $t('fullstack.intro') }}
-      </p>
-    </transition-group>
+    <div class="q-page-inner-wrapper">
+      <transition
+        appear
+        tag="div"
+        enter-active-class="animated fadeInUp"
+      >
+        <p style="animation-delay: 0.2s;">
+          {{ $t('fullstack.intro') }}
+        </p>
+      </transition>
+
+      <transition-group
+        appear
+        tag="div"
+        class="column items-center"
+        enter-active-class="animated fadeInUp"
+      >
+        <ProjectCard
+          v-for="project, index in projects"
+          :key="project.title"
+          :title="project.title"
+          :description="project.description"
+          :repositoryLink="project.repositoryLink"
+          :productionLink="project.productionLink"
+          :iconsArray="project.stacks"
+          class="project-card"
+          :style="`animation-delay: ${projectCardDelay + (0.1 * (index + 1))}s;`"
+        />
+      </transition-group>
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { fullstackProjects } from 'assets/fullstackProjects';
+import ProjectCard from 'components/ProjectCard.vue';
 
-@Component
-export default class Fullstack extends Vue{}
+@Component({
+  components: { ProjectCard }
+})
+export default class Fullstack extends Vue {
+  projects = fullstackProjects;
+  projectCardDelay = 0.3;
+};
 </script>
-
-<style lang="sass" scoped>
-.fullstack-wrapper
-  display: flex
-  flex-direction: column
-  align-items: center
-  text-align: center
-</style>

@@ -1,12 +1,11 @@
 <template>
   <q-page class="column items-center justify-evenly text-center">
 
-    <div class="stacks-wrapper">
+    <div class="q-page-inner-wrapper">
 
       <transition-group
         appear
         tag="div"
-        class="academic-wrapper"
         enter-active-class="animated fadeInUp"
       >
         <p key="stacks-intro" style="animation-delay: 0.1s;">
@@ -25,11 +24,10 @@
             </p>
           </transition>
 
-          <div id="icon-wrapper">
+          <!-- <div id="icon-wrapper">
             <transition-group
               appear
               tag="div"
-              class="academic-wrapper"
               enter-active-class="animated fadeInUp"
             >
               <q-btn
@@ -176,6 +174,30 @@
                 />
               </q-btn>
             </transition-group>
+          </div> -->
+
+          <div id="icon-wrapper">
+            <transition-group
+              appear
+              tag="div"
+              enter-active-class="animated fadeInUp"
+            >
+              <q-btn
+                flat round
+                v-for="stack, index in stacks"
+                :key="stack.key"
+                :aria-label="stack.ariaLabel"
+                :style="`animation-delay: ${deviconDelay + (0.1 * (index + 1))}s;`"
+              >
+                <q-tooltip>{{ stack.tooltip }}</q-tooltip>
+                <q-icon
+                  class="q-ma-sm"
+                  size="xl"
+                  :id="stack.icon.id"
+                  :name="stack.icon.filepath"
+                />
+              </q-btn>
+            </transition-group>
           </div>
 
         </div>
@@ -185,20 +207,13 @@
   </q-page>
 </template>
 
-<style lang="sass" scoped>
-.stacks-wrapper
-  display: flex
-  flex-direction: column
-  align-items: center
-  text-align: center
-  width: 50%
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import { stacks } from 'assets/stacks';
 
-@media (max-width: $breakpoint-md-max)
-  .stacks-wrapper
-    width: 70%
-
-@media (max-width: $breakpoint-xs-max)
-  .stacks-wrapper
-    width: 90%
-</style>
-
+@Component
+export default class Stacks extends Vue {
+  stacks = stacks;
+  deviconDelay = 0.3;
+};
+</script>

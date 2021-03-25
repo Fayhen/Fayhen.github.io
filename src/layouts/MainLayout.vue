@@ -1,25 +1,42 @@
 <template>
-  <q-layout view="hHh Lpr fFf">
+  <q-layout view="hHh lpR fFf">
     <q-header elevated>
-      <q-toolbar class="justify-between">
+      <q-toolbar class="justify-between bg-indigo-10">
         <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+        >
+          <q-menu>
+            <q-list>
+              <q-item-label
+                header
+                class="text-grey-8"
+              >
+                Navigation
+              </q-item-label>
+
+              <NavigationItem
+                v-for="item in navigationItems"
+                :key="item.route"
+                v-bind="item"
+              />
+            </q-list>
+          </q-menu>
+        </q-btn>
 
         <q-tabs class="absolute-center">
           <q-tab :label="$route.name" />
         </q-tabs>
 
-        <div>
+        <div class="text-indigo-1">
           <a
             href="https://github.com/Fayhen"
             target="_blank"
             rel="noopener noreferrer"
+            style="text-decoration: none; color: inherit;"
           >
             <q-btn
               flat
@@ -27,13 +44,13 @@
               round
               :icon="fabGithub"
               aria-label="GitHub"
-              color="indigo-1"
             />
           </a>
           <a
             href="https://github.com/Fayhen"
             target="_blank"
             rel="noopener noreferrer"
+            style="text-decoration: none; color: inherit;"
           >
             <q-btn
               flat
@@ -41,13 +58,13 @@
               round
               :icon="fabTwitter"
               aria-label="Twitter"
-              color="indigo-1"
             />
           </a>
           <a
             href="https://github.com/Fayhen"
             target="_blank"
             rel="noopener noreferrer"
+            style="text-decoration: none; color: inherit;"
           >
             <q-btn
               flat
@@ -55,7 +72,6 @@
               round
               :icon="fabLinkedin"
               aria-label="LinkedIn"
-              color="indigo-1"
             />
           </a>
         </div>
@@ -64,36 +80,11 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
-      bordered
-      content-class="bg-indigo-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Navigation
-        </q-item-label>
-
-        <NavigationItem
-          v-for="item in navigationItems"
-          :key="item.route"
-          v-bind="item"
-        />
-      </q-list>
-    </q-drawer>
-
     <q-page-container>
       <router-view />
     </q-page-container>
 
-    <q-footer class="row no-wrap justify-between items-center">
+    <q-footer class="row no-wrap justify-between items-center bg-indigo-10">
       <div style="display: block;">
         <lang-switch />
       </div>
@@ -164,8 +155,6 @@ import NavigationItem from 'components/NavigationItem.vue';
   components: { NavigationItem, LangSwitch }
 })
 export default class MainLayout extends Vue {
-  leftDrawerOpen = false;
-  miniState = true;
   navigationItems = navigationData;
   fabGithub = fabGithub;
   fabTwitter = fabTwitter;

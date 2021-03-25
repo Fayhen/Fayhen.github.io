@@ -3,7 +3,7 @@
     <transition-group
       appear
       tag="div"
-      class="academic-wrapper"
+      class="q-page-inner-wrapper"
       enter-active-class="animated fadeInUp"
     >
       <!-- <p key="text-academic-title" style="animation-delay: 0.1s;">
@@ -31,20 +31,3 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component
 export default class Academic extends Vue{}
 </script>
-
-<style lang="sass" scoped>
-.academic-wrapper
-  display: flex
-  flex-direction: column
-  align-items: center
-  text-align: center
-  width: 50%
-
-@media (max-width: $breakpoint-md-max)
-  .academic-wrapper
-    width: 70%
-
-@media (max-width: $breakpoint-xs-max)
-  .academic-wrapper
-    width: 90%
-</style>
