@@ -106,7 +106,7 @@ export const stacks: Stacks = {
     tooltip: 'Quasar',
     icon: {
       id: 'quasar',
-      filepath: 'img:devicons/quasar-logo-full.svg'
+      filepath: 'img:devicons/quasar-logo.svg'
     }
   }
 }

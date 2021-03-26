@@ -15,6 +15,14 @@ export default {
     fullstackNavigationLabel: 'FULLSTACK',
     fullstackNavigationCaption: 'Some of my FullStack projects'
   },
+  routes: {
+    home: 'Home',
+    stacks: 'Stacks',
+    academic: 'Academic',
+    frontend: 'Frontend',
+    backend: 'Backend',
+    fullstack: 'FullStack'
+  },
   main: {
     hello: 'Hello!',
     myName: 'I\'m Diego',

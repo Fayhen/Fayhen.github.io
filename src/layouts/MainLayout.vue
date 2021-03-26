@@ -28,7 +28,7 @@
         </q-btn>
 
         <q-tabs class="absolute-center no-pointer-events">
-          <q-tab :label="$route.name" />
+          <q-tab :label="$t(getRouteTranslation())" />
         </q-tabs>
 
         <div class="text-indigo-1">
@@ -75,7 +75,6 @@
             />
           </a>
         </div>
-        <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
 
@@ -166,5 +165,11 @@ export default class MainLayout extends Vue {
   fabGithub = fabGithub;
   fabTwitter = fabTwitter;
   fabLinkedin = fabLinkedin;
+
+  getRouteTranslation() {
+    const route = this.$route.name as string;
+    const translationKey = `routes.${route}`
+    return translationKey;
+  }
 }
 </script>
