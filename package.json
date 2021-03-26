@@ -1,8 +1,8 @@
 {
   "name": "fayhen.github.io",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Fayhen's Quasar curriculum",
-  "productName": "Quasar App",
+  "productName": "Diego Souza",
   "author": "Diego Garcia Cordeiro Souza <diego00alfa@gmail.com>",
   "private": true,
   "scripts": {

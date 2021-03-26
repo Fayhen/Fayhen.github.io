@@ -12,17 +12,19 @@ export interface Devicon {
   filepath: string;
 }
 
-export interface StackItem {
+export interface StackData {
   key: string;
   ariaLabel: string;
   tooltip: string;
   icon: Devicon;
 }
 
+export type Stacks = { [name: string]: StackData }
+
 export interface ProjectCardData {
   title: string;
   description: string;
   repositoryLink: string | null;
   productionLink: string | null;
-  stacks: Devicon[];
+  stacks: StackData[];
 }

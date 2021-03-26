@@ -1,7 +1,7 @@
-import { StackItem } from 'components/models';
+import { Stacks } from 'components/models';
 
-export const stacks: StackItem[] = [
-  {
+export const stacks: Stacks = {
+  git: {
     key: 'stacks-devicon-git',
     ariaLabel: 'Git',
     tooltip: 'Git',
@@ -10,7 +10,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/git-original.svg'
     }
   },
-  {
+  mysql: {
     key: 'stacks-devicon-mysql',
     ariaLabel: 'MySQL',
     tooltip: 'MySQL',
@@ -19,7 +19,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/mysql-original.svg'
     }
   },
-  {
+  sqlalchemy: {
     key: 'stacks-devicon-sqlalchmey',
     ariaLabel: 'SQLAlchemy',
     tooltip: 'SQLAlchemy',
@@ -28,7 +28,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/sqlalchemy-original.svg'
     }
   },
-  {
+  python: {
     key: 'stacks-devicon-python',
     ariaLabel: 'Python',
     tooltip: 'Python',
@@ -37,7 +37,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/python-original.svg'
     }
   },
-  {
+  django: {
     key: 'stacks-devicon-django',
     ariaLabel: 'Django',
     tooltip: 'Django',
@@ -46,7 +46,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/django-original.svg'
     }
   },
-  {
+  flask: {
     key: 'stacks-devicon-flask',
     ariaLabel: 'Flask',
     tooltip: 'Flask',
@@ -55,7 +55,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/flask-original.svg'
     }
   },
-  {
+  html5: {
     key: 'stacks-devicon-html5',
     ariaLabel: 'HTML5',
     tooltip: 'HTML5',
@@ -64,7 +64,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/html5-original.svg'
     }
   },
-  {
+  css3: {
     key: 'stacks-devicon-css3',
     ariaLabel: 'CSS3',
     tooltip: 'CSS3',
@@ -73,7 +73,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/css3-original.svg'
     }
   },
-  {
+  javascript: {
     key: 'stacks-devicon-javascript',
     ariaLabel: 'JavaScript',
     tooltip: 'JavaScript',
@@ -82,7 +82,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/javascript-original.svg'
     }
   },
-  {
+  typescript: {
     key: 'stacks-devicon-typescript',
     ariaLabel: 'TypeScript',
     tooltip: 'TypeScript',
@@ -91,7 +91,7 @@ export const stacks: StackItem[] = [
       filepath: 'img:devicons/typescript-original.svg'
     }
   },
-  {
+  vuejs: {
     key: 'stacks-devicon-vuejs',
     ariaLabel: 'Vue.js',
     tooltip: 'Vue.js',
@@ -99,5 +99,14 @@ export const stacks: StackItem[] = [
       id: 'vuejs',
       filepath: 'img:devicons/vuejs-original.svg'
     }
+  },
+  quasar: {
+    key: 'stacks-devicon-quasar',
+    ariaLabel: 'Quasar Framework',
+    tooltip: 'Quasar',
+    icon: {
+      id: 'quasar',
+      filepath: 'img:devicons/quasar-logo-full.svg'
+    }
   }
-]
+}

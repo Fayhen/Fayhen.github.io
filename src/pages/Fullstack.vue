@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column items-center justify-evenly">
+  <q-page class="column items-center justify-evenly text-body1">
     <div class="q-page-inner-wrapper">
       <transition
         appear
@@ -14,7 +14,7 @@
       <transition-group
         appear
         tag="div"
-        class="column items-center"
+        class="column items-center full-width"
         enter-active-class="animated fadeInUp"
       >
         <ProjectCard
@@ -25,6 +25,7 @@
           :repositoryLink="project.repositoryLink"
           :productionLink="project.productionLink"
           :iconsArray="project.stacks"
+          :index="index"
           class="project-card"
           :style="`animation-delay: ${projectCardDelay + (0.1 * (index + 1))}s;`"
         />

@@ -15,7 +15,7 @@
                 header
                 class="text-grey-8"
               >
-                Navigation
+                {{ $t('menus.menuNavigationLabel') }}
               </q-item-label>
 
               <NavigationItem
@@ -27,7 +27,7 @@
           </q-menu>
         </q-btn>
 
-        <q-tabs class="absolute-center">
+        <q-tabs class="absolute-center no-pointer-events">
           <q-tab :label="$route.name" />
         </q-tabs>
 
@@ -47,7 +47,7 @@
             />
           </a>
           <a
-            href="https://github.com/Fayhen"
+            href="https://twitter.com/Fayhen1"
             target="_blank"
             rel="noopener noreferrer"
             style="text-decoration: none; color: inherit;"
@@ -61,7 +61,7 @@
             />
           </a>
           <a
-            href="https://github.com/Fayhen"
+            href="www.linkedin.com/in/diegogcsouza"
             target="_blank"
             rel="noopener noreferrer"
             style="text-decoration: none; color: inherit;"
@@ -75,7 +75,6 @@
             />
           </a>
         </div>
-
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
@@ -88,9 +87,17 @@
       <div style="display: block;">
         <lang-switch />
       </div>
-        <q-toolbar-title style="padding: 0 0.5em 0 0; text-align: right;">
+        <q-toolbar-title
+          class="no-padding text-weight-light text-indigo-1"
+          style="padding: 0 0.5em 0 0; text-align: right;"
+        >
           Diego Souza
         </q-toolbar-title>
+        <q-icon
+          size="md"
+          name="img:leaf-from-cog-2-dark.svg"
+          class="q-mx-xs"
+        />
     </q-footer>
   </q-layout>
 </template>

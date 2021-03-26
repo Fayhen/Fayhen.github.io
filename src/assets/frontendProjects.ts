@@ -1,4 +1,5 @@
 import { ProjectCardData } from 'components/models';
+import { stacks } from 'assets/stacks';
 
 export const frontendProjects: ProjectCardData[] = [
   {
@@ -7,22 +8,10 @@ export const frontendProjects: ProjectCardData[] = [
     repositoryLink: 'https://github.com/Fayhen/emoji-shift',
     productionLink: 'https://fayhen.github.io/emoji-shift/',
     stacks: [
-      {
-        id: 'typescript',
-        filepath: 'img:devicons/typescript-original.svg'
-      },
-      {
-        id: 'html5',
-        filepath: 'img:devicons/html5-original.svg'
-      },
-      {
-        id: 'css3',
-        filepath: 'img:devicons/css3-original.svg'
-      },
-      {
-        id: 'vuejs',
-        filepath: 'img:devicons/vuejs-original.svg'
-      }
+      stacks.typescript,
+      stacks.html5,
+      stacks.css3,
+      stacks.vuejs
     ]
   },
   {
@@ -31,22 +20,11 @@ export const frontendProjects: ProjectCardData[] = [
     repositoryLink: 'https://github.com/Fayhen/Quasar-Cropper',
     productionLink: 'https://5e93b3e6396d24fc3cf6807f--brave-jepsen-8fd015.netlify.app/',
     stacks: [
-      {
-        id: 'javascript',
-        filepath: 'img:devicons/javascript-original.svg'
-      },
-      {
-        id: 'html5',
-        filepath: 'img:devicons/html5-original.svg'
-      },
-      {
-        id: 'css3',
-        filepath: 'img:devicons/css3-original.svg'
-      },
-      {
-        id: 'vuejs',
-        filepath: 'img:devicons/vuejs-original.svg'
-      }
+      stacks.javascript,
+      stacks.html5,
+      stacks.css3,
+      stacks.vuejs,
+      stacks.quasar
     ]
   },
   {
@@ -55,22 +33,10 @@ export const frontendProjects: ProjectCardData[] = [
     repositoryLink: 'https://github.com/Fayhen/grocery-cart',
     productionLink: 'https://sleepy-shannon-c54eef.netlify.app/',
     stacks: [
-      {
-        id: 'typescript',
-        filepath: 'img:devicons/typescript-original.svg'
-      },
-      {
-        id: 'html5',
-        filepath: 'img:devicons/html5-original.svg'
-      },
-      {
-        id: 'css3',
-        filepath: 'img:devicons/css3-original.svg'
-      },
-      {
-        id: 'vuejs',
-        filepath: 'img:devicons/vuejs-original.svg'
-      }
+      stacks.typescript,
+      stacks.html5,
+      stacks.css3,
+      stacks.vuejs
     ]
   },
   {
@@ -79,14 +45,8 @@ export const frontendProjects: ProjectCardData[] = [
     repositoryLink: null,
     productionLink: 'http://parsing-hell.surge.sh/',
     stacks: [
-      {
-        id: 'html5',
-        filepath: 'img:devicons/html5-original.svg'
-      },
-      {
-        id: 'css3',
-        filepath: 'img:devicons/css3-original.svg'
-      }
+      stacks.html5,
+      stacks.css3
     ]
   }
 ]

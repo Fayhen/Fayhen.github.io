@@ -1,4 +1,5 @@
 import { ProjectCardData } from 'components/models';
+import { stacks } from 'assets/stacks';
 
 export const backendProjects: ProjectCardData[] = [
   {
@@ -7,18 +8,9 @@ export const backendProjects: ProjectCardData[] = [
     repositoryLink: 'https://github.com/Fayhen/Pythondex',
     productionLink: null,
     stacks: [
-      {
-        id: 'python',
-        filepath: 'img:devicons/python-original.svg'
-      },
-      {
-        id: 'sqlalchemy',
-        filepath: 'img:devicons/sqlalchemy-original.svg'
-      },
-      {
-        id: 'flask',
-        filepath: 'img:devicons/flask-original.svg'
-      }
+      stacks.python,
+      stacks.sqlalchemy,
+      stacks.flask
     ]
   }
 ]
