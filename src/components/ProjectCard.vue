@@ -7,7 +7,7 @@
       <q-card-actions class="no-padding self-stretch">
         <q-btn
           unelevated
-          :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+          :icon="expanded ? keyboard_arrow_up : keyboard_arrow_down"
           @click="expanded = !expanded" >
           <q-tooltip>Details</q-tooltip>
         </q-btn>
@@ -56,7 +56,7 @@
                   dense
                   round
                   size="1.1em"
-                  icon="fab fa-github"
+                  :icon="fabGithub"
                   aria-label="Source code link"
                 />
               </a>
@@ -72,7 +72,7 @@
                   dense
                   round
                   size="1.1em"
-                  icon="fas fa-globe"
+                  :icon="fasGlobe"
                   aria-label="Published project link"
                 />
               </a>
@@ -88,8 +88,14 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { fasGlobe, fabGithub } from '@quasar/extras/fontawesome-v5'
+import { 
+  matKeyboardArrowUp,
+  matKeyboardArrowDown
+ } from '@quasar/extras/material-icons';
 import { StackData } from 'components/models';
 import StackItem from 'components/StackItem.vue';
+
 
 @Component({
   components: { StackItem }
@@ -112,6 +118,10 @@ export default class ProjectCard extends Vue {
     type: Number, required: false, default: -1}) readonly index!: number;
 
   expanded = false;
+  fasGlobe = fasGlobe;
+  fabGithub = fabGithub;
+  keyboard_arrow_up = matKeyboardArrowUp;
+  keyboard_arrow_down = matKeyboardArrowDown;
 
   created() {
     if (this.index === 0) {

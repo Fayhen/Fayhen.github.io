@@ -21,10 +21,11 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { fasGlobe } from '@quasar/extras/fontawesome-v5'
 
 @Component
 export default class NavigationItem extends Vue {
-  @Prop({ type: String, default: 'fas fa-globe' }) readonly icon!: string;
+  @Prop({ type: String, default: fasGlobe }) readonly icon!: string;
   @Prop({ type: String, required: true }) readonly route!: string;
   @Prop({ type: String, required: true }) readonly label!: string;
   @Prop({ type: String, required: true }) readonly caption!: string;
