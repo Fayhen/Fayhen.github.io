@@ -6,9 +6,6 @@
       class="q-page-inner-wrapper"
       enter-active-class="animated fadeInUp"
     >
-      <!-- <p key="text-academic-title" style="animation-delay: 0.1s;">
-        {{ $t('academic.title') }}
-      </p> -->
       <p key="text-academic-intro" style="animation-delay: 0.1s;">
         {{ $t('academic.intro') }}
       </p>

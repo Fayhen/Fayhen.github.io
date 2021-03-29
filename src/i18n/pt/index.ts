@@ -3,7 +3,7 @@ export default {
     langSwitchLabel: 'Mudar Idioma',
     menuNavigationLabel: 'Navegação',
     homeNavigationLabel: 'HOME',
-    homeNavigationCaption: 'Voltar para a homepage',
+    homeNavigationCaption: 'Voltar para a página inicial',
     stacksNavigationLabel: 'STACKS',
     stacksNavigationCaption: 'Stacks com as quais tenho experiência',
     academicNavigationLabel: 'ACADÊMICO',
@@ -30,15 +30,15 @@ export default {
   },
   stacks: {
     intro: 'Sou um programador Júnior brasileiro, construindo conhecimentos em desenvolvimento FullStack.',
-    detail: 'Sou graduado em Ciências Biológicas, e me tornei Desenvolvedor ao longo do caminho. No momento, trabalho como Freelancer, trabalhando tanto com Backend quanto Frontend.',
-    techs: 'Minha atual experiência envolve as seguintes tecnologias:'
+    detail: 'Sou graduado em Ciências Biológicas, tendo me tornado Desenvolvedor ao longo do caminho. No momento trabalho como Freelancer, envolvido em tasks tanto de Backend quanto Frontend.',
+    techs: 'Minha experiência atual envolve as seguintes tecnologias:'
   },
   academic: {
     title: 'Acadêmico',
     intro: 'Embora meu trabalho atual seja como Desenvolvedor, minha carreira começou nas ciências.',
-    detail: 'Sou Bacharel em Ciências Biológicas, graduado pela Universidade Federal do Pará em 2015. Dada sua localização no norte do Brasil, isso levou-me a acumular experiência de campo na Floresta Amazônica, umas das regiões mais ecologicamente e cientificamente importantes do planeta.',
-    expertise: 'Especificamente, possuo experiência de campo e laboratório na área de Ecologia Costeira, tendo trabalhado com biologia populacional de organismos bênticos em ambientes de praia. Também possuo experiência com Entomologia, tendo conduzido pesquisa em coleções biológicas locais. Ao longo da formação, também participei em uma miríade de excursões de outros campos de estudo na região.',
-    conclusion: 'Trabalhos de campo e o aprendizado sobre a Amazônia, tanto em sua ciência quando suas culturas, permanecem como uma paixão pessoal.'
+    detail: 'Sou Bacharel em Ciências Biológicas, graduado pela Universidade Federal do Pará em 2015. Dada sua localização no norte do Brasil, tive a oportunidade de conduzir pesquisas de campo na Floresta Amazônica, uma das regiões mais ecologicamente e cientificamente importantes do planeta.',
+    expertise: 'Possuo experiência de campo e laboratório na área de Ecologia Costeira, explorando a biologia populacional de organismos bênticos em ambientes de praia. Também trabalhei com Entomologia, tendo feito estudos taxonômicos em coleções biológicas locais. Ao longo da formação, também participei em uma miríade de excursões de campo de outras áreas de pesquisa na região.',
+    conclusion: 'Os trabalhos de campo e o aprendizado sobre a Região Amazônica, tanto em sua ciência quando suas culturas, permanecem como uma paixão pessoal.'
   },
   frontend: {
     title: 'Frontend',

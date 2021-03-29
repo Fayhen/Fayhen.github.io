@@ -6,7 +6,7 @@
           flat
           dense
           round
-          icon="menu"
+          :icon="menu"
           aria-label="Menu"
         >
           <q-menu>
@@ -112,7 +112,10 @@ import {
   fasCode,
   fasCogs,
   fasProjectDiagram
-} from '@quasar/extras/fontawesome-v5'
+} from '@quasar/extras/fontawesome-v5';
+import {
+  matMenu
+} from '@quasar/extras/material-icons';
 
 const navigationData = [
   {
@@ -165,6 +168,7 @@ export default class MainLayout extends Vue {
   fabGithub = fabGithub;
   fabTwitter = fabTwitter;
   fabLinkedin = fabLinkedin;
+  menu = matMenu;
 
   getRouteTranslation() {
     const route = this.$route.name as string;
