@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: '10.x'
       
+      # Install Quasar
+      - name: Install Quasar
+        npm install -g @quasar/cli
+      
       # Install dependecies
       - name: Install dependencies
         run: yarn install
