@@ -15,7 +15,7 @@
       </p>
       <q-img
         class="profile-pic"
-        src="images/profile-pic.png"
+        src="images/profile-pic.jpg"
         :ratio="1"
         key="profile-picture"
         style="animation-delay: 0.2s;"
