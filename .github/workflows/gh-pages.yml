@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.x'
+      
+      # Install Quasar
+      - name: Install Quasar
+        run: npm install -g @quasar/cli
+      
+      # Install dependecies
+      - name: Install dependencies
+        run: yarn install
+        
+      # Build application
+      - name: Build application
+        run: quasar build
+        
+      # Publish to Github Pages
+      - name: Publish
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout --orphan gh-pages
+          git --work-tree dist/spa add --all
+          git --work-tree dist/spa commit -m 'Deploy'
+          git push origin HEAD:gh-pages --force
+          quasar clean
+          git checkout -f main
+          git branch -D gh-pages
