@@ -61,7 +61,7 @@
             />
           </a>
           <a
-            href="www.linkedin.com/in/diegogcsouza"
+            href="https://www.linkedin.com/in/diegogcsouza/"
             target="_blank"
             rel="noopener noreferrer"
             style="text-decoration: none; color: inherit;"
