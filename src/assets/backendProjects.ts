@@ -12,5 +12,17 @@ export const backendProjects: ProjectCardData[] = [
       stacks.sqlalchemy,
       stacks.flask
     ]
+  },
+  {
+    title: 'backend.projectMariadbSqlaDockerSetupTitle',
+    description: 'backend.projectMariadbSqlaDockerSetupDescription',
+    repositoryLink: 'https://github.com/Fayhen/mariadb-sqla-docker-setup',
+    productionLink: null,
+    stacks: [
+      stacks.docker,
+      stacks.mysql,
+      stacks.python,
+      stacks.sqlalchemy
+    ]
   }
 ]
