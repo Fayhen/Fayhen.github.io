@@ -10,6 +10,15 @@ export const stacks: Stacks = {
       filepath: 'img:devicons/git-original.svg'
     }
   },
+  docker: {
+    key: 'stacks-devicon-docker',
+    ariaLabel: 'Docker',
+    tooltip: 'Docker',
+    icon: {
+      id: 'docker',
+      filepath: 'img:devicons/docker-original.svg'
+    }
+  },
   mysql: {
     key: 'stacks-devicon-mysql',
     ariaLabel: 'MySQL',
