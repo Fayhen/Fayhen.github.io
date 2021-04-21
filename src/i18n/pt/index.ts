@@ -56,9 +56,11 @@ export default {
     title: 'Backend',
     intro: 'A maior parte de meu trabalho com Backend se encontra em repositórios privados e infelizmente não pode ser compartilhado.',
     detail: 'Ainda assim, a maioria desses projetos gira em torno de APIs RESTful. Trabalhei e trabalho ativamente com o desenvolvimento de APIs usando Python, em particular os frameworks Django e Flask, normalmente integradas com bacos de dados. Tenho experiência com MariaDB (MySQL) e SQLAlchemy, utilizando ORMs.',
-    conclusion: 'Tenho ao menos um projeto de Backend publicamente disponível, que pode ser conferido abaixo:',
+    conclusion: 'Tenho alguns projetos de Backend publicamente disponíveis, que podem ser conferidos abaixo:',
     projectPythondexTitle: 'Pythondex',
-    projectPythondexDescription: 'Uma simples API em Python que simula uma Pokédex. Ela busca dados da PokéAPI e os armazena em um baco de dados local em SQLite. Depois, ela é capaz de responder a vários endpoints através de queries neste banco local. Também possui documentação Swagger.'
+    projectPythondexDescription: 'Uma simples API em Python que simula uma Pokédex. Ela busca dados da PokéAPI e os armazena em um baco de dados local em SQLite. Depois, ela é capaz de responder a vários endpoints através de queries neste banco local. Também possui documentação Swagger.',
+    projectMariadbSqlaDockerSetupTitle: 'mariadb-sqla-docker-setup',
+    projectMariadbSqlaDockerSetupDescription: 'Um simples setup de banco de dados MariaDB containerizado, usando SQLAlchemy, Alembic e docker-compose.'
   },
   fullstack: {
     title: 'FullStack',
