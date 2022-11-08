@@ -1,8 +1,5 @@
 <template>
-  <router-link
-    :to="route"
-    style="text-decoration: none; color: inherit;"
-  >
+  <router-link :to="route" style="text-decoration: none; color: inherit">
     <q-item>
       <q-item-section avatar>
         <q-icon :name="icon" />
@@ -19,15 +16,13 @@
   </router-link>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { fasGlobe } from '@quasar/extras/fontawesome-v5'
+<script setup lang="ts">
+import { fasGlobe } from '@quasar/extras/fontawesome-v5';
 
-@Component
-export default class NavigationItem extends Vue {
-  @Prop({ type: String, default: fasGlobe }) readonly icon!: string;
-  @Prop({ type: String, required: true }) readonly route!: string;
-  @Prop({ type: String, required: true }) readonly label!: string;
-  @Prop({ type: String, required: true }) readonly caption!: string;
-}
+defineProps({
+  icon: { type: String, required: false, default: fasGlobe },
+  route: { type: String, required: true, default: '/' },
+  label: { type: String, required: true },
+  caption: { type: String, required: true },
+});
 </script>

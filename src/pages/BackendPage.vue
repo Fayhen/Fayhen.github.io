@@ -4,10 +4,17 @@
       <transition-group
         appear
         tag="div"
+        class="backend-wrapper"
         enter-active-class="animated fadeInUp"
       >
-        <p key="text-frontend-intro" style="animation-delay: 0.2s;">
-          {{ $t('frontend.intro') }}
+        <p key="text-backend-intro" style="animation-delay: 0.2s">
+          {{ $t('backend.intro') }}
+        </p>
+        <p key="text-backend-detail" style="animation-delay: 0.3s">
+          {{ $t('backend.detail') }}
+        </p>
+        <p key="text-backend-conclusion" style="animation-delay: 0.4s">
+          {{ $t('backend.conclusion') }}
         </p>
       </transition-group>
 
@@ -18,7 +25,7 @@
         enter-active-class="animated fadeInUp"
       >
         <ProjectCard
-          v-for="project, index in projects"
+          v-for="(project, index) in projects"
           :key="project.title"
           :title="project.title"
           :description="project.description"
@@ -27,23 +34,17 @@
           :iconsArray="project.stacks"
           :index="index"
           class="project-card"
-          :style="`animation-delay: ${projectCardDelay + (0.1 * (index + 1))}s;`"
+          :style="`animation-delay: ${projectCardDelay + 0.1 * (index + 1)}s;`"
         />
       </transition-group>
     </div>
   </q-page>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import { frontendProjects } from 'assets/frontendProjects';
+<script setup lang="ts">
+import { backendProjects } from 'assets/backendProjects';
 import ProjectCard from 'components/ProjectCard.vue';
 
-@Component({
-  components: { ProjectCard }
-})
-export default class Frontend extends Vue {
-  projects = frontendProjects;
-  projectCardDelay = 0.2;
-};
+const projects = backendProjects;
+const projectCardDelay = 0.4;
 </script>

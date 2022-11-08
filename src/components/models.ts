@@ -1,12 +1,3 @@
-export interface Todo {
-  id: number;
-  content: string;
-}
-
-export interface Meta {
-  totalCount: number;
-}
-
 export interface Devicon {
   id: string;
   filepath: string;
@@ -19,7 +10,7 @@ export interface StackData {
   icon: Devicon;
 }
 
-export type Stacks = { [name: string]: StackData }
+export type Stacks = { [name: string]: StackData };
 
 export interface ProjectCardData {
   title: string;

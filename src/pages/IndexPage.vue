@@ -6,11 +6,7 @@
       class="q-page-inner-wrapper"
       enter-active-class="animated fadeInUp"
     >
-      <p
-        key="text-home-hello"
-        class="text-h4"
-        style="animation-delay: 0.1s;"
-      >
+      <p key="text-home-hello" class="text-h4" style="animation-delay: 0.1s">
         {{ $t('main.hello') }}
       </p>
       <q-img
@@ -18,12 +14,9 @@
         src="images/profile-pic.jpg"
         :ratio="1"
         key="profile-picture"
-        style="animation-delay: 0.2s;"
+        style="animation-delay: 0.2s"
       />
-      <div
-        key="text-home-intro"
-        style="animation-delay: 0.3s;"
-      >
+      <div key="text-home-intro" style="animation-delay: 0.3s">
         <p class="text-h4">{{ $t('main.myName') }}</p>
         <p class="text-h5">{{ $t('main.myJob') }}</p>
       </div>
@@ -31,12 +24,7 @@
   </q-page>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-
-@Component
-export default class PageIndex extends Vue {};
-</script>
+<script setup lang="ts"></script>
 
 <style lang="sass" scoped>
 .profile-pic
