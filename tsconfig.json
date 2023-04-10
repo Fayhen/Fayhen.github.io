@@ -1,8 +1,6 @@
 {
-  "extends": "@quasar/app/tsconfig-preset",
+  "extends": "@quasar/app-vite/tsconfig-preset",
   "compilerOptions": {
-    "baseUrl": ".",
-    "experimentalDecorators": true,
-    "skipLibCheck": true
+    "baseUrl": "."
   }
 }
