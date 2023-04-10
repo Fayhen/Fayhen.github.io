@@ -1,6 +1,6 @@
 # Fayhen's Curriculum (fayhen-github-io)
 
-Fayhen's Curriculum
+A simple Single Page Application built with Vue 3, Quasar Framework and Vite.
 
 ## Install the dependencies
 ```bash
