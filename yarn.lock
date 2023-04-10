@@ -133,33 +133,33 @@
   resolved "https://registry.yarnpkg.com/@positron/stack-trace/-/stack-trace-1.0.0.tgz#14fcc712a530038ef9be1ce6952315a839f466a8"
   integrity sha512-nWlGg+aMfQDhGYa5FtBhZwldeo2MtdjHdxmEQvhBXEnxgD5IhIYl0PHvex8SdwyN7qcSoMykMWdjyAX7ZxkpMw==
 
-"@quasar/app-vite@^1.0.0":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@quasar/app-vite/-/app-vite-1.1.3.tgz#fede1691ed176954354e7ce20886e147660de7a9"
-  integrity sha512-YX6lVkjRFNDbYcORiMtNlDz3jlSf7ldF4zGZk8zaW/Q1CfjaLqpSqCmBP4eta6QXz7To0IdabROYKa55D6IDgA==
+"@quasar/app-vite@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@quasar/app-vite/-/app-vite-1.2.1.tgz#23a634e16c74b28a38cf1ad1b3633388a220f97f"
+  integrity sha512-iKvpucrnt5pQuuQxqkLLWuI7Wm9Xx9fcBK1miMHWBgdcbHOXhc/OrlxeLvRwxm7GMd91cp3nhslo5j3a+zMCOg==
   dependencies:
     "@quasar/fastclick" "1.1.5"
-    "@quasar/vite-plugin" "^1.2.1"
+    "@quasar/vite-plugin" "^1.3.0"
     "@rollup/pluginutils" "^4.1.2"
-    "@types/chrome" "^0.0.191"
+    "@types/chrome" "^0.0.208"
     "@types/compression" "^1.7.2"
     "@types/cordova" "0.0.34"
     "@types/express" "^4.17.13"
     "@vitejs/plugin-vue" "^2.2.0"
     archiver "^5.3.0"
     chokidar "^3.5.3"
-    ci-info "^3.3.0"
+    ci-info "^3.7.1"
     compression "^1.7.4"
     cross-spawn "^7.0.3"
     dot-prop "6.0.1"
     elementtree "0.1.7"
     esbuild "0.14.51"
     express "^4.17.3"
-    fast-glob "3.2.11"
-    fs-extra "^10.0.1"
+    fast-glob "3.2.12"
+    fs-extra "^11.1.0"
     html-minifier "^4.0.0"
     inquirer "^8.2.1"
-    isbinaryfile "^4.0.8"
+    isbinaryfile "^5.0.0"
     kolorist "^1.5.1"
     lodash "^4.17.21"
     minimist "^1.2.6"
@@ -174,20 +174,20 @@
     vite "^2.9.13"
     webpack-merge "^5.8.0"
 
-"@quasar/extras@^1.0.0":
-  version "1.15.5"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.15.5.tgz#da427761c1c643c2cbe9dfa656817da54acb5686"
-  integrity sha512-JzKKx5/eKAip3X3bZUEJOOWT9NudqjF01gcce6rtyviko49OU4r+ekyJU3QQIKF8ZqnjZ+DpsVpMWBBZnO6hSQ==
+"@quasar/extras@^1.16.2":
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.16.2.tgz#fcc6374a882253051f9d7302cb9ba828f0010cdf"
+  integrity sha512-spDc1DrwxGts0MjmOAJ11xpxJANhCI1vEadxaw89wRQJ/QfKd0HZrwN7uN1U15cRozGRkJpdbsnP4cVXpkPysA==
 
 "@quasar/fastclick@1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@quasar/fastclick/-/fastclick-1.1.5.tgz#948e79c44098cced6c3d1645315683ebc29ed834"
   integrity sha512-p3JKgTjRlJ1YQXbqTw3Bsa4j0mQdt5dq+WfYvyb7MgKGdephHCKdR/kxA5PCTAmJanGJuDKqRdyGYX/hYN4KGw==
 
-"@quasar/vite-plugin@^1.2.1":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@quasar/vite-plugin/-/vite-plugin-1.2.3.tgz#7da3653afbf45b11e9c344192fff2b9a7ccf3650"
-  integrity sha512-ErSyY3cHz40GBIQUmqSI8OzzshJM5pLq33Yq3NEtYdWYh1NuIc4C766xkatUdxvhX9sLNnQQZax2ysJ5u7kUJA==
+"@quasar/vite-plugin@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@quasar/vite-plugin/-/vite-plugin-1.3.0.tgz#c399b00d40c4a40aadb0e90a8e9116d72379d339"
+  integrity sha512-wd7b/QrKu/WB53l+vxo6GLbkoEwh5FFKLtLl3fM8TXrDDRB1qsKKkRa/vwTU4dpuyBaOZDjycmYuAsOlTdNp8w==
 
 "@rollup/pluginutils@^4.1.0", "@rollup/pluginutils@^4.1.2":
   version "4.2.1"
@@ -205,10 +205,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/chrome@^0.0.191":
-  version "0.0.191"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.191.tgz#e14dc52c53e5e89ab74dc0f1e641066c7939ed55"
-  integrity sha512-hXYHJJ1Y265xKCw0o2Kz4CnR8aUhOMdyxK1AinET4EDr3fhpEMvOFDwdqz9LUX4syfTVYWb8w7vfC12s112ehg==
+"@types/chrome@^0.0.208":
+  version "0.0.208"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.208.tgz#c52992e46723c783d3fd84a8b90dd8b3e87af67f"
+  integrity sha512-VDU/JnXkF5qaI7WBz14Azpa2VseZTgML0ia/g/B1sr9OfdOnHiH/zZ7P7qCDqxSlkqJh76/bPc8jLFcx8rHJmw==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
@@ -786,10 +786,10 @@ chardet@^0.7.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-ci-info@^3.3.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.5.0.tgz#bfac2a29263de4c829d806b1ab478e35091e171f"
-  integrity sha512-yH4RezKOGlOhxkmhbeNuC4eYZKAUsEaGtBuBzDDP1eFUKiccDWzBABxBfOx31IDwDIXMTxWuwAxUGModvkbuVw==
+ci-info@^3.7.1:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.8.0.tgz#81408265a5380c929f0bc665d62256628ce9ef91"
+  integrity sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==
 
 clean-css@^4.2.1:
   version "4.2.4"
@@ -1541,18 +1541,7 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
-fast-glob@3.2.11:
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.11.tgz#a1172ad95ceb8a16e20caa5c5e56480e5129c1d9"
-  integrity sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==
-  dependencies:
-    "@nodelib/fs.stat" "^2.0.2"
-    "@nodelib/fs.walk" "^1.2.3"
-    glob-parent "^5.1.2"
-    merge2 "^1.3.0"
-    micromatch "^4.0.4"
-
-fast-glob@^3.2.5, fast-glob@^3.2.9:
+fast-glob@3.2.12, fast-glob@^3.2.5, fast-glob@^3.2.9:
   version "3.2.12"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.12.tgz#7f39ec99c2e6ab030337142da9e0c18f37afae80"
   integrity sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==
@@ -1662,10 +1651,10 @@ fs-constants@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs-constants/-/fs-constants-1.0.0.tgz#6be0de9be998ce16af8afc24497b9ee9b7ccd9ad"
   integrity sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
 
-fs-extra@^10.0.1:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
-  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
+fs-extra@^11.1.0:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.1.tgz#da69f7c39f3b002378b0954bb6ae7efdc0876e2d"
+  integrity sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
@@ -1950,10 +1939,10 @@ isarray@~1.0.0:
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==
 
-isbinaryfile@^4.0.8:
-  version "4.0.10"
-  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-4.0.10.tgz#0c5b5e30c2557a2f06febd37b7322946aaee42b3"
-  integrity sha512-iHrqe5shvBUcFbmZq9zOQHBoeOhZJu6RQGrDpBgenUm/Am+F3JM2MgQj+rK3Z601fzrL5gLZWtAPH2OBaSVcyw==
+isbinaryfile@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-5.0.0.tgz#034b7e54989dab8986598cbcea41f66663c65234"
+  integrity sha512-UDdnyGvMajJUWCkib7Cei/dvyJrrvo4FIrsvSFWdPpXSUorzXrDJ0S+X5Q4ZlasfPjca4yqCNNsjbCeiy8FFeg==
 
 isexe@^2.0.0:
   version "2.0.0"
@@ -2471,10 +2460,10 @@ qs@6.11.0:
   dependencies:
     side-channel "^1.0.4"
 
-quasar@^2.6.0:
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.10.1.tgz#843888c73d997a53b3808d7f4f358b1aee3a91f2"
-  integrity sha512-W0SEbTdfFS4xvO5OyTyuJent+11MpjBJUYLga69ZFigRh7SV6wFpGNfCuxAifM0L83bp4rWrL2KGoIjEoDsjOw==
+quasar@^2.11.10:
+  version "2.11.10"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.11.10.tgz#31bf49dd7995673b2116aa250bb0b019ddcae74f"
+  integrity sha512-pV7bMdY/FUmOvNhZ2XjKSXJH92fsDu0cU/z7a9roPKV54cW41N1en3sLATrirjPComyZnk4uXrMdGtXp8+IpCg==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
