@@ -7,6 +7,7 @@ export interface StackData {
   key: string;
   ariaLabel: string;
   tooltip: string;
+  link: string;
   icon: Devicon;
 }
 

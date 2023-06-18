@@ -28,6 +28,7 @@
               v-for="(stack, index) in stackItems"
               :key="stack.key"
               :ariaLabel="stack.ariaLabel"
+              :link="stack.link"
               :tooltip="stack.tooltip"
               :iconId="stack.icon.id"
               :iconFilepath="stack.icon.filepath"
