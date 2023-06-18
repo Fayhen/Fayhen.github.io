@@ -30,20 +30,20 @@ export default {
   },
   stacks: {
     intro:
-      "I'm a Brazilian Junior programmer, building knowledge in several areas of FullStack development.",
+      "I'm a software developer with expertise in various aspects of FullStack web development.",
     detail:
-      'I graduated in Biological Sciences and became a developer along the way. I currently work as a Freelancer, dealing in both Backend and Frontend tasks.',
-    techs: 'My current experience involves the following technologies:',
+      'Having an academic background in Biological Sciences, I transitioned into the field and accumulated over two years of experience in freelancing and full-time employment.',
+    proficiency: 'I\'m proficient in the following technologies:',
   },
   academic: {
     title: 'Academic',
-    intro: "While I'm a Developer, my career began in the Sciences.",
+    intro: 'While currently pursuing a career in software development, my journey began in the field of Natural Sciences.',
     detail:
-      "I am a B.Sc. in Biological Sciences, graduated at Federal University of Pará in 2015. Given it's location at Northern Brazil, I have had the opportunity to conduct field research in the Amazon Rainforest, one of the most ecologically and scientifically important regions on the planet.",
+      'I hold a B.Sc. degree in Biological Sciences, which I completed in 2015 at the <a href="https://www.ufpa.br/" target="_blank" rel="noopener noreferrer">Federal University of Pará</a>. Being situated in Northern Brazil, the university provided me the unique opportunity to engage in field research in the Amazon Rainforest, one of the most ecologically and scientifically significant regions on Earth.',
     expertise:
-      'I have field and laboratory experience in the area of Coastal Ecology, researching Population Biology of benthic organisms in beach environments. I also worked with Entomology, having made taxonomic studies in local biological collections. Throughout University, I also participated in a myriad of field excursions from different areas of research in the region.',
+      'This academic background includes hands-on experience in both fieldwork and laboratory settings, primarily focusing on Coastal Ecology. Specifically, I conducted research on the Population Biology of benthic organisms in sandy beach environments. Additionally, I worked in the field of Entomology, where I conducted taxonomic studies within local biological collections. Throughout my time at University, I also participated in various field excursions from diverse research areas of research within the region.',
     conclusion:
-      'Fieldwork and learning about the Amazon Region, both in its science and cultures, remains as one of my passions.',
+      'The invaluable experiences of immersing myself in the science and cultures of the Amazon region continue to fuel my passion to this day.',
   },
   frontend: {
     title: 'Frontend',

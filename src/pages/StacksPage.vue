@@ -13,7 +13,7 @@
       <div class="flex column items-center">
         <transition appear enter-active-class="animated fadeInUp">
           <p key="stacks-techs" style="animation-delay: 0.3s">
-            {{ $t('stacks.techs') }}
+            {{ $t('stacks.proficiency') }}
           </p>
         </transition>
 

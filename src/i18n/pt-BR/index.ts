@@ -30,21 +30,21 @@ export default {
   },
   stacks: {
     intro:
-      'Sou um programador Júnior brasileiro, construindo conhecimentos em desenvolvimento FullStack.',
+      'Sou um desenvolvedor de software com habilidades em várias áreas do desenvolvimento web FullStack.',
     detail:
-      'Sou graduado em Ciências Biológicas, tendo me tornado Desenvolvedor ao longo do caminho. No momento trabalho como Freelancer, envolvido em tasks tanto de Backend quanto Frontend.',
-    techs: 'Minha experiência atual envolve as seguintes tecnologias:',
+      'Com formação acadêmica em Ciências Biológicas, tornei-me programador ao longo do caminho, acumulando mais de anos de experiência como freelancer e em contratos em tempo integral.',
+      proficiency: 'Tenho proficiência nas seguintes tecnologias:',
   },
   academic: {
     title: 'Acadêmico',
     intro:
-      'Embora meu trabalho atual seja como Desenvolvedor, minha carreira começou nas ciências.',
+      'Embora atualmente atue como desenvolvedor, minha carreira teve início nas ciências naturais.',
     detail:
-      'Sou Bacharel em Ciências Biológicas, graduado pela Universidade Federal do Pará em 2015. Dada sua localização no norte do Brasil, tive a oportunidade de conduzir pesquisas de campo na Floresta Amazônica, uma das regiões mais ecologicamente e cientificamente importantes do planeta.',
+      'Sou graduado em Ciências Biológicas, com bacharelado concluído em 2015 pela <a href="https://www.ufpa.br/" target="_blank" rel="noopener noreferrer">Universidade Federal do Pará</a>. Dada a localização da universidade no norte do Brasil, tive a oportunidade de conduzir pesquisas de campo na Floresta Amazônica, uma das regiões mais ecologicamente e cientificamente importantes do planeta.',
     expertise:
-      'Possuo experiência de campo e laboratório na área de Ecologia Costeira, explorando a biologia populacional de organismos bênticos em ambientes de praia. Também trabalhei com Entomologia, tendo feito estudos taxonômicos em coleções biológicas locais. Ao longo da formação, também participei em uma miríade de excursões de campo de outras áreas de pesquisa na região.',
+      'Possuo experiência em trabalho de campo e laboratório na área de Ecologia Costeira, onde pesquisei a biologia populacional de organismos bênticos em ambientes de praia arenosa. Também atuei na área de Entomologia, realizando estudos taxonômicos em coleções biológicas locais. Ao longo da formação, também participei de diversas excursões de campo de outras áreas de pesquisa da região.',
     conclusion:
-      'Os trabalhos de campo e o aprendizado sobre a Região Amazônica, tanto em sua ciência quando suas culturas, permanecem como uma paixão pessoal.',
+      'O aprendizado e as experiências inestimáveis na Região Amazônica, tanto em suas ciências quanto em suas culturas, permanecem como uma das minhas paixões.',
   },
   frontend: {
     title: 'Frontend',

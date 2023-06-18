@@ -9,9 +9,7 @@
       <p key="text-academic-intro" style="animation-delay: 0.1s">
         {{ $t('academic.intro') }}
       </p>
-      <p key="text-academic-detail" style="animation-delay: 0.2s">
-        {{ $t('academic.detail') }}
-      </p>
+      <p key="text-academic-detail" style="animation-delay: 0.2s" v-html="$t('academic.detail')"></p>
       <p key="text-academic-expertise" style="animation-delay: 0.3s">
         {{ $t('academic.expertise') }}
       </p>
