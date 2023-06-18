@@ -10,12 +10,6 @@
         <p key="text-backend-intro" style="animation-delay: 0.2s">
           {{ $t('backend.intro') }}
         </p>
-        <p key="text-backend-detail" style="animation-delay: 0.3s">
-          {{ $t('backend.detail') }}
-        </p>
-        <p key="text-backend-conclusion" style="animation-delay: 0.4s">
-          {{ $t('backend.conclusion') }}
-        </p>
       </transition-group>
 
       <transition-group

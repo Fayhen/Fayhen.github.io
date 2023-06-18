@@ -20,7 +20,6 @@ export const frontendProjects: ProjectCardData[] = [
     repositoryLink: 'https://github.com/Fayhen/Quasar-Cropper',
     productionLink: 'https://5e93b3e6396d24fc3cf6807f--brave-jepsen-8fd015.netlify.app/',
     stacks: [
-      stacks.javascript,
       stacks.html5,
       stacks.css3,
       stacks.vuejs,

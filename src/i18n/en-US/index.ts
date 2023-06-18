@@ -50,7 +50,7 @@ export default {
   frontend: {
     title: 'Frontend',
     intro:
-      'Besides the curriculum you are browsing right now, below follows a few more Frontend projects made by me, available on the Internet:',
+      'Besides this online curriculum, these are a few of my Frontend projects available publicly:',
     projectEmojiShiftTitle: 'Emoji-Shift',
     projectEmojiShiftDescription:
       'An application built with Vue 3 and TypeScript, making full use of the new Composition and Reactivity APIs. You can make and share cards composed of an array of Emojis and optional header and footer messages.',
@@ -66,15 +66,22 @@ export default {
   },
   backend: {
     title: 'Backend',
-    intro:
-      "Most of my Backend work is in private repositories and unfortunately can't be showed.",
-    detail:
-      'Still, most of these projects revolves around RESTful APIs. I have and am actively working with API development using Python, with emphasis on the Django and Flask frameworks, usually integrated with databases. I have worked with MariaDB (MySQL) and SQLite, using ORMs.',
-    conclusion:
-      'I have a few Backend projects publicly available, which can be seen below:',
+    intro: 'These are some of my backend work available publicly.',
+    projectElixirIdenticonTitle: 'elixir-identicon',
+    projectElixirIdenticonDescription:
+      'A small Elixir application to generate identicon PNG images from user-provided strings, such as usernames.',
+    projectFastApiPaginationTitle: 'fastapi-list-pagination',
+    projectFastApiPaginationDescription:
+      'This is a POC to "paginate" a hardcoded number list through REST requests to a FastAPI server. Made while testing an hypothesis for "paginating" data from an external service while FastAPI serves as a gateway.',
+    projectNestjsNotificationServiceTitle: 'NestJS Notification Service',
+    projectNestjsNotificationServiceDescription:
+      'A notification microservice application written NestJS and TypeScript. Created during online classes.',
     projectPythondexTitle: 'Pythondex',
     projectPythondexDescription:
       'A simple Python API that simulates a Pokédex. It fetches data from PokéAPI and saves it in a local SQLite database. After, it can respond to several endpoints by querying this local database. It also has Swagger documentation.',
+    projectQuickLoremTitle: 'quick-lorem',
+    projectQuickLoremDescription:
+      'A simple NPX package that generates Lorem Ipsum text with several output options.',
     projectMariadbSqlaDockerSetupTitle: 'mariadb-sqla-docker-setup',
     projectMariadbSqlaDockerSetupDescription:
       'A simple containerized MariaDB database setup, using SQLAlchemy, Alembic and docker-compose.',
@@ -82,9 +89,12 @@ export default {
   fullstack: {
     title: 'FullStack',
     intro:
-      'My personal FullStack projects have not yet advanced to public status, with one exception:',
+      "Most of my FullStack work is in private repositories and can't be shown. These are a few exceptions.",
     projectLaboratorioTitle: 'Laborator.io',
+    projectAmazingAlbumsAdminTitle: 'amazing-albums-admin',
+    projectAmazingAlbumsAdminDescription:
+      'An administrative dashboard for another of my projects, consisting of a NestJS backend and Astro frontend. Currently a work-in-progress.',
     projectLaboratorioDescription:
-      "Laborator.io is a WIP FullStack application designed for managing scientific laboratories. It runs on a Flask server communicating with a Quasar frontend. This project is pending a great redesign process, intended to better modularize the application and fit it to the researchers' need.",
+      'Laborator.io is an unfinished application with a Flask backend and Quasar frontend, originally designed for the administration of scientific laboratories. Conceived during my career transition, it served as a learning experience and may be redone on the future.',
   },
 };

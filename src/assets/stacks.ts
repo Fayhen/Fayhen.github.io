@@ -157,7 +157,7 @@ export const stacks: Stacks = {
     }
   },
   // In-progress stacks
-  nest: {
+  nestjs: {
     key: 'stacks-devicon-nest',
     ariaLabel: 'NestJS',
     tooltip: 'NestJS',

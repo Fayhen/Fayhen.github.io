@@ -51,7 +51,7 @@ export default {
   frontend: {
     title: 'Frontend',
     intro:
-      'Além do currículo que você está visualizando neste momento, abaixo seguem mais alguns projetos Frontend feitos por mim, disponíveis na Internet:',
+      'Além deste currículo online, estes são alguns de meus projetos Frontend disponíveis publicamente:',
     projectEmojiShiftTitle: 'Emoji-Shift',
     projectEmojiShiftDescription:
       'Uma aplicação construída com Vue 3 e TypeScript, fazendo total uso das novas Composition e Reactivity APIs. Você poderá fazer e compartilhar cards que consistem de uma série de Emojis, e mensagens e cabeçalho e rodapé opcionais.',
@@ -67,15 +67,22 @@ export default {
   },
   backend: {
     title: 'Backend',
-    intro:
-      'A maior parte de meu trabalho com Backend se encontra em repositórios privados e infelizmente não pode ser compartilhado.',
-    detail:
-      'Ainda assim, a maioria desses projetos gira em torno de APIs RESTful. Trabalhei e trabalho ativamente com o desenvolvimento de APIs usando Python, em particular os frameworks Django e Flask, normalmente integradas com bancos de dados. Tenho experiência com MariaDB (MySQL) e SQLAlchemy, utilizando ORMs.',
-    conclusion:
-      'Tenho alguns projetos de Backend publicamente disponíveis, que podem ser conferidos abaixo:',
+    intro: 'Estes sao alguns de meus projetos backend disponíveis publicamente.',
+    projectElixirIdenticonTitle: 'elixir-identicon',
+    projectElixirIdenticonDescription:
+      'Pequena aplicação em Elixir para gerar identicons em formato PNG a partir de strings fornecidas pelo usuário, tais como usernames.',
+    projectFastApiPaginationTitle: 'fastapi-list-pagination',
+    projectFastApiPaginationDescription:
+      'Uma prova de conceito para "paginar" uma lista de números codificados de forma estática através de solicitações REST para um servidor FastAPI. Feito como teste de hipótese para "paginar" dados de um serviço externo, enquanto o FastAPI atua como um gateway.',
+    projectNestjsNotificationServiceTitle: 'NestJS Notification Service',
+    projectNestjsNotificationServiceDescription:
+      'Um microsserviço de notificações feito com NestJS e TypeScript. Criado durante aulas online.',
     projectPythondexTitle: 'Pythondex',
     projectPythondexDescription:
       'Uma simples API em Python que simula uma Pokédex. Ela busca dados da PokéAPI e os armazena em um baco de dados local em SQLite. Depois, ela é capaz de responder a vários endpoints através de queries neste banco local. Também possui documentação Swagger.',
+    projectQuickLoremTitle: 'quick-lorem',
+    projectQuickLoremDescription:
+      'Um pacote NPX que gera textos Lorem Ipsum com várias opções de output.',
     projectMariadbSqlaDockerSetupTitle: 'mariadb-sqla-docker-setup',
     projectMariadbSqlaDockerSetupDescription:
       'Um simples setup de banco de dados MariaDB containerizado, usando SQLAlchemy, Alembic e docker-compose.',
@@ -83,9 +90,12 @@ export default {
   fullstack: {
     title: 'FullStack',
     intro:
-      ' Meus projetos pessoais FullStack ainda não avançaram para fase de publicação, com uma exceção:',
+      'A maior parte de meu trabalho FullStack se encontra em repositórios privados e não pode ser compartilhado. Estas são algumas exceções.',
     projectLaboratorioTitle: 'Laborator.io',
+    projectAmazingAlbumsAdminTitle: 'amazing-albums-admin',
+    projectAmazingAlbumsAdminDescription:
+      'Dashboard administrativa feita para outro de meus projetos, consistindo de um backend NestJS e frontend feito com o framework Astro. Em construção.',
     projectLaboratorioDescription:
-      'Laborator.io é uma aplicação FullStack ainda em desenvolvimento, desenhada para a administração de laboratórios de pesquisa científica. Ela funciona com um servidor Flask comunicando-se com um cliente em Quasar. Esse projeto está pendendo um grande processo de redesign, no intento de melhor modularizá-lo e ajustá-lo às demandas de pesquisadores.',
+      'Laborator.io é uma aplicação inacabada com backend Flask e frontend com o framework Quasar, originalmente desenhada para a administração de laboratórios de pesquisa científica. Concebida no início de minha transição de carreira, ela serviu de aprendizado e pode ser refeita no futuro.',
   },
 };
