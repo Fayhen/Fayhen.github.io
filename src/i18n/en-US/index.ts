@@ -34,6 +34,8 @@ export default {
     detail:
       'Having an academic background in Biological Sciences, I transitioned into the field and accumulated over two years of experience in freelancing and full-time employment.',
     proficiency: 'I\'m proficient in the following technologies:',
+    ongoing:
+      'Additionally, I\'m actively developing my skills in the following technologies:',
   },
   academic: {
     title: 'Academic',

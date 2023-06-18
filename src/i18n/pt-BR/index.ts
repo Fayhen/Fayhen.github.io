@@ -33,7 +33,9 @@ export default {
       'Sou um desenvolvedor de software com habilidades em várias áreas do desenvolvimento web FullStack.',
     detail:
       'Com formação acadêmica em Ciências Biológicas, tornei-me programador ao longo do caminho, acumulando mais de anos de experiência como freelancer e em contratos em tempo integral.',
-      proficiency: 'Tenho proficiência nas seguintes tecnologias:',
+    proficiency: 'Tenho proficiência nas seguintes tecnologias:',
+    ongoing:
+      'Adicionalmente, estou ativamente desenvolvendo minhas habilidades nas seguintes tecnologias:',
   },
   academic: {
     title: 'Acadêmico',
