@@ -3,8 +3,8 @@ import { stacks } from 'assets/stacks';
 
 export const backendProjects: ProjectCardData[] = [
   {
-    title: 'backend.projectElixirIdenticonTitle',
-    description: 'backend.projectElixirIdenticonDescription',
+    title: 'backend.projectTitleElixirIdenticon',
+    description: 'backend.projectDescriptionElixirIdenticon',
     repositoryLink: 'https://github.com/Fayhen/elixir-identicon',
     productionLink: null,
     stacks: [
@@ -12,8 +12,8 @@ export const backendProjects: ProjectCardData[] = [
     ]
   },
   {
-    title: 'backend.projectQuickLoremTitle',
-    description: 'backend.projectQuickLoremDescription',
+    title: 'backend.projectTitleQuickLorem',
+    description: 'backend.projectDescriptionQuickLorem',
     repositoryLink: 'https://github.com/Fayhen/quick-lorem',
     productionLink: 'https://www.npmjs.com/package/quick-lorem',
     stacks: [
@@ -21,8 +21,8 @@ export const backendProjects: ProjectCardData[] = [
     ]
   },
   {
-    title: 'backend.projectFastApiPaginationTitle',
-    description: 'backend.projectFastApiPaginationDescription',
+    title: 'backend.projectTitleFastApiPagination',
+    description: 'backend.projectDescriptionFastApiPagination',
     repositoryLink: 'https://github.com/Fayhen/fastapi-list-pagination',
     productionLink: null,
     stacks: [
@@ -31,8 +31,8 @@ export const backendProjects: ProjectCardData[] = [
   },
 
   {
-    title: 'backend.projectNestjsNotificationServiceTitle',
-    description: 'backend.projectNestjsNotificationServiceDescription',
+    title: 'backend.projectTitleNestjsNotificationService',
+    description: 'backend.projectDescriptionNestjsNotificationService',
     repositoryLink: 'https://github.com/Fayhen/notification-service',
     productionLink: null,
     stacks: [
@@ -42,8 +42,8 @@ export const backendProjects: ProjectCardData[] = [
     ]
   },
   {
-    title: 'backend.projectPythondexTitle',
-    description: 'backend.projectPythondexDescription',
+    title: 'backend.projectTitlePythondex',
+    description: 'backend.projectDescriptionPythondex',
     repositoryLink: 'https://github.com/Fayhen/Pythondex',
     productionLink: null,
     stacks: [
@@ -53,8 +53,8 @@ export const backendProjects: ProjectCardData[] = [
     ]
   },
   {
-    title: 'backend.projectMariadbSqlaDockerSetupTitle',
-    description: 'backend.projectMariadbSqlaDockerSetupDescription',
+    title: 'backend.projectTitleMariadbSqlaDockerSetup',
+    description: 'backend.projectDescriptionMariadbSqlaDockerSetup',
     repositoryLink: 'https://github.com/Fayhen/mariadb-sqla-docker-setup',
     productionLink: null,
     stacks: [

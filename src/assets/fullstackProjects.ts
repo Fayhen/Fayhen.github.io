@@ -3,8 +3,8 @@ import { stacks } from 'assets/stacks';
 
 export const fullstackProjects: ProjectCardData[] = [
   {
-    title: 'fullstack.projectAmazingAlbumsAdminTitle',
-    description: 'fullstack.projectAmazingAlbumsAdminDescription',
+    title: 'fullstack.projectTitleAmazingAlbumsAdmin',
+    description: 'fullstack.projectDescriptionAmazingAlbumsAdmin',
     repositoryLink: 'https://github.com/Fayhen/Laborator.io',
     productionLink: null,
     stacks: [
@@ -17,8 +17,8 @@ export const fullstackProjects: ProjectCardData[] = [
     ]
   },
   {
-    title: 'fullstack.projectLaboratorioTitle',
-    description: 'fullstack.projectLaboratorioDescription',
+    title: 'fullstack.projectTitleLaboratorio',
+    description: 'fullstack.projectDescriptionLaboratorio',
     repositoryLink: 'https://github.com/Fayhen/Laborator.io',
     productionLink: null,
     stacks: [

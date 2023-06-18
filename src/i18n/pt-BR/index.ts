@@ -52,50 +52,50 @@ export default {
     title: 'Frontend',
     intro:
       'Além deste currículo online, estes são alguns de meus projetos Frontend disponíveis publicamente:',
-    projectEmojiShiftTitle: 'Emoji-Shift',
-    projectEmojiShiftDescription:
+    projectTitleEmojiShift: 'Emoji-Shift',
+    projectDescriptionEmojiShift:
       'Uma aplicação construída com Vue 3 e TypeScript, fazendo total uso das novas Composition e Reactivity APIs. Você poderá fazer e compartilhar cards que consistem de uma série de Emojis, e mensagens e cabeçalho e rodapé opcionais.',
-    projectQuasarCropperTitle: 'Quasar Cropper',
-    projectQuasarCropperDescription:
+    projectTitleQuasarCropper: 'Quasar Cropper',
+    projectDescriptionQuasarCropper:
       'Um cortador de imagens dentro de uma SPA (Single Page Application) do Quasar Framework, utilizando Cropper.js.',
-    projectGroceryCartTitle: 'grocery-cart',
-    projectGroceryCartDescription:
+    projectTitleGroceryCart: 'grocery-cart',
+    projectDescriptionGroceryCart:
       'Um conceito muito simples de carrinho de compras feito com uma antiga release candidate do Vue 3, para experimentar a nova Composition API.',
-    projectParsingHellTitle: 'Parsing Hell',
-    projectParsingHellDescription:
+    projectTitleParsingHell: 'Parsing Hell',
+    projectDescriptionParsingHell:
       'Webpage puramente em HTML e CSS que fiz no início de meu aprendizado em desenvolvimento Web. Também, uma das mais divertidas de fazer.',
   },
   backend: {
     title: 'Backend',
     intro: 'Estes sao alguns de meus projetos backend disponíveis publicamente.',
-    projectElixirIdenticonTitle: 'elixir-identicon',
-    projectElixirIdenticonDescription:
+    projectTitleElixirIdenticon: 'elixir-identicon',
+    projectDescriptionElixirIdenticon:
       'Pequena aplicação em Elixir para gerar identicons em formato PNG a partir de strings fornecidas pelo usuário, tais como usernames.',
-    projectFastApiPaginationTitle: 'fastapi-list-pagination',
-    projectFastApiPaginationDescription:
+    projectTitleFastApiPagination: 'fastapi-list-pagination',
+    projectDescriptionFastApiPagination:
       'Uma prova de conceito para "paginar" uma lista de números codificados de forma estática através de solicitações REST para um servidor FastAPI. Feito como teste de hipótese para "paginar" dados de um serviço externo, enquanto o FastAPI atua como um gateway.',
-    projectNestjsNotificationServiceTitle: 'NestJS Notification Service',
-    projectNestjsNotificationServiceDescription:
+    projectTitleNestjsNotificationService: 'NestJS Notification Service',
+    projectDescriptionNestjsNotificationService:
       'Um microsserviço de notificações feito com NestJS e TypeScript. Criado durante aulas online.',
-    projectPythondexTitle: 'Pythondex',
-    projectPythondexDescription:
+    projectTitlePythondex: 'Pythondex',
+    projectDescriptionPythondex:
       'Uma simples API em Python que simula uma Pokédex. Ela busca dados da PokéAPI e os armazena em um baco de dados local em SQLite. Depois, ela é capaz de responder a vários endpoints através de queries neste banco local. Também possui documentação Swagger.',
-    projectQuickLoremTitle: 'quick-lorem',
-    projectQuickLoremDescription:
+    projectTitleQuickLorem: 'quick-lorem',
+    projectDescriptionQuickLorem:
       'Um pacote NPX que gera textos Lorem Ipsum com várias opções de output.',
-    projectMariadbSqlaDockerSetupTitle: 'mariadb-sqla-docker-setup',
-    projectMariadbSqlaDockerSetupDescription:
+    projectTitleMariadbSqlaDockerSetup: 'mariadb-sqla-docker-setup',
+    projectDescriptionMariadbSqlaDockerSetup:
       'Um simples setup de banco de dados MariaDB containerizado, usando SQLAlchemy, Alembic e docker-compose.',
   },
   fullstack: {
     title: 'FullStack',
     intro:
       'A maior parte de meu trabalho FullStack se encontra em repositórios privados e não pode ser compartilhado. Estas são algumas exceções.',
-    projectLaboratorioTitle: 'Laborator.io',
-    projectAmazingAlbumsAdminTitle: 'amazing-albums-admin',
-    projectAmazingAlbumsAdminDescription:
+    projectTitleLaboratorio: 'Laborator.io',
+    projectTitleAmazingAlbumsAdmin: 'amazing-albums-admin',
+    projectDescriptionAmazingAlbumsAdmin:
       'Dashboard administrativa feita para outro de meus projetos, consistindo de um backend NestJS e frontend feito com o framework Astro. Em construção.',
-    projectLaboratorioDescription:
+    projectDescriptionLaboratorio:
       'Laborator.io é uma aplicação inacabada com backend Flask e frontend com o framework Quasar, originalmente desenhada para a administração de laboratórios de pesquisa científica. Concebida no início de minha transição de carreira, ela serviu de aprendizado e pode ser refeita no futuro.',
   },
 };
