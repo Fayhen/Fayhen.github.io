@@ -30,60 +30,72 @@ export default {
   },
   stacks: {
     intro:
-      'Sou um programador Júnior brasileiro, construindo conhecimentos em desenvolvimento FullStack.',
+      'Sou um desenvolvedor de software com habilidades em várias áreas do desenvolvimento web FullStack.',
     detail:
-      'Sou graduado em Ciências Biológicas, tendo me tornado Desenvolvedor ao longo do caminho. No momento trabalho como Freelancer, envolvido em tasks tanto de Backend quanto Frontend.',
-    techs: 'Minha experiência atual envolve as seguintes tecnologias:',
+      'Com formação acadêmica em Ciências Biológicas, tornei-me programador ao longo do caminho, acumulando mais de anos de experiência como freelancer e em contratos em tempo integral.',
+    proficiency: 'Tenho proficiência nas seguintes tecnologias:',
+    ongoing:
+      'Adicionalmente, estou ativamente desenvolvendo minhas habilidades nas seguintes tecnologias:',
   },
   academic: {
     title: 'Acadêmico',
     intro:
-      'Embora meu trabalho atual seja como Desenvolvedor, minha carreira começou nas ciências.',
+      'Embora atualmente atue como desenvolvedor, minha carreira teve início nas ciências naturais.',
     detail:
-      'Sou Bacharel em Ciências Biológicas, graduado pela Universidade Federal do Pará em 2015. Dada sua localização no norte do Brasil, tive a oportunidade de conduzir pesquisas de campo na Floresta Amazônica, uma das regiões mais ecologicamente e cientificamente importantes do planeta.',
+      'Sou graduado em Ciências Biológicas, com bacharelado concluído em 2015 pela <a href="https://www.ufpa.br/" target="_blank" rel="noopener noreferrer">Universidade Federal do Pará</a>. Dada a localização da universidade no norte do Brasil, tive a oportunidade de conduzir pesquisas de campo na Floresta Amazônica, uma das regiões mais ecologicamente e cientificamente importantes do planeta.',
     expertise:
-      'Possuo experiência de campo e laboratório na área de Ecologia Costeira, explorando a biologia populacional de organismos bênticos em ambientes de praia. Também trabalhei com Entomologia, tendo feito estudos taxonômicos em coleções biológicas locais. Ao longo da formação, também participei em uma miríade de excursões de campo de outras áreas de pesquisa na região.',
+      'Possuo experiência em trabalho de campo e laboratório na área de Ecologia Costeira, onde pesquisei a biologia populacional de organismos bênticos em ambientes de praia arenosa. Também atuei na área de Entomologia, realizando estudos taxonômicos em coleções biológicas locais. Ao longo da formação, também participei de diversas excursões de campo de outras áreas de pesquisa da região.',
     conclusion:
-      'Os trabalhos de campo e o aprendizado sobre a Região Amazônica, tanto em sua ciência quando suas culturas, permanecem como uma paixão pessoal.',
+      'O aprendizado e as experiências inestimáveis na Região Amazônica, tanto em suas ciências quanto em suas culturas, permanecem como uma das minhas paixões.',
   },
   frontend: {
     title: 'Frontend',
     intro:
-      'Além do currículo que você está visualizando neste momento, abaixo seguem mais alguns projetos Frontend feitos por mim, disponíveis na Internet:',
-    projectEmojiShiftTitle: 'Emoji-Shift',
-    projectEmojiShiftDescription:
+      'Além deste currículo online, estes são alguns de meus projetos Frontend disponíveis publicamente:',
+    projectTitleEmojiShift: 'Emoji-Shift',
+    projectDescriptionEmojiShift:
       'Uma aplicação construída com Vue 3 e TypeScript, fazendo total uso das novas Composition e Reactivity APIs. Você poderá fazer e compartilhar cards que consistem de uma série de Emojis, e mensagens e cabeçalho e rodapé opcionais.',
-    projectQuasarCropperTitle: 'Quasar Cropper',
-    projectQuasarCropperDescription:
+    projectTitleQuasarCropper: 'Quasar Cropper',
+    projectDescriptionQuasarCropper:
       'Um cortador de imagens dentro de uma SPA (Single Page Application) do Quasar Framework, utilizando Cropper.js.',
-    projectGroceryCartTitle: 'grocery-cart',
-    projectGroceryCartDescription:
+    projectTitleGroceryCart: 'grocery-cart',
+    projectDescriptionGroceryCart:
       'Um conceito muito simples de carrinho de compras feito com uma antiga release candidate do Vue 3, para experimentar a nova Composition API.',
-    projectParsingHellTitle: 'Parsing Hell',
-    projectParsingHellDescription:
+    projectTitleParsingHell: 'Parsing Hell',
+    projectDescriptionParsingHell:
       'Webpage puramente em HTML e CSS que fiz no início de meu aprendizado em desenvolvimento Web. Também, uma das mais divertidas de fazer.',
   },
   backend: {
     title: 'Backend',
-    intro:
-      'A maior parte de meu trabalho com Backend se encontra em repositórios privados e infelizmente não pode ser compartilhado.',
-    detail:
-      'Ainda assim, a maioria desses projetos gira em torno de APIs RESTful. Trabalhei e trabalho ativamente com o desenvolvimento de APIs usando Python, em particular os frameworks Django e Flask, normalmente integradas com bancos de dados. Tenho experiência com MariaDB (MySQL) e SQLAlchemy, utilizando ORMs.',
-    conclusion:
-      'Tenho alguns projetos de Backend publicamente disponíveis, que podem ser conferidos abaixo:',
-    projectPythondexTitle: 'Pythondex',
-    projectPythondexDescription:
+    intro: 'Estes sao alguns de meus projetos backend disponíveis publicamente.',
+    projectTitleElixirIdenticon: 'elixir-identicon',
+    projectDescriptionElixirIdenticon:
+      'Pequena aplicação em Elixir para gerar identicons em formato PNG a partir de strings fornecidas pelo usuário, tais como usernames.',
+    projectTitleFastApiPagination: 'fastapi-list-pagination',
+    projectDescriptionFastApiPagination:
+      'Uma prova de conceito para "paginar" uma lista de números codificados de forma estática através de solicitações REST para um servidor FastAPI. Feito como teste de hipótese para "paginar" dados de um serviço externo, enquanto o FastAPI atua como um gateway.',
+    projectTitleNestjsNotificationService: 'NestJS Notification Service',
+    projectDescriptionNestjsNotificationService:
+      'Um microsserviço de notificações feito com NestJS e TypeScript. Criado durante aulas online.',
+    projectTitlePythondex: 'Pythondex',
+    projectDescriptionPythondex:
       'Uma simples API em Python que simula uma Pokédex. Ela busca dados da PokéAPI e os armazena em um baco de dados local em SQLite. Depois, ela é capaz de responder a vários endpoints através de queries neste banco local. Também possui documentação Swagger.',
-    projectMariadbSqlaDockerSetupTitle: 'mariadb-sqla-docker-setup',
-    projectMariadbSqlaDockerSetupDescription:
+    projectTitleQuickLorem: 'quick-lorem',
+    projectDescriptionQuickLorem:
+      'Um pacote NPX que gera textos Lorem Ipsum com várias opções de output.',
+    projectTitleMariadbSqlaDockerSetup: 'mariadb-sqla-docker-setup',
+    projectDescriptionMariadbSqlaDockerSetup:
       'Um simples setup de banco de dados MariaDB containerizado, usando SQLAlchemy, Alembic e docker-compose.',
   },
   fullstack: {
     title: 'FullStack',
     intro:
-      ' Meus projetos pessoais FullStack ainda não avançaram para fase de publicação, com uma exceção:',
-    projectLaboratorioTitle: 'Laborator.io',
-    projectLaboratorioDescription:
-      'Laborator.io é uma aplicação FullStack ainda em desenvolvimento, desenhada para a administração de laboratórios de pesquisa científica. Ela funciona com um servidor Flask comunicando-se com um cliente em Quasar. Esse projeto está pendendo um grande processo de redesign, no intento de melhor modularizá-lo e ajustá-lo às demandas de pesquisadores.',
+      'A maior parte de meu trabalho FullStack se encontra em repositórios privados e não pode ser compartilhado. Estas são algumas exceções.',
+    projectTitleLaboratorio: 'Laborator.io',
+    projectTitleAmazingAlbumsAdmin: 'amazing-albums-admin',
+    projectDescriptionAmazingAlbumsAdmin:
+      'Dashboard administrativa feita para outro de meus projetos, consistindo de um backend NestJS e frontend feito com o framework Astro. Em construção.',
+    projectDescriptionLaboratorio:
+      'Laborator.io é uma aplicação inacabada com backend Flask e frontend com o framework Quasar, originalmente desenhada para a administração de laboratórios de pesquisa científica. Concebida no início de minha transição de carreira, ela serviu de aprendizado e pode ser refeita no futuro.',
   },
 };
