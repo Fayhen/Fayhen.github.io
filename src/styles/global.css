@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.dev-borders {
+  border: 1px dashed black;
+}
