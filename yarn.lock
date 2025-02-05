@@ -215,6 +215,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.24.2.tgz#34aa0b52d0fbb1a654b596acfa595f0c7b77a77b"
   integrity sha512-7VTgWzgMGvup6aSqDPLiW5zHaxYJGTO4OokMjIlrCtf+VpEL+cXKtCvg723iguPYI5oaUNdS+/V7OU2gvXVWEg==
 
+"@fontsource-variable/open-sans@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/open-sans/-/open-sans-5.1.1.tgz#73f84c8146ebb02321e3b0e755283ae06b19c1a1"
+  integrity sha512-5YCCAAt6t8b9T1UehgGuD0z1mZ8orrygrWC8PrA7hAIDdyQRZXYmT6A+9qG7hnhFRHR3KTSIcvBodO0EsRxZrA==
+
 "@img/sharp-darwin-arm64@0.33.5":
   version "0.33.5"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.5.tgz#ef5b5a07862805f1e8145a377c8ba6e98813ca08"
@@ -1003,6 +1008,11 @@ devalue@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/devalue/-/devalue-5.1.1.tgz#a71887ac0f354652851752654e4bd435a53891ae"
   integrity sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==
+
+devicon@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/devicon/-/devicon-2.16.0.tgz#67ca4200b44eb74bf35e4be1d63b6d34f6e07de5"
+  integrity sha512-PE5a2HBNeN4av+Iu975OiiWEwS8LJPw5HAvlv0JUHb62jZTdYxTpz4ga+cQyvdtb3x1side2P9Sr1mmOmUkO/g==
 
 devlop@^1.0.0, devlop@^1.1.0:
   version "1.1.0"

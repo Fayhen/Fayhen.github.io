@@ -1,0 +1,98 @@
+---
+import background from "../assets/background.svg";
+import StackIcon from "./StackIcon.astro";
+
+import { getKnownStacks, getLearningStacks } from "../data/stacks";
+
+const knownStacks = getKnownStacks();
+const learningStacks = getLearningStacks();
+---
+
+<div id="container" class="px-4 mb-8 font-display">
+	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<main class="flex flex-col">
+		<section id="intro" class="flex flex-row justify-center items-center">
+			<!-- <div class="flex flex-col lg:flex-row gap-4 w-full sm:w-5/6 xl:w-2/3"> -->
+			<div class="flex flex-col lg:flex-row gap-8 justify-center items-center">
+				<!-- <div class="flex flex-col"> -->
+					<div id="profile-wrapper" class="w-full max-w-[300px]">
+						<img
+							src="https://avatars.githubusercontent.com/u/45882000?v=4"
+							alt="My profile picture"
+							class="rounded-full mx-auto"
+						>
+					</div>
+		
+					<!-- <span class="text-2xl text-stone-600 my-1">Hello! I am</span>
+					<h1 class="text-4xl font-[550]">Diego Cordeiro Souza</h1> -->
+				<!-- </div> -->
+	
+				<div class="flex flex-col justify-center text-center lg:text-start gap-4">
+					<span class="text-xl text-stone-600">Hello! I am</span>
+					<h1 class="text-5xl font-[550]">Diego Cordeiro Souza</h1>
+					<p class="text-3xl">Full Stack Developer</p>
+					<p class="text-2xl text-stone-600">Remote &#8226; Brazil-based.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="flex flex-col gap-4 text-center">
+			<h1 class="text-2xl font-[550]">About me</h1>
+			<p>
+				Sou um desenvolvedor de software especializado em tecnologias Web, com
+				experiencia nas linguagens JavaScript, Python e Elixir. Estou em constante
+				busca de aprendizado e oportunidades de crescimento.
+			</p>
+			
+			<p>
+				I have used the following technologies both professionally and in personal
+				projects:
+			</p>
+
+			<div class="flex flex-row flex-wrap justify-center gap-4">
+				{knownStacks.map((stack) => <StackIcon stack={stack} />)}
+			</div>
+
+			<p>
+				Additionally, I"m looking forward to learn:
+			</p>
+
+			<div class="flex flex-row flex-wrap justify-center gap-4">
+				{learningStacks.map((stack) => <StackIcon stack={stack} />)}
+			</div>
+		</section>
+
+		<section>
+			experience?
+		</section>
+
+		<section>
+			projects?
+		</section>
+
+		<section>
+			contact?
+		</section>
+	</main>
+</div>
+
+<style>
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		filter: blur(100px);
+	}
+
+	/* #intro h1 {
+		font-size: ;
+	} */
+
+	section {
+		height: 100vh;
+		border: 1px dashed rgb(92, 85, 85);
+	}
+</style>
