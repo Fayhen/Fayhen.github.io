@@ -1,8 +1,9 @@
 # Fayhen's Curriculum (fayhen-github-io)
 
-A simple Single Page Application built with Vue 3, Quasar Framework and Vite.
+This a legacy version of my online portfolio, at the time built with Vite, Vue 3 and Quasar Framework V2.
 
 ## Install the dependencies
+
 ```bash
 yarn
 # or
@@ -10,32 +11,33 @@ npm install
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
+
 ```bash
 quasar dev
 ```
 
-
 ### Lint the files
+
 ```bash
 yarn lint
 # or
 npm run lint
 ```
 
-
 ### Format the files
+
 ```bash
 yarn format
 # or
 npm run format
 ```
 
-
-
 ### Build the app for production
+
 ```bash
 quasar build
 ```
 
 ### Customize the configuration
+
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
