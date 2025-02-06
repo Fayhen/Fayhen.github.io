@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "./tooltip.css";
+
+@theme {
+  --font-display: "Open Sans Variable", "sans-serif"; 
+}
+
+/* Development helper */
+.dev-borders {
+  border: 1px dashed black;
+}

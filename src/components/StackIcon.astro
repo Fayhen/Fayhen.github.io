@@ -1,0 +1,14 @@
+---
+import type { Stack } from "../data/stacks";
+
+interface Props {
+  stack: Stack
+}
+
+const { stack } = Astro.props;
+---
+
+<a href={stack.link} target="_blank" class="tooltip">
+  <img src={stack.icon.src} alt={stack.alt} width="50" height="50" class="inline-block">
+  <span class="tooltip-text">{stack.tooltip}</span>
+</a>
