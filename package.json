@@ -1,0 +1,21 @@
+{
+  "name": "fayhen-github-io",
+  "type": "module",
+  "version": "next",
+  "description": "Fayhen's Curriculum",
+  "productName": "Fayhen's Curriculum",
+  "author": "Diego Garcia Cordeiro Souza <diego00alfa@gmail.com>",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.1.9"
+  }
+}
