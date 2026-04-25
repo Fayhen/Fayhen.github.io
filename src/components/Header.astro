@@ -1,0 +1,59 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  navItems: Array<{
+    label: string;
+    href: string;
+  }>
+}
+
+const { navItems } = Astro.props;
+---
+
+<header>
+  <nav>         
+      <ul>
+        {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+      </ul>                                                                                                                                                                                                                           
+    </nav>
+  <ThemeToggle />
+</header>
+
+<style>
+  header {
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0 1.5rem;
+
+    width: 100%;
+    padding: 0.5rem 2rem;
+
+    backdrop-filter: blur(10px);
+
+    color: var(--navbar-fg);                                                                                                                                                                                                          
+    background-color: var(--navbar-bg);
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0 1.5rem;
+
+    list-style-type: none;
+  }
+
+  nav a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--link-hover);
+  }
+</style>

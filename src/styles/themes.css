@@ -1,0 +1,49 @@
+:root {
+  --bg-color-light: oklch(100% 0.00011 271.152);
+  --bg-color-dark: oklch(0% 0 0);
+  --bg-color-retro-light: oklch(69.6% 0.17 162.48);
+  --bg-color-retro-dark: oklch(37.8% 0.077 168.94);
+
+  --color-light: oklch(0% 0 0);
+  --color-dark: oklch(100% 0.00011 271.152);
+  --color-retro-light: oklch(26.2% 0.051 172.552);
+  --color-retro-dark: oklch(84.5% 0.143 164.978);
+
+  --link-light: oklch(0% 0 0);
+  --link-dark: oklch(100% 0.00011 271.152);
+  --link-retro-light: oklch(26.2% 0.051 172.552);
+  --link-retro-dark: oklch(84.5% 0.143 164.978);
+
+  --link-hover-light: oklch(27.274% 0.00003 271.152);
+  --link-hover-dark: oklch(31.317% 0.00004 271.152);
+  --link-hover-retro-light: oklch(33.757% 0.06579 171.523);
+  --link-hover-retro-dark: oklch(88.562% 0.14782 165.618);
+}
+
+[data-theme="light"] {
+  --navbar-bg: var(--bg-color-light);
+  --navbar-fg: var(--color-light);
+  --link: var(--link-light);
+  --link-hover: var(--link-hover-light);
+}
+
+[data-theme="dark"] {
+  --navbar-bg: var(--bg-color-dark);
+  --navbar-fg: var(--color-dark);
+  --link: var(--link-dark);
+  --link-hover: var(--link-hover-dark);
+}
+
+[data-theme="retro-light"] {
+  --navbar-bg: var(--bg-color-retro-light);
+  --navbar-fg: var(--color-retro-light);
+  --link: var(--link-retro-light);
+  --link-hover: var(--link-hover-retro-light);
+}
+
+[data-theme="retro-dark"] {
+  --navbar-bg: var(--bg-color-retro-dark);
+  --navbar-fg: var(--color-retro-dark);
+  --link: var(--link-retro-dark);
+  --link-hover: var(--link-hover-retro-dark);
+}
