@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import picture from "../assets/images/profile-pic.jpg";
+---
+
+<Image
+  src={picture}
+  alt="Diego Garcia"
+  class="pic"
+  height={640}
+  width={640}
+  loading="eager"
+  fetchpriority="high"
+/>
+
+<style>
+  .pic {
+    height: 20rem;
+    width: auto;
+    border-radius: 50%;
+  }
+</style>

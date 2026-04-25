@@ -14,7 +14,10 @@ const { navItems } = Astro.props;
 
 <header>
   <div class="page-container header-container">
-    <Logo />
+    <div class="logo-wrapper">
+      <Logo />
+      <p>Fayhen</p>
+    </div>
     <div class="actions">
       <nav>
           <ul>
@@ -28,7 +31,7 @@ const { navItems } = Astro.props;
 
 <style>
   header {
-    position: absolute;
+    position: fixed;
     top: 0;
 
     width: 100%;
@@ -40,6 +43,17 @@ const { navItems } = Astro.props;
     background-color: var(--navbar-bg);
   }
 
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    gap: 0 1.5rem;
+  }
+
   nav {
     margin: 0 1.5rem;
   }
@@ -49,6 +63,8 @@ const { navItems } = Astro.props;
     flex-direction: row;
     gap: 0 1.5rem;
 
+    margin: 0;
+    padding: 0;
     list-style-type: none;
 
     text-wrap: nowrap;
@@ -63,16 +79,9 @@ const { navItems } = Astro.props;
     color: var(--link-hover);
   }
 
-  .header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .actions {
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
+    gap: 0 1.5rem;
   }
 </style>

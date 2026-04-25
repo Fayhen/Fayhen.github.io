@@ -22,6 +22,12 @@ body {
   padding-inline: clamp(1rem, 5vw, 4rem);
 }
 
+.section-container {
+  padding: 5rem 0;
+}
+
+/* Development utilities */
+
 .dev-borders {
   border: 1px dashed black;
 }

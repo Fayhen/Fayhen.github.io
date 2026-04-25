@@ -1,23 +1,42 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
-import Header from '../components/Header.astro';
-import Welcome from '../components/Welcome.astro';
-import Base from '../layouts/Base.astro';
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Presentation from "../components/Presentation.astro"
+import ProfilePic from "../components/ProfilePic.astro";
 
 const navItems = [ 
-	{ label: "Home", href: '/' },                                                                                                                                                                                              
-	{ label: "Skills", href: '/#' },
-	{ label: "Experience", href: '/#' },
-	{ label: "Education", href: '/#' },
-	{ label: "Projects", href: '/#' },
-	{ label: "Contact me", href: '/#' },
-	// ...                                                                                                                                                                                                                            
+	{ label: "Home", href: "/" },                                                                                                                                                                                              
+	{ label: "Skills", href: "/#" },
+	{ label: "Education", href: "/#" },
+	{ label: "Experience", href: "/#" },
+	{ label: "Projects", href: "/#" },
+	{ label: "Contact me", href: "/#" }                                                                                                                                                                                                                  
 ]
 ---
 
 <Base>
 	<Header {navItems} />
 
-	<Welcome />
+	<div class="page-container">
+		<section id="intro-section" class="section-container">
+			<ProfilePic />
+			<Presentation />
+		</section>
+	</div>
 </Base>
+
+<style>
+	.page-container {
+		padding-block-start: 4rem; /* header offset */
+	}
+
+	#intro-section {
+		display: flex;
+		align-items: center;
+		column-gap: clamp(2rem, 8vw, 10rem);
+		
+		padding-block: 3rem 5rem;
+	}
+</style>
