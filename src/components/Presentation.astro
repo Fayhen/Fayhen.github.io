@@ -1,15 +1,25 @@
+---
+const xp = Math.abs(new Date().getFullYear() - 2020);
+---
 
 <div>
   <h1>Hi, I'm <span>Diego</span></h1>
-  <p>Fullstack developer</p>
+  <p class="subtitle">Fullstack developer</p>
+  <p>
+    BSc in Biological Sciences, MSc in Ecology and Fullstack developer with {xp} years of experience building for the web. Transitioned into software engineering, applying a scientific approach to breaking down complex systems.
+  </p>
+  <p>
+    When I'm not at a keyboard, I'm probably with a cat, deep into a game, out somewhere in nature, or working through a reading list that keeps growing faster than I can finish it.
+  </p>
 </div>
 
 <style>
   h1 {
+    margin: 0 0 0.25rem 0;
     font-size: clamp(2.5rem, 8vw, 5.5rem);
   }
 
-  p {
+  .subtitle {
     margin: 0;
     font-size: clamp(1.5rem, 4vw, 3rem);
   }

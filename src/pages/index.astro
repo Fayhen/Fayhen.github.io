@@ -20,7 +20,7 @@ const navItems = [
 	<Header {navItems} />
 
 	<div class="page-container">
-		<section id="intro-section" class="section-container">
+		<section id="intro-section">
 			<ProfilePic />
 			<Presentation />
 		</section>
@@ -28,15 +28,11 @@ const navItems = [
 </Base>
 
 <style>
-	.page-container {
-		padding-block-start: 4rem; /* header offset */
-	}
-
 	#intro-section {
 		display: flex;
 		align-items: center;
-		column-gap: clamp(2rem, 8vw, 10rem);
+		column-gap: clamp(2rem, 8vw, 5rem);
 		
-		padding-block: 3rem 5rem;
+		padding-block: 4rem 10rem;
 	}
 </style>

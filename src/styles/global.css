@@ -13,13 +13,14 @@ body {
 
 body {
   min-height: 100dvh;
+  padding-block-start: var(--header-height, 4rem);
 }
 
 .page-container {
   width: 100%;
   max-width: 75rem;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 5vw, 4rem);
+  padding-inline: clamp(1rem, 5vw, 1rem);
 }
 
 .section-container {
