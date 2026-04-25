@@ -14,3 +14,14 @@ body {
 body {
   min-height: 100dvh;
 }
+
+.page-container {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 4rem);
+}
+
+.dev-borders {
+  border: 1px dashed black;
+}

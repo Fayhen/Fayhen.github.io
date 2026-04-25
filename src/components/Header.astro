@@ -1,5 +1,6 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeToggle from "./ThemeToggle.astro";
+import Logo from "./Logo.astro";
 
 interface Props {
   navItems: Array<{
@@ -12,12 +13,17 @@ const { navItems } = Astro.props;
 ---
 
 <header>
-  <nav>         
-      <ul>
-        {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
-      </ul>                                                                                                                                                                                                                           
-    </nav>
-  <ThemeToggle />
+  <div class="page-container header-container">
+    <Logo />
+    <div class="actions">
+      <nav>
+          <ul>
+            {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+          </ul>                                                                                                                                                                                                                           
+        </nav>
+      <ThemeToggle />
+    </div>
+  </div>
 </header>
 
 <style>
@@ -25,19 +31,17 @@ const { navItems } = Astro.props;
     position: absolute;
     top: 0;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0 1.5rem;
-
     width: 100%;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 0;
 
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--navbar-filter);
 
     color: var(--navbar-fg);                                                                                                                                                                                                          
     background-color: var(--navbar-bg);
+  }
+
+  nav {
+    margin: 0 1.5rem;
   }
 
   nav ul {
@@ -46,6 +50,8 @@ const { navItems } = Astro.props;
     gap: 0 1.5rem;
 
     list-style-type: none;
+
+    text-wrap: nowrap;
   }
 
   nav a {
@@ -55,5 +61,18 @@ const { navItems } = Astro.props;
 
   nav a:hover {
     color: var(--link-hover);
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
   }
 </style>

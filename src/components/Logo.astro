@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/images/leaf-from-cog-2-dark.svg";
+---
+<a href="/">
+  <Image
+    src={logo}
+    alt="Home"
+    class="logo"
+    height={40}
+    width={40}
+    loading="eager"
+    fetchpriority="high"
+  />
+</a>
+
+<style>
+  .logo {
+    height: 3rem;
+    width: auto;
+    border-radius: 100%;
+  }
+</style>
