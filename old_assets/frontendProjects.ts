@@ -48,4 +48,4 @@ export const frontendProjects: ProjectCardData[] = [
       stacks.css3
     ]
   }
-]
+];

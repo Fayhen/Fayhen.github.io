@@ -3,7 +3,7 @@ import "../styles/global.css";
 
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
-import Presentation from "../components/Presentation.astro"
+import Presentation from "../components/Presentation.astro";
 import ProfilePic from "../components/ProfilePic.astro";
 
 const navItems = [
@@ -13,7 +13,7 @@ const navItems = [
   { label: "Experience", href: "/#" },
   { label: "Projects", href: "/#" },
   { label: "Contact me", href: "/#" }
-]
+];
 ---
 
 <Base>
@@ -24,6 +24,8 @@ const navItems = [
       <ProfilePic />
       <Presentation />
     </section>
+
+    <section id="skills-section"></section>
   </div>
 </Base>
 

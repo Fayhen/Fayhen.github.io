@@ -31,4 +31,4 @@ export const fullstackProjects: ProjectCardData[] = [
       stacks.quasar
     ]
   }
-]
+];

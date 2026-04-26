@@ -64,4 +64,4 @@ export const backendProjects: ProjectCardData[] = [
       stacks.sqlalchemy
     ]
   }
-]
+];

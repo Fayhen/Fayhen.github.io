@@ -1,4 +1,19 @@
-import { Stacks } from "components/models";
+/**
+ * Tech stack data.
+ */
+interface Stacks {
+  [stack: string]: {
+    key: string
+    ariaLabel: string
+    tooltip: string
+    proficient: boolean
+    link: string
+    icon: {
+      id: string
+      filepath: string
+    }
+  }
+}
 
 export const stacks: Stacks = {
   // Proficient stacks
@@ -202,4 +217,4 @@ export const stacks: Stacks = {
       filepath: "img:devicons/rust-plain.svg"
     }
   },
-}
+};

@@ -1,4 +1,5 @@
 import eslintPluginAstro from "eslint-plugin-astro";
+import tsEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 
 export default [
@@ -12,7 +13,11 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
-      parser: tsParser
+      parser: tsParser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      }
     },
   },
 
@@ -26,6 +31,18 @@ export default [
     },
   },
 
+  // TS rules plugin
+  {
+    files: ["**/*.ts", "**/*.tsx", "**/*.astro"],
+    plugins: {
+      "@typescript-eslint": tsEslint,
+    },
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+    }
+  },
+
   {
     rules: {
       "arrow-body-style": ["error", "as-needed"],
@@ -35,7 +52,9 @@ export default [
       "no-invalid-this": "error",
       "no-unused-vars": ["warn", { "vars": "all" }],
       "no-trailing-spaces": "error",
+      "object-curly-spacing": ["error", "always"],
       "quotes": ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
+      "semi": ["error", "always"],
       "sort-imports": ["error", {
         "ignoreCase": false,
         "ignoreDeclarationSort": false,
@@ -45,4 +64,4 @@ export default [
       }]
     }
   }
-]
+];
