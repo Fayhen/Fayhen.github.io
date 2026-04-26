@@ -1,11 +1,11 @@
-import { ProjectCardData } from 'components/models';
-import { stacks } from 'assets/stacks';
+import { ProjectCardData } from "components/models";
+import { stacks } from "assets/stacks";
 
 export const fullstackProjects: ProjectCardData[] = [
   {
-    title: 'fullstack.projectTitleAmazingAlbumsAdmin',
-    description: 'fullstack.projectDescriptionAmazingAlbumsAdmin',
-    repositoryLink: 'https://github.com/Fayhen/Laborator.io',
+    title: "fullstack.projectTitleAmazingAlbumsAdmin",
+    description: "fullstack.projectDescriptionAmazingAlbumsAdmin",
+    repositoryLink: "https://github.com/Fayhen/Laborator.io",
     productionLink: null,
     stacks: [
       stacks.firebase,
@@ -17,9 +17,9 @@ export const fullstackProjects: ProjectCardData[] = [
     ]
   },
   {
-    title: 'fullstack.projectTitleLaboratorio',
-    description: 'fullstack.projectDescriptionLaboratorio',
-    repositoryLink: 'https://github.com/Fayhen/Laborator.io',
+    title: "fullstack.projectTitleLaboratorio",
+    description: "fullstack.projectDescriptionLaboratorio",
+    repositoryLink: "https://github.com/Fayhen/Laborator.io",
     productionLink: null,
     stacks: [
       stacks.python,

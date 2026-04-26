@@ -19,11 +19,11 @@ export function browserPreference(): string {
 export function getLocalStorageTheme(): string {
   const localStorageTheme = window.localStorage?.getItem("theme") ?? "";
 
-    if (THEMES.includes(localStorageTheme)) {
-      return localStorageTheme;
-    }
+  if (THEMES.includes(localStorageTheme)) {
+    return localStorageTheme;
+  }
 
-    return "";
+  return "";
 }
 
 /**

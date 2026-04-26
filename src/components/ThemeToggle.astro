@@ -22,7 +22,7 @@
 </style>
 
 <script>
-  import { setTheme, getLocalStorageTheme } from "../scripts/theme.ts";
+  import { getLocalStorageTheme, setTheme } from "../scripts/theme.ts";
 
   document.getElementById("themeToggle")?.addEventListener("click", () => {
     getLocalStorageTheme() === "light"

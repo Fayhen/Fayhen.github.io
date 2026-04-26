@@ -1,6 +1,6 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro";
 import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 interface Props {
   navItems: Array<{
@@ -20,10 +20,10 @@ const { navItems } = Astro.props;
     </div>
     <div class="actions">
       <nav>
-          <ul>
-            {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
-          </ul>                                                                                                                                                                                                                           
-        </nav>
+        <ul>
+          {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+        </ul>
+      </nav>
       <ThemeToggle />
     </div>
   </div>
@@ -39,7 +39,7 @@ const { navItems } = Astro.props;
 
     backdrop-filter: var(--navbar-filter);
 
-    color: var(--navbar-fg);                                                                                                                                                                                                          
+    color: var(--navbar-fg);
     background-color: var(--navbar-bg);
   }
 

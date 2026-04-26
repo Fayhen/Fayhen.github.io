@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en" data-theme="">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
 
-		<script is:inline>                                                                                                                                                                                                                
+    <script is:inline>
       // FOUC prevention: runs before initial paint
       const THEMES = Object.freeze(["light", "dark", "retro-light", "retro-dark"]);
-			const browserDefault = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
+      const browserDefault = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
       const stored = window.localStorage?.getItem("theme") ?? "";
       const theme = THEMES.includes(stored)
         ? stored
@@ -21,8 +21,8 @@
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
     </script>
-	</head>
-	<body>
-		<slot />
-	</body>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
