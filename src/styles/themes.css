@@ -1,6 +1,6 @@
 :root {
   --bg-color-light: oklch(100% 0.00011 271.152 / 0.30);
-  --bg-color-dark: oklch(0% 0 0 / 0.30);
+  --bg-color-dark: oklch(0% 0 0 / 0.884);
   --bg-color-retro-light: oklch(69.6% 0.17 162.48);
   --bg-color-retro-dark: oklch(37.8% 0.077 168.94);
 

@@ -27,10 +27,10 @@ export function getLocalStorageTheme(): string {
 }
 
 /**
- * Initial page load theme resolver. Defaults to "light".
- * @returns Theme to be set on initial page load.
+ * Gets the currently set theme or the browser's preference. Defaults to "light".
+ * @returns Current theme.
  */
-export function initialTheme(): string {
+export function getTheme(): string {
   return getLocalStorageTheme() || browserPreference();
 }
 
