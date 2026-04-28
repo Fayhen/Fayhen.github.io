@@ -1,0 +1,32 @@
+---
+import type { Stack } from "../data/stacks";
+
+interface Props {
+  stack: Stack
+}
+
+const { stack } = Astro.props;
+---
+
+<li id={`stack-${stack.slug}`} class="stack-icon">
+  <a href={stack.link} target="_blank" rel="noopener noreferrer">
+    <img src={stack.icon} alt={stack.name}>
+  </a>
+</li>
+
+<style>
+  .stack-icon {
+    border-radius: 50%;
+    transition: transform ease 300ms;
+  }
+
+  .stack-icon:hover {
+    transform: translate(0, -5px);
+  }
+
+  .stack-icon img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+  }
+</style>

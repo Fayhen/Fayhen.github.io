@@ -5,6 +5,9 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Presentation from "../components/Presentation.astro";
 import ProfilePic from "../components/ProfilePic.astro";
+import StackIcon from "../components/StackIcon.astro";
+
+import { stacks } from "../data/stacks";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -19,13 +22,40 @@ const navItems = [
 <Base>
   <Header {navItems} />
 
-  <div class="page-container">
-    <section id="intro-section">
+  <div id="intro-wrapper">
+    <section id="intro-section" class="page-container">
       <ProfilePic />
       <Presentation />
     </section>
+  </div>
 
-    <section id="skills-section"></section>
+  <div id="skills-wrapper">
+    <section id="skills-section" class="page-container">
+      <h1>Skills & Experience</h1>
+
+      <div class="major-areas">
+        <div class="major-area-detail">
+          <h2>Fullstack</h2>
+          <p>Building real-time web applications with Elixir and Phoenix, including CMS and B2B platforms, integrated with distributed backend services.</p>
+        </div>
+        <div class="major-area-detail">
+          <h2>Backend</h2>
+          <p>Designing purpose-built APIs and cloud functions, and modernizing legacy systems into scalable, maintainable architectures.</p>
+        </div>
+        <div class="major-area-detail">
+          <h2>Frontend</h2>
+          <p>Developing web applications with modern frameworks and Firebase, delivering production-ready solutions across multiple client projects.</p>
+        </div>
+      </div>
+
+
+      <div class="stacks">
+        <h2>I am building with:</h2>
+        <ul class="stack-list">
+          {Object.values(stacks).map((stack) => <StackIcon stack={stack} />)}
+        </ul>
+      </div>
+    </section>
   </div>
 </Base>
 
@@ -35,6 +65,55 @@ const navItems = [
 		align-items: center;
 		column-gap: clamp(2rem, 8vw, 5rem);
 
-		padding-block: 4rem 10rem;
+		padding-block: 7rem 14rem;
 	}
+
+  #skills-wrapper {
+    background-color: oklch(95.514% 0.00011 271.152);
+  }
+
+  #skills-section {
+    display: flex;
+    flex-direction: column;
+		align-items: center;
+
+		padding-block: 4rem 8rem;
+  }
+
+  .major-areas {
+    display: flex;
+    flex-direction: row;
+    gap: 0 1.5rem;
+  }
+
+  .major-area-detail {
+    padding: 1rem;
+    border-radius: 1rem;
+
+    background-color: oklch(100% 0.00011 271.152);
+  }
+
+  .major-area-detail h2 {
+    text-align: center;
+  }
+
+  .stacks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem 0;
+
+    margin-top: 2rem;
+  }
+
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
 </style>
