@@ -1,0 +1,116 @@
+---
+import type { JobExperience } from "../data/experience";
+
+interface Props {
+  experience: JobExperience
+}
+
+const { experience } = Astro.props;
+
+---
+
+<li class="experience-card" data-experience-id={experience.slug}>
+  <button class="card-header" aria-expanded="false">
+    <div class="experience-icon" style={`background-image: url('${experience.icon}')`}>
+      <img src={experience.icon} alt={experience.title} class="sr-only">
+    </div>
+    <div>
+      <p>{experience.title}</p>
+      <p>{experience.startAt} - {experience.endAt}</p>
+    </div>
+    <div class="dropdown-icon">-</div>
+  </button>
+  <div class="dropdown-content hidden">
+    <ul class="experience-list">
+      {experience.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+</li>
+
+<style>
+  .experience-card {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+  }
+
+  .experience-card:hover {
+    background-color: oklch(100% 0.00011 271.152);
+  }
+
+  .experience-card p {
+    margin: 0;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    font: inherit;
+    text-align: left;
+  }
+
+  .experience-icon {
+    margin-right: 1rem;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .dropdown-icon{
+    margin-left: auto;
+  }
+
+  .dropdown-content{
+    padding: 0 0 0 5.5rem;
+  }
+
+  .experience-list {
+    padding: 0;
+    list-style-position: outside;
+    list-style-type: circle;
+  }
+
+  /*
+    This keeps the <img> element for its native accessibility on
+    screen readers, while visually the images are displayed via
+    background image on the outer element.
+   */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+</style>
+
+<script>
+document.querySelectorAll<HTMLElement>(".card-header").forEach((button) => {
+  button.addEventListener("click", toggleDropdown);
+});
+
+function toggleDropdown(event: Event) {
+  const button = event.currentTarget as HTMLElement;
+  const card = button.closest(".experience-card");
+  const content = card?.querySelector(".dropdown-content");
+  const isHidden = content?.classList.contains("hidden");
+  button.setAttribute("aria-expanded", isHidden ? "true" : "false");
+  content?.classList.toggle("hidden");
+}
+</script>

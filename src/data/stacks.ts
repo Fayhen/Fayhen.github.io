@@ -56,6 +56,12 @@ export const stacks: Stacks = {
     link: "https://quasar.dev/",
     icon: "/devicons/quasar-plain.svg"
   },
+  astro: {
+    name: "Astro",
+    slug: "astro",
+    link: "https://astro.build/",
+    icon: "/devicons/astro-original.svg"
+  },
   html5: {
     name: "HTML5",
     slug: "html5",

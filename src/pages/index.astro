@@ -2,12 +2,15 @@
 import "../styles/global.css";
 
 import Base from "../layouts/Base.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
 import Header from "../components/Header.astro";
 import Presentation from "../components/Presentation.astro";
 import ProfilePic from "../components/ProfilePic.astro";
 import StackIcon from "../components/StackIcon.astro";
 
+import { experience } from "../data/experience";
 import { stacks } from "../data/stacks";
+import { volunteering } from "../data/experience";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -51,8 +54,19 @@ const navItems = [
 
       <div class="stacks">
         <h2>I am building with:</h2>
-        <ul class="stack-list">
+        <ul class="base-list stack-list">
           {Object.values(stacks).map((stack) => <StackIcon stack={stack} />)}
+        </ul>
+      </div>
+
+      <div class="experience">
+        <h2>Where I've been:</h2>
+        <ul class="base-list">
+          {Object.values(experience).map((item) => <ExperienceItem experience={item} />)}
+        </ul>
+        <h2>I also volunteer:</h2>
+        <ul class="base-list">
+          {Object.values(volunteering).map((item) => <ExperienceItem experience={item} />)}
         </ul>
       </div>
     </section>
@@ -70,6 +84,10 @@ const navItems = [
 
   #skills-wrapper {
     background-color: oklch(95.514% 0.00011 271.152);
+  }
+
+  #skills-wrapper h1 {
+    margin: 1.5rem 0;
   }
 
   #skills-section {
@@ -113,7 +131,11 @@ const navItems = [
     gap: 1rem;
     margin: 0;
     padding: 0;
+  }
 
-    list-style: none;
+  .experience {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 </style>

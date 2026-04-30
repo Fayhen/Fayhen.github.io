@@ -17,6 +17,10 @@ body {
   padding-bottom: 5rem;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
 .page-container {
   width: 100%;
   max-width: 80rem;
@@ -26,6 +30,20 @@ body {
 
 .section-container {
   padding: 5rem 0;
+}
+
+.base-list {
+  padding: 0;
+  list-style: none;
+}
+
+.base-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Development utilities */
