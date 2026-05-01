@@ -1,0 +1,51 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  category: string
+  project: Project
+}
+
+const { category, project } = Astro.props;
+---
+
+<div class="card">
+  <div class="card-header">
+    <h2>{category}</h2>
+  </div>
+  <div class="card-content">
+    <h3>{project.title}</h3>
+    <p>{project.description}</p>
+  </div>
+</div>
+
+<style>
+  .card {
+    height: 20rem;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: oklch(95.514% 0.00011 271.152);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: center;
+
+    clip-path: ellipse(85% 100% at 50% 0);
+    padding-block: 2rem 4rem;
+
+    background-color: oklch(61.902% 0.03257 248.407 / 0.404);
+
+		backdrop-filter: blur(100px);
+  }
+
+  .card-content {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .card-content h3 {
+    margin: 0 auto;
+  }
+</style>

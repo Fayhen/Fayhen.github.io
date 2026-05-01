@@ -6,11 +6,22 @@ import ExperienceItem from "../components/ExperienceItem.astro";
 import Header from "../components/Header.astro";
 import Presentation from "../components/Presentation.astro";
 import ProfilePic from "../components/ProfilePic.astro";
+import Project from "../components/Project.astro";
+import ProjectSpotlight from "../components/ProjectSpotlight.astro";
 import StackIcon from "../components/StackIcon.astro";
 
+import type { Project as ProjectDef } from "../data/projects";
+
+import { backend, frontend, fullstack } from "../data/projects";
 import { experience } from "../data/experience";
 import { stacks } from "../data/stacks";
 import { volunteering } from "../data/experience";
+
+const pickFeatured = (list: ProjectDef[]) => list.find(p => p.featured) ?? list[0];
+
+const mainBackend = pickFeatured(backend);
+const mainFrontend = pickFeatured(frontend);
+const mainFullstack = pickFeatured(fullstack);
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -52,7 +63,7 @@ const navItems = [
       </div>
 
       <div class="experience-wrapper">
-        <div class="experience">
+        <div class="experience-column">
           <h2>Where I've been:</h2>
           <ul class="base-list">
             {Object.values(experience).map((item) => <ExperienceItem experience={item} />)}
@@ -63,7 +74,7 @@ const navItems = [
           </ul>
         </div>
 
-        <div class="tools">
+        <div class="tools-column">
           <div class="stacks">
             <h2>I am building with:</h2>
             <ul class="base-list stack-list">
@@ -75,7 +86,33 @@ const navItems = [
           </div>
         </div>
       </div>
+    </section>
+  </div>
 
+  <div id="projects-wrapper">
+    <section id="projects-section" class="page-container">
+      <h1>Projects</h1>
+      <p>Most of my projects are closed-source. Here's a few I can share freely.</p>
+      <div class="all-projects">
+        <div class="project-column">
+          <ProjectSpotlight category="Backend" project={mainBackend} />
+          <ul class="base-list">
+            {backend.filter((p) => !p.featured).map((p) => <Project project={p} />)}
+          </ul>
+        </div>
+        <div class="project-column">
+          <ProjectSpotlight category="Fullstack" project={mainFullstack} />
+          <ul class="base-list">
+            {fullstack.filter((p) => !p.featured).map((p) => <Project project={p} />)}
+          </ul>
+        </div>
+        <div class="project-column">
+          <ProjectSpotlight category="Frontend" project={mainFrontend} />
+          <ul class="base-list">
+            {frontend.filter((p) => !p.featured).map((p) => <Project project={p} />)}
+          </ul>
+        </div>
+      </div>
     </section>
   </div>
 </Base>
@@ -129,27 +166,27 @@ const navItems = [
     gap: 0 1.5rem;
   }
 
-  .experience {
+  .experience-column {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
 
-  .experience h2 + ul {
+  .experience-column h2 + ul {
     margin-top: 1rem;
   }
 
-  .experience ul + h2 {
+  .experience-column ul + h2 {
     margin-top: 2rem;
   }
 
-  .experience ul {
+  .experience-column ul {
     display: flex;
     flex-direction: column;
     gap: 1rem 0;
   }
 
-  .tools {
+  .tools-column {
     display: flex;
     flex-direction: column;
     gap: 1rem 0;
@@ -177,5 +214,30 @@ const navItems = [
 
   .activity {
     height: 100%;
+  }
+
+  #projects-section {
+		display: flex;
+    flex-direction: column;
+		align-items: center;
+		padding-block: 4rem 8rem;
+  }
+
+  .all-projects {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 1rem;
+    width: 100%;
+  }
+
+  .project-column {
+    width: 100%;
+  }
+
+  .project-column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    margin-top: 1rem;
   }
 </style>
