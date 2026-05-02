@@ -1,5 +1,6 @@
 ---
-import StackIcon from "../components/StackIcon.astro";
+import { Image } from "astro:assets";
+import StackPill from "../components/StackPill.astro";
 
 import type { Project } from "../data/projects";
 
@@ -19,23 +20,27 @@ const { project } = Astro.props;
 
 <li class="featured-card" data-category={project.category}>
   <div class="layout">
-    <div class="hero">Placeholder</div>
+    <div class="hero">
+      {project.picture && <Image src={project.picture} alt={project.title} />}
+    </div>
     <div class="content">
       <span class="category-tag">{project.category}</span>
       <h3>{project.title}</h3>
       <p>{project.description}</p>
-      <ul class="base-list stacks-row">
-        {project.stacks.map((stack) => <StackIcon stack={stack} height="2rem" width="2rem" />)}
-      </ul>
-      <div class="ctas">
-        <a href={resolveProjectLink(project)}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={resolveProjectAria(project)}
-          class="cta"
-        >
-          {resolveProjectLinkLabel(project)}
-        </a>
+      <div class="footer">
+        <ul class="base-list stacks-row">
+          {project.stacks.map((stack) => <StackPill stack={stack} bgColor="oklch(100% 0.00011 271.152)" />)}
+        </ul>
+        <div class="ctas">
+          <a href={resolveProjectLink(project)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={resolveProjectAria(project)}
+            class="cta"
+          >
+            {resolveProjectLinkLabel(project)}
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -87,6 +92,7 @@ const { project } = Astro.props;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    height: 100%;
   }
 
   @container (min-width: 28rem) {
@@ -101,15 +107,23 @@ const { project } = Astro.props;
   }
 
   .featured-card .hero {
-    height: clamp(6rem, 25vw, 12rem);
+    aspect-ratio: 16 / 9;
     width: 100%;
+    overflow: hidden;
     border-radius: 0.75rem;
   }
 
   .hero {
     background: linear-gradient(135deg,
-      oklch(75% 0.08 250),
-      oklch(65% 0.10 280));
+      oklch(84.972% 0.02067 250.513),
+      oklch(97.68% 0.00684 277.074));
+  }
+
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   .content {
@@ -130,21 +144,19 @@ const { project } = Astro.props;
     letter-spacing: 0.05rem;
   }
 
-  .stacks-row {
+  .footer {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.5rem 0;
 
-  .content .ctas {
     margin-top: auto;
   }
 
-  .cta::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+  .stacks-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
   }
 </style>

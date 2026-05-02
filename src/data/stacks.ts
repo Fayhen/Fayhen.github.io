@@ -1,143 +1,189 @@
+import astro from "../assets/devicons/astro-original.svg";
+import css from "../assets/devicons/css3-original.svg";
+import django from "../assets/devicons/django-original.svg";
+import docker from "../assets/devicons/docker-original.svg";
+import elixir from "../assets/devicons/elixir-original.svg";
+import fastapi from "../assets/devicons/fastapi-original.svg";
+import firebase from "../assets/devicons/firebase-plain.svg";
+import flask from "../assets/devicons/flask-original.svg";
+import git from "../assets/devicons/git-original.svg";
+import html5 from "../assets/devicons/html5-original.svg";
+import javascript from "../assets/devicons/javascript-original.svg";
+import mysql from "../assets/devicons/mysql-original.svg";
+import phoenix from "../assets/devicons/phoenix-original.svg";
+import postgres from "../assets/devicons/postgres-original.svg";
+import python from "../assets/devicons/python-original.svg";
+import quasar from "../assets/devicons/quasar-plain.svg";
+import sass from "../assets/devicons/sass-original.svg";
+import sqlalchemy from "../assets/devicons/sqlalchemy-original.svg";
+import sqlite from "../assets/devicons/sqlite-original.svg";
+import tailwind from "../assets/devicons/tailwindcss-original.svg";
+import typescript from "../assets/devicons/typescript-original.svg";
+import vue from "../assets/devicons/vuejs-original.svg";
+
 type Stacks = Record<string, Stack>
 
 export interface Stack {
+  shortName: string
   name: string
   slug: string
   link: string
-  icon: string
+  icon: ImageMetadata
 }
 
 export const stacks: Stacks = {
   elixir: {
+    shortName: "Elixir",
     name: "Elixir",
     slug: "elixir",
     link: "https://elixir-lang.org/",
-    icon: "/devicons/elixir-original.svg"
+    icon: elixir
   },
   phoenix: {
+    shortName: "Phoenix",
     name: "Phoenix Framework",
     slug: "phoenix",
     link: "https://www.phoenixframework.org/",
-    icon: "/devicons/phoenix-original.svg"
+    icon: phoenix
   },
   python: {
+    shortName: "Python",
     name: "Python",
     slug: "python",
     link: "https://www.python.org/",
-    icon: "/devicons/python-original.svg"
+    icon: python
   },
   javascript: {
+    shortName: "JavaScript",
     name: "JavaScript",
     slug: "javascript",
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    icon: "/devicons/javascript-original.svg"
+    icon: javascript
   },
   typescript: {
+    shortName: "TypeScript",
     name: "TypeScript",
     slug: "typescript",
     link: "https://www.typescriptlang.org/",
-    icon: "/devicons/typescript-original.svg"
+    icon: typescript
   },
   firebase: {
+    shortName: "Firebase",
     name: "Firebase",
     slug: "firebase",
     link: "https://firebase.google.com/",
-    icon: "/devicons/firebase-plain.svg"
+    icon: firebase
   },
   vuejs: {
+    shortName: "name: Vue.js",
     name: "Vue.js",
     slug: "vuejs",
     link: "https://vuejs.org/",
-    icon: "/devicons/vuejs-original.svg"
+    icon: vue
   },
   quasar: {
+    shortName: "nameQuasar Framework",
     name: "Quasar Framework",
     slug: "quasar",
     link: "https://quasar.dev/",
-    icon: "/devicons/quasar-plain.svg"
+    icon: quasar
   },
   astro: {
+    shortName: "Astro",
     name: "Astro",
     slug: "astro",
     link: "https://astro.build/",
-    icon: "/devicons/astro-original.svg"
+    icon: astro
   },
   html5: {
+    shortName: "HTML5",
     name: "HTML5",
     slug: "html5",
     link: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5",
-    icon: "/devicons/html5-original.svg"
+    icon: html5
   },
   css3: {
+    shortName: "CSS3",
     name: "CSS3",
     slug: "css3",
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    icon: "/devicons/css3-original.svg"
+    icon: css
   },
   tailwind: {
+    shortName: "Tailwind",
     name: "Tailwind",
     slug: "tawilwindcss",
     link: "https://tailwindcss.com/",
-    icon: "/devicons/tailwindcss-original.svg"
+    icon: tailwind
   },
   sass: {
+    shortName: "Sass",
     name: "Sass",
     slug: "sass",
     link: "https://sass-lang.com//",
-    icon: "/devicons/sass-original.svg"
+    icon: sass
   },
   fastapi: {
+    shortName: "FastAPI",
     name: "FastAPI",
     slug: "fastapi",
     link: "https://fastapi.tiangolo.com/",
-    icon: "/devicons/fastapi-original.svg"
+    icon: fastapi
   },
   flask: {
+    shortName: "Flask",
     name: "Flask",
     slug: "flask",
     link: "https://flask.palletsprojects.com/",
-    icon: "/devicons/flask-original.svg"
+    icon: flask
   },
   django: {
+    shortName: "Django",
     name: "Django",
     slug: "django",
     link: "https://www.djangoproject.com/",
-    icon: "/devicons/django-original.svg"
+    icon: django
   },
   postgres: {
+    shortName: "Postgres",
     name: "Postgres",
     slug: "postgres",
     link: "https://www.postgresql.org/",
-    icon: "/devicons/postgres-original.svg"
+    icon: postgres
   },
   mysql: {
+    shortName: "MySQL",
     name: "MySQL",
     slug: "mysql",
     link: "https://www.mysql.com/",
-    icon: "/devicons/mysql-original.svg"
+    icon: mysql
   },
   sqlite: {
+    shortName: "SQLite",
     name: "SQLite",
     slug: "sqlite",
     link: "https://sqlite.org/",
-    icon: "/devicons/sqlite-original.svg"
+    icon: sqlite
   },
   sqlalchemy: {
+    shortName: "SQLAlchemy",
     name: "SQLAlchemy",
     slug: "sqlalchmey",
     link: "https://www.sqlalchemy.org/",
-    icon: "/devicons/sqlalchemy-original.svg"
+    icon: sqlalchemy
   },
   docker: {
+    shortName: "Docker",
     name: "Docker",
     slug: "docker",
     link: "https://www.docker.com/",
-    icon: "/devicons/docker-original.svg"
+    icon: docker
   },
   git: {
+    shortName: "Git",
     name: "Git",
     slug: "git",
     link: "https://git-scm.com/",
-    icon: "/devicons/git-original.svg"
+    icon: git
   }
 };

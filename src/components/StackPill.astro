@@ -1,0 +1,55 @@
+---
+import Image from "astro/components/Image.astro";
+
+import type { Stack } from "../data/stacks";
+
+interface Props {
+  bgColor?: string
+  border?: string
+  padding?: string
+  stack: Stack
+}
+
+const { stack } = Astro.props;
+
+const bgColor = Astro.props.bgColor ?? "none";
+const border = Astro.props.border ?? "none";
+const padding = Astro.props.padding ?? "0.025rem 0.35rem 0.025rem 0.35rem";
+---
+
+<li class="pill" style=`--bg-color: ${bgColor}; --border: ${border}; --padding: ${padding};`>
+  <Image src={stack.icon} alt={stack.name} class="icon" />
+  <span>{stack.shortName}</span>
+</li>
+
+<style>
+  .pill {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0 0.5rem;
+
+    padding: var(--padding);
+    border: var(--border);
+    background-color: var(--bg-color);
+    border-radius: 1rem;
+    font-size: smaller;
+
+    transition: transform ease 100ms;
+  }
+
+  .pill:hover {
+    transform: translate(0, -1px);
+  }
+
+  .pill span {
+    margin-bottom: 0.15rem;
+  }
+
+  .icon {
+    height: 1rem;
+    width: 1rem;
+    object-fit: contain;
+  }
+</style>
+

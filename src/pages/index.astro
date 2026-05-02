@@ -203,24 +203,14 @@ const navItems = [
 
   .featured-strip {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
     width: 100%;
-  }
-
-  .featured-strip > :first-child {
-    grid-row: span 2;
   }
 
   @media (max-width: 60rem) {
     .featured-strip {
       grid-template-columns: 1fr;
-      grid-template-rows: auto;
-    }
-
-    .featured-strip > :first-child {
-      grid-row: auto;
     }
   }
 
