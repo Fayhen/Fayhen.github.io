@@ -1,5 +1,13 @@
 ---
+import StackIcon from "../components/StackIcon.astro";
+
 import type { Project } from "../data/projects";
+
+import {
+  resolveProjectAria,
+  resolveProjectLink,
+  resolveProjectLinkLabel
+} from "../scripts/projectHelpers";
 
 interface Props {
   project: Project
@@ -8,15 +16,121 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<li class="card">
-  <h3>{project.title}</h3>
-  <p>{project.description}</p>
+<li class="card" data-category={project.category}>
+  <span class="category-tag">{project.category}</span>
+  <div class="description">
+    <h3>{project.title}</h3>
+    <p>{project.description}</p>
+  </div>
+  <div class="footer">
+    <ul class="base-list">
+      {project.stacks.slice(0, 4).map(s => <StackIcon stack={s} height="1.5rem" width="1.5rem" />)}
+      {project.stacks.length > 4 && (
+        <li class="overflow-chip">+{project.stacks.length - 4}</li>
+      )}
+    </ul>
+    <div class="ctas">
+      <a href={resolveProjectLink(project)}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={resolveProjectAria(project)}
+        class="cta"
+      >
+        {resolveProjectLinkLabel(project)}
+      </a>
+    </div>
+  </div>
 </li>
 
 <style>
+  .card[data-category="backend"] {
+    --accent: oklch(60% 0.12 80);
+    --accent-bg: oklch(95% 0.04 80);
+  }
+
+  .card[data-category="frontend"] {
+    --accent: oklch(60% 0.12 250);
+    --accent-bg: oklch(95% 0.04 250);
+   }
+
+  .card[data-category="fullstack"] {
+    --accent: oklch(60% 0.12 160);
+    --accent-bg: oklch(95% 0.04 160);
+   }
+
   .card {
+    position: relative;
     padding: 1rem;
-    border-radius: 15px;
+    border-radius: 0.75rem;
     background-color: oklch(95.514% 0.00011 271.152);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px oklch(0% 0 0 / 0.1);
+  }
+
+  .card .category-tag {
+    align-self: flex-start;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+  }
+
+  .card .description {
+    overflow: hidden;
+  }
+
+  .card .description p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .card .footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card .footer ul {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .overflow-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 </style>
