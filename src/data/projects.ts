@@ -125,9 +125,9 @@ export const projects: Project[] = [
     repositoryLink: "https://github.com/Fayhen/emoji-shift",
     featured: false,
     stacks: [
-      stacks.typescript,
       stacks.html5,
       stacks.css3,
+      stacks.typescript,
       stacks.vuejs
     ]
   },
@@ -143,6 +143,7 @@ export const projects: Project[] = [
     stacks: [
       stacks.html5,
       stacks.css3,
+      stacks.javascript,
       stacks.vuejs,
       stacks.quasar
     ]

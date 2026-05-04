@@ -27,6 +27,7 @@ const padding = Astro.props.padding ?? "0.025rem 0.35rem 0.025rem 0.35rem";
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    align-self: center;
     gap: 0 0.5rem;
 
     padding: var(--padding);
@@ -40,6 +41,14 @@ const padding = Astro.props.padding ?? "0.025rem 0.35rem 0.025rem 0.35rem";
 
   .pill:hover {
     transform: translate(0, -1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pill,
+    .pill:hover {
+      transition: none;
+      transform: none;
+    }
   }
 
   .pill span {

@@ -30,6 +30,14 @@ const width = Astro.props.width ?? "3rem";
     transform: translate(0, -5px);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .stack-icon,
+    .stack-icon:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+
   .stack-icon img {
     height: var(--icon-height);
     width: var(--icon-width);

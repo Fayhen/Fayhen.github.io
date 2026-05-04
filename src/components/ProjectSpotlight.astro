@@ -1,14 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import StackPill from "../components/StackPill.astro";
+
+import ProjectCTAs from "./ProjectCTAs.astro";
+import StackPill from "./StackPill.astro";
 
 import type { Project } from "../data/projects";
-
-import {
-  resolveProjectAria,
-  resolveProjectLink,
-  resolveProjectLinkLabel
-} from "../scripts/projectHelpers";
 
 interface Props {
   project: Project
@@ -31,16 +27,7 @@ const { project } = Astro.props;
         <ul class="base-list stacks-row">
           {project.stacks.map((stack) => <StackPill stack={stack} bgColor="oklch(100% 0.00011 271.152)" />)}
         </ul>
-        <div class="ctas">
-          <a href={resolveProjectLink(project)}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={resolveProjectAria(project)}
-            class="cta"
-          >
-            {resolveProjectLinkLabel(project)}
-          </a>
-        </div>
+        <ProjectCTAs project={project} />
       </div>
     </div>
   </div>
@@ -146,9 +133,9 @@ const { project } = Astro.props;
 
   .footer {
     display: flex;
-    flex-direction: column;
     flex-wrap: nowrap;
-    gap: 0.5rem 0;
+    justify-content: space-between;
+    gap: 0 0.5rem;
 
     margin-top: auto;
   }
@@ -156,7 +143,9 @@ const { project } = Astro.props;
   .stacks-row {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
+
+
 </style>

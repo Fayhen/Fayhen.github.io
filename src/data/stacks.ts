@@ -1,25 +1,25 @@
-import astro from "../assets/devicons/astro-original.svg";
-import css from "../assets/devicons/css3-original.svg";
-import django from "../assets/devicons/django-original.svg";
-import docker from "../assets/devicons/docker-original.svg";
-import elixir from "../assets/devicons/elixir-original.svg";
-import fastapi from "../assets/devicons/fastapi-original.svg";
-import firebase from "../assets/devicons/firebase-plain.svg";
-import flask from "../assets/devicons/flask-original.svg";
-import git from "../assets/devicons/git-original.svg";
-import html5 from "../assets/devicons/html5-original.svg";
-import javascript from "../assets/devicons/javascript-original.svg";
-import mysql from "../assets/devicons/mysql-original.svg";
-import phoenix from "../assets/devicons/phoenix-original.svg";
-import postgres from "../assets/devicons/postgres-original.svg";
-import python from "../assets/devicons/python-original.svg";
-import quasar from "../assets/devicons/quasar-plain.svg";
-import sass from "../assets/devicons/sass-original.svg";
-import sqlalchemy from "../assets/devicons/sqlalchemy-original.svg";
-import sqlite from "../assets/devicons/sqlite-original.svg";
-import tailwind from "../assets/devicons/tailwindcss-original.svg";
-import typescript from "../assets/devicons/typescript-original.svg";
-import vue from "../assets/devicons/vuejs-original.svg";
+import astro from "../assets/icons/devicons/astro-original.svg";
+import css from "../assets/icons/devicons/css3-original.svg";
+import django from "../assets/icons/devicons/django-original.svg";
+import docker from "../assets/icons/devicons/docker-original.svg";
+import elixir from "../assets/icons/devicons/elixir-original.svg";
+import fastapi from "../assets/icons/devicons/fastapi-original.svg";
+import firebase from "../assets/icons/devicons/firebase-plain.svg";
+import flask from "../assets/icons/devicons/flask-original.svg";
+import git from "../assets/icons/devicons/git-original.svg";
+import html5 from "../assets/icons/devicons/html5-original.svg";
+import javascript from "../assets/icons/devicons/javascript-original.svg";
+import mysql from "../assets/icons/devicons/mysql-original.svg";
+import phoenix from "../assets/icons/devicons/phoenix-original.svg";
+import postgres from "../assets/icons/devicons/postgres-original.svg";
+import python from "../assets/icons/devicons/python-original.svg";
+import quasar from "../assets/icons/devicons/quasar-plain.svg";
+import sass from "../assets/icons/devicons/sass-original.svg";
+import sqlalchemy from "../assets/icons/devicons/sqlalchemy-original.svg";
+import sqlite from "../assets/icons/devicons/sqlite-original.svg";
+import tailwind from "../assets/icons/devicons/tailwindcss-original.svg";
+import typescript from "../assets/icons/devicons/typescript-original.svg";
+import vue from "../assets/icons/devicons/vuejs-original.svg";
 
 type Stacks = Record<string, Stack>
 
@@ -75,14 +75,14 @@ export const stacks: Stacks = {
     icon: firebase
   },
   vuejs: {
-    shortName: "name: Vue.js",
+    shortName: "Vue.js",
     name: "Vue.js",
     slug: "vuejs",
     link: "https://vuejs.org/",
     icon: vue
   },
   quasar: {
-    shortName: "nameQuasar Framework",
+    shortName: "Quasar",
     name: "Quasar Framework",
     slug: "quasar",
     link: "https://quasar.dev/",

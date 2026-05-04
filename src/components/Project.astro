@@ -1,13 +1,8 @@
 ---
-import StackIcon from "../components/StackIcon.astro";
+import ProjectCTAs from "./ProjectCTAs.astro";
+import StackPill from "./StackPill.astro";
 
 import type { Project } from "../data/projects";
-
-import {
-  resolveProjectAria,
-  resolveProjectLink,
-  resolveProjectLinkLabel
-} from "../scripts/projectHelpers";
 
 interface Props {
   project: Project
@@ -23,22 +18,13 @@ const { project } = Astro.props;
     <p>{project.description}</p>
   </div>
   <div class="footer">
-    <ul class="base-list">
-      {project.stacks.slice(0, 4).map(s => <StackIcon stack={s} height="1.5rem" width="1.5rem" />)}
+    <ul class="base-list stacks-row">
+      {project.stacks.slice(0, 4).map(s => <StackPill stack={s} bgColor="oklch(100% 0.00011 271.152)" />)}
       {project.stacks.length > 4 && (
         <li class="overflow-chip">+{project.stacks.length - 4}</li>
       )}
     </ul>
-    <div class="ctas">
-      <a href={resolveProjectLink(project)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={resolveProjectAria(project)}
-        class="cta"
-      >
-        {resolveProjectLinkLabel(project)}
-      </a>
-    </div>
+    <ProjectCTAs project={project} />
   </div>
 </li>
 
@@ -105,11 +91,18 @@ const { project } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0 0.5rem;
   }
 
   .card .footer ul {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stacks-row {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
@@ -125,12 +118,5 @@ const { project } = Astro.props;
     color: var(--accent);
     font-size: 0.7rem;
     font-weight: 600;
-  }
-
-  .cta::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
   }
 </style>

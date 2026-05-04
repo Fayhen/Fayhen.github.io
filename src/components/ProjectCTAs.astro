@@ -1,0 +1,72 @@
+---
+import Icon from "./Icon.astro";
+
+import github from "../assets/icons/fab/github-brands-solid-full.svg";
+import globe from "../assets/icons/fas/globe-solid-full.svg";
+
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props;
+---
+
+<div class="ctas">
+  {
+    project.repositoryLink &&
+      <a href={project.repositoryLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cta-link code-link"
+      >
+        <Icon icon={github} height="1.5rem" width="1.5rem" alt="Link to source code" />
+        See code
+      </a>
+  }
+  {
+    project.productionLink &&
+      <a href={project.productionLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cta-link live-link"
+      >
+        <Icon icon={globe} height="1.5rem" width="1.5rem" alt="Link to website" />
+        See live
+      </a>
+  }
+</div>
+
+<style>
+  .ctas {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .cta-link {
+    display: flex;
+    align-self: center;
+    gap: 0 0.5rem;
+
+    padding: 0.25rem 0.5rem 0 0.25rem;
+    border-radius: 999px;
+
+    color: oklch(0% 0 0);
+    text-decoration: none;
+    text-wrap: nowrap;
+    transition: transform ease 100ms;
+  }
+
+  .cta-link:hover {
+    transform: translate(0, -1px);
+  }
+
+  .live-link {
+    background-color: oklch(81.048% 0.03436 266.898);
+  }
+
+  .code-link {
+    background-color: oklch(100% 0.00011 271.152);
+  }
+</style>
