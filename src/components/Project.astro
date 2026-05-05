@@ -30,27 +30,26 @@ const { project } = Astro.props;
 
 <style>
   .card[data-category="backend"] {
-    --accent: oklch(60% 0.12 80);
-    --accent-bg: oklch(95% 0.04 80);
+    --accent: oklch(60% 0.12 80deg);
+    --accent-bg: oklch(95% 0.04 80deg);
   }
 
   .card[data-category="frontend"] {
-    --accent: oklch(60% 0.12 250);
-    --accent-bg: oklch(95% 0.04 250);
+    --accent: oklch(60% 0.12 250deg);
+    --accent-bg: oklch(95% 0.04 250deg);
    }
 
   .card[data-category="fullstack"] {
-    --accent: oklch(60% 0.12 160);
-    --accent-bg: oklch(95% 0.04 160);
+    --accent: oklch(60% 0.12 160deg);
+    --accent-bg: oklch(95% 0.04 160deg);
    }
 
   .card {
     position: relative;
     padding: 1rem;
     border-radius: 0.75rem;
-    background-color: oklch(95.514% 0.00011 271.152);
+    background-color: oklch(95.514% 0.0001 271.152deg);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
@@ -59,7 +58,7 @@ const { project } = Astro.props;
   .card:hover,
   .card:focus-within {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px oklch(0% 0 0 / 0.1);
+    box-shadow: 0 8px 24px oklch(0% 0 0deg / 10%);
   }
 
   .card .category-tag {

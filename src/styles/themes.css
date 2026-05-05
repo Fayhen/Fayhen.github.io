@@ -1,24 +1,20 @@
 :root {
-  --bg-color-light: oklch(100% 0.00011 271.152 / 0.30);
-  --bg-color-dark: oklch(0% 0 0 / 0.884);
-  --bg-color-retro-light: oklch(69.6% 0.17 162.48);
-  --bg-color-retro-dark: oklch(37.8% 0.077 168.94);
-
-  --color-light: oklch(0% 0 0);
-  --color-dark: oklch(100% 0.00011 271.152);
-  --color-retro-light: oklch(26.2% 0.051 172.552);
-  --color-retro-dark: oklch(84.5% 0.143 164.978);
-
-  --link-light: oklch(0% 0 0);
-  --link-dark: oklch(100% 0.00011 271.152);
-  --link-retro-light: oklch(26.2% 0.051 172.552);
-  --link-retro-dark: oklch(84.5% 0.143 164.978);
-
-  --link-hover-light: oklch(27.274% 0.00003 271.152);
-  --link-hover-dark: oklch(31.317% 0.00004 271.152);
-  --link-hover-retro-light: oklch(33.757% 0.06579 171.523);
-  --link-hover-retro-dark: oklch(88.562% 0.14782 165.618);
-
+  --bg-color-light: oklch(100% 0.0001 271.152deg / 30%);
+  --bg-color-dark: oklch(0% 0 0deg / 88.4%);
+  --bg-color-retro-light: oklch(69.6% 0.17 162.48deg);
+  --bg-color-retro-dark: oklch(37.8% 0.077 168.94deg);
+  --color-light: oklch(0% 0 0deg);
+  --color-dark: oklch(100% 0.0001 271.152deg);
+  --color-retro-light: oklch(26.2% 0.051 172.552deg);
+  --color-retro-dark: oklch(84.5% 0.143 164.978deg);
+  --link-light: oklch(0% 0 0deg);
+  --link-dark: oklch(100% 0.0001 271.152deg);
+  --link-retro-light: oklch(26.2% 0.051 172.552deg);
+  --link-retro-dark: oklch(84.5% 0.143 164.978deg);
+  --link-hover-light: oklch(27.274% 0.0001 271.152deg);
+  --link-hover-dark: oklch(31.317% 0.0001 271.152deg);
+  --link-hover-retro-light: oklch(33.757% 0.0658 171.523deg);
+  --link-hover-retro-dark: oklch(88.562% 0.1478 165.618deg);
   --nav-filter-light: blur(10px);
   --nav-filter-dark: blur(10px);
   --nav-filter-retro-light: blur(10px);

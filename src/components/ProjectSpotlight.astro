@@ -35,18 +35,18 @@ const { project } = Astro.props;
 
 <style>
   .featured-card[data-category="backend"] {
-    --accent: oklch(60% 0.12 80);
-    --accent-bg: oklch(95% 0.04 80);
+    --accent: oklch(60% 0.12 80deg);
+    --accent-bg: oklch(95% 0.04 80deg);
   }
 
   .featured-card[data-category="frontend"] {
-    --accent: oklch(60% 0.12 250);
-    --accent-bg: oklch(95% 0.04 250);
+    --accent: oklch(60% 0.12 250deg);
+    --accent-bg: oklch(95% 0.04 250deg);
    }
 
   .featured-card[data-category="fullstack"] {
-    --accent: oklch(60% 0.12 160);
-    --accent-bg: oklch(95% 0.04 160);
+    --accent: oklch(60% 0.12 160deg);
+    --accent-bg: oklch(95% 0.04 160deg);
    }
 
   .featured-card {
@@ -54,16 +54,15 @@ const { project } = Astro.props;
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-
     container-type: inline-size;
-    background-color: oklch(95.514% 0.00011 271.152);
+    background-color: oklch(95.514% 0.0001 271.152deg);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .featured-card:hover,
   .featured-card:focus-within {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px oklch(0% 0 0 / 0.1);
+    box-shadow: 0 8px 24px oklch(0% 0 0deg / 10%);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -93,17 +92,17 @@ const { project } = Astro.props;
     }
   }
 
+  .hero {
+    background: linear-gradient(135deg,
+      oklch(84.972% 0.0207 250.513deg),
+      oklch(97.68% 0.0068 277.074deg));
+  }
+
   .featured-card .hero {
     aspect-ratio: 16 / 9;
     width: 100%;
     overflow: hidden;
     border-radius: 0.75rem;
-  }
-
-  .hero {
-    background: linear-gradient(135deg,
-      oklch(84.972% 0.02067 250.513),
-      oklch(97.68% 0.00684 277.074));
   }
 
   .hero img {
@@ -136,14 +135,12 @@ const { project } = Astro.props;
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: 0 0.5rem;
-
     margin-top: auto;
   }
 
   .stacks-row {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 0.5rem;
   }
 

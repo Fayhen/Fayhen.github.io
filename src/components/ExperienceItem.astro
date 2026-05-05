@@ -32,7 +32,7 @@ const { experience } = Astro.props;
     /* margin-bottom: 1rem; */
     border-radius: 15px;
     overflow: hidden;
-    background-color: oklch(100% 0.00011 271.152);
+    background-color: oklch(100% 0.0001 271.152deg);
   }
 
   .experience-card p {
@@ -44,12 +44,10 @@ const { experience } = Astro.props;
     align-items: center;
     width: 100%;
     padding: 0.5rem;
-
     border: none;
     background-color: transparent;
     color: inherit;
     cursor: pointer;
-
     font: inherit;
     text-align: left;
   }
@@ -60,7 +58,6 @@ const { experience } = Astro.props;
     height: 3.25rem;
     border-radius: 50%;
     overflow: hidden;
-
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -73,7 +70,7 @@ const { experience } = Astro.props;
   .dropdown-content{
     padding: 0.5rem 0.5rem 1rem 5.5rem;
     overflow: hidden;
-    background-color: oklch(97pnpm.815% 0.00011 271.152);
+    background-color: oklch(97.815% 0.0001 271.152deg);
   }
 
   .experience-list {
@@ -94,7 +91,7 @@ const { experience } = Astro.props;
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border-width: 0;
   }
