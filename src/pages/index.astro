@@ -10,6 +10,10 @@ import Project from "../components/Project.astro";
 import ProjectSpotlight from "../components/ProjectSpotlight.astro";
 import StackIcon from "../components/StackIcon.astro";
 
+import EmailIcon from "../assets/icons/fas/envelope-solid-full.svg";
+import GitHubIcon from "../assets/icons/fab/github-brands-solid-full.svg";
+import LinkedInIcon from "../assets/icons/fab/square-linkedin-brands-solid-full.svg";
+
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
 import { stacks } from "../data/stacks";
@@ -90,6 +94,40 @@ const navItems = [
       </ul>
       <ul class="base-list projects-grid">
         {projects.filter((p) => !p.featured).map((p) => <Project project={p} />)}
+      </ul>
+    </section>
+  </div>
+
+  <div id="contact-wrapper">
+    <section id="contact-section" class="page-container">
+      <h1>Let's Talk</h1>
+      <p>Wanna get in touch and get to know more about my work? Find me at:</p>
+      <ul class="base-list">
+        <li>
+          <a href="mailto:diego00alfa@gmail.com" aria-label="Send me an email">
+            <EmailIcon class="contact-icon" aria-hidden="true" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/diegogcsouza/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Check my LinkedIn profile. Opens in a new tab."
+          >
+            <LinkedInIcon class="contact-icon" aria-hidden="true" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Fayhen"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Check my work at GitHub. Open in a new tab."
+          >
+            <GitHubIcon class="contact-icon" aria-hidden="true" />
+          </a>
+        </li>
       </ul>
     </section>
   </div>
@@ -228,5 +266,41 @@ const navItems = [
     grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
     gap: 1.5rem;
     width: 100%;
+  }
+
+  #contact-wrapper {
+    background-color: oklch(27.274% 0.00003 271.152);
+    color: oklch(95.514% 0.00011 271.152);
+  }
+
+  #contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+		padding-block: 4rem 8rem;
+
+    color: var(--navbar-bg);
+    text-align: center;
+  }
+
+  #contact-section ul {
+    display: flex;
+    align-self: center;
+    gap: 0 1rem;
+  }
+
+  #contact-section a {
+    padding: 0.1rem;
+  }
+
+  .contact-icon {
+    height: 3rem;
+    width: 3rem;
+    color: var(--navbar-bg);
+  }
+
+  #contact-section a:focus-visible .contact-icon,
+  .contact-icon:hover {
+    color: oklch(100% 0.00011 271.152);
   }
 </style>
