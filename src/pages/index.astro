@@ -13,6 +13,8 @@ import StackIcon from "../components/StackIcon.astro";
 import EmailIcon from "../assets/icons/fas/envelope-solid-full.svg";
 import GitHubIcon from "../assets/icons/fab/github-brands-solid-full.svg";
 import LinkedInIcon from "../assets/icons/fab/square-linkedin-brands-solid-full.svg";
+import Luv from "../assets/icons/far/heart-regular-full.svg";
+import Made from "../assets/icons/fas/terminal-solid-full.svg";
 
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
@@ -131,6 +133,20 @@ const navItems = [
       </ul>
     </section>
   </div>
+
+  <footer id="footer">
+    <div class="page-container">
+      <p>
+        <Made id="made" class="footer-icon" />
+        with
+        <Luv id="luv" class="footer-icon" />
+        by
+        <b id="me">Diego Garcia Cordeiro Souza</b>
+        | Built with
+        <b id="this">Astro</b>
+      </p>
+    </div>
+  </footer>
 </Base>
 
 <style>
@@ -320,5 +336,42 @@ const navItems = [
   #contact-section a:focus-visible .contact-icon,
   .contact-icon:hover {
     color: oklch(100% 0.00011 271.152);
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+
+    letter-spacing: 0.01rem;
+    word-spacing: 0.1rem;
+    text-align: center;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  .footer-icon {
+    margin-bottom: -0.1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  footer #luv {
+    color: palevioletred;
+  }
+
+  footer #made {
+    color: cornflowerblue;
+  }
+
+  footer #me {
+    color: darkslategrey;
+  }
+
+  footer #this {
+    color: #D83333;
   }
 </style>
