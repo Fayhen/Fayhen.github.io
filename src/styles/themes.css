@@ -23,6 +23,32 @@
   --nav-filter-dark: blur(10px);
   --nav-filter-retro-light: blur(10px);
   --nav-filter-retro-dark: blur(10px);
+
+  /* 
+    DRAFT
+    --bg-primary
+    --bg-primary-accent
+    --bg-secondary
+    --bg-secondary-accent
+    --bg-tertiary
+    --bg-tertiary-accent
+
+    --color-primary
+    --color-secondary
+    --link-color-primary
+    --link-color-primary-accent
+    --link-color-secondary
+    --link-color-secondary-accent
+    
+    --icon-fill
+    --icon-stroke
+
+    --nav-bg
+    --nav-filter
+
+    todo: typography
+    todo: animations
+  */
 }
 
 [data-theme="light"] {
