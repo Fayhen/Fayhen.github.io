@@ -4,7 +4,7 @@ import Image from "astro/components/Image.astro";
 import type { Stack } from "../data/stacks";
 
 interface Props {
-  bgColor?: string
+  badgeClasses?: string
   border?: string
   padding?: string
   stack: Stack
@@ -12,12 +12,12 @@ interface Props {
 
 const { stack } = Astro.props;
 
-const bgColor = Astro.props.bgColor ?? "none";
+const badgeClasses = Astro.props.badgeClasses ?? "";
 const border = Astro.props.border ?? "none";
-const padding = Astro.props.padding ?? "0.025rem 0.35rem 0.025rem 0.35rem";
+const padding = Astro.props.padding ?? "0.15rem 0.5rem 0.025rem 0.5rem";
 ---
 
-<li class="pill" style=`--pill-bg-color: ${bgColor}; --border: ${border}; --padding: ${padding};`>
+<li class=`${badgeClasses} pill` style=`--border: ${border}; --padding: ${padding};`>
   <Image src={stack.icon} alt={stack.name} class="icon" />
   <span>{stack.shortName}</span>
 </li>
@@ -31,7 +31,6 @@ const padding = Astro.props.padding ?? "0.025rem 0.35rem 0.025rem 0.35rem";
     gap: 0 0.5rem;
     padding: var(--padding);
     border: var(--border);
-    background-color: var(--pill-bg-color);
     border-radius: 1rem;
     font-size: smaller;
     transition: transform ease 100ms;

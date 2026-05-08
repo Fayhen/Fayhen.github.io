@@ -17,8 +17,10 @@
   .sun { fill: var(--color-primary) }
   .moon { fill: transparent; }
 
-  :global(data-theme="dark") .sun { fill: transparent; }
-  :global(data-theme="dark") .moon { fill: var(--color-primary); }
+  :global([data-theme="dark"]) .sun { fill: transparent; }
+  :global([data-theme="dark"]) .moon { fill: var(--color-primary); }
+  :global([data-theme="retro-dark"]) .sun { fill: transparent; }
+  :global([data-theme="retro-dark"]) .moon { fill: var(--color-primary); }
 </style>
 
 <script>

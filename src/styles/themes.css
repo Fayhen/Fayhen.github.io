@@ -14,8 +14,8 @@
   --default-light-bg-tertiary: oklch(27.274% 0.0001 271.152deg);
   --default-light-bg-tertiary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
   --default-light-bg-placeholder: linear-gradient(135deg,
-      oklch(84.972% 0.0207 250.513deg),
-      oklch(97.68% 0.0068 277.074deg));
+    oklch(84.972% 0.0207 250.513deg),
+    oklch(97.68% 0.0068 277.074deg));
 
   /* Foreground colors */
   --default-light-color-primary: oklch(0% 0 0deg);
@@ -41,8 +41,26 @@
   --default-light-card-bg-primary-accent: var(--default-light-bg-primary-accent);
   --default-light-card-bg-secondary: var(--default-light-bg-secondary);
   --default-light-card-bg-secondary-accent: var(--default-light-bg-secondary-accent);
-  --default-light-card-fg-primary: var(--default-light-fg-primary);
-  --default-light-card-fg-secondary: var(--default-light-fg-secondary);
+  --default-light-card-fg-primary: var(--default-light-color-primary);
+  --default-light-card-fg-secondary: var(--default-light-color-secondary);
+
+  /* Badges */
+  --default-light-badge-fullstack-fg: oklch(50% 0.12 160deg);
+  --default-light-badge-fullstack-bg: oklch(93% 0.05 160deg);
+  --default-light-badge-backend-fg: oklch(55% 0.12 80deg);
+  --default-light-badge-backend-bg: oklch(94% 0.04 80deg);
+  --default-light-badge-frontend-fg: oklch(52% 0.13 250deg);
+  --default-light-badge-frontend-bg: oklch(93% 0.04 250deg);
+  --default-light-badge-stack-fg: oklch(0% 0 0deg);
+  --default-light-badge-stack-bg: oklch(100% 0.0001 271.152deg);
+
+  /* Buttons */
+  --default-light-project-cta-primary-bg: oklch(49.97% 0.0007 271.152deg / 30%);
+  --default-light-project-cta-primary-fg: oklch(0% 0 0deg);
+  --default-light-project-cta-primary-icon-fill: oklch(0% 0 0deg);
+  --default-light-project-cta-secondary-bg: oklch(100% 0.0001 271.152deg);
+  --default-light-project-cta-secondary-fg: oklch(0% 0 0deg);
+  --default-light-project-cta-secondary-icon-fill: oklch(0% 0 0deg);
 
   /* DEFAULT DARK */
 
@@ -53,7 +71,9 @@
   --default-dark-bg-secondary-accent: oklch(41.378% 0.0013 15.238deg / 30%);
   --default-dark-bg-tertiary: oklch(31.158% 0.0089 17.404deg / 58.4%);
   --default-dark-bg-tertiary-accent: oklch(31.158% 0.0089 17.404deg / 28.4%);
-  --default-dark-bg-placeholder: initial;
+  --default-dark-bg-placeholder: linear-gradient(135deg,
+    oklch(35% 0.022 252deg),
+    oklch(24% 0.008 278deg));
 
   /* Foreground colors */
   --default-dark-color-primary: oklch(82.032% 0.0001 271.152deg);
@@ -79,19 +99,40 @@
   --default-dark-card-bg-primary-accent: var(--default-dark-bg-primary-accent);
   --default-dark-card-bg-secondary: var(--default-dark-bg-secondary);
   --default-dark-card-bg-secondary-accent: var(--default-dark-bg-secondary-accent);
-  --default-dark-card-fg-primary: var(--default-dark-fg-primary);
-  --default-dark-card-fg-secondary: var(--default-dark-fg-secondary);
+  --default-dark-card-fg-primary: var(--default-dark-color-primary);
+  --default-dark-card-fg-secondary: var(--default-dark-color-secondary);
+
+  /* Badges */
+  --default-dark-badge-fullstack-fg: oklch(84% 0.11 155deg);
+  --default-dark-badge-fullstack-bg: oklch(28% 0.07 155deg);
+  --default-dark-badge-backend-fg:   oklch(86% 0.12 75deg);
+  --default-dark-badge-backend-bg:   oklch(28% 0.07 75deg);
+  --default-dark-badge-frontend-fg:  oklch(82% 0.10 245deg);
+  --default-dark-badge-frontend-bg:  oklch(28% 0.07 245deg);
+  --default-dark-badge-stack-fg: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-badge-stack-bg: oklch(31.158% 0.0089 17.404deg / 58.4%);
+
+
+  /* Buttons */
+  --default-dark-project-cta-primary-bg: oklch(27.274% 0.0001 271.152deg);
+  --default-dark-project-cta-primary-fg: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-project-cta-primary-icon-fill: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-project-cta-secondary-bg: oklch(31.158% 0.0089 17.404deg / 58.4%);
+  --default-dark-project-cta-secondary-fg: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-project-cta-secondary-icon-fill: oklch(82.032% 0.0001 271.152deg);
 
   /* RETRO LIGHT */
 
   /* Background colors */
   --retro-light-bg-primary: oklch(69.6% 0.17 162.48deg);
   --retro-light-bg-primary-accent: oklch(69.6% 0.17 162.48deg / 30%);
-  --retro-light-bg-secondary: initial;
-  --retro-light-bg-secondary-accent: initial;
-  --retro-light-bg-tertiary: initial;
-  --retro-light-bg-tertiary-accent: initial;
-  --retro-light-bg-placeholder: initial;
+  --retro-light-bg-secondary:  oklch(82% 0.10 162deg);
+  --retro-light-bg-secondary-accent: oklch(82% 0.10 162deg / 40%);
+  --retro-light-bg-tertiary: oklch(22% 0.05 165deg);
+  --retro-light-bg-tertiary-accent: oklch(22% 0.05 165deg / 40%);
+  --retro-light-bg-placeholder: linear-gradient(135deg,
+    oklch(75% 0.14 162deg),
+    oklch(88% 0.07 162deg));;
 
   /* Foreground colors */
   --retro-light-color-primary: oklch(26.2% 0.051 172.552deg);
@@ -99,8 +140,8 @@
   --retro-light-color-tertiary: oklch(26.2% 0.051 172.552deg);
 
   /* Navbar colors */
-  --retro-light-nav-bg: initial;
-  --retro-light-nav-fg: initial;
+  --retro-light-nav-bg: oklch(69.6% 0.17 162.48deg / 60%);
+  --retro-light-nav-fg: var(--retro-light-color-primary);
   --retro-light-nav-filter: blur(10px);
 
   /* Links */
@@ -117,19 +158,40 @@
   --retro-light-card-bg-primary-accent: var(--retro-light-bg-primary-accent);
   --retro-light-card-bg-secondary: var(--retro-light-bg-secondary);
   --retro-light-card-bg-secondary-accent: var(--retro-light-bg-secondary-accent);
-  --retro-light-card-fg-primary: var(--retro-light-fg-primary);
-  --retro-light-card-fg-secondary: var(--retro-light-fg-secondary);
+  --retro-light-card-fg-primary: var(--retro-light-color-primary);
+  --retro-light-card-fg-secondary: var(--retro-light-color-secondary);
+
+  /* Badges */
+  --retro-light-badge-fullstack-fg: oklch(40% 0.13 162deg);
+  --retro-light-badge-fullstack-bg: oklch(88% 0.07 162deg);
+  --retro-light-badge-backend-fg:   oklch(52% 0.13 95deg);
+  --retro-light-badge-backend-bg:   oklch(92% 0.06 95deg);
+  --retro-light-badge-frontend-fg:  oklch(48% 0.12 200deg);
+  --retro-light-badge-frontend-bg:  oklch(90% 0.05 200deg);
+  --retro-light-badge-stack-fg: oklch(26.2% 0.051 172.552deg);
+  --retro-light-badge-stack-bg: oklch(95% 0.04 162deg);
+
+
+  /* Buttons */
+  --retro-light-project-cta-primary-bg: oklch(30% 0.09 162deg);
+  --retro-light-project-cta-primary-fg: oklch(90% 0.06 162deg);
+  --retro-light-project-cta-primary-icon-fill: oklch(90% 0.06 162deg);
+  --retro-light-project-cta-secondary-bg: oklch(90% 0.06 162deg);
+  --retro-light-project-cta-secondary-fg: oklch(30% 0.09 162deg);
+  --retro-light-project-cta-secondary-icon-fill: oklch(30% 0.09 162deg);
 
   /* RETRO DARK */
 
   /* Background colors */
   --retro-dark-bg-primary: oklch(37.8% 0.077 168.94deg);
   --retro-dark-bg-primary-accent: oklch(37.8% 0.077 168.94deg / 30%);
-  --retro-dark-bg-secondary: initial;
-  --retro-dark-bg-secondary-accent: initial;
-  --retro-dark-bg-tertiary: initial;
-  --retro-dark-bg-tertiary-accent: initial;
-  --retro-dark-bg-placeholder: initial;
+  --retro-dark-bg-secondary: oklch(28% 0.06 168deg);
+  --retro-dark-bg-secondary-accent: oklch(28% 0.06 168deg / 40%);
+  --retro-dark-bg-tertiary: oklch(18% 0.03 168deg);
+  --retro-dark-bg-tertiary-accent: oklch(18% 0.03 168deg / 40%);
+  --retro-dark-bg-placeholder: linear-gradient(135deg,
+    oklch(32% 0.09 168deg),
+    oklch(44% 0.06 168deg));
 
   /* Foreground colors */
   --retro-dark-color-primary: oklch(84.5% 0.143 164.978deg);
@@ -137,8 +199,8 @@
   --retro-dark-color-tertiary: oklch(84.5% 0.143 164.978deg);
 
   /* Navbar colors */
-  --retro-dark-nav-bg: initial;
-  --retro-dark-nav-fg: initial;
+  --retro-dark-nav-bg: oklch(37.8% 0.077 168.94deg / 70%);
+  --retro-dark-nav-fg:  var(--retro-dark-color-primary);
   --retro-dark-nav-filter: blur(10px);
 
   /* Links */
@@ -155,12 +217,27 @@
   --retro-dark-card-bg-primary-accent: var(--retro-dark-bg-primary-accent);
   --retro-dark-card-bg-secondary: var(--retro-dark-bg-secondary);
   --retro-dark-card-bg-secondary-accent: var(--retro-dark-bg-secondary-accent);
-  --retro-dark-card-fg-primary: var(--retro-dark-fg-primary);
-  --retro-dark-card-fg-secondary: var(--retro-dark-fg-secondary);
+  --retro-dark-card-fg-primary: var(--retro-dark-color-primary);
+  --retro-dark-card-fg-secondary: var(--retro-dark-color-secondary);
 
-  /* 
-    TODO: typography
-  */
+  /* Badges */
+  --retro-dark-badge-fullstack-fg: oklch(80% 0.12 162deg);
+  --retro-dark-badge-fullstack-bg: oklch(30% 0.08 162deg);
+  --retro-dark-badge-backend-fg:   oklch(78% 0.11 90deg);
+  --retro-dark-badge-backend-bg:   oklch(28% 0.06 90deg);
+  --retro-dark-badge-frontend-fg:  oklch(75% 0.10 200deg);
+  --retro-dark-badge-frontend-bg:  oklch(26% 0.06 200deg);
+  --retro-dark-badge-stack-fg: oklch(84.5% 0.143 164.978deg);
+  --retro-dark-badge-stack-bg: oklch(42% 0.09 168deg);
+
+  /* Buttons */
+  --retro-dark-project-cta-primary-bg: oklch(48% 0.11 165deg);
+  --retro-dark-project-cta-primary-fg: oklch(90% 0.08 162deg);
+  --retro-dark-project-cta-primary-icon-fill: oklch(90% 0.08 162deg);
+  --retro-dark-project-cta-secondary-bg: oklch(25% 0.06 168deg);
+  --retro-dark-project-cta-secondary-fg: oklch(84.5% 0.143 164.978deg);
+  --retro-dark-project-cta-secondary-icon-fill: oklch(84.5% 0.143 164.978deg);
+
 }
 
 [data-theme="light"] {
@@ -188,6 +265,20 @@
   --card-bg-secondary-accent: var(--default-light-card-bg-secondary-accent);
   --card-fg-primary: var(--default-light-card-fg-primary);
   --card-fg-secondary: var(--default-light-card-fg-secondary);
+  --badge-backend-fg: var(--default-light-badge-backend-fg);
+  --badge-backend-bg: var(--default-light-badge-backend-bg);
+  --badge-frontend-fg: var(--default-light-badge-frontend-fg);
+  --badge-frontend-bg: var(--default-light-badge-frontend-bg);
+  --badge-fullstack-fg: var(--default-light-badge-fullstack-fg);
+  --badge-fullstack-bg: var(--default-light-badge-fullstack-bg);
+  --badge-stack-fg: var(--default-light-badge-stack-fg);
+  --badge-stack-bg: var(--default-light-badge-stack-bg);
+  --project-cta-primary-bg: var(--default-light-project-cta-primary-bg);
+  --project-cta-primary-fg: var(--default-light-project-cta-primary-fg);
+  --project-cta-primary-icon-fill: var(--default-light-project-cta-primary-icon-fill);
+  --project-cta-secondary-bg: var(--default-light-project-cta-secondary-bg);
+  --project-cta-secondary-fg: var(--default-light-project-cta-secondary-fg);
+  --project-cta-secondary-icon-fill: var(--default-light-project-cta-secondary-icon-fill);
 }
 
 [data-theme="dark"] {
@@ -215,6 +306,20 @@
   --card-bg-secondary-accent: var(--default-dark-card-bg-secondary-accent);
   --card-fg-primary: var(--default-dark-card-fg-primary);
   --card-fg-secondary: var(--default-dark-card-fg-secondary);
+  --badge-backend-fg: var(--default-dark-badge-backend-fg);
+  --badge-backend-bg: var(--default-dark-badge-backend-bg);
+  --badge-frontend-fg: var(--default-dark-badge-frontend-fg);
+  --badge-frontend-bg: var(--default-dark-badge-frontend-bg);
+  --badge-fullstack-fg: var(--default-dark-badge-fullstack-fg);
+  --badge-fullstack-bg: var(--default-dark-badge-fullstack-bg);
+  --badge-stack-fg: var(--default-dark-badge-stack-fg);
+  --badge-stack-bg: var(--default-dark-badge-stack-bg);
+  --project-cta-primary-bg: var(--default-dark-project-cta-primary-bg);
+  --project-cta-primary-fg: var(--default-dark-project-cta-primary-fg);
+  --project-cta-primary-icon-fill: var(--default-dark-project-cta-primary-icon-fill);
+  --project-cta-secondary-bg: var(--default-dark-project-cta-secondary-bg);
+  --project-cta-secondary-fg: var(--default-dark-project-cta-secondary-fg);
+  --project-cta-secondary-icon-fill: var(--default-dark-project-cta-secondary-icon-fill);
 }
 
 [data-theme="retro-light"] {
@@ -242,6 +347,20 @@
   --card-bg-secondary-accent: var(--retro-light-card-bg-secondary-accent);
   --card-fg-primary: var(--retro-light-card-fg-primary);
   --card-fg-secondary: var(--retro-light-card-fg-secondary);
+  --badge-backend-fg: var(--retro-light-badge-backend-fg);
+  --badge-backend-bg: var(--retro-light-badge-backend-bg);
+  --badge-frontend-fg: var(--retro-light-badge-frontend-fg);
+  --badge-frontend-bg: var(--retro-light-badge-frontend-bg);
+  --badge-fullstack-fg: var(--retro-light-badge-fullstack-fg);
+  --badge-fullstack-bg: var(--retro-light-badge-fullstack-bg);
+  --badge-stack-fg: var(--retro-light-badge-stack-fg);
+  --badge-stack-bg: var(--retro-light-badge-stack-bg);
+  --project-cta-primary-bg: var(--retro-light-project-cta-primary-bg);
+  --project-cta-primary-fg: var(--retro-light-project-cta-primary-fg);
+  --project-cta-primary-icon-fill: var(--retro-light-project-cta-primary-icon-fill);
+  --project-cta-secondary-bg: var(--retro-light-project-cta-secondary-bg);
+  --project-cta-secondary-fg: var(--retro-light-project-cta-secondary-fg);
+  --project-cta-secondary-icon-fill: var(--retro-light-project-cta-secondary-icon-fill);
 }
 
 [data-theme="retro-dark"] {
@@ -269,4 +388,18 @@
   --card-bg-secondary-accent: var(--retro-dark-card-bg-secondary-accent);
   --card-fg-primary: var(--retro-dark-card-fg-primary);
   --card-fg-secondary: var(--retro-dark-card-fg-secondary);
+  --badge-backend-fg: var(--retro-dark-badge-backend-fg);
+  --badge-backend-bg: var(--retro-dark-badge-backend-bg);
+  --badge-frontend-fg: var(--retro-dark-badge-frontend-fg);
+  --badge-frontend-bg: var(--retro-dark-badge-frontend-bg);
+  --badge-fullstack-fg: var(--retro-dark-badge-fullstack-fg);
+  --badge-fullstack-bg: var(--retro-dark-badge-fullstack-bg);
+  --badge-stack-fg: var(--retro-dark-badge-stack-fg);
+  --badge-stack-bg: var(--retro-dark-badge-stack-bg);
+  --project-cta-primary-bg: var(--retro-dark-project-cta-primary-bg);
+  --project-cta-primary-fg: var(--retro-dark-project-cta-primary-fg);
+  --project-cta-primary-icon-fill: var(--retro-dark-project-cta-primary-icon-fill);
+  --project-cta-secondary-bg: var(--retro-dark-project-cta-secondary-bg);
+  --project-cta-secondary-fg: var(--retro-dark-project-cta-secondary-fg);
+  --project-cta-secondary-icon-fill: var(--retro-dark-project-cta-secondary-icon-fill);
 }

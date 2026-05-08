@@ -1,8 +1,6 @@
 ---
-import Icon from "./Icon.astro";
-
-import github from "../assets/icons/fab/github-brands-solid-full.svg";
-import globe from "../assets/icons/fas/globe-solid-full.svg";
+import GitHub from "../assets/icons/fab/github-brands-solid-full.svg";
+import Globe from "../assets/icons/fas/globe-solid-full.svg";
 
 import type { Project } from "../data/projects";
 
@@ -19,9 +17,14 @@ const { project } = Astro.props;
       <a href={project.repositoryLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="cta-link code-link"
+        class="project-cta-button-secondary cta-link"
       >
-        <Icon icon={github} height="1.5rem" width="1.5rem" alt="Link to source code" />
+        <GitHub
+          height="1.5rem"
+          width="1.5rem"
+          class="project-cta-button-secondary-icon"
+          aria-label="Link to source code"
+        />
         See code
       </a>
   }
@@ -30,9 +33,14 @@ const { project } = Astro.props;
       <a href={project.productionLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="cta-link live-link"
+        class="project-cta-button-primary cta-link"
       >
-        <Icon icon={globe} height="1.5rem" width="1.5rem" alt="Link to website" />
+        <Globe
+          height="1.5rem"
+          width="1.5rem"
+          class="project-cta-button-primary-icon"
+          aria-label="Link to website"
+        />
         See live
       </a>
   }
@@ -48,9 +56,8 @@ const { project } = Astro.props;
     display: flex;
     align-self: center;
     gap: 0 0.5rem;
-    padding: 0.25rem 0.5rem 0 0.25rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
     border-radius: 999px;
-    color: var(--color-primary);
     text-decoration: none;
     text-wrap: nowrap;
     transition: transform ease 100ms;
@@ -60,13 +67,11 @@ const { project } = Astro.props;
     transform: translate(0, -1px);
   }
 
-  .live-link {
-    /* TODO: refactor into button theme token */
-    background-color: oklch(81.048% 0.0344 266.898deg);
-  }
-
-  .code-link {
-    /* TODO: refactor into button theme token */
-    background-color: oklch(100% 0.0001 271.152deg);
+  @media (prefers-reduced-motion: reduce) {
+    .cta-link,
+    .cta-link:hover {
+      transition: none;
+      transform: none;
+    }
   }
 </style>

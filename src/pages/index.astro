@@ -3,11 +3,11 @@ import "../styles/global.css";
 
 import Base from "../layouts/Base.astro";
 import ExperienceItem from "../components/ExperienceItem.astro";
+import FeaturedProjectStrip from "../components/FeaturedProjectStrip.astro";
 import Header from "../components/Header.astro";
 import Presentation from "../components/Presentation.astro";
 import ProfilePic from "../components/ProfilePic.astro";
 import Project from "../components/Project.astro";
-import ProjectSpotlight from "../components/ProjectSpotlight.astro";
 import StackIcon from "../components/StackIcon.astro";
 
 import EmailIcon from "../assets/icons/fas/envelope-solid-full.svg";
@@ -91,9 +91,7 @@ const navItems = [
     <section id="projects-section" class="page-container">
       <h1>Projects</h1>
       <p>Most of my projects are closed-source. Here's a few I can share freely.</p>
-      <ul class="base-list featured-strip">
-        {projects.filter((p) => p.featured).map((p) => <ProjectSpotlight project={p}/>)}
-      </ul>
+      <FeaturedProjectStrip projects={projects.filter((p) => p.featured)} />
       <ul class="base-list projects-grid">
         {projects.filter((p) => !p.featured).map((p) => <Project project={p} />)}
       </ul>
@@ -185,7 +183,7 @@ const navItems = [
   }
 
   @media (width <= 40rem) {
-    #intro-section
+    #intro-section,
     #skills-section {
       flex-direction: column;
       text-align: center;
@@ -284,19 +282,6 @@ const navItems = [
     flex-direction: column;
 		align-items: center;
 		padding-block: 4rem 8rem;
-  }
-
-  .featured-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
-    width: 100%;
-  }
-
-  @media (width <= 60rem) {
-    .featured-strip {
-      grid-template-columns: 1fr;
-    }
   }
 
   .projects-grid {

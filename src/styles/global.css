@@ -93,6 +93,29 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.project-stack-badge {
+  background-color: var(--badge-stack-bg);
+  color: var(--badge-stack-fg);
+}
+
+.project-cta-button-primary {
+  background-color: var(--project-cta-primary-bg);
+  color: var(--project-cta-primary-fg);
+}
+
+.project-cta-button-primary-icon {
+  color: var(--project-cta-primary-icon-fill);
+}
+
+.project-cta-button-secondary {
+  background-color: var(--project-cta-secondary-bg);
+  color: var(--project-cta-secondary-fg);
+}
+
+.project-cta-button-secondary-icon {
+  color: var(--project-cta-secondary-icon-fill);
+}
+
 .color-primary {
   background-color: var(--color-primary);
 }

@@ -19,7 +19,7 @@ const { project } = Astro.props;
   </div>
   <div class="footer">
     <ul class="base-list stacks-row">
-      {project.stacks.slice(0, 4).map(s => <StackPill stack={s} bgColor="var(--bg-primary)" />)}
+      {project.stacks.slice(0, 4).map(s => <StackPill stack={s} badgeClasses="project-stack-badge" />)}
       {project.stacks.length > 4 && (
         <li class="overflow-chip">+{project.stacks.length - 4}</li>
       )}
@@ -30,22 +30,19 @@ const { project } = Astro.props;
 
 <style>
   .project-card[data-category="backend"] {
-    /* TODO: refactor into project category theme tokens */
-    --accent: oklch(60% 0.12 80deg);
-    --accent-bg: oklch(95% 0.04 80deg);
+    --accent: var(--badge-backend-fg);
+    --accent-bg: var(--badge-backend-bg);
   }
 
   .project-card[data-category="frontend"] {
-    /* TODO: refactor into project category theme tokens */
-    --accent: oklch(60% 0.12 250deg);
-    --accent-bg: oklch(95% 0.04 250deg);
-   }
+    --accent: var(--badge-frontend-fg);
+    --accent-bg: var(--badge-frontend-bg);
+  }
 
   .project-card[data-category="fullstack"] {
-    /* TODO: refactor into project category theme tokens */
-    --accent: oklch(60% 0.12 160deg);
-    --accent-bg: oklch(95% 0.04 160deg);
-   }
+    --accent: var(--badge-fullstack-fg);
+    --accent-bg: var(--badge-fullstack-bg);
+  }
 
   .project-card {
     position: relative;
