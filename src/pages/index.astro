@@ -46,15 +46,15 @@ const navItems = [
       <h1>Skills & Experience</h1>
 
       <div class="major-areas">
-        <div class="major-area-detail">
+        <div class="primary-card major-area-detail">
           <h2>Fullstack</h2>
           <p>Building real-time web applications with Elixir and Phoenix, including CMS and B2B platforms, integrated with distributed backend services.</p>
         </div>
-        <div class="major-area-detail">
+        <div class="primary-card major-area-detail">
           <h2>Backend</h2>
           <p>Designing purpose-built APIs and cloud functions, and modernizing legacy systems into scalable, maintainable architectures.</p>
         </div>
-        <div class="major-area-detail">
+        <div class="primary-card major-area-detail">
           <h2>Frontend</h2>
           <p>Developing web applications with modern frameworks and Firebase, delivering production-ready solutions across multiple client projects.</p>
         </div>
@@ -64,11 +64,11 @@ const navItems = [
         <div class="experience-column">
           <h2>Where I've been:</h2>
           <ul class="base-list">
-            {Object.values(experience).map((item) => <ExperienceItem experience={item} />)}
+            {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card hoverable" />)}
           </ul>
           <h2>I also volunteer:</h2>
           <ul class="base-list">
-            {Object.values(volunteering).map((item) => <ExperienceItem experience={item} />)}
+            {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card hoverable" />)}
           </ul>
         </div>
 
@@ -150,6 +150,11 @@ const navItems = [
 </Base>
 
 <style>
+  #intro-wrapper {
+    background-color: var(--bg-primary);
+    color: var(--color-primary);
+  }
+
 	#intro-section {
 		display: flex;
 		align-items: center;
@@ -158,7 +163,8 @@ const navItems = [
 	}
 
   #skills-wrapper {
-    background-color: oklch(95.514% 0.0001 271.152deg);
+    background-color: var(--bg-secondary);
+    color: var(--color-secondary);
   }
 
   #skills-wrapper h1 {
@@ -195,7 +201,6 @@ const navItems = [
   .major-area-detail {
     padding: 1rem;
     border-radius: 1rem;
-    background-color: oklch(100% 0.0001 271.152deg);
   }
 
   .major-area-detail h2 {
@@ -269,6 +274,11 @@ const navItems = [
     height: 100%;
   }
 
+  #projects-wrapper {
+    background-color: var(--bg-primary);
+    color: var(--color-primary);
+  }
+
   #projects-section {
 		display: flex;
     flex-direction: column;
@@ -298,8 +308,8 @@ const navItems = [
   }
 
   #contact-wrapper {
-    background-color: oklch(27.274% 0.0001 271.152deg);
-    color: oklch(95.514% 0.0001 271.152deg);
+    background-color: var(--bg-tertiary);
+    color: var(--color-tertiary);
   }
 
   #contact-section {
@@ -307,7 +317,6 @@ const navItems = [
     flex-direction: column;
     justify-content: center;
 		padding-block: 4rem 8rem;
-    color: var(--navbar-bg);
     text-align: center;
   }
 
@@ -324,7 +333,7 @@ const navItems = [
   .contact-icon {
     height: 3rem;
     width: 3rem;
-    color: var(--navbar-bg);
+    color: var(--color-tertiary);
   }
 
   .contact-icon:hover,
@@ -353,18 +362,22 @@ const navItems = [
   }
 
   footer #luv {
+    /* Refactor into footer theme token */
     color: palevioletred;
   }
 
   footer #made {
+    /* Refactor into footer theme token */
     color: cornflowerblue;
   }
 
   footer #me {
+    /* Refactor into footer theme token */
     color: darkslategrey;
   }
 
   footer #this {
+    /* Refactor into footer theme token */
     color: #D83333;
   }
 </style>

@@ -1,80 +1,272 @@
 :root {
-  --bg-color-light: oklch(100% 0.0001 271.152deg / 30%);
-  --bg-color-dark: oklch(0% 0 0deg / 88.4%);
-  --bg-color-retro-light: oklch(69.6% 0.17 162.48deg);
-  --bg-color-retro-dark: oklch(37.8% 0.077 168.94deg);
-  --color-light: oklch(0% 0 0deg);
-  --color-dark: oklch(100% 0.0001 271.152deg);
-  --color-retro-light: oklch(26.2% 0.051 172.552deg);
-  --color-retro-dark: oklch(84.5% 0.143 164.978deg);
-  --link-light: oklch(0% 0 0deg);
-  --link-dark: oklch(100% 0.0001 271.152deg);
-  --link-retro-light: oklch(26.2% 0.051 172.552deg);
-  --link-retro-dark: oklch(84.5% 0.143 164.978deg);
-  --link-hover-light: oklch(27.274% 0.0001 271.152deg);
-  --link-hover-dark: oklch(31.317% 0.0001 271.152deg);
-  --link-hover-retro-light: oklch(33.757% 0.0658 171.523deg);
-  --link-hover-retro-dark: oklch(88.562% 0.1478 165.618deg);
-  --nav-filter-light: blur(10px);
-  --nav-filter-dark: blur(10px);
-  --nav-filter-retro-light: blur(10px);
-  --nav-filter-retro-dark: blur(10px);
+  /*
+   TODO: Finish implementation of 'initial' values
+   TODO: typography
+   */
+
+  /* DEFAULT LIGHT */
+
+  /* Background colors */
+  --default-light-bg-primary: oklch(100% 0.0001 271.152deg);
+  --default-light-bg-primary-accent: oklch(100% 0.0001 271.152deg / 30%);
+  --default-light-bg-secondary: oklch(95.514% 0.0001 271.152deg);
+  --default-light-bg-secondary-accent: oklch(95.514% 0.0001 271.152deg / 30%);
+  --default-light-bg-tertiary: oklch(27.274% 0.0001 271.152deg);
+  --default-light-bg-tertiary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
+  --default-light-bg-placeholder: linear-gradient(135deg,
+      oklch(84.972% 0.0207 250.513deg),
+      oklch(97.68% 0.0068 277.074deg));
+
+  /* Foreground colors */
+  --default-light-color-primary: oklch(0% 0 0deg);
+  --default-light-color-secondary: oklch(0% 0 0deg);
+  --default-light-color-tertiary: oklch(100% 0.0001 271.152deg / 84.2%);
+
+  /* Navbar colors */
+  --default-light-nav-bg: oklch(100% 0.0001 271.152deg / 30%);
+  --default-light-nav-fg: oklch(0% 0 0deg);
+  --default-light-nav-filter: blur(10px);
+
+  /* Links */
+  --default-light-link: oklch(0% 0 0deg);
+  --default-light-link-hover: oklch(27.274% 0.0001 271.152deg);
+  --default-light-link-decoration: none;
+  
+  /* Icons */
+  --default-light-icon-fill: initial;
+  --default-light-icon-stroke: initial;
+
+  /* Cards */
+  --default-light-card-bg-primary: var(--default-light-bg-primary);
+  --default-light-card-bg-primary-accent: var(--default-light-bg-primary-accent);
+  --default-light-card-bg-secondary: var(--default-light-bg-secondary);
+  --default-light-card-bg-secondary-accent: var(--default-light-bg-secondary-accent);
+  --default-light-card-fg-primary: var(--default-light-fg-primary);
+  --default-light-card-fg-secondary: var(--default-light-fg-secondary);
+
+  /* DEFAULT DARK */
+
+  /* Background colors */
+  --default-dark-bg-primary: oklch(27.274% 0.0001 271.152deg);
+  --default-dark-bg-primary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
+  --default-dark-bg-secondary: oklch(41.378% 0.0013 15.238deg);
+  --default-dark-bg-secondary-accent: oklch(41.378% 0.0013 15.238deg / 30%);
+  --default-dark-bg-tertiary: oklch(31.158% 0.0089 17.404deg / 58.4%);
+  --default-dark-bg-tertiary-accent: oklch(31.158% 0.0089 17.404deg / 28.4%);
+  --default-dark-bg-placeholder: initial;
+
+  /* Foreground colors */
+  --default-dark-color-primary: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-color-secondary: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-color-tertiary: oklch(27.274% 0.0001 271.152deg);
+
+  /* Navbar colors */
+  --default-dark-nav-bg: oklch(27.274% 0.0001 271.152deg / 50%);
+  --default-dark-nav-fg: oklch(100% 0.0001 271.152deg);
+  --default-dark-nav-filter: blur(10px);
+
+  /* Links */
+  --default-dark-link: oklch(100% 0.0001 271.152deg);
+  --default-dark-link-hover: oklch(31.317% 0.0001 271.152deg);
+  --default-dark-link-decoration: none;
+  
+  /* Icons */
+  --default-dark-icon-fill: initial;
+  --default-dark-icon-stroke: initial;
+
+  /* Cards */
+  --default-dark-card-bg-primary: var(--default-dark-bg-primary);
+  --default-dark-card-bg-primary-accent: var(--default-dark-bg-primary-accent);
+  --default-dark-card-bg-secondary: var(--default-dark-bg-secondary);
+  --default-dark-card-bg-secondary-accent: var(--default-dark-bg-secondary-accent);
+  --default-dark-card-fg-primary: var(--default-dark-fg-primary);
+  --default-dark-card-fg-secondary: var(--default-dark-fg-secondary);
+
+  /* RETRO LIGHT */
+
+  /* Background colors */
+  --retro-light-bg-primary: oklch(69.6% 0.17 162.48deg);
+  --retro-light-bg-primary-accent: oklch(69.6% 0.17 162.48deg / 30%);
+  --retro-light-bg-secondary: initial;
+  --retro-light-bg-secondary-accent: initial;
+  --retro-light-bg-tertiary: initial;
+  --retro-light-bg-tertiary-accent: initial;
+  --retro-light-bg-placeholder: initial;
+
+  /* Foreground colors */
+  --retro-light-color-primary: oklch(26.2% 0.051 172.552deg);
+  --retro-light-color-secondary: oklch(26.2% 0.051 172.552deg);
+  --retro-light-color-tertiary: oklch(26.2% 0.051 172.552deg);
+
+  /* Navbar colors */
+  --retro-light-nav-bg: initial;
+  --retro-light-nav-fg: initial;
+  --retro-light-nav-filter: blur(10px);
+
+  /* Links */
+  --retro-light-link: oklch(26.2% 0.051 172.552deg);
+  --retro-light-link-hover: oklch(33.757% 0.0658 171.523deg);
+  --retro-light-link-decoration: none;
+  
+  /* Icons */
+  --retro-light-icon-fill: initial;
+  --retro-light-icon-stroke: initial;
+
+  /* Cards */
+  --retro-light-card-bg-primary: var(--retro-light-bg-primary);
+  --retro-light-card-bg-primary-accent: var(--retro-light-bg-primary-accent);
+  --retro-light-card-bg-secondary: var(--retro-light-bg-secondary);
+  --retro-light-card-bg-secondary-accent: var(--retro-light-bg-secondary-accent);
+  --retro-light-card-fg-primary: var(--retro-light-fg-primary);
+  --retro-light-card-fg-secondary: var(--retro-light-fg-secondary);
+
+  /* RETRO DARK */
+
+  /* Background colors */
+  --retro-dark-bg-primary: oklch(37.8% 0.077 168.94deg);
+  --retro-dark-bg-primary-accent: oklch(37.8% 0.077 168.94deg / 30%);
+  --retro-dark-bg-secondary: initial;
+  --retro-dark-bg-secondary-accent: initial;
+  --retro-dark-bg-tertiary: initial;
+  --retro-dark-bg-tertiary-accent: initial;
+  --retro-dark-bg-placeholder: initial;
+
+  /* Foreground colors */
+  --retro-dark-color-primary: oklch(84.5% 0.143 164.978deg);
+  --retro-dark-color-secondary: oklch(84.5% 0.143 164.978deg);
+  --retro-dark-color-tertiary: oklch(84.5% 0.143 164.978deg);
+
+  /* Navbar colors */
+  --retro-dark-nav-bg: initial;
+  --retro-dark-nav-fg: initial;
+  --retro-dark-nav-filter: blur(10px);
+
+  /* Links */
+  --retro-dark-link: oklch(88.562% 0.1478 165.618deg);
+  --retro-dark-link-hover: oklch(88.562% 0.1478 165.618deg);
+  --retro-dark-link-decoration: none;
+  
+  /* Icons */
+  --retro-dark-icon-fill: initial;
+  --retro-dark-icon-stroke: initial;
+
+  /* Cards */
+  --retro-dark-card-bg-primary: var(--retro-dark-bg-primary);
+  --retro-dark-card-bg-primary-accent: var(--retro-dark-bg-primary-accent);
+  --retro-dark-card-bg-secondary: var(--retro-dark-bg-secondary);
+  --retro-dark-card-bg-secondary-accent: var(--retro-dark-bg-secondary-accent);
+  --retro-dark-card-fg-primary: var(--retro-dark-fg-primary);
+  --retro-dark-card-fg-secondary: var(--retro-dark-fg-secondary);
 
   /* 
-    DRAFT
-    --bg-primary
-    --bg-primary-accent
-    --bg-secondary
-    --bg-secondary-accent
-    --bg-tertiary
-    --bg-tertiary-accent
-
-    --color-primary
-    --color-secondary
-    --link-color-primary
-    --link-color-primary-accent
-    --link-color-secondary
-    --link-color-secondary-accent
-    
-    --icon-fill
-    --icon-stroke
-
-    --nav-bg
-    --nav-filter
-
-    todo: typography
-    todo: animations
+    TODO: typography
   */
 }
 
 [data-theme="light"] {
-  --link: var(--link-light);
-  --link-hover: var(--link-hover-light);
-  --navbar-bg: var(--bg-color-light);
-  --navbar-fg: var(--color-light);
-  --navbar-filter: var(--nav-filter-light)
+  --bg-primary: var(--default-light-bg-primary);
+  --bg-primary-accent: var(--default-light-bg-primary-accent);
+  --bg-secondary: var(--default-light-bg-secondary);
+  --bg-secondary-accent: var(--default-light-bg-secondary-accent);
+  --bg-tertiary: var(--default-light-bg-tertiary);
+  --bg-tertiary-accent: var(--default-light-bg-tertiary-accent);
+  --bg-placeholder: var(--default-light-bg-placeholder);
+  --color-primary: var(--default-light-color-primary);
+  --color-secondary: var(--default-light-color-secondary);
+  --color-tertiary: var(--default-light-color-tertiary);
+  --nav-bg: var(--default-light-nav-bg);
+  --nav-fg: var(--default-light-nav-fg);
+  --nav-filter: var(--default-light-nav-filter);
+  --link: var(--default-light-link);
+  --link-hover: var(--default-light-link-hover);
+  --link-decoration: var(--default-light-link-decoration);
+  --icon-fill: var(--default-light-icon-fill);
+  --icon-stroke: var(--default-light-icon-stroke);
+  --card-bg-primary: var(--default-light-card-bg-primary);
+  --card-bg-primary-accent: var(--default-light-card-bg-primary-accent);
+  --card-bg-secondary: var(--default-light-card-bg-secondary);
+  --card-bg-secondary-accent: var(--default-light-card-bg-secondary-accent);
+  --card-fg-primary: var(--default-light-card-fg-primary);
+  --card-fg-secondary: var(--default-light-card-fg-secondary);
 }
 
 [data-theme="dark"] {
-  --link: var(--link-dark);
-  --link-hover: var(--link-hover-dark);
-  --navbar-bg: var(--bg-color-dark);
-  --navbar-fg: var(--color-dark);
-  --navbar-filter: var(--nav-filter-dark)
+  --bg-primary: var(--default-dark-bg-primary);
+  --bg-primary-accent: var(--default-dark-bg-primary-accent);
+  --bg-secondary: var(--default-dark-bg-secondary);
+  --bg-secondary-accent: var(--default-dark-bg-secondary-accent);
+  --bg-tertiary: var(--default-dark-bg-tertiary);
+  --bg-tertiary-accent: var(--default-dark-bg-tertiary-accent);
+  --bg-placeholder: var(--default-dark-bg-placeholder);
+  --color-primary: var(--default-dark-color-primary);
+  --color-secondary: var(--default-dark-color-secondary);
+  --color-tertiary: var(--default-dark-color-tertiary);
+  --nav-bg: var(--default-dark-nav-bg);
+  --nav-fg: var(--default-dark-nav-fg);
+  --nav-filter: var(--default-dark-nav-filter);
+  --link: var(--default-dark-link);
+  --link-hover: var(--default-dark-link-hover);
+  --link-decoration: var(--default-dark-link-decoration);
+  --icon-fill: var(--default-dark-icon-fill);
+  --icon-stroke: var(--default-dark-icon-stroke);
+  --card-bg-primary: var(--default-dark-card-bg-primary);
+  --card-bg-primary-accent: var(--default-dark-card-bg-primary-accent);
+  --card-bg-secondary: var(--default-dark-card-bg-secondary);
+  --card-bg-secondary-accent: var(--default-dark-card-bg-secondary-accent);
+  --card-fg-primary: var(--default-dark-card-fg-primary);
+  --card-fg-secondary: var(--default-dark-card-fg-secondary);
 }
 
 [data-theme="retro-light"] {
-  --link: var(--link-retro-light);
-  --link-hover: var(--link-hover-retro-light);
-  --navbar-bg: var(--bg-color-retro-light);
-  --navbar-fg: var(--color-retro-light);
-  --navbar-filter: var(var(--nav-filter-retro-light))
+  --bg-primary: var(--retro-light-bg-primary);
+  --bg-primary-accent: var(--retro-light-bg-primary-accent);
+  --bg-secondary: var(--retro-light-bg-secondary);
+  --bg-secondary-accent: var(--retro-light-bg-secondary-accent);
+  --bg-tertiary: var(--retro-light-bg-tertiary);
+  --bg-tertiary-accent: var(--retro-light-bg-tertiary-accent);
+  --bg-placeholder: var(--retro-light-bg-placeholder);
+  --color-primary: var(--retro-light-color-primary);
+  --color-secondary: var(--retro-light-color-secondary);
+  --color-tertiary: var(--retro-light-color-tertiary);
+  --nav-bg: var(--retro-light-nav-bg);
+  --nav-fg: var(--retro-light-nav-fg);
+  --nav-filter: var(--retro-light-nav-filter);
+  --link: var(--retro-light-link);
+  --link-hover: var(--retro-light-link-hover);
+  --link-decoration: var(--retro-light-link-decoration);
+  --icon-fill: var(--retro-light-icon-fill);
+  --icon-stroke: var(--retro-light-icon-stroke);
+  --card-bg-primary: var(--retro-light-card-bg-primary);
+  --card-bg-primary-accent: var(--retro-light-card-bg-primary-accent);
+  --card-bg-secondary: var(--retro-light-card-bg-secondary);
+  --card-bg-secondary-accent: var(--retro-light-card-bg-secondary-accent);
+  --card-fg-primary: var(--retro-light-card-fg-primary);
+  --card-fg-secondary: var(--retro-light-card-fg-secondary);
 }
 
 [data-theme="retro-dark"] {
-  --link: var(--link-retro-dark);
-  --link-hover: var(--link-hover-retro-dark);
-  --navbar-bg: var(--bg-color-retro-dark);
-  --navbar-fg: var(--color-retro-dark);
-  --navbar-filter: var(var(--nav-filter-retro-dark))
+  --bg-primary: var(--retro-dark-bg-primary);
+  --bg-primary-accent: var(--retro-dark-bg-primary-accent);
+  --bg-secondary: var(--retro-dark-bg-secondary);
+  --bg-secondary-accent: var(--retro-dark-bg-secondary-accent);
+  --bg-tertiary: var(--retro-dark-bg-tertiary);
+  --bg-tertiary-accent: var(--retro-dark-bg-tertiary-accent);
+  --bg-placeholder: var(--retro-dark-bg-placeholder);
+  --color-primary: var(--retro-dark-color-primary);
+  --color-secondary: var(--retro-dark-color-secondary);
+  --color-tertiary: var(--retro-dark-color-tertiary);
+  --nav-bg: var(--retro-dark-nav-bg);
+  --nav-fg: var(--retro-dark-nav-fg);
+  --nav-filter: var(--retro-dark-nav-filter);
+  --link: var(--retro-dark-link);
+  --link-hover: var(--retro-dark-link-hover);
+  --link-decoration: var(--retro-dark-link-decoration);
+  --icon-fill: var(--retro-dark-icon-fill);
+  --icon-stroke: var(--retro-dark-icon-stroke);
+  --card-bg-primary: var(--retro-dark-card-bg-primary);
+  --card-bg-primary-accent: var(--retro-dark-card-bg-primary-accent);
+  --card-bg-secondary: var(--retro-dark-card-bg-secondary);
+  --card-bg-secondary-accent: var(--retro-dark-card-bg-secondary-accent);
+  --card-fg-primary: var(--retro-dark-card-fg-primary);
+  --card-fg-secondary: var(--retro-dark-card-fg-secondary);
 }

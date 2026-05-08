@@ -2,14 +2,24 @@
 import type { JobExperience } from "../data/experience";
 
 interface Props {
+  cardClasses?: string
+  dropdownClasses?: string
+  iconClasses?: string
   experience: JobExperience
 }
 
 const { experience } = Astro.props;
 
+const cardClasses = Astro.props.cardClasses
+  ? Astro.props.cardClasses
+  : "primary-card";
+
+const dropdownClasses = Astro.props.dropdownClasses
+  ? Astro.props.dropdownClasses
+  : "";
 ---
 
-<li class="experience-card" data-experience-id={experience.slug}>
+<li class=`${cardClasses} experience-card` data-experience-id={experience.slug}>
   <button class="card-header" aria-expanded="false">
     <div class="experience-icon" style={`background-image: url('${experience.icon}')`}>
       <img src={experience.icon} alt={experience.title} class="sr-only">
@@ -20,7 +30,7 @@ const { experience } = Astro.props;
     </div>
     <div class="dropdown-icon">-</div>
   </button>
-  <div class="dropdown-content hidden">
+  <div class=`${dropdownClasses} dropdown-content hidden`>
     <ul class="experience-list">
       {experience.items.map((item) => <li>{item}</li>)}
     </ul>
@@ -29,10 +39,8 @@ const { experience } = Astro.props;
 
 <style>
   .experience-card {
-    /* margin-bottom: 1rem; */
     border-radius: 15px;
     overflow: hidden;
-    background-color: oklch(100% 0.0001 271.152deg);
   }
 
   .experience-card p {
@@ -70,7 +78,6 @@ const { experience } = Astro.props;
   .dropdown-content{
     padding: 0.5rem 0.5rem 1rem 5.5rem;
     overflow: hidden;
-    background-color: oklch(97.815% 0.0001 271.152deg);
   }
 
   .experience-list {

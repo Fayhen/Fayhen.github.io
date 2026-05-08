@@ -14,11 +14,11 @@
     background: none;
     cursor: pointer;
   }
-  .sun { fill: black; }
+  .sun { fill: var(--color-primary) }
   .moon { fill: transparent; }
 
-  :global(.dark) .sun { fill: transparent; }
-  :global(.dark) .moon { fill: white; }
+  :global(data-theme="dark") .sun { fill: transparent; }
+  :global(data-theme="dark") .moon { fill: var(--color-primary); }
 </style>
 
 <script>

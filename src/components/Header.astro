@@ -36,9 +36,9 @@ const { navItems } = Astro.props;
     width: 100%;
     padding: 0.5rem 0;
     z-index: 100;
-    backdrop-filter: var(--navbar-filter);
-    color: var(--navbar-fg);
-    background-color: var(--navbar-bg);
+    backdrop-filter: var(--nav-filter);
+    color: var(--nav-fg);
+    background-color: var(--nav-bg);
   }
 
   .header-container {
@@ -68,7 +68,7 @@ const { navItems } = Astro.props;
 
   nav a {
     color: var(--link);
-    text-decoration: none;
+    text-decoration: var(--link-decoration);
   }
 
   nav a:hover {

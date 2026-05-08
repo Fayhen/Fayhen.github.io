@@ -11,7 +11,7 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<li class="card" data-category={project.category}>
+<li class="secondary-card animated project-card" data-category={project.category}>
   <span class="category-tag">{project.category}</span>
   <div class="description">
     <h3>{project.title}</h3>
@@ -19,7 +19,7 @@ const { project } = Astro.props;
   </div>
   <div class="footer">
     <ul class="base-list stacks-row">
-      {project.stacks.slice(0, 4).map(s => <StackPill stack={s} bgColor="oklch(100% 0.00011 271.152)" />)}
+      {project.stacks.slice(0, 4).map(s => <StackPill stack={s} bgColor="var(--bg-primary)" />)}
       {project.stacks.length > 4 && (
         <li class="overflow-chip">+{project.stacks.length - 4}</li>
       )}
@@ -29,39 +29,34 @@ const { project } = Astro.props;
 </li>
 
 <style>
-  .card[data-category="backend"] {
+  .project-card[data-category="backend"] {
+    /* TODO: refactor into project category theme tokens */
     --accent: oklch(60% 0.12 80deg);
     --accent-bg: oklch(95% 0.04 80deg);
   }
 
-  .card[data-category="frontend"] {
+  .project-card[data-category="frontend"] {
+    /* TODO: refactor into project category theme tokens */
     --accent: oklch(60% 0.12 250deg);
     --accent-bg: oklch(95% 0.04 250deg);
    }
 
-  .card[data-category="fullstack"] {
+  .project-card[data-category="fullstack"] {
+    /* TODO: refactor into project category theme tokens */
     --accent: oklch(60% 0.12 160deg);
     --accent-bg: oklch(95% 0.04 160deg);
    }
 
-  .card {
+  .project-card {
     position: relative;
     padding: 1rem;
     border-radius: 0.75rem;
-    background-color: oklch(95.514% 0.0001 271.152deg);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
   }
 
-  .card:hover,
-  .card:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px oklch(0% 0 0deg / 10%);
-  }
-
-  .card .category-tag {
+  .project-card .category-tag {
     align-self: flex-start;
     display: inline-block;
     padding: 0.2rem 0.6rem;
@@ -73,11 +68,11 @@ const { project } = Astro.props;
     letter-spacing: 0.05rem;
   }
 
-  .card .description {
+  .project-card .description {
     overflow: hidden;
   }
 
-  .card .description p {
+  .project-card .description p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -85,7 +80,7 @@ const { project } = Astro.props;
     overflow: hidden;
   }
 
-  .card .footer {
+  .project-card .footer {
     margin-top: auto;
     display: flex;
     align-items: center;
@@ -93,7 +88,7 @@ const { project } = Astro.props;
     gap: 0 0.5rem;
   }
 
-  .card .footer ul {
+  .project-card .footer ul {
     display: flex;
     align-items: center;
     gap: 0.5rem;

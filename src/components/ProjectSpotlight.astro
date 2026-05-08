@@ -14,7 +14,7 @@ const { project } = Astro.props;
 
 ---
 
-<li class="featured-card" data-category={project.category}>
+<li class="secondary-card animated featured-card" data-category={project.category}>
   <div class="layout">
     <div class="hero">
       {project.picture && <Image src={project.picture} alt={project.title} />}
@@ -25,7 +25,7 @@ const { project } = Astro.props;
       <p>{project.description}</p>
       <div class="footer">
         <ul class="base-list stacks-row">
-          {project.stacks.map((stack) => <StackPill stack={stack} bgColor="oklch(100% 0.00011 271.152)" />)}
+          {project.stacks.map((stack) => <StackPill stack={stack} bgColor="var(--bg-primary)" />)}
         </ul>
         <ProjectCTAs project={project} />
       </div>
@@ -35,16 +35,19 @@ const { project } = Astro.props;
 
 <style>
   .featured-card[data-category="backend"] {
+    /* TODO: refactor into project category theme tokens */
     --accent: oklch(60% 0.12 80deg);
     --accent-bg: oklch(95% 0.04 80deg);
   }
 
   .featured-card[data-category="frontend"] {
+    /* TODO: refactor into project category theme tokens */
     --accent: oklch(60% 0.12 250deg);
     --accent-bg: oklch(95% 0.04 250deg);
    }
 
   .featured-card[data-category="fullstack"] {
+    /* TODO: refactor into project category theme tokens */
     --accent: oklch(60% 0.12 160deg);
     --accent-bg: oklch(95% 0.04 160deg);
    }
@@ -55,23 +58,6 @@ const { project } = Astro.props;
     overflow: hidden;
     position: relative;
     container-type: inline-size;
-    background-color: oklch(95.514% 0.0001 271.152deg);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .featured-card:hover,
-  .featured-card:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px oklch(0% 0 0deg / 10%);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .featured-card,
-    .featured-card:hover,
-    .featured-card:focus-within {
-      transition: none;
-      transform: none;
-    }
   }
 
   .featured-card .layout {
@@ -93,9 +79,7 @@ const { project } = Astro.props;
   }
 
   .hero {
-    background: linear-gradient(135deg,
-      oklch(84.972% 0.0207 250.513deg),
-      oklch(97.68% 0.0068 277.074deg));
+    background: var(--bg-placeholder)
   }
 
   .featured-card .hero {

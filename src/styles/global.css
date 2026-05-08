@@ -46,6 +46,65 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+.primary-card {
+  background-color: var(--card-bg-primary);
+  color: var(--card-fg-primary);
+}
+
+.primary-card.hoverable:hover,
+.primary-card.hoverable:focus-within {
+  background-color: var(--card-bg-primary-accent);
+}
+
+.secondary-card {
+  background-color: var(--card-bg-secondary);
+  color: var(--card-fg-secondary);
+}
+
+.secondary-card.hoverable:hover,
+.secondary-card.hoverable:focus-within {
+  background-color: var(--card-bg-secondary-accent);
+}
+
+.primary-card.animated,
+.secondary-card.animated {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-card.animated:hover,
+.primary-card.animated:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 14px var(--card-bg-primary-accent);
+}
+
+.secondary-card.animated:hover,
+.secondary-card.animated:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 14px var(--card-bg-secondary-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-card.animated:hover,
+  .primary-card.animated:focus-within,
+  .secondary-card.animated:hover,
+  .secondary-card.animated:focus-within {
+    transition: none;
+    transform: none;
+  }
+}
+
+.color-primary {
+  background-color: var(--color-primary);
+}
+
+.color-secondary {
+  background-color: var(--color-secondary);
+}
+
+.color-tertiary {
+  background-color: var(--color-tertiary);
+}
+
 /* Development utilities */
 
 .dev-borders {
