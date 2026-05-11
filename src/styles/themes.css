@@ -23,6 +23,7 @@
   --default-light-nav-bg: oklch(100% 0.0001 271.152deg / 30%);
   --default-light-nav-fg: oklch(0% 0 0deg);
   --default-light-nav-filter: blur(10px);
+  --default-light-nav-shadow: 0 1px 2px oklch(0% 0 0deg / 12%);
 
   /* Footer */
   --default-light-footer-bg: oklch(100% 0.0001 271.152deg);
@@ -89,6 +90,7 @@
   --default-dark-nav-bg: oklch(27.274% 0.0001 271.152deg / 50%);
   --default-dark-nav-fg: oklch(100% 0.0001 271.152deg);
   --default-dark-nav-filter: blur(10px);
+  --default-dark-nav-shadow: 0 1px 6px oklch(52.78% 0.0002 271.152deg / 12%);
 
   /* Footer */
   --default-dark-footer-bg: oklch(27.274% 0.0001 271.152deg);
@@ -156,6 +158,7 @@
   --retro-light-nav-bg: oklch(69.6% 0.17 162.48deg / 60%);
   --retro-light-nav-fg: var(--retro-light-color-primary);
   --retro-light-nav-filter: blur(10px);
+  --retro-light-nav-shadow: 0 1px 2px oklch(18% 0.06 168deg / 30%);
 
   /* Footer */
   --retro-light-footer-bg: oklch(69.6% 0.17 162.48deg);
@@ -223,6 +226,7 @@
   --retro-dark-nav-bg: oklch(37.8% 0.077 168.94deg / 70%);
   --retro-dark-nav-fg:  var(--retro-dark-color-primary);
   --retro-dark-nav-filter: blur(10px);
+  --retro-dark-nav-shadow: 0 1px 2px oklch(10% 0.04 168deg / 60%);
 
   /* Footer */
   --retro-dark-footer-bg: oklch(37.8% 0.077 168.94deg);
@@ -283,6 +287,7 @@
   --nav-bg: var(--default-light-nav-bg);
   --nav-fg: var(--default-light-nav-fg);
   --nav-filter: var(--default-light-nav-filter);
+  --nav-shadow: var(--default-light-nav-shadow);
   --footer-bg: var(--default-light-footer-bg);
   --footer-fg: var(--default-light-footer-fg);
   --footer-highlight-luv: var(--default-light-footer-highlight-luv);
@@ -330,6 +335,7 @@
   --nav-bg: var(--default-dark-nav-bg);
   --nav-fg: var(--default-dark-nav-fg);
   --nav-filter: var(--default-dark-nav-filter);
+  --nav-shadow: var(--default-dark-nav-shadow);
   --footer-bg: var(--default-dark-footer-bg);
   --footer-fg: var(--default-dark-footer-fg);
   --footer-highlight-luv: var(--default-dark-footer-highlight-luv);
@@ -377,6 +383,7 @@
   --nav-bg: var(--retro-light-nav-bg);
   --nav-fg: var(--retro-light-nav-fg);
   --nav-filter: var(--retro-light-nav-filter);
+  --nav-shadow: var(--retro-light-nav-shadow);
   --footer-bg: var(--retro-light-footer-bg);
   --footer-fg: var(--retro-light-footer-fg);
   --footer-highlight-luv: var(--retro-light-footer-highlight-luv);
@@ -424,6 +431,7 @@
   --nav-bg: var(--retro-dark-nav-bg);
   --nav-fg: var(--retro-dark-nav-fg);
   --nav-filter: var(--retro-dark-nav-filter);
+  --nav-shadow: var(--retro-dark-nav-shadow);
   --footer-bg: var(--retro-dark-footer-bg);
   --footer-fg: var(--retro-dark-footer-fg);
   --footer-highlight-luv: var(--retro-dark-footer-highlight-luv);

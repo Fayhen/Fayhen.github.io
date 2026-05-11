@@ -1,4 +1,6 @@
 ---
+import Caret from "../assets/icons/fas/angle-down-solid-full.svg";
+
 import type { JobExperience } from "../data/experience";
 
 interface Props {
@@ -28,12 +30,16 @@ const dropdownClasses = Astro.props.dropdownClasses
       <p>{experience.title}</p>
       <p>{experience.startAt} - {experience.endAt}</p>
     </div>
-    <div class="dropdown-icon">-</div>
+    <div class="dropdown-icon">
+      <Caret />
+    </div>
   </button>
-  <div class=`${dropdownClasses} dropdown-content hidden`>
-    <ul class="experience-list">
-      {experience.items.map((item) => <li>{item}</li>)}
-    </ul>
+  <div class=`${dropdownClasses} dropdown-content`>
+    <div class="experience-list-wrapper">
+      <ul class="experience-list">
+        {experience.items.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
   </div>
 </li>
 
@@ -51,9 +57,9 @@ const dropdownClasses = Astro.props.dropdownClasses
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem 0.8rem;
     border: none;
-    background-color: transparent;
+    background-color: var(--bg-primary);
     color: inherit;
     cursor: pointer;
     font: inherit;
@@ -71,11 +77,48 @@ const dropdownClasses = Astro.props.dropdownClasses
     background-repeat: no-repeat;
   }
 
-  .dropdown-icon{
+  .dropdown-icon {
     margin-left: auto;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    transition: transform 400ms ease;
   }
 
+  .card-header[aria-expanded="true"] .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown-icon,
+    .card-header[aria-expanded="true"] .dropdown-icon {
+      transition: none;
+      transform: none;
+    }
+  }
+
+
   .dropdown-content{
+    display: grid;
+    grid-template-rows: 0fr;
+    padding: 0;
+    transition: grid-template-rows 400ms ease;
+  }
+
+  .experience-card:has(.card-header[aria-expanded="true"]) .dropdown-content {
+    grid-template-rows: 1fr;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown-icon,
+    .card-header[aria-expanded="true"] .dropdown-icon,
+    .experience-card:has(.card-header[aria-expanded="true"]) .dropdown-content {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  .experience-list-wrapper {
     padding: 0.5rem 0.5rem 1rem 5.5rem;
     overflow: hidden;
   }
@@ -111,10 +154,7 @@ document.querySelectorAll<HTMLElement>(".card-header").forEach((button) => {
 
 function toggleDropdown(event: Event) {
   const button = event.currentTarget as HTMLElement;
-  const card = button.closest(".experience-card");
-  const content = card?.querySelector(".dropdown-content");
-  const isHidden = content?.classList.contains("hidden");
-  button.setAttribute("aria-expanded", isHidden ? "true" : "false");
-  content?.classList.toggle("hidden");
+  const isExpanded = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
 }
 </script>

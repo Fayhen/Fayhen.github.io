@@ -64,11 +64,11 @@ const navItems = [
         <div class="experience-column">
           <h2>Where I've been:</h2>
           <ul class="base-list">
-            {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card hoverable" />)}
+            {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
           </ul>
           <h2>I also volunteer:</h2>
           <ul class="base-list">
-            {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card hoverable" />)}
+            {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
           </ul>
         </div>
 
@@ -149,6 +149,7 @@ const navItems = [
 
 <style>
   #intro-wrapper {
+    padding-top: 4rem;
     background-color: var(--bg-primary);
     color: var(--color-primary);
   }
