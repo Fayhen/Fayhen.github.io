@@ -1,8 +1,5 @@
 :root {
-  /*
-   TODO: Finish implementation of 'initial' values
-   TODO: typography
-   */
+  /* TODO: typography */
 
   /* DEFAULT LIGHT */
 
@@ -26,6 +23,14 @@
   --default-light-nav-bg: oklch(100% 0.0001 271.152deg / 30%);
   --default-light-nav-fg: oklch(0% 0 0deg);
   --default-light-nav-filter: blur(10px);
+
+  /* Footer */
+  --default-light-footer-bg: oklch(100% 0.0001 271.152deg);
+  --default-light-footer-fg: oklch(0% 0 0deg);
+  --default-light-footer-highlight-luv: palevioletred;
+  --default-light-footer-highlight-made: cornflowerblue;
+  --default-light-footer-highlight-me: darkslategrey;
+  --default-light-footer-highlight-this: oklch(58.044% 0.2015 26.162deg);
 
   /* Links */
   --default-light-link: oklch(0% 0 0deg);
@@ -84,6 +89,14 @@
   --default-dark-nav-bg: oklch(27.274% 0.0001 271.152deg / 50%);
   --default-dark-nav-fg: oklch(100% 0.0001 271.152deg);
   --default-dark-nav-filter: blur(10px);
+
+  /* Footer */
+  --default-dark-footer-bg: oklch(27.274% 0.0001 271.152deg);
+  --default-dark-footer-fg: oklch(82.032% 0.0001 271.152deg);
+  --default-dark-footer-highlight-luv: oklch(72% 0.14 10deg);
+  --default-dark-footer-highlight-made: oklch(72% 0.12 195deg);
+  --default-dark-footer-highlight-me: oklch(75% 0.10 280deg);
+  --default-dark-footer-highlight-this: oklch(72% 0.18 40deg);
 
   /* Links */
   --default-dark-link: oklch(100% 0.0001 271.152deg);
@@ -144,6 +157,14 @@
   --retro-light-nav-fg: var(--retro-light-color-primary);
   --retro-light-nav-filter: blur(10px);
 
+  /* Footer */
+  --retro-light-footer-bg: oklch(69.6% 0.17 162.48deg);
+  --retro-light-footer-fg: oklch(26.2% 0.051 172.552deg);
+  --retro-light-footer-highlight-luv: oklch(50% 0.18 20deg);
+  --retro-light-footer-highlight-made: oklch(40% 0.12 220deg);
+  --retro-light-footer-highlight-me: oklch(22% 0.06 168deg);
+  --retro-light-footer-highlight-this: oklch(52% 0.14 75deg);
+
   /* Links */
   --retro-light-link: oklch(26.2% 0.051 172.552deg);
   --retro-light-link-hover: oklch(33.757% 0.0658 171.523deg);
@@ -203,6 +224,14 @@
   --retro-dark-nav-fg:  var(--retro-dark-color-primary);
   --retro-dark-nav-filter: blur(10px);
 
+  /* Footer */
+  --retro-dark-footer-bg: oklch(37.8% 0.077 168.94deg);
+  --retro-dark-footer-fg: oklch(84.5% 0.143 164.978deg);
+  --retro-dark-footer-highlight-luv: oklch(68% 0.16 18deg);
+  --retro-dark-footer-highlight-made: oklch(78% 0.13 200deg);
+  --retro-dark-footer-highlight-me: oklch(80% 0.12 162deg);
+  --retro-dark-footer-highlight-this: oklch(75% 0.15 85deg);
+
   /* Links */
   --retro-dark-link: oklch(88.562% 0.1478 165.618deg);
   --retro-dark-link-hover: oklch(88.562% 0.1478 165.618deg);
@@ -254,6 +283,12 @@
   --nav-bg: var(--default-light-nav-bg);
   --nav-fg: var(--default-light-nav-fg);
   --nav-filter: var(--default-light-nav-filter);
+  --footer-bg: var(--default-light-footer-bg);
+  --footer-fg: var(--default-light-footer-fg);
+  --footer-highlight-luv: var(--default-light-footer-highlight-luv);
+  --footer-highlight-made: var(--default-light-footer-highlight-made);
+  --footer-highlight-me: var(--default-light-footer-highlight-me);
+  --footer-highlight-this: var(--default-light-footer-highlight-this);
   --link: var(--default-light-link);
   --link-hover: var(--default-light-link-hover);
   --link-decoration: var(--default-light-link-decoration);
@@ -295,6 +330,12 @@
   --nav-bg: var(--default-dark-nav-bg);
   --nav-fg: var(--default-dark-nav-fg);
   --nav-filter: var(--default-dark-nav-filter);
+  --footer-bg: var(--default-dark-footer-bg);
+  --footer-fg: var(--default-dark-footer-fg);
+  --footer-highlight-luv: var(--default-dark-footer-highlight-luv);
+  --footer-highlight-made: var(--default-dark-footer-highlight-made);
+  --footer-highlight-me: var(--default-dark-footer-highlight-me);
+  --footer-highlight-this: var(--default-dark-footer-highlight-this);
   --link: var(--default-dark-link);
   --link-hover: var(--default-dark-link-hover);
   --link-decoration: var(--default-dark-link-decoration);
@@ -336,6 +377,12 @@
   --nav-bg: var(--retro-light-nav-bg);
   --nav-fg: var(--retro-light-nav-fg);
   --nav-filter: var(--retro-light-nav-filter);
+  --footer-bg: var(--retro-light-footer-bg);
+  --footer-fg: var(--retro-light-footer-fg);
+  --footer-highlight-luv: var(--retro-light-footer-highlight-luv);
+  --footer-highlight-made: var(--retro-light-footer-highlight-made);
+  --footer-highlight-me: var(--retro-light-footer-highlight-me);
+  --footer-highlight-this: var(--retro-light-footer-highlight-this);
   --link: var(--retro-light-link);
   --link-hover: var(--retro-light-link-hover);
   --link-decoration: var(--retro-light-link-decoration);
@@ -377,6 +424,12 @@
   --nav-bg: var(--retro-dark-nav-bg);
   --nav-fg: var(--retro-dark-nav-fg);
   --nav-filter: var(--retro-dark-nav-filter);
+  --footer-bg: var(--retro-dark-footer-bg);
+  --footer-fg: var(--retro-dark-footer-fg);
+  --footer-highlight-luv: var(--retro-dark-footer-highlight-luv);
+  --footer-highlight-made: var(--retro-dark-footer-highlight-made);
+  --footer-highlight-me: var(--retro-dark-footer-highlight-me);
+  --footer-highlight-this: var(--retro-dark-footer-highlight-this);
   --link: var(--retro-dark-link);
   --link-hover: var(--retro-dark-link-hover);
   --link-decoration: var(--retro-dark-link-decoration);

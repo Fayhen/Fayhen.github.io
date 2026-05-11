@@ -331,6 +331,8 @@ const navItems = [
     justify-content: center;
     align-items: center;
     height: 2rem;
+    background-color: var(--footer-bg);
+    color: var(--footer-fg);
     letter-spacing: 0.01rem;
     word-spacing: 0.1rem;
     text-align: center;
@@ -347,22 +349,18 @@ const navItems = [
   }
 
   footer #luv {
-    /* Refactor into footer theme token */
-    color: palevioletred;
+    color: var(--footer-highlight-luv);
   }
 
   footer #made {
-    /* Refactor into footer theme token */
-    color: cornflowerblue;
+    color: var(--footer-highlight-made);
   }
 
   footer #me {
-    /* Refactor into footer theme token */
-    color: darkslategrey;
+    color: var(--footer-highlight-me);
   }
 
   footer #this {
-    /* Refactor into footer theme token */
-    color: #D83333;
+    color: var(--footer-highlight-this);
   }
 </style>
