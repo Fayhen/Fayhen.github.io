@@ -9,9 +9,12 @@
 html,
 body {
   margin: 0;
+  font-family: var(--font-inter);
+  /* font-size: 1.075rem; */
 }
 
 body {
+  font-size: clamp(100%, 1.5vw, 102.5%);
   min-height: 100dvh;
 }
 
