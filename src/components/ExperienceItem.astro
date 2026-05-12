@@ -21,20 +21,26 @@ const dropdownClasses = Astro.props.dropdownClasses
   : "";
 ---
 
-<li class=`${cardClasses} experience-card` data-experience-id={experience.slug}>
-  <button class="card-header" aria-expanded="false">
-    <div class="experience-icon" style={`background-image: url('${experience.icon}')`}>
-      <img src={experience.icon} alt={experience.title} class="sr-only">
-    </div>
+<li class=`${cardClasses} experience-card`>
+  <button
+    class="card-header"
+    aria-expanded="false"
+    aria-controls={`exp-content-${experience.slug}`}
+  >
+    <div class="experience-icon" style={`background-image: url('${experience.icon}')`}></div>
     <div>
       <p>{experience.title}</p>
       <p>{experience.startAt} - {experience.endAt}</p>
     </div>
     <div class="dropdown-icon">
-      <Caret />
+      <Caret aria-hidden="true" />
     </div>
   </button>
-  <div class=`${dropdownClasses} dropdown-content`>
+  <div
+    id={`exp-content-${experience.slug}`}
+    class=`${dropdownClasses} dropdown-content`
+    inert
+  >
     <div class="experience-list-wrapper">
       <ul class="experience-list">
         {experience.items.map((item) => <li>{item}</li>)}
@@ -128,23 +134,6 @@ const dropdownClasses = Astro.props.dropdownClasses
     list-style-position: outside;
     list-style-type: circle;
   }
-
-  /*
-    This keeps the <img> element for its native accessibility on
-    screen readers, while visually the images are displayed via
-    background image on the outer element.
-   */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border-width: 0;
-  }
 </style>
 
 <script>
@@ -155,6 +144,9 @@ document.querySelectorAll<HTMLElement>(".card-header").forEach((button) => {
 function toggleDropdown(event: Event) {
   const button = event.currentTarget as HTMLElement;
   const isExpanded = button.getAttribute("aria-expanded") === "true";
+  const target = button.getAttribute("aria-controls") || "";
+  const content = document.getElementById(target);
   button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+  content?.toggleAttribute("inert", isExpanded);
 }
 </script>
