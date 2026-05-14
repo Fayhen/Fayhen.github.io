@@ -23,114 +23,114 @@ import { volunteering } from "../data/experience";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Skills", href: "/#" },
-  { label: "Education", href: "/#" },
-  { label: "Experience", href: "/#" },
-  { label: "Projects", href: "/#" },
-  { label: "Contact me", href: "/#" }
+  { label: "Skills & Experience", href: "/#skills-section" },
+  { label: "Projects", href: "/#projects-section" },
+  { label: "Contact me", href: "/#contact-section" }
 ];
 ---
 
 <Base>
   <Header {navItems} />
 
-  <div id="intro-wrapper">
-    <section id="intro-section" class="page-container">
-      <ProfilePic />
-      <Presentation />
-    </section>
-  </div>
+  <main id="main-content" tabindex="-1">
+    <div id="intro-wrapper">
+      <section id="intro-section" class="page-container">
+        <ProfilePic />
+        <Presentation />
+      </section>
+    </div>
 
-  <div id="skills-wrapper">
-    <section id="skills-section" class="page-container">
-      <h1>Skills & Experience</h1>
+    <div id="skills-wrapper">
+      <section id="skills-section" class="page-container">
+        <h1>Skills & Experience</h1>
 
-      <div class="major-areas">
-        <div class="primary-card major-area-detail">
-          <h2>Fullstack</h2>
-          <p>Building real-time web applications with Elixir and Phoenix, including CMS and B2B platforms, integrated with distributed backend services.</p>
-        </div>
-        <div class="primary-card major-area-detail">
-          <h2>Backend</h2>
-          <p>Designing purpose-built APIs and cloud functions, and modernizing legacy systems into scalable, maintainable architectures.</p>
-        </div>
-        <div class="primary-card major-area-detail">
-          <h2>Frontend</h2>
-          <p>Developing web applications with modern frameworks and Firebase, delivering production-ready solutions across multiple client projects.</p>
-        </div>
-      </div>
-
-      <div class="experience-wrapper">
-        <div class="experience-column">
-          <h2>Where I've been:</h2>
-          <ul class="base-list">
-            {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
-          </ul>
-          <h2>I also volunteer:</h2>
-          <ul class="base-list">
-            {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
-          </ul>
+        <div class="major-areas">
+          <div class="primary-card major-area-detail">
+            <h2>Fullstack</h2>
+            <p>Building real-time web applications with Elixir and Phoenix, including CMS and B2B platforms, integrated with distributed backend services.</p>
+          </div>
+          <div class="primary-card major-area-detail">
+            <h2>Backend</h2>
+            <p>Designing purpose-built APIs and cloud functions, and modernizing legacy systems into scalable, maintainable architectures.</p>
+          </div>
+          <div class="primary-card major-area-detail">
+            <h2>Frontend</h2>
+            <p>Developing web applications with modern frameworks and Firebase, delivering production-ready solutions across multiple client projects.</p>
+          </div>
         </div>
 
-        <div class="tools-column">
-          <div class="stacks">
-            <h2>I am building with:</h2>
-            <ul class="base-list stack-list">
-              {Object.values(stacks).map((stack) => <StackIcon stack={stack} />)}
+        <div class="experience-wrapper">
+          <div class="experience-column">
+            <h2>Where I've been:</h2>
+            <ul class="base-list">
+              {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
+            </ul>
+            <h2>I also volunteer:</h2>
+            <ul class="base-list">
+              {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
             </ul>
           </div>
-          <div class="activity">
-            Activity Placeholder
+
+          <div class="tools-column">
+            <div class="stacks">
+              <h2>I am building with:</h2>
+              <ul class="base-list stack-list">
+                {Object.values(stacks).map((stack) => <StackIcon stack={stack} />)}
+              </ul>
+            </div>
+            <div class="activity">
+              Activity Placeholder
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
 
-  <div id="projects-wrapper">
-    <section id="projects-section" class="page-container">
-      <h1>Projects</h1>
-      <p>Most of my projects are closed-source. Here's a few I can share freely.</p>
-      <FeaturedProjectStrip projects={projects.filter((p) => p.featured)} />
-      <ul class="base-list projects-grid">
-        {projects.filter((p) => !p.featured).map((p) => <Project project={p} />)}
-      </ul>
-    </section>
-  </div>
+    <div id="projects-wrapper">
+      <section id="projects-section" class="page-container">
+        <h1>Projects</h1>
+        <p>Most of my projects are closed-source. Here's a few I can share freely.</p>
+        <FeaturedProjectStrip projects={projects.filter((p) => p.featured)} />
+        <ul class="base-list projects-grid">
+          {projects.filter((p) => !p.featured).map((p) => <Project project={p} />)}
+        </ul>
+      </section>
+    </div>
 
-  <div id="contact-wrapper">
-    <section id="contact-section" class="page-container">
-      <h1>Contact me</h1>
-      <p>Have a project in mind? Let's chat.</p>
-      <ul class="base-list">
-        <li>
-          <a href="mailto:diego00alfa@gmail.com" aria-label="Send me an email">
-            <EmailIcon class="contact-icon" aria-hidden="true" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/diegogcsouza/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Check my LinkedIn profile. Opens in a new tab."
-          >
-            <LinkedInIcon class="contact-icon" aria-hidden="true" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/Fayhen"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Check my work at GitHub. Open in a new tab."
-          >
-            <GitHubIcon class="contact-icon" aria-hidden="true" />
-          </a>
-        </li>
-      </ul>
-    </section>
-  </div>
+    <div id="contact-wrapper">
+      <section id="contact-section" class="page-container">
+        <h1>Contact me</h1>
+        <p>Have a project in mind? Let's chat.</p>
+        <ul class="base-list">
+          <li>
+            <a href="mailto:diego00alfa@gmail.com" aria-label="Send me an email">
+              <EmailIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/diegogcsouza/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Check my LinkedIn profile. Opens in a new tab."
+            >
+              <LinkedInIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/Fayhen"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Check my work at GitHub. Open in a new tab."
+            >
+              <GitHubIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
 
   <footer id="footer">
     <div class="page-container">

@@ -28,6 +28,28 @@ import Font from "astro/components/Font.astro";
     </script>
   </head>
   <body>
+    <a href="#main-content" class="wcag-skip-link">Skip to content</a>
     <slot />
   </body>
 </html>
+
+<style>
+  .wcag-skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.75rem 1rem;
+    background: var(--nav-bg);
+    color: var(--nav-fg);
+    text-decoration: none;
+    border-radius: 0 0 0.25rem;
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .wcag-skip-link:focus,
+  .wcag-skip-link:focus-visible {
+    transform: translateY(0);
+  }
+</style>
