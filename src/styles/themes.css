@@ -19,11 +19,14 @@
   --default-light-color-secondary: oklch(0% 0 0deg);
   --default-light-color-tertiary: oklch(100% 0.0001 271.152deg / 84.2%);
 
-  /* Navbar colors */
+  /* Navbar */
+  --default-light-header-height: 4.5rem;
   --default-light-nav-bg: oklch(100% 0.0001 271.152deg / 30%);
+  --default-light-nav-bg-secondary: oklch(100% 0.0001 271.152deg / 90%);
   --default-light-nav-fg: oklch(0% 0 0deg);
   --default-light-nav-filter: blur(10px);
   --default-light-nav-shadow: 0 1px 2px oklch(0% 0 0deg / 12%);
+  --default-light-nav-shadow-mobile: inset 1px 1px oklch(0% 0 0deg / 12%);
 
   /* Footer */
   --default-light-footer-bg: oklch(100% 0.0001 271.152deg);
@@ -86,11 +89,14 @@
   --default-dark-color-secondary: oklch(82.032% 0.0001 271.152deg);
   --default-dark-color-tertiary: oklch(27.274% 0.0001 271.152deg);
 
-  /* Navbar colors */
+  /* Navbar */
+  --default-dark-header-height: 4.5rem;
   --default-dark-nav-bg: oklch(27.274% 0.0001 271.152deg / 50%);
+  --default-dark-nav-bg-secondary: oklch(27.274% 0.0001 271.152deg / 90%);
   --default-dark-nav-fg: oklch(100% 0.0001 271.152deg);
   --default-dark-nav-filter: blur(10px);
   --default-dark-nav-shadow: 0 1px 6px oklch(52.78% 0.0002 271.152deg / 12%);
+  --default-dark-nav-shadow-mobile: inset 1px 1px oklch(52.78% 0.0002 271.152deg / 12%);
 
   /* Footer */
   --default-dark-footer-bg: oklch(27.274% 0.0001 271.152deg);
@@ -102,7 +108,7 @@
 
   /* Links */
   --default-dark-link: oklch(100% 0.0001 271.152deg);
-  --default-dark-link-hover: oklch(31.317% 0.0001 271.152deg);
+  --default-dark-link-hover: oklch(69.275% 0.0001 271.152deg);
   --default-dark-link-decoration: none;
   
   /* Icons */
@@ -139,6 +145,7 @@
   /* RETRO LIGHT */
 
   /* Background colors */
+  --retro-light-header-height: 4.5rem;
   --retro-light-bg-primary: oklch(69.6% 0.17 162.48deg);
   --retro-light-bg-primary-accent: oklch(69.6% 0.17 162.48deg / 30%);
   --retro-light-bg-secondary:  oklch(82% 0.10 162deg);
@@ -154,11 +161,13 @@
   --retro-light-color-secondary: oklch(26.2% 0.051 172.552deg);
   --retro-light-color-tertiary: oklch(26.2% 0.051 172.552deg);
 
-  /* Navbar colors */
+  /* Navbar */
   --retro-light-nav-bg: oklch(69.6% 0.17 162.48deg / 60%);
+  --retro-light-nav-bg-secondary: oklch(69.6% 0.17 162.48deg / 90%);
   --retro-light-nav-fg: var(--retro-light-color-primary);
   --retro-light-nav-filter: blur(10px);
   --retro-light-nav-shadow: 0 1px 2px oklch(18% 0.06 168deg / 30%);
+  --retro-light-nav-shadow-mobile: inset 1px 1px oklch(18% 0.06 168deg / 12%);
 
   /* Footer */
   --retro-light-footer-bg: oklch(69.6% 0.17 162.48deg);
@@ -222,11 +231,14 @@
   --retro-dark-color-secondary: oklch(84.5% 0.143 164.978deg);
   --retro-dark-color-tertiary: oklch(84.5% 0.143 164.978deg);
 
-  /* Navbar colors */
+  /* Navbar */
+  --retro-dark-header-height: 4.5rem;
   --retro-dark-nav-bg: oklch(37.8% 0.077 168.94deg / 70%);
+  --retro-dark-nav-bg-secondary: oklch(37.8% 0.077 168.94deg / 90%);
   --retro-dark-nav-fg:  var(--retro-dark-color-primary);
   --retro-dark-nav-filter: blur(10px);
   --retro-dark-nav-shadow: 0 1px 2px oklch(10% 0.04 168deg / 60%);
+  --retro-dark-nav-shadow-mobile: inset 1px 1px oklch(10% 0.04 168deg / 12%);
 
   /* Footer */
   --retro-dark-footer-bg: oklch(37.8% 0.077 168.94deg);
@@ -284,10 +296,13 @@
   --color-primary: var(--default-light-color-primary);
   --color-secondary: var(--default-light-color-secondary);
   --color-tertiary: var(--default-light-color-tertiary);
+  --header-height: var(--default-light-header-height);
   --nav-bg: var(--default-light-nav-bg);
+  --nav-bg-secondary: var(--default-light-nav-bg-secondary);
   --nav-fg: var(--default-light-nav-fg);
   --nav-filter: var(--default-light-nav-filter);
   --nav-shadow: var(--default-light-nav-shadow);
+  --nav-shadow-mobile: var(--default-light-nav-shadow-mobile);
   --footer-bg: var(--default-light-footer-bg);
   --footer-fg: var(--default-light-footer-fg);
   --footer-highlight-luv: var(--default-light-footer-highlight-luv);
@@ -332,10 +347,13 @@
   --color-primary: var(--default-dark-color-primary);
   --color-secondary: var(--default-dark-color-secondary);
   --color-tertiary: var(--default-dark-color-tertiary);
+  --header-height: var(--default-dark-header-height);
   --nav-bg: var(--default-dark-nav-bg);
+  --nav-bg-secondary: var(--default-dark-nav-bg-secondary);
   --nav-fg: var(--default-dark-nav-fg);
   --nav-filter: var(--default-dark-nav-filter);
   --nav-shadow: var(--default-dark-nav-shadow);
+  --nav-shadow-mobile: var(--default-dark-nav-shadow-mobile);
   --footer-bg: var(--default-dark-footer-bg);
   --footer-fg: var(--default-dark-footer-fg);
   --footer-highlight-luv: var(--default-dark-footer-highlight-luv);
@@ -380,10 +398,13 @@
   --color-primary: var(--retro-light-color-primary);
   --color-secondary: var(--retro-light-color-secondary);
   --color-tertiary: var(--retro-light-color-tertiary);
+  --header-height: var(--retro-light-header-height);
   --nav-bg: var(--retro-light-nav-bg);
+  --nav-bg-secondary: var(--retro-light-nav-bg-secondary);
   --nav-fg: var(--retro-light-nav-fg);
   --nav-filter: var(--retro-light-nav-filter);
   --nav-shadow: var(--retro-light-nav-shadow);
+  --nav-shadow-mobile: var(--retro-light-nav-shadow-mobile);
   --footer-bg: var(--retro-light-footer-bg);
   --footer-fg: var(--retro-light-footer-fg);
   --footer-highlight-luv: var(--retro-light-footer-highlight-luv);
@@ -428,10 +449,13 @@
   --color-primary: var(--retro-dark-color-primary);
   --color-secondary: var(--retro-dark-color-secondary);
   --color-tertiary: var(--retro-dark-color-tertiary);
+  --header-height: var(--retro-dark-header-height);
   --nav-bg: var(--retro-dark-nav-bg);
+  --nav-bg-secondary: var(--retro-dark-nav-bg-secondary);
   --nav-fg: var(--retro-dark-nav-fg);
   --nav-filter: var(--retro-dark-nav-filter);
   --nav-shadow: var(--retro-dark-nav-shadow);
+  --nav-shadow-mobile: var(--retro-dark-nav-shadow-mobile);
   --footer-bg: var(--retro-dark-footer-bg);
   --footer-fg: var(--retro-dark-footer-fg);
   --footer-highlight-luv: var(--retro-dark-footer-highlight-luv);
