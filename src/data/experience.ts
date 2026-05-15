@@ -37,7 +37,7 @@ export const experience: JobExperience[] = [
   {
     title: "Freelance",
     slug: "freelance",
-    icon: "",
+    icon: "/images/tool-icon.svg",
     link: "",
     items: [
       "Delivered custom web solutions for small businesses.",

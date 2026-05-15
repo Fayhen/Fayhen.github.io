@@ -49,6 +49,7 @@
   /* Icons */
   --default-light-icon-fill: initial;
   --default-light-icon-stroke: initial;
+  --default-light-fallback-icon-background: none;
 
   /* Cards */
   --default-light-card-bg-primary: var(--default-light-bg-primary);
@@ -85,9 +86,9 @@
   --default-dark-bg-secondary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
   --default-dark-bg-tertiary: oklch(31.158% 0.0089 17.404deg / 58.4%);
   --default-dark-bg-tertiary-accent: oklch(31.158% 0.0089 17.404deg / 28.4%);
-  --default-dark-bg-placeholder: linear-gradient(135deg,
-    oklch(35% 0.022 252deg),
-    oklch(24% 0.008 278deg));
+  --default-dark-bg-placeholder: radial-gradient(circle,
+    oklch(74.007% 0.0387 265.08deg) 0%,
+    oklch(50.537% 0.0352 228.956deg) 100%);
 
   /* Foreground colors */
   --default-dark-color-primary: oklch(82.032% 0.0001 271.152deg);
@@ -124,6 +125,7 @@
   /* Icons */
   --default-dark-icon-fill: initial;
   --default-dark-icon-stroke: initial;
+  --default-dark-fallback-icon-background: oklch(100% 0.0001 271.152deg);
 
   /* Cards */
   --default-dark-card-bg-primary: oklch(41.378% 0.0013 15.238deg);
@@ -200,6 +202,7 @@
   /* Icons */
   --retro-light-icon-fill: initial;
   --retro-light-icon-stroke: initial;
+  --retro-light-fallback-icon-background: none;
 
   /* Cards */
   --retro-light-card-bg-primary: var(--retro-light-bg-primary);
@@ -276,6 +279,7 @@
   /* Icons */
   --retro-dark-icon-fill: initial;
   --retro-dark-icon-stroke: initial;
+  --retro-dark-fallback-icon-background: none;
 
   /* Cards */
   --retro-dark-card-bg-primary: var(--retro-dark-bg-primary);
@@ -336,6 +340,7 @@
   --link-decoration: var(--default-light-link-decoration);
   --icon-fill: var(--default-light-icon-fill);
   --icon-stroke: var(--default-light-icon-stroke);
+  --fallback-icon-background: var(--default-light-fallback-icon-background);
   --card-bg-primary: var(--default-light-card-bg-primary);
   --card-bg-primary-accent: var(--default-light-card-bg-primary-accent);
   --card-bg-secondary: var(--default-light-card-bg-secondary);
@@ -389,6 +394,7 @@
   --link-decoration: var(--default-dark-link-decoration);
   --icon-fill: var(--default-dark-icon-fill);
   --icon-stroke: var(--default-dark-icon-stroke);
+  --fallback-icon-background: var(--default-dark-fallback-icon-background);
   --card-bg-primary: var(--default-dark-card-bg-primary);
   --card-bg-primary-accent: var(--default-dark-card-bg-primary-accent);
   --card-bg-secondary: var(--default-dark-card-bg-secondary);
@@ -442,6 +448,7 @@
   --link-decoration: var(--retro-light-link-decoration);
   --icon-fill: var(--retro-light-icon-fill);
   --icon-stroke: var(--retro-light-icon-stroke);
+  --fallback-icon-background: var(--retro-light-fallback-icon-background);
   --card-bg-primary: var(--retro-light-card-bg-primary);
   --card-bg-primary-accent: var(--retro-light-card-bg-primary-accent);
   --card-bg-secondary: var(--retro-light-card-bg-secondary);
@@ -495,6 +502,7 @@
   --link-decoration: var(--retro-dark-link-decoration);
   --icon-fill: var(--retro-dark-icon-fill);
   --icon-stroke: var(--retro-dark-icon-stroke);
+  --fallback-icon-background: var(--retro-dark-fallback-icon-background);
   --card-bg-primary: var(--retro-dark-card-bg-primary);
   --card-bg-primary-accent: var(--retro-dark-card-bg-primary-accent);
   --card-bg-secondary: var(--retro-dark-card-bg-secondary);

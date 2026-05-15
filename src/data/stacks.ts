@@ -12,6 +12,7 @@ import javascript from "../assets/icons/devicons/javascript-original.svg";
 import mysql from "../assets/icons/devicons/mysql-original.svg";
 import phoenix from "../assets/icons/devicons/phoenix-original.svg";
 import postgres from "../assets/icons/devicons/postgres-original.svg";
+import prisma from "../assets/icons/devicons/prisma-original.svg";
 import python from "../assets/icons/devicons/python-original.svg";
 import quasar from "../assets/icons/devicons/quasar-plain.svg";
 import sass from "../assets/icons/devicons/sass-original.svg";
@@ -73,6 +74,13 @@ export const stacks: Stacks = {
     slug: "firebase",
     link: "https://firebase.google.com/",
     icon: firebase
+  },
+  prisma: {
+    shortName: "Prisma",
+    name: "Prisma",
+    slug: "prisma",
+    link: "https://www.prisma.io/",
+    icon: prisma
   },
   vuejs: {
     shortName: "Vue.js",

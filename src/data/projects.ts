@@ -61,6 +61,20 @@ export const projects: Project[] = [
     ]
   },
   {
+    title: "Phoenix Chat",
+    slug: "phoenix-chat",
+    description: "A simple real-time chat application built with the Phoenix Framework",
+    category: "fullstack",
+    picture: null,
+    productionLink: "https://twilight-butterfly-5129.fly.dev/",
+    repositoryLink: "https://github.com/Fayhen/phoenix-chat",
+    featured: false,
+    stacks: [
+      stacks.elixir,
+      stacks.phoenix
+    ]
+  },
+  {
     title: "quick-lorem",
     slug: "quick-lorem",
     description: "A lightweight NPX package for generating Lorem Ipsum text with configurable output options.",
@@ -70,7 +84,7 @@ export const projects: Project[] = [
     repositoryLink: "https://github.com/Fayhen/quick-lorem",
     featured: false,
     stacks: [
-      stacks. javascript
+      stacks.javascript
     ],
   },
   {
