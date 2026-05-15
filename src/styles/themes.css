@@ -28,6 +28,11 @@
   --default-light-nav-shadow: 0 1px 2px oklch(0% 0 0deg / 12%);
   --default-light-nav-shadow-mobile: inset 1px 1px oklch(0% 0 0deg / 12%);
 
+  /* Sections */
+
+  --default-light-section-border-bottom-primary: none;
+  --default-light-section-border-bottom-secondary: none;
+
   /* Footer */
   --default-light-footer-bg: oklch(100% 0.0001 271.152deg);
   --default-light-footer-fg: oklch(0% 0 0deg);
@@ -76,8 +81,8 @@
   /* Background colors */
   --default-dark-bg-primary: oklch(27.274% 0.0001 271.152deg);
   --default-dark-bg-primary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
-  --default-dark-bg-secondary: oklch(41.378% 0.0013 15.238deg);
-  --default-dark-bg-secondary-accent: oklch(41.378% 0.0013 15.238deg / 30%);
+  --default-dark-bg-secondary: oklch(27.274% 0.0001 271.152deg);
+  --default-dark-bg-secondary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
   --default-dark-bg-tertiary: oklch(31.158% 0.0089 17.404deg / 58.4%);
   --default-dark-bg-tertiary-accent: oklch(31.158% 0.0089 17.404deg / 28.4%);
   --default-dark-bg-placeholder: linear-gradient(135deg,
@@ -91,12 +96,17 @@
 
   /* Navbar */
   --default-dark-header-height: 4.5rem;
-  --default-dark-nav-bg: oklch(27.274% 0.0001 271.152deg / 50%);
-  --default-dark-nav-bg-secondary: oklch(27.274% 0.0001 271.152deg / 90%);
+  --default-dark-nav-bg: oklch(41.378% 0.0013 15.238deg / 50%);
+  --default-dark-nav-bg-secondary: oklch(36.002% 0.0001 271.152deg / 81%);
   --default-dark-nav-fg: oklch(100% 0.0001 271.152deg);
   --default-dark-nav-filter: blur(10px);
   --default-dark-nav-shadow: 0 1px 6px oklch(52.78% 0.0002 271.152deg / 12%);
   --default-dark-nav-shadow-mobile: inset 1px 1px oklch(52.78% 0.0002 271.152deg / 12%);
+
+  /* Sections */
+
+  --default-dark-section-border-bottom-primary: 1px solid oklch(41.378% 0.0013 15.238deg);
+  --default-dark-section-border-bottom-secondary: 1px solid oklch(27.274% 0.0001 271.152deg);
 
   /* Footer */
   --default-dark-footer-bg: oklch(27.274% 0.0001 271.152deg);
@@ -116,20 +126,20 @@
   --default-dark-icon-stroke: initial;
 
   /* Cards */
-  --default-dark-card-bg-primary: var(--default-dark-bg-primary);
-  --default-dark-card-bg-primary-accent: var(--default-dark-bg-primary-accent);
-  --default-dark-card-bg-secondary: var(--default-dark-bg-secondary);
-  --default-dark-card-bg-secondary-accent: var(--default-dark-bg-secondary-accent);
+  --default-dark-card-bg-primary: oklch(41.378% 0.0013 15.238deg);
+  --default-dark-card-bg-primary-accent: oklch(41.378% 0.0013 15.238deg / 30%);
+  --default-dark-card-bg-secondary: oklch(41.378% 0.0013 15.238deg);
+  --default-dark-card-bg-secondary-accent: oklch(41.378% 0.0013 15.238deg / 30%);
   --default-dark-card-fg-primary: var(--default-dark-color-primary);
   --default-dark-card-fg-secondary: var(--default-dark-color-secondary);
 
   /* Badges */
   --default-dark-badge-fullstack-fg: oklch(84% 0.11 155deg);
   --default-dark-badge-fullstack-bg: oklch(28% 0.07 155deg);
-  --default-dark-badge-backend-fg:   oklch(86% 0.12 75deg);
-  --default-dark-badge-backend-bg:   oklch(28% 0.07 75deg);
-  --default-dark-badge-frontend-fg:  oklch(82% 0.10 245deg);
-  --default-dark-badge-frontend-bg:  oklch(28% 0.07 245deg);
+  --default-dark-badge-backend-fg: oklch(86% 0.12 75deg);
+  --default-dark-badge-backend-bg: oklch(28% 0.07 75deg);
+  --default-dark-badge-frontend-fg: oklch(82% 0.10 245deg);
+  --default-dark-badge-frontend-bg: oklch(28% 0.07 245deg);
   --default-dark-badge-stack-fg: oklch(82.032% 0.0001 271.152deg);
   --default-dark-badge-stack-bg: oklch(31.158% 0.0089 17.404deg / 58.4%);
 
@@ -169,6 +179,11 @@
   --retro-light-nav-shadow: 0 1px 2px oklch(18% 0.06 168deg / 30%);
   --retro-light-nav-shadow-mobile: inset 1px 1px oklch(18% 0.06 168deg / 12%);
 
+  /* Sections */
+
+  --retro-light-section-border-bottom-primary: none;
+  --retro-light-section-border-bottom-secondary: none;
+
   /* Footer */
   --retro-light-footer-bg: oklch(69.6% 0.17 162.48deg);
   --retro-light-footer-fg: oklch(26.2% 0.051 172.552deg);
@@ -197,10 +212,10 @@
   /* Badges */
   --retro-light-badge-fullstack-fg: oklch(40% 0.13 162deg);
   --retro-light-badge-fullstack-bg: oklch(88% 0.07 162deg);
-  --retro-light-badge-backend-fg:   oklch(52% 0.13 95deg);
-  --retro-light-badge-backend-bg:   oklch(92% 0.06 95deg);
-  --retro-light-badge-frontend-fg:  oklch(48% 0.12 200deg);
-  --retro-light-badge-frontend-bg:  oklch(90% 0.05 200deg);
+  --retro-light-badge-backend-fg: oklch(52% 0.13 95deg);
+  --retro-light-badge-backend-bg: oklch(92% 0.06 95deg);
+  --retro-light-badge-frontend-fg: oklch(48% 0.12 200deg);
+  --retro-light-badge-frontend-bg: oklch(90% 0.05 200deg);
   --retro-light-badge-stack-fg: oklch(26.2% 0.051 172.552deg);
   --retro-light-badge-stack-bg: oklch(95% 0.04 162deg);
 
@@ -239,6 +254,11 @@
   --retro-dark-nav-filter: blur(10px);
   --retro-dark-nav-shadow: 0 1px 2px oklch(10% 0.04 168deg / 60%);
   --retro-dark-nav-shadow-mobile: inset 1px 1px oklch(10% 0.04 168deg / 12%);
+
+  /* Sections */
+
+  --retro-dark-section-border-bottom-primary: none;
+  --retro-dark-section-border-bottom-secondary: none;
 
   /* Footer */
   --retro-dark-footer-bg: oklch(37.8% 0.077 168.94deg);
@@ -303,6 +323,8 @@
   --nav-filter: var(--default-light-nav-filter);
   --nav-shadow: var(--default-light-nav-shadow);
   --nav-shadow-mobile: var(--default-light-nav-shadow-mobile);
+  --section-border-bottom-primary: var(--default-light-section-border-bottom-primary);
+  --section-border-bottom-secondary: var(--default-light-section-border-bottom-secondary);
   --footer-bg: var(--default-light-footer-bg);
   --footer-fg: var(--default-light-footer-fg);
   --footer-highlight-luv: var(--default-light-footer-highlight-luv);
@@ -354,6 +376,8 @@
   --nav-filter: var(--default-dark-nav-filter);
   --nav-shadow: var(--default-dark-nav-shadow);
   --nav-shadow-mobile: var(--default-dark-nav-shadow-mobile);
+  --section-border-bottom-primary: var(--default-dark-section-border-bottom-primary);
+  --section-border-bottom-secondary: var(--default-dark-section-border-bottom-secondary);
   --footer-bg: var(--default-dark-footer-bg);
   --footer-fg: var(--default-dark-footer-fg);
   --footer-highlight-luv: var(--default-dark-footer-highlight-luv);
@@ -405,6 +429,8 @@
   --nav-filter: var(--retro-light-nav-filter);
   --nav-shadow: var(--retro-light-nav-shadow);
   --nav-shadow-mobile: var(--retro-light-nav-shadow-mobile);
+  --section-border-bottom-primary: var(--retro-light-section-border-bottom-primary);
+  --section-border-bottom-secondary: var(--retro-light-section-border-bottom-secondary);
   --footer-bg: var(--retro-light-footer-bg);
   --footer-fg: var(--retro-light-footer-fg);
   --footer-highlight-luv: var(--retro-light-footer-highlight-luv);
@@ -456,6 +482,8 @@
   --nav-filter: var(--retro-dark-nav-filter);
   --nav-shadow: var(--retro-dark-nav-shadow);
   --nav-shadow-mobile: var(--retro-dark-nav-shadow-mobile);
+  --section-border-bottom-primary: var(--retro-dark-section-border-bottom-primary);
+  --section-border-bottom-secondary: var(--retro-dark-section-border-bottom-secondary);
   --footer-bg: var(--retro-dark-footer-bg);
   --footer-fg: var(--retro-dark-footer-fg);
   --footer-highlight-luv: var(--retro-dark-footer-highlight-luv);
