@@ -123,7 +123,7 @@
   --default-dark-link-decoration: none;
   
   /* Icons */
-  --default-dark-icon-fill: initial;
+  --default-dark-icon-fill: oklch(82.032% 0.0001 271.152deg);
   --default-dark-icon-stroke: initial;
   --default-dark-fallback-icon-background: oklch(100% 0.0001 271.152deg);
 
@@ -166,7 +166,7 @@
   --retro-light-bg-tertiary-accent: oklch(22% 0.05 165deg / 40%);
   --retro-light-bg-placeholder: linear-gradient(135deg,
     oklch(75% 0.14 162deg),
-    oklch(88% 0.07 162deg));;
+    oklch(88% 0.07 162deg));
 
   /* Foreground colors */
   --retro-light-color-primary: oklch(26.2% 0.051 172.552deg);

@@ -1,6 +1,4 @@
 ---
-import Image from "astro/components/Image.astro";
-
 import type { Stack } from "../data/stacks";
 
 interface Props {
@@ -12,11 +10,19 @@ interface Props {
 const { stack } = Astro.props;
 const height = Astro.props.height ?? "3rem";
 const width = Astro.props.width ?? "3rem";
+
+const Original = stack.icon;
+const Themeable = stack.iconThemeable;
 ---
 
 <li id={`stack-${stack.slug}`} class="stack-icon" style=`--icon-height: ${height}; --icon-width: ${width};`>
-  <a href={stack.link} target="_blank" rel="noopener noreferrer">
-    <Image src={stack.icon} alt={stack.name} />
+  <a href={stack.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label=`Visit ${stack.name} documentation, opens in a new tab`
+  >
+    <Original class="stack-icon-svg-original" aria-hidden="true" />
+    <Themeable class="stack-icon-svg-themeable" aria-hidden="true" />
   </a>
 </li>
 
@@ -38,9 +44,16 @@ const width = Astro.props.width ?? "3rem";
     }
   }
 
-  .stack-icon img {
+  .stack-icon svg {
     height: var(--icon-height);
     width: var(--icon-width);
-    object-fit: contain;
   }
+
+  .stack-icon-svg-themeable {
+    display: none;
+    color: var(--icon-fill);
+  }
+
+  :root[data-theme="dark"] .stack-icon-svg-original { display: none; }
+  :root[data-theme="dark"] .stack-icon-svg-themeable { display: revert; }
 </style>

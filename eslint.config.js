@@ -24,6 +24,7 @@ export default [
   // Delegate TS in Astro files to tsParser
   {
     files: ["**/*.astro"],
+    rules: { indent: "off" },
     languageOptions: {
       parserOptions: {
         parser: tsParser
@@ -50,7 +51,7 @@ export default [
       "no-console": "warn",
       "no-empty": "warn",
       "no-invalid-this": "error",
-      "no-unused-vars": ["warn", { "vars": "all" }],
+      "no-unused-vars": ["warn", { "vars": "all", "argsIgnorePattern": "^_" }],
       "no-trailing-spaces": "error",
       "object-curly-spacing": ["error", "always"],
       "quotes": ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],

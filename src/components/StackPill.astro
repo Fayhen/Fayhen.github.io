@@ -1,6 +1,4 @@
 ---
-import Image from "astro/components/Image.astro";
-
 import type { Stack } from "../data/stacks";
 
 interface Props {
@@ -15,10 +13,14 @@ const { stack } = Astro.props;
 const badgeClasses = Astro.props.badgeClasses ?? "";
 const border = Astro.props.border ?? "none";
 const padding = Astro.props.padding ?? "0.15rem 0.5rem 0.025rem 0.5rem";
+
+const Original = stack.icon;
+const Themeable = stack.iconThemeable;
 ---
 
 <li class=`${badgeClasses} pill` style=`--border: ${border}; --padding: ${padding};`>
-  <Image src={stack.icon} alt={stack.name} class="icon" />
+  <Original class="stack-icon-svg-original" aria-hidden="true" />
+  <Themeable class="stack-icon-svg-themeable" aria-hidden="true" />
   <span>{stack.shortName}</span>
 </li>
 
@@ -52,10 +54,17 @@ const padding = Astro.props.padding ?? "0.15rem 0.5rem 0.025rem 0.5rem";
     margin-bottom: 0.15rem;
   }
 
-  .icon {
+  .pill svg {
     height: 1rem;
     width: 1rem;
-    object-fit: contain;
   }
+
+  .stack-icon-svg-themeable {
+    display: none;
+    color: var(--icon-fill);
+  }
+
+  :root[data-theme="dark"] .stack-icon-svg-original { display: none; }
+  :root[data-theme="dark"] .stack-icon-svg-themeable { display: revert; }
 </style>
 
