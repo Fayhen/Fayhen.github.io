@@ -1,0 +1,383 @@
+---
+import "../../styles/global.css";
+
+import Base from "../../layouts/Base.astro";
+import ExperienceItem from "../ExperienceItem.astro";
+import FeaturedProjectStrip from "../FeaturedProjectStrip.astro";
+import Header from "../Header.astro";
+import Presentation from "../Presentation.astro";
+import ProfilePic from "../ProfilePic.astro";
+import Project from "../Project.astro";
+import StackIcon from "../StackIcon.astro";
+
+import EmailIcon from "../../assets/icons/fas/envelope-solid-full.svg";
+import GitHubIcon from "../../assets/icons/fab/github-brands-solid-full.svg";
+import LinkedInIcon from "../../assets/icons/fab/square-linkedin-brands-solid-full.svg";
+import Luv from "../../assets/icons/far/heart-regular-full.svg";
+import Made from "../../assets/icons/fas/terminal-solid-full.svg";
+
+import { experience } from "../../data/experience";
+import { projects } from "../../data/projects";
+import { stacks } from "../../data/stacks";
+import { volunteering } from "../../data/experience";
+
+import { isLocale } from "../../i18n/locales";
+import { useTranslation } from "../../i18n";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const navItems = [
+  { label: t("nav.home"), href: "/" },
+  { label: t("nav.skills"), href: "/#skills-section" },
+  { label: t("nav.projects"), href: "/#projects-section" },
+  { label: t("nav.contact"), href: "/#contact-section" }
+];
+---
+
+<Base>
+  <Header {navItems} />
+
+  <main id="main-content" tabindex="-1">
+    <div id="intro-wrapper">
+      <section id="intro-section" class="page-container">
+        <ProfilePic />
+        <Presentation />
+      </section>
+    </div>
+
+    <div id="skills-wrapper">
+      <section id="skills-section" class="page-container">
+        <h1>{t("skills.title")}</h1>
+
+        <div class="major-areas">
+          <div class="primary-card major-area-detail">
+            <h2>{t("skills.fullstackTitle")}</h2>
+            <p>{t("skills.fullstackBody")}</p>
+          </div>
+          <div class="primary-card major-area-detail">
+            <h2>{t("skills.backendTitle")}</h2>
+            <p>{t("skills.backendBody")}</p>
+          </div>
+          <div class="primary-card major-area-detail">
+            <h2>{t("skills.frontendTitle")}</h2>
+            <p>{t("skills.frontendBody")}</p>
+          </div>
+        </div>
+
+        <div class="experience-wrapper">
+          <div class="experience-column">
+            <h2>{t("skills.previousXpTitle")}</h2>
+            <ul class="base-list">
+              {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
+            </ul>
+            <h2>{t("skills.volunteeringTitle")}</h2>
+            <ul class="base-list">
+              {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
+            </ul>
+          </div>
+
+          <div class="tools-column">
+            <div class="stacks">
+              <h2>{t("skills.stacksTitle")}</h2>
+              <ul class="base-list stack-list">
+                {Object.values(stacks).map((stack) => <StackIcon stack={stack} />)}
+              </ul>
+            </div>
+            <div class="activity">
+              {t("skills.activityTitle")}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="projects-wrapper">
+      <section id="projects-section" class="page-container">
+        <h1>{t("projects.title")}</h1>
+        <p>{t("projects.description")}</p>
+        <FeaturedProjectStrip projects={projects.filter((p) => p.featured)} />
+        <ul class="base-list projects-grid">
+          {projects.filter((p) => !p.featured).map((p) => <Project project={p} />)}
+        </ul>
+      </section>
+    </div>
+
+    <div id="contact-wrapper">
+      <section id="contact-section" class="page-container">
+        <h1>{t("contact.title")}</h1>
+        <p>{t("contact.subtitle")}</p>
+        <ul class="base-list">
+          <li>
+            <a href="mailto:diego00alfa@gmail.com" aria-label={t("contact.emailAriaLabel")}>
+              <EmailIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/diegogcsouza/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("contact.linkedInAriaLabel")}
+            >
+              <LinkedInIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/Fayhen"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("contact.githubAriaLabel")}
+            >
+              <GitHubIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div class="page-container">
+      <p>
+        <Made id="made" class="footer-icon" role="img" aria-label={t("footer.made")} />
+        {t("footer.with")}
+        <Luv id="luv" class="footer-icon" role="img" aria-label={t("footer.love")} />
+        {t("footer.by")}
+        <b id="me">Diego Garcia Cordeiro Souza</b>
+        | {t("footer.builtWith")}
+        <b id="this">Astro</b>
+      </p>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  #intro-wrapper {
+    padding-top: 4rem;
+    background-color: var(--bg-primary);
+    color: var(--color-primary);
+    border-bottom: var(--section-border-bottom-primary);
+  }
+
+	#intro-section {
+		display: flex;
+		align-items: center;
+		column-gap: clamp(2rem, 8vw, 5rem);
+		padding-block: 7rem 14rem;
+	}
+
+  #skills-wrapper {
+    background-color: var(--bg-secondary);
+    color: var(--color-secondary);
+    border-bottom: var(--section-border-bottom-primary);
+  }
+
+  #skills-wrapper h1 {
+    margin: 1.5rem 0;
+  }
+
+  #skills-section {
+    display: flex;
+    flex-direction: column;
+		align-items: center;
+		padding-block: 4rem 8rem;
+  }
+
+  .major-areas {
+    display: flex;
+    flex-direction: row;
+    gap: 0 1.5rem;
+  }
+
+  @media (width <= 40rem) {
+    #intro-section,
+    #skills-section {
+      flex-direction: column;
+      text-align: center;
+      padding-block: 4rem 6rem;
+    }
+
+    .major-areas {
+      flex-direction: column;
+      gap: 1.5rem 0;
+    }
+  }
+
+  .major-area-detail {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .major-area-detail h2 {
+    text-align: center;
+  }
+
+  .experience-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 2rem;
+    gap: 0 1.5rem;
+  }
+
+  .experience-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .experience-column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+  }
+
+  .experience-column h2 + ul {
+    margin-top: 1rem;
+  }
+
+  .experience-column ul + h2 {
+    margin-top: 2rem;
+  }
+
+  .tools-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (width <= 55rem) {
+    .experience-wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .tools-column {
+      margin-top: 0;
+    }
+  }
+
+  .stacks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem 0;
+    margin-top: 2rem;
+  }
+
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .activity {
+    height: 100%;
+  }
+
+  #projects-wrapper {
+    background-color: var(--bg-primary);
+    color: var(--color-primary);
+  }
+
+  #projects-section {
+		display: flex;
+    flex-direction: column;
+		align-items: center;
+		padding-block: 4rem 8rem;
+  }
+
+  .projects-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  #contact-wrapper {
+    background-color: var(--bg-tertiary);
+    color: var(--color-tertiary);
+  }
+
+  #contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+		padding-block: 5rem 8rem;
+    text-align: center;
+  }
+
+  #contact-section h1 {
+    font-size: 2.15rem;
+  }
+
+  #contact-section p {
+    font-size: 1.25rem;
+  }
+
+  #contact-section ul {
+    display: flex;
+    align-self: center;
+    gap: 0 1rem;
+  }
+
+  #contact-section a {
+    padding: 0.1rem;
+  }
+
+  .contact-icon {
+    height: 3.15rem;
+    width: 3.15rem;
+    color: var(--color-tertiary);
+  }
+
+  .contact-icon:hover,
+  #contact-section a:focus-visible .contact-icon {
+    color: oklch(100% 0.0001 271.152deg);
+  }
+
+  #footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem;
+    background-color: var(--footer-bg);
+    color: var(--footer-fg);
+    letter-spacing: 0.01rem;
+    word-spacing: 0.1rem;
+    text-align: center;
+  }
+
+  #footer p {
+    margin: 0;
+  }
+
+  #footer #luv {
+    color: var(--footer-highlight-luv);
+  }
+
+  #footer #made {
+    color: var(--footer-highlight-made);
+  }
+
+  #footer #me {
+    color: var(--footer-highlight-me);
+  }
+
+  #footer #this {
+    color: var(--footer-highlight-this);
+  }
+
+  .footer-icon {
+    margin-bottom: -0.1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+</style>

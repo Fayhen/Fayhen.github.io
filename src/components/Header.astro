@@ -1,4 +1,5 @@
 ---
+import LangSwitch from "./LangSwitch.astro";
 import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
@@ -32,6 +33,7 @@ const { navItems } = Astro.props;
         <Xmark class="menu-icon menu-icon-close" aria-hidden="true" />
       </button>
       <ThemeToggle />
+      <LangSwitch />
     </div>
   </div>
 </header>

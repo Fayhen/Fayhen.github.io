@@ -9,5 +9,16 @@ export default defineConfig({
       name: "Inter",
       cssVariable: "--font-inter"
     }
-  ]
+  ],
+  i18n: {
+    locales: ["en", "pt-br"],
+    defaultLocale: "en",
+    fallback: {
+      "pt-br": "en"
+    },
+    routing: {
+      prefixDefaultLocale: false,
+      fallbackType: "redirect"
+    }
+  }
 });

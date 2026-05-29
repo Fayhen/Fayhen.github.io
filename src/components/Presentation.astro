@@ -1,16 +1,18 @@
 ---
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
 const xp = Math.abs(new Date().getFullYear() - 2020);
 ---
 
 <div>
-  <h1>Hi, I'm <span>Diego</span></h1>
-  <p class="subtitle">Fullstack developer</p>
-  <p>
-    Fullstack developer with {xp} years of experience building web applications. Background in Biological Sciences (BSc) and Ecology (MSc), bringing a scientific approach to analyzing and breaking down complex systems.
-  </p>
-  <p>
-    When I'm not at a keyboard, I'm probably with a cat, deep into a game, out somewhere in nature, or working through a reading list that keeps growing faster than I can finish it.
-  </p>
+  <h1>{t("intro.greeting")} <span>Diego</span></h1>
+  <p class="subtitle">{t("intro.role")}</p>
+  <p>{t("intro.description_a")}</p>
+  <p>{t("intro.description_b")}</p>
 </div>
 
 <style>

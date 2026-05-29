@@ -1,0 +1,31 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locale = Astro.currentLocale ?? "en";
+
+const switcher = [
+  { code: "en", href: getRelativeLocaleUrl("en", ""), label: "EN" },
+  { code: "pt-br", href: getRelativeLocaleUrl("pt-br", ""), label: "PT" },
+];
+---
+
+<ul class="base-list lang-switcher">
+  {switcher.map((l) => (
+    <li>
+      <a href={l.href} aria-current={l.code === locale ? "page" : undefined}>
+        {l.label}
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  a {
+    color: var(--link);
+    text-decoration: var(--link-decoration);
+  }
+
+  a:hover {
+    color: var(--link-hover);
+  }
+</style>

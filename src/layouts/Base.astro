@@ -1,5 +1,11 @@
 ---
 import Font from "astro/components/Font.astro";
+
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
 ---
 
 <!doctype html>
@@ -28,7 +34,9 @@ import Font from "astro/components/Font.astro";
     </script>
   </head>
   <body>
-    <a href="#main-content" class="wcag-skip-link">Skip to content</a>
+    <a href="#main-content" class="wcag-skip-link">
+      {t("nav.skipToContent")}
+    </a>
     <slot />
   </body>
 </html>
