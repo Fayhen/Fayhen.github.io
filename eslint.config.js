@@ -21,17 +21,6 @@ export default [
     },
   },
 
-  // Delegate TS in Astro files to tsParser
-  {
-    files: ["**/*.astro"],
-    rules: { indent: "off" },
-    languageOptions: {
-      parserOptions: {
-        parser: tsParser
-      },
-    },
-  },
-
   // TS rules plugin
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.astro"],
@@ -64,5 +53,16 @@ export default [
         "allowSeparatedGroups": true
       }]
     }
+  },
+
+  // Delegate TS in Astro files to tsParser
+  {
+    files: ["**/*.astro"],
+    rules: { indent: "off" },
+    languageOptions: {
+      parserOptions: {
+        parser: tsParser
+      },
+    },
   }
 ];
