@@ -1,4 +1,7 @@
 ---
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
 import type { Stack } from "../data/stacks";
 
 interface Props {
@@ -11,6 +14,9 @@ const { stack } = Astro.props;
 const height = Astro.props.height ?? "3rem";
 const width = Astro.props.width ?? "3rem";
 
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
 const Original = stack.icon;
 const Themeable = stack.iconThemeable;
 ---
@@ -20,6 +26,7 @@ const Themeable = stack.iconThemeable;
     target="_blank"
     rel="noopener noreferrer"
     aria-label=`Visit ${stack.name} documentation, opens in a new tab`
+    aria-label={t("skills.stackDocsAriaLabel", { name: stack.name })}
   >
     <Original class="stack-icon-svg-original" aria-hidden="true" />
     <Themeable class="stack-icon-svg-themeable" aria-hidden="true" />

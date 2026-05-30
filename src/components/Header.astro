@@ -6,6 +6,10 @@ import ThemeToggle from "./ThemeToggle.astro";
 import Bars from "../assets/icons/fas/bars-solid-full.svg";
 import Xmark from "../assets/icons/fas/xmark-solid-full.svg";
 
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+
 interface Props {
   navItems: Array<{
     label: string;
@@ -14,11 +18,14 @@ interface Props {
 }
 
 const { navItems } = Astro.props;
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
 ---
 
 <header>
   <div class="page-container header-container">
-    <a href="/" aria-label="Back to top" class="logo-wrapper">
+    <a href="/" aria-label={t("header.backToTop")} class="logo-wrapper">
       <Logo />
       <span>Fayhen</span>
     </a>
@@ -28,7 +35,14 @@ const { navItems } = Astro.props;
           {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </nav>
-      <button class="menu-button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <button
+        class="menu-button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label={t("header.openMenu")}
+        data-label-open={t("header.openMenu")}
+        data-label-close={t("header.closeMenu")}
+      >
         <Bars class="menu-icon menu-icon-open" aria-hidden="true" />
         <Xmark class="menu-icon menu-icon-close" aria-hidden="true" />
       </button>
@@ -204,6 +218,9 @@ const { navItems } = Astro.props;
   const menuBtn = document.querySelector<HTMLButtonElement>(".menu-button");
   const nav = document.querySelector<HTMLElement>("#primary-nav");
 
+  const labelOpen = menuBtn?.dataset.labelOpen ?? "";
+  const labelClose = menuBtn?.dataset.labelClose ?? "";
+
   desktopQuery.addEventListener("change", (e) => {
     if (e.matches) {
       closeMenu();
@@ -222,31 +239,34 @@ const { navItems } = Astro.props;
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (!nav?.hasAttribute("data-open")) return;
+    if (!nav) return;
+    if (!nav.hasAttribute("data-open")) return;
     e.stopPropagation();
     closeMenu();
   });
 
   document.addEventListener("pointerdown", (e) => {
-    if (!nav?.hasAttribute("data-open")) return;
+    if (!nav || !menuBtn) return;
+    if (!nav.hasAttribute("data-open")) return;
     if (nav.contains(e.target as Node)) return;
-    if (menuBtn?.contains(e.target as Node)) return;
+    if (menuBtn.contains(e.target as Node)) return;
     closeMenu();
   })
 
   function closeMenu() {
-    menuBtn?.setAttribute("aria-expanded", "false");
-    menuBtn?.setAttribute("aria-label", "Open menu");
-    nav?.removeAttribute("data-open")
-    menuBtn?.focus()
+    if (!nav || !menuBtn) return;
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", labelOpen);
+    nav.removeAttribute("data-open")
+    menuBtn.focus()
   }
 
   function toggleMenu () {
-    if (!nav) return;
+    if (!nav || !menuBtn) return;
     const open = nav.toggleAttribute("data-open");
-    const ariaLabel = open ? "Close menu" : "Open menu";
-    menuBtn?.setAttribute("aria-expanded", String(open));
-    menuBtn?.setAttribute("aria-label", ariaLabel);
+    const ariaLabel = open ? labelClose : labelOpen;
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", ariaLabel);
 
     if (open) {
       nav.querySelector("a")?.focus();

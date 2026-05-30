@@ -9,7 +9,7 @@ const t = useTranslation(locale);
 ---
 
 <!doctype html>
-<html lang="en" data-theme="">
+<html lang={locale === "pt-br" ? "pt-BR" : "en"} data-theme="">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -35,7 +35,7 @@ const t = useTranslation(locale);
   </head>
   <body>
     <a href="#main-content" class="wcag-skip-link">
-      {t("nav.skipToContent")}
+      {t("header.skipToContent")}
     </a>
     <slot />
   </body>

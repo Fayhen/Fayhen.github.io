@@ -2,6 +2,9 @@
 import GitHub from "../assets/icons/fab/github-brands-solid-full.svg";
 import Globe from "../assets/icons/fas/globe-solid-full.svg";
 
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
 import type { Project } from "../data/projects";
 
 interface Props {
@@ -9,6 +12,9 @@ interface Props {
 }
 
 const { project } = Astro.props;
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
 ---
 
 <div class="ctas">
@@ -23,9 +29,9 @@ const { project } = Astro.props;
           height="1.5rem"
           width="1.5rem"
           class="project-cta-button-secondary-icon"
-          aria-label="Link to source code"
+          aria-label={t("projects.sourceAriaLabel")}
         />
-        See code
+        {t("projects.seeCode")}
       </a>
   }
   {
@@ -39,9 +45,9 @@ const { project } = Astro.props;
           height="1.5rem"
           width="1.5rem"
           class="project-cta-button-primary-icon"
-          aria-label="Link to website"
+          aria-label={t("projects.websiteAriaLabel")}
         />
-        See live
+        {t("projects.seeLive")}
       </a>
   }
 </div>
