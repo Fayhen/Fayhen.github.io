@@ -8,7 +8,15 @@ export function t(key: UIKey, locale: Locale): string {
 };
 
 export function useTranslation(locale: Locale) {
-  return function t(key: UIKey): string {
-    return ui[locale][key] ?? ui[defaultLocale][key] ?? key;
-  }; ;
-};
+  return function t(key: UIKey, params?: Record<string, string | number>): string {
+    let text: string = ui[locale][key] ?? ui[defaultLocale][key] ?? key;
+
+    if (params) {
+      for (const [token, value] of Object.entries(params)) {
+        text = text.replaceAll(`{${token}}`, String(value));
+      }
+    }
+
+    return text;
+  };
+}

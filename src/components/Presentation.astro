@@ -11,8 +11,8 @@ const xp = Math.abs(new Date().getFullYear() - 2020);
 <div>
   <h1>{t("intro.greeting")} <span>Diego</span></h1>
   <p class="subtitle">{t("intro.role")}</p>
-  <p>{t("intro.description_a")}</p>
-  <p>{t("intro.description_b")}</p>
+  <p>{t("intro.aboutProfessional", { xp })}</p>
+  <p>{t("intro.aboutCasual")}</p>
 </div>
 
 <style>
