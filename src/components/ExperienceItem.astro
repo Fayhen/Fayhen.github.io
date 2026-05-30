@@ -1,6 +1,8 @@
 ---
 import Caret from "../assets/icons/fas/angle-down-solid-full.svg";
 
+import { isLocale } from "../i18n/locales";
+
 import type { JobExperience } from "../data/experience";
 
 interface Props {
@@ -10,6 +12,7 @@ interface Props {
   experience: JobExperience
 }
 
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const { experience } = Astro.props;
 
 const cardClasses = Astro.props.cardClasses
@@ -43,7 +46,7 @@ const dropdownClasses = Astro.props.dropdownClasses
   >
     <div class="experience-list-wrapper">
       <ul class="experience-list">
-        {experience.items.map((item) => <li>{item}</li>)}
+        {experience.items[locale].map((item) => <li>{item}</li>)}
       </ul>
     </div>
   </div>

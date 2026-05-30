@@ -2,12 +2,15 @@
 import ProjectCTAs from "./ProjectCTAs.astro";
 import StackPill from "./StackPill.astro";
 
+import { isLocale } from "../i18n/locales";
+
 import type { Project } from "../data/projects";
 
 interface Props {
   project: Project
 }
 
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const { project } = Astro.props;
 ---
 
@@ -15,7 +18,7 @@ const { project } = Astro.props;
   <span class="category-tag">{project.category}</span>
   <div class="description">
     <h3>{project.title}</h3>
-    <p>{project.description}</p>
+    <p>{project.description[locale]}</p>
   </div>
   <div class="footer">
     <ul class="base-list stacks-row">

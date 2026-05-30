@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 
 import ProjectCTAs from "./ProjectCTAs.astro";
 import StackPill from "./StackPill.astro";
+import { isLocale } from "../i18n/locales";
 
 import type { Project } from "../data/projects";
 
@@ -10,6 +11,7 @@ interface Props {
   projects: Project[]
 }
 
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const { projects } = Astro.props;
 ---
 
@@ -21,7 +23,7 @@ const { projects } = Astro.props;
       </div>
       <span class="category-tag">{p.category}</span>
       <h3>{p.title}</h3>
-      <p>{p.description}</p>
+      <p>{p.description[locale]}</p>
       <div class="footer">
         <ul class="base-list stacks-row">
           {p.stacks.map((stack) => <StackPill stack={stack} badgeClasses="project-stack-badge" />)}
