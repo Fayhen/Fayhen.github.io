@@ -4,15 +4,15 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 const locale = Astro.currentLocale ?? "en";
 
 const switcher = [
-  { code: "en", href: getRelativeLocaleUrl("en", ""), label: "EN" },
-  { code: "pt-br", href: getRelativeLocaleUrl("pt-br", ""), label: "PT" },
+  { code: "en", lang: "en", href: getRelativeLocaleUrl("en", ""), label: "EN" },
+  { code: "pt-br", lang: "pt-BR", href: getRelativeLocaleUrl("pt-br", ""), label: "PT" },
 ];
 ---
 
 <ul class="base-list lang-switcher">
   {switcher.map((l) => (
     <li>
-      <a href={l.href} aria-current={l.code === locale ? "page" : undefined}>
+      <a href={l.href} hreflang={l.lang} aria-current={l.code === locale ? "page" : undefined}>
         {l.label}
       </a>
     </li>
@@ -20,12 +20,29 @@ const switcher = [
 </ul>
 
 <style>
-  a {
-    color: var(--link);
-    text-decoration: var(--link-decoration);
+  .lang-switcher {
+    display: inline-flex;
+    gap: 0.125rem;
+    padding: 0.125rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
   }
 
-  a:hover {
+  .lang-switcher a {
+    display: block;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    color: var(--link);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .lang-switcher a:hover {
     color: var(--link-hover);
+  }
+
+  .lang-switcher a[aria-current="page"] {
+    background: var(--nav-fg);
+    color: var(--color-tertiary);
   }
 </style>

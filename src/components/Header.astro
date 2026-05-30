@@ -46,8 +46,10 @@ const t = useTranslation(locale);
         <Bars class="menu-icon menu-icon-open" aria-hidden="true" />
         <Xmark class="menu-icon menu-icon-close" aria-hidden="true" />
       </button>
+      <div class="lang-switch-wrapper">
+        <LangSwitch />
+      </div>
       <ThemeToggle />
-      <LangSwitch />
     </div>
   </div>
 </header>
@@ -80,6 +82,11 @@ const t = useTranslation(locale);
     color: inherit;
     font-size: 130%;
     text-decoration: none;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -130,9 +137,8 @@ const t = useTranslation(locale);
     color: var(--link-hover);
   }
 
-  .actions {
-    display: flex;
-    align-items: center;
+  .lang-switch-wrapper {
+    margin: 0 1rem;
   }
 
   .menu-button {
@@ -178,7 +184,6 @@ const t = useTranslation(locale);
       background: none;
       box-shadow: none;
       padding: 0;
-      margin: 0 1.5rem;
       opacity: 1;
       transform: none;
       transition: none;
