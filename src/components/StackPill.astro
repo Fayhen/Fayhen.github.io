@@ -12,7 +12,7 @@ const { stack } = Astro.props;
 
 const badgeClasses = Astro.props.badgeClasses ?? "";
 const border = Astro.props.border ?? "none";
-const padding = Astro.props.padding ?? "0.15rem 0.5rem 0.025rem 0.5rem";
+const padding = Astro.props.padding ?? "0.15rem 0.5rem";
 
 const Original = stack.icon;
 const Themeable = stack.iconThemeable;
@@ -30,7 +30,7 @@ const Themeable = stack.iconThemeable;
     flex-wrap: nowrap;
     align-items: center;
     align-self: center;
-    gap: 0 0.5rem;
+    gap: 0 0.3rem;
     padding: var(--padding);
     border: var(--border);
     border-radius: 1rem;
@@ -48,10 +48,6 @@ const Themeable = stack.iconThemeable;
       transition: none;
       transform: none;
     }
-  }
-
-  .pill span {
-    margin-bottom: 0.15rem;
   }
 
   .pill svg {
