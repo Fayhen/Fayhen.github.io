@@ -3,11 +3,10 @@ import "../../styles/global.css";
 
 import Base from "../../layouts/Base.astro";
 import ExperienceItem from "../ExperienceItem.astro";
-import FeaturedProjectStrip from "../FeaturedProjectStrip.astro";
 import Header from "../Header.astro";
 import Presentation from "../Presentation.astro";
 import ProfilePic from "../ProfilePic.astro";
-import Project from "../Project.astro";
+import ProjectStrips from "../ProjectStrips.astro";
 import StackIcon from "../StackIcon.astro";
 
 import EmailIcon from "../../assets/icons/fas/envelope-solid-full.svg";
@@ -96,10 +95,7 @@ const navItems = [
       <section id="projects-section" class="page-container">
         <h1>{t("projects.title")}</h1>
         <p>{t("projects.description")}</p>
-        <FeaturedProjectStrip projects={projects.filter((p) => p.featured)} />
-        <ul class="base-list projects-grid">
-          {projects.filter((p) => !p.featured).map((p) => <Project project={p} />)}
-        </ul>
+        <ProjectStrips {projects} />
       </section>
     </div>
 
@@ -291,14 +287,6 @@ const navItems = [
     flex-direction: column;
 		align-items: center;
 		padding-block: 4rem 8rem;
-  }
-
-  .projects-grid {
-    margin-top: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
-    gap: 1.5rem;
-    width: 100%;
   }
 
   #contact-wrapper {
