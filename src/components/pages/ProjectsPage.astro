@@ -13,6 +13,7 @@ import Made from "../../assets/icons/fas/terminal-solid-full.svg";
 
 import { projects } from "../../data/projects";
 
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { isLocale } from "../../i18n/locales";
 import { useTranslation } from "../../i18n";
 
@@ -20,7 +21,7 @@ const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
 
 const navItems = [
-  { label: t("nav.backHome"), href: "/" },
+  { label: t("nav.backHome"), href: getRelativeLocaleUrl(locale, "") },
   { label: t("nav.projects"), href: "#intro-section" },
   { label: t("nav.contact"), href: "#contact-section" }
 ];

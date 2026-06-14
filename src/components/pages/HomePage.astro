@@ -9,6 +9,7 @@ import ProfilePic from "../ProfilePic.astro";
 import ProjectStrips from "../ProjectStrips.astro";
 import StackIcon from "../StackIcon.astro";
 
+import ArrowRight from "../../assets/icons/fas/arrow-right.svg";
 import EmailIcon from "../../assets/icons/fas/envelope-solid-full.svg";
 import GitHubIcon from "../../assets/icons/fab/github-brands-solid-full.svg";
 import LinkedInIcon from "../../assets/icons/fab/square-linkedin-brands-solid-full.svg";
@@ -23,11 +24,12 @@ import { volunteering } from "../../data/experience";
 import { isLocale } from "../../i18n/locales";
 import { useTranslation } from "../../i18n";
 
+import { getRelativeLocaleUrl } from "astro:i18n";
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
 
 const navItems = [
-  { label: t("nav.home"), href: "/" },
+  { label: t("nav.home"), href: getRelativeLocaleUrl(locale, "") },
   { label: t("nav.skills"), href: "#skills-section" },
   { label: t("nav.projects"), href: "#projects-section" },
   { label: t("nav.contact"), href: "#contact-section" }
@@ -96,6 +98,10 @@ const navItems = [
         <h1>{t("projects.title")}</h1>
         <p>{t("projects.description")}</p>
         <ProjectStrips {projects} />
+        <a href={getRelativeLocaleUrl(locale, "projects")} class="projects-button">
+          {t("projects.seeMore")}
+          <ArrowRight class="link-icon" aria-hidden="true" />
+        </a>
       </section>
     </div>
 
@@ -286,6 +292,32 @@ const navItems = [
     flex-direction: column;
 		align-items: center;
 		padding-block: 4rem 8rem;
+  }
+
+  .projects-button {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    margin-top: 1.5rem;
+    color: var(--link);
+    text-decoration: underline;
+    text-wrap: nowrap;
+  }
+
+  .link-icon {
+    color: var(--link);
+    height: 1rem;
+    width: 1rem;
+    margin: 0 0 -0.1rem 0.1rem;
+  }
+
+  .projects-button:hover,
+  .projects-button:focus-visible,
+  .projects-button:hover .link-icon,
+  .projects-button:focus-visible .link-icon {
+    color: var(--link-hover);
   }
 
   #contact-wrapper {
