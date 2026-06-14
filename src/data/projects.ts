@@ -24,7 +24,7 @@ export const projects: Project[] = [
     slug: "cesupa",
     category: "fullstack",
     description: {
-      "en": "Led development of a university website and CMS platform using Elixir, Phoenix, and Strapi. Delivered a modern replacement for a decade-old system, improving content management and overall platform maintainability.",
+      "en": "Led development of a university website and CMS platform using Elixir, Phoenix, and Strapi. A modern replacement for a decade-old system.",
       "pt-br": "Liderança no desenvolvimento de um site universitário e plataforma CMS com Elixir, Phoenix e Strapi, entregando um substituto moderno para um sistema com mais de uma década."
     },
     picture: cesupa,

@@ -1,0 +1,238 @@
+---
+import "../../styles/global.css";
+import Base from "../../layouts/Base.astro";
+import Header from "../Header.astro";
+import ProjectCTAs from "../ProjectCTAs.astro";
+import StackPill from "../StackPill.astro";
+
+import EmailIcon from "../../assets/icons/fas/envelope-solid-full.svg";
+import GitHubIcon from "../../assets/icons/fab/github-brands-solid-full.svg";
+import LinkedInIcon from "../../assets/icons/fab/square-linkedin-brands-solid-full.svg";
+import Luv from "../../assets/icons/far/heart-regular-full.svg";
+import Made from "../../assets/icons/fas/terminal-solid-full.svg";
+
+import { projects } from "../../data/projects";
+
+import { isLocale } from "../../i18n/locales";
+import { useTranslation } from "../../i18n";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const navItems = [
+  { label: t("nav.backHome"), href: "/" },
+  { label: t("nav.projects"), href: "#intro-section" },
+  { label: t("nav.contact"), href: "#contact-section" }
+];
+---
+
+<Base>
+  <Header {navItems} />
+
+  <main id="main-content" tabindex="-1">
+    <div id="intro-wrapper">
+      <section id="intro-section" class="page-container">
+        <h1>{t("projectsPage.title")}</h1>
+        <p>{t("projectsPage.intro")}</p>
+        <ul class="base-list">
+          {projects.map((p) =>
+            <li class="secondary-card project-list-card" data-category={p.category}>
+              <div class="project-title">
+                <span class="category-tag">{p.category}</span>
+                <h2>{p.title}</h2>
+              </div>
+              <div class="ctas">
+                <ProjectCTAs project={p} />
+              </div>
+              <p>{p.description[locale]}</p>
+              <div class="footer">
+                <ul class="base-list stacks-row">
+                  {p.stacks.map((stack) => <StackPill stack={stack} badgeClasses="project-stack-badge" />)}
+                </ul>
+              </div>
+            </li>
+          )}
+        </ul>
+      </section>
+    </div>
+
+    <div id="contact-wrapper">
+      <section id="contact-section" class="page-container">
+        <h1>{t("contact.title")}</h1>
+        <p>{t("contact.subtitle")}</p>
+        <ul class="base-list">
+          <li>
+            <a href="mailto:diego00alfa@gmail.com" aria-label={t("contact.emailAriaLabel")}>
+              <EmailIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/diegogcsouza/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("contact.linkedInAriaLabel")}
+            >
+              <LinkedInIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/Fayhen"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("contact.githubAriaLabel")}
+            >
+              <GitHubIcon class="contact-icon" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div class="page-container">
+      <p>
+        <Made id="made" class="footer-icon" role="img" aria-label={t("footer.made")} />
+        {t("footer.with")}
+        <Luv id="luv" class="footer-icon" role="img" aria-label={t("footer.love")} />
+        {t("footer.by")}
+        <b id="me">Diego Garcia Cordeiro Souza</b>
+        | {t("footer.builtWith")}
+        <b id="this">Astro</b>
+      </p>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  #intro-wrapper {
+    padding-top: 4rem;
+    background-color: var(--bg-primary);
+    color: var(--color-primary);
+    border-bottom: var(--section-border-bottom-primary);
+  }
+
+  #intro-wrapper section {
+		display: flex;
+    flex-direction: column;
+		align-items: center;
+		column-gap: clamp(2rem, 8vw, 5rem);
+		padding-block: 7rem 14rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .project-list-card {
+    position: relative;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .ctas {
+    margin-inline: auto;
+    margin-top: 0.5rem;
+  }
+
+  @media (width >= 900px) {
+    .ctas {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      margin-top: 0;
+    }
+  }
+
+  .stacks-row {
+    flex-direction: row;
+    gap: 0 1rem;
+  }
+
+  #contact-wrapper {
+    background-color: var(--bg-tertiary);
+    color: var(--color-tertiary);
+  }
+
+  #contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+		padding-block: 5rem 8rem;
+    text-align: center;
+  }
+
+  #contact-section h1 {
+    font-size: 2.15rem;
+  }
+
+  #contact-section p {
+    font-size: 1.25rem;
+  }
+
+  #contact-section ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0 1rem;
+  }
+
+  #contact-section a {
+    padding: 0.1rem;
+  }
+
+  .contact-icon {
+    height: 3.15rem;
+    width: 3.15rem;
+    color: var(--color-tertiary);
+  }
+
+  .contact-icon:hover,
+  #contact-section a:focus-visible .contact-icon {
+    color: oklch(100% 0.0001 271.152deg);
+  }
+
+  #footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem;
+    background-color: var(--footer-bg);
+    color: var(--footer-fg);
+    letter-spacing: 0.01rem;
+    word-spacing: 0.1rem;
+    text-align: center;
+  }
+
+  #footer p {
+    margin: 0;
+  }
+
+  #footer #luv {
+    color: var(--footer-highlight-luv);
+  }
+
+  #footer #made {
+    color: var(--footer-highlight-made);
+  }
+
+  #footer #me {
+    color: var(--footer-highlight-me);
+  }
+
+  #footer #this {
+    color: var(--footer-highlight-this);
+  }
+
+  .footer-icon {
+    margin-bottom: -0.1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+</style>
