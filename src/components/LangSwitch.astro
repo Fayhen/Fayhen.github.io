@@ -1,11 +1,15 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 
+import { stripLocaleFromPath } from "../i18n/locales";
+
+const route = stripLocaleFromPath(Astro.url.pathname);
+
 const locale = Astro.currentLocale ?? "en";
 
 const switcher = [
-  { code: "en", lang: "en", href: getRelativeLocaleUrl("en", ""), label: "EN" },
-  { code: "pt-br", lang: "pt-BR", href: getRelativeLocaleUrl("pt-br", ""), label: "PT" },
+  { code: "en", lang: "en", href: getRelativeLocaleUrl("en", route), label: "EN" },
+  { code: "pt-br", lang: "pt-BR", href: getRelativeLocaleUrl("pt-br", route), label: "PT" },
 ];
 ---
 
