@@ -12,9 +12,12 @@ const t = useTranslation(locale);
 <html lang={locale === "pt-br" ? "pt-BR" : "en"} data-theme="">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t("meta.description")}>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <Font cssVariable="--font-inter" />
     <meta name="generator" content={Astro.generator} />
     <title>Diego Souza</title>
