@@ -1,6 +1,8 @@
 ---
 import "../../styles/global.css";
+
 import Base from "../../layouts/Base.astro";
+import Footer from "../Footer.astro";
 import Header from "../Header.astro";
 import ProjectCTAs from "../ProjectCTAs.astro";
 import StackPill from "../StackPill.astro";
@@ -8,8 +10,6 @@ import StackPill from "../StackPill.astro";
 import EmailIcon from "../../assets/icons/fas/envelope-solid-full.svg";
 import GitHubIcon from "../../assets/icons/fab/github-brands-solid-full.svg";
 import LinkedInIcon from "../../assets/icons/fab/square-linkedin-brands-solid-full.svg";
-import Luv from "../../assets/icons/far/heart-regular-full.svg";
-import Made from "../../assets/icons/fas/terminal-solid-full.svg";
 
 import { projects } from "../../data/projects";
 
@@ -92,19 +92,7 @@ const navItems = [
     </div>
   </main>
 
-  <footer id="footer">
-    <div class="page-container">
-      <p>
-        <Made id="made" class="footer-icon" role="img" aria-label={t("footer.made")} />
-        {t("footer.with")}
-        <Luv id="luv" class="footer-icon" role="img" aria-label={t("footer.love")} />
-        {t("footer.by")}
-        <b id="me">Diego Garcia Cordeiro Souza</b>
-        | {t("footer.builtWith")}
-        <b id="this">Astro</b>
-      </p>
-    </div>
-  </footer>
+  <Footer />
 </Base>
 
 <style>
@@ -197,43 +185,5 @@ const navItems = [
   .contact-icon:hover,
   #contact-section a:focus-visible .contact-icon {
     color: oklch(100% 0.0001 271.152deg);
-  }
-
-  #footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.35rem;
-    background-color: var(--footer-bg);
-    color: var(--footer-fg);
-    letter-spacing: 0.01rem;
-    word-spacing: 0.1rem;
-    text-align: center;
-  }
-
-  #footer p {
-    margin: 0;
-  }
-
-  #footer #luv {
-    color: var(--footer-highlight-luv);
-  }
-
-  #footer #made {
-    color: var(--footer-highlight-made);
-  }
-
-  #footer #me {
-    color: var(--footer-highlight-me);
-  }
-
-  #footer #this {
-    color: var(--footer-highlight-this);
-  }
-
-  .footer-icon {
-    margin-bottom: -0.1rem;
-    height: 1rem;
-    width: 1rem;
   }
 </style>
