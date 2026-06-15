@@ -1,7 +1,10 @@
 ---
 import "../../styles/global.css";
 
+import ArrowRight from "../../assets/icons/fas/arrow-right.svg";
+
 import Base from "../../layouts/Base.astro";
+import ContactMe from "../ContactMe.astro";
 import ExperienceItem from "../ExperienceItem.astro";
 import Footer from "../Footer.astro";
 import Header from "../Header.astro";
@@ -9,11 +12,6 @@ import Presentation from "../Presentation.astro";
 import ProfilePic from "../ProfilePic.astro";
 import ProjectStrips from "../ProjectStrips.astro";
 import StackIcon from "../StackIcon.astro";
-
-import ArrowRight from "../../assets/icons/fas/arrow-right.svg";
-import EmailIcon from "../../assets/icons/fas/envelope-solid-full.svg";
-import GitHubIcon from "../../assets/icons/fab/github-brands-solid-full.svg";
-import LinkedInIcon from "../../assets/icons/fab/square-linkedin-brands-solid-full.svg";
 
 import { experience } from "../../data/experience";
 import { projects } from "../../data/projects";
@@ -106,35 +104,7 @@ const navItems = [
 
     <div id="contact-wrapper">
       <section id="contact-section" class="page-container">
-        <h1>{t("contact.title")}</h1>
-        <p>{t("contact.subtitle")}</p>
-        <ul class="base-list">
-          <li>
-            <a href="mailto:diego00alfa@gmail.com" aria-label={t("contact.emailAriaLabel")}>
-              <EmailIcon class="contact-icon" aria-hidden="true" />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/diegogcsouza/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("contact.linkedInAriaLabel")}
-            >
-              <LinkedInIcon class="contact-icon" aria-hidden="true" />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/Fayhen"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("contact.githubAriaLabel")}
-            >
-              <GitHubIcon class="contact-icon" aria-hidden="true" />
-            </a>
-          </li>
-        </ul>
+        <ContactMe />
       </section>
     </div>
   </main>
@@ -318,34 +288,5 @@ const navItems = [
     justify-content: center;
 		padding-block: 5rem 8rem;
     text-align: center;
-  }
-
-  #contact-section h1 {
-    font-size: 2.15rem;
-  }
-
-  #contact-section p {
-    font-size: 1.25rem;
-  }
-
-  #contact-section ul {
-    display: flex;
-    align-self: center;
-    gap: 0 1rem;
-  }
-
-  #contact-section a {
-    padding: 0.1rem;
-  }
-
-  .contact-icon {
-    height: 3.15rem;
-    width: 3.15rem;
-    color: var(--color-tertiary);
-  }
-
-  .contact-icon:hover,
-  #contact-section a:focus-visible .contact-icon {
-    color: oklch(100% 0.0001 271.152deg);
   }
 </style>
