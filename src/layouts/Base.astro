@@ -1,11 +1,19 @@
 ---
 import Font from "astro/components/Font.astro";
 
-import { isLocale } from "../i18n/locales";
+import { isLocale, stripLocaleFromPath } from "../i18n/locales";
 import { useTranslation } from "../i18n";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
+
+const route = stripLocaleFromPath(Astro.url.pathname);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const alternates = {
+  "en": new URL(`${route}/`, Astro.site),
+  "pt-BR": new URL(route ? `pt-br/${route}/` : "pt-br/", Astro.site)
+};
 ---
 
 <!doctype html>
@@ -18,6 +26,10 @@ const t = useTranslation(locale);
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={alternates["en"]} />
+    <link rel="alternate" hreflang="pt-BR" href={alternates["pt-BR"]}>
+    <link rel="alternate" hreflang="x-default" href={alternates["en"]}>
     <Font cssVariable="--font-inter" />
     <meta name="generator" content={Astro.generator} />
     <title>Diego Souza</title>

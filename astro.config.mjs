@@ -10,6 +10,7 @@ export default defineConfig({
       cssVariable: "--font-inter"
     }
   ],
+  site: "https://fayhen.github.io",
   i18n: {
     locales: ["en", "pt-br"],
     defaultLocale: "en",
