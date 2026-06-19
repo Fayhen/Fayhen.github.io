@@ -4,6 +4,14 @@ import Font from "astro/components/Font.astro";
 import { isLocale, stripLocaleFromPath } from "../i18n/locales";
 import { useTranslation } from "../i18n";
 
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props;
+const siteName = "Diego Souza";
+const fullTitle = title ? `${title} · ${siteName}` : siteName;
+
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
 
@@ -32,7 +40,7 @@ const alternates = {
     <link rel="alternate" hreflang="x-default" href={alternates["en"]}>
     <Font cssVariable="--font-inter" />
     <meta name="generator" content={Astro.generator} />
-    <title>Diego Souza</title>
+    <title>{fullTitle}</title>
 
     <script is:inline>
       // FOUC prevention: runs before initial paint
