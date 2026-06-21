@@ -1,6 +1,8 @@
 ---
 import Font from "astro/components/Font.astro";
 
+import { buildStructuredData } from "../data/structured-data";
+
 import { isLocale, stripLocaleFromPath } from "../i18n/locales";
 import { useTranslation } from "../i18n";
 
@@ -26,6 +28,13 @@ const alternates = {
 const ogImage = new URL(`/og-image-${locale}.jpg`, Astro.site);
 const ogLocale = locale === "pt-br" ? "pt_BR" : "en_US";
 const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
+
+const structuredData = buildStructuredData({
+  site: Astro.site!,
+  locale,
+  siteName,
+  imageUrl: ogImage.href
+});
 ---
 
 <!doctype html>
@@ -62,6 +71,7 @@ const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
     <Font cssVariable="--font-inter" />
     <meta name="generator" content={Astro.generator} />
     <title>{fullTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <script is:inline>
       // FOUC prevention: runs before initial paint

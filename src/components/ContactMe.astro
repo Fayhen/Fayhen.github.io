@@ -3,6 +3,7 @@ import EmailIcon from "../assets/icons/fas/envelope-solid-full.svg";
 import GitHubIcon from "../assets/icons/fab/github-brands-solid-full.svg";
 import LinkedInIcon from "../assets/icons/fab/square-linkedin-brands-solid-full.svg";
 
+import { email, github, linkedIn } from "../data/contacts";
 import { isLocale } from "../i18n/locales";
 import { useTranslation } from "../i18n";
 
@@ -15,13 +16,13 @@ const t = useTranslation(locale);
   <p>{t("contact.subtitle")}</p>
   <ul class="base-list">
     <li>
-      <a href="mailto:diego00alfa@gmail.com" aria-label={t("contact.emailAriaLabel")}>
+      <a href={`mailto:${email}`} aria-label={t("contact.emailAriaLabel")}>
         <EmailIcon class="contact-icon" aria-hidden="true" />
       </a>
     </li>
     <li>
       <a
-        href="https://www.linkedin.com/in/diegogcsouza/"
+        href={linkedIn}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t("contact.linkedInAriaLabel")}
@@ -31,7 +32,7 @@ const t = useTranslation(locale);
     </li>
     <li>
       <a
-        href="https://github.com/Fayhen"
+        href={github}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t("contact.githubAriaLabel")}
