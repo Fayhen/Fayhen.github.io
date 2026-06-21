@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   fonts: [
@@ -10,7 +12,9 @@ export default defineConfig({
       cssVariable: "--font-inter"
     }
   ],
+
   site: "https://fayhen.github.io",
+
   i18n: {
     locales: ["en", "pt-br"],
     defaultLocale: "en",
@@ -21,5 +25,17 @@ export default defineConfig({
       prefixDefaultLocale: false,
       fallbackType: "redirect"
     }
-  }
+  },
+
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          "en": "en",
+          "pt-br": "pt-BR"
+        }
+      }
+    })
+  ]
 });

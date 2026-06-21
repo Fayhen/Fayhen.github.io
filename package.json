@@ -20,6 +20,7 @@
     "lint:style": "stylelint \"src/**/*.{css,astro}\""
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^6.1.9"
   },
   "devDependencies": {
