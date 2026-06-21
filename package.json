@@ -10,9 +10,9 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "dev:host": "astro dev --host",
-    "build": "astro build",
+    "dev": "node scripts/build-og-image.mjs && astro dev",
+    "dev:host": "node scripts/build-og-image.mjs && astro dev --host",
+    "build": "node scripts/build-og-image.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",

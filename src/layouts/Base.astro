@@ -22,6 +22,10 @@ const alternates = {
   "en": new URL(`${route}/`, Astro.site),
   "pt-BR": new URL(route ? `pt-br/${route}/` : "pt-br/", Astro.site)
 };
+
+const ogImage = new URL("/og-image.jpg", Astro.site);
+const ogLocale = locale === "pt-br" ? "pt_BR" : "en_US";
+const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
 ---
 
 <!doctype html>
@@ -30,6 +34,23 @@ const alternates = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={t("meta.description")}>
+    <meta name="author" content="Diego Souza">
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="oklch(100% 0.0001 271.152deg / 90%)" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#oklch(27.274% 0.0001 271.152deg)" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={t("meta.description")} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={t("meta.ogImageDescription")} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
