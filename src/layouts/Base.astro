@@ -23,7 +23,7 @@ const alternates = {
   "pt-BR": new URL(route ? `pt-br/${route}/` : "pt-br/", Astro.site)
 };
 
-const ogImage = new URL("/og-image.jpg", Astro.site);
+const ogImage = new URL(`/og-image-${locale}.jpg`, Astro.site);
 const ogLocale = locale === "pt-br" ? "pt_BR" : "en_US";
 const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
 ---
@@ -36,8 +36,8 @@ const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
     <meta name="description" content={t("meta.description")}>
     <meta name="author" content="Diego Souza">
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="oklch(100% 0.0001 271.152deg / 90%)" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#oklch(27.274% 0.0001 271.152deg)" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#4c4b4b" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />

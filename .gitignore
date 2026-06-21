@@ -1,5 +1,5 @@
 # programmatic assets
-public/og-image.jpg
+public/og-image-*.jpg
 
 # build output
 dist/
