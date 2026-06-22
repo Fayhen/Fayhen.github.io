@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 
 import ProjectCTAs from "./ProjectCTAs.astro";
+import ProjectCategoryTag from "./ProjectCategoryTag.astro";
 import StackPill from "./StackPill.astro";
 import { isLocale } from "../i18n/locales";
 
@@ -25,7 +26,9 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
         <div class="hero">
           {p.picture && <Image src={p.picture} alt={p.title} />}
         </div>
-        <span class="category-tag">{p.category}</span>
+        <div class="category-tag-wrapper">
+          <ProjectCategoryTag category={p.category} />
+        </div>
         <h3>{p.title}</h3>
         <p>{p.description[locale]}</p>
         <div class="footer">
@@ -41,7 +44,9 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
   <ul class="base-list others-grid">
     {others.map((p) =>
       <li class="secondary-card animated project-card default-card" data-category={p.category}>
-        <span class="category-tag">{p.category}</span>
+        <div class="category-tag-wrapper">
+          <ProjectCategoryTag category={p.category} />
+        </div>
         <div class="description">
           <h3>{p.title}</h3>
           <p>{p.description[locale]}</p>
@@ -127,7 +132,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
       height: auto;
     }
 
-    .featured-card .category-tag,
+    .featured-card .category-tag-wrapper,
     .featured-card h3,
     .featured-card p,
     .featured-card .footer {
@@ -179,7 +184,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     overflow: hidden;
   }
 
-  .category-tag {
+  /* .category-tag {
     place-self: start start;
     display: inline-block;
     padding: 0.2rem 0.6rem;
@@ -189,7 +194,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05rem;
-  }
+  } */
 
   .footer {
     display: flex;

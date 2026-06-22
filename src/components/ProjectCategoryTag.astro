@@ -1,0 +1,40 @@
+---
+interface Props {
+  category: string
+}
+
+const { category } = Astro.props;
+---
+
+<span class="category-tag" data-category={category}>
+  {category}
+</span>
+
+<style>
+  .category-tag {
+    place-self: start start;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+  }
+
+  .category-tag[data-category="backend"] {
+    --accent: var(--badge-backend-fg);
+    --accent-bg: var(--badge-backend-bg);
+  }
+
+  .category-tag[data-category="frontend"] {
+    --accent: var(--badge-frontend-fg);
+    --accent-bg: var(--badge-frontend-bg);
+  }
+
+  .category-tag[data-category="fullstack"] {
+    --accent: var(--badge-fullstack-fg);
+    --accent-bg: var(--badge-fullstack-bg);
+  }
+</style>

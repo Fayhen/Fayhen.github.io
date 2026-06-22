@@ -6,6 +6,7 @@ import ContactMe from "../ContactMe.astro";
 import Footer from "../Footer.astro";
 import Header from "../Header.astro";
 import ProjectCTAs from "../ProjectCTAs.astro";
+import ProjectCategoryTag from "../ProjectCategoryTag.astro";
 import StackPill from "../StackPill.astro";
 
 import { projects } from "../../data/projects";
@@ -35,8 +36,10 @@ const navItems = [
         <ul class="base-list">
           {projects.map((p) =>
             <li class="secondary-card project-list-card" data-category={p.category}>
-              <div class="project-title">
-                <span class="category-tag">{p.category}</span>
+              <div>
+                <div class="category-tag-wrapper">
+                  <ProjectCategoryTag category={p.category} />
+                </div>
                 <h2>{p.title}</h2>
               </div>
               <div class="ctas">
@@ -92,6 +95,10 @@ const navItems = [
     position: relative;
     padding: 1rem;
     border-radius: 15px;
+  }
+
+  .category-tag-wrapper {
+    margin-bottom: 0.2rem;
   }
 
   .ctas {
