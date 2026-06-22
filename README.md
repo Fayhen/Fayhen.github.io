@@ -1,46 +1,40 @@
-# Astro Starter Kit: Basics
+# Fayhen's Portfolio (fayhen-github-io)
+
+This is my online portfolio, built by hand with the [Astro Framework](https://astro.build/). It features:
+
+- I18n (en + pt-br)
+- Up-to-date projects, experience and contacts
+- Sitemap, JSON-LD and Open Graph assets
+
+## Setup and running
+
+Ensure you have Node 22.12+ and [pnpm](https://pnpm.io/) available on your machine. A `.tool-versions` file is available if you use [asdf](https://asdf-vm.com/).
+
+Next, install dependencies with pnpm:
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Then run any of the commands below:
 
-## 🚀 Project Structure
+| Command                   | Action                                                                   |
+| :------------------------ | :----------------------------------------------------------------------- |
+| `pnpm dev`                | Build local assets and spin local dev server                             |
+| `pnpm dev:host`           | Build local assets and spin local dev server, listening on all addresses |
+| `pnpm build`              | Build local assets and build the application for production at `./dist/` |
+| `pnpm build:assets`       | Build local assets                                                       |
+| `pnpm preview`            | Preview your build locally, before deploying                             |
+| `pnpm lint`               | Lint files                                                               |
+| `pnpm lint:style`         | Lint CSS files                                                           |
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+Astro commands are also available:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `pnpm install`            | Installs dependencies                            |
-| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
-| `pnpm build`              | Build your production site to `./dist/`          |
-| `pnpm preview`            | Preview your build locally, before deploying     |
 | `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help`    | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Deployment
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+(TODO)
