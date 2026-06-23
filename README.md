@@ -37,4 +37,9 @@ Astro commands are also available:
 
 ## Deployment
 
-(TODO)
+Hosted on [GitHub Pages](https://pages.github.com/) at <https://fayhen.github.io>, deployed via GitHub Actions:
+
+- **`.github/workflows/deploy.yml`** — builds with the [official Astro action](https://github.com/withastro/action) and publishes to Pages.
+- **`.github/workflows/ci.yml`** — lints and builds every pull request targeting `main`, keeping it clean.
+
+The deploy runner also installs the Inter font before building. Open Graph images are rasterized server-side with `sharp` and need the font available to the OS at build time.
