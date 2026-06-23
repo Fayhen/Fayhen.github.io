@@ -1,0 +1,84 @@
+---
+import GitHub from "../assets/icons/fab/github-brands-solid-full.svg";
+import Globe from "../assets/icons/fas/globe-solid-full.svg";
+
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props;
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+---
+
+<div class="ctas">
+  {
+    project.repositoryLink &&
+      <a href={project.repositoryLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-cta-button-secondary cta-link"
+      >
+        <GitHub
+          height="1.5rem"
+          width="1.5rem"
+          class="project-cta-button-secondary-icon"
+          aria-label={t("projects.sourceAriaLabel")}
+        />
+        {t("projects.seeCode")}
+      </a>
+  }
+  {
+    project.productionLink &&
+      <a href={project.productionLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-cta-button-primary cta-link"
+      >
+        <Globe
+          height="1.5rem"
+          width="1.5rem"
+          class="project-cta-button-primary-icon"
+          aria-label={t("projects.websiteAriaLabel")}
+        />
+        {t("projects.seeLive")}
+      </a>
+  }
+</div>
+
+<style>
+  .ctas {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .cta-link {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    gap: 0 0.3rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    text-wrap: nowrap;
+    transition: transform ease 100ms;
+  }
+
+  .cta-link:hover {
+    transform: translate(0, -1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-link,
+    .cta-link:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

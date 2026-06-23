@@ -1,0 +1,78 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+
+      # Resolve pnpm store location on runner OS
+      - name: Resolve pnpm store
+        id: pnpm-store
+        run: echo "dir=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
+
+      # Cache the pnpm store
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.dir }}
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-${{ runner.os }}-
+
+      # Cache Astro's build + Fontsource download dir
+      - name: Cache Astro
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'astro.config.mjs') }}
+          restore-keys: |
+            astro-${{ runner.os }}-
+
+      # Cache build assets (Inter font files)
+      - name: Cache Inter font
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/fonts
+          key: inter-${{ runner.os }}-v4.1   # bump to invalidate
+
+      # Installs required build assets (skipped if cache is available)
+      - name: Install Inter for OG rendering
+        run: |
+          if ! fc-match Inter | grep -qi inter; then
+            curl -fsSL -o /tmp/inter.zip \
+              https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
+            mkdir -p ~/.local/share/fonts
+            unzip -j /tmp/inter.zip 'extras/ttf/*.ttf' -d ~/.local/share/fonts  # verify in-zip path
+            fc-cache -f
+          fi
+          fc-match Inter | grep -qi inter || { echo "Inter not resolved!"; exit 1; }
+
+      - name: Build
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

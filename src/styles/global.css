@@ -1,0 +1,136 @@
+@import url("./themes.css");
+
+*,                                                                                                                                                                                                                                  
+*::before,                                                                                                                                                                                                                          
+*::after {                                                                                                                                                                                                                          
+  box-sizing: border-box;                                                                                                                                                                                                           
+}
+
+html,
+body {
+  margin: 0;
+  font-family: var(--font-inter);
+}
+
+body {
+  font-size: clamp(100%, 1.5vw, 102.5%);
+  min-height: 100dvh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 1rem);
+}
+
+.section-container {
+  padding: 5rem 0;
+}
+
+.base-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.base-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.primary-card {
+  background-color: var(--card-bg-primary);
+  color: var(--card-fg-primary);
+}
+
+.primary-card.hoverable:hover,
+.primary-card.hoverable:focus-within {
+  background-color: var(--card-bg-primary-accent);
+}
+
+.secondary-card {
+  background-color: var(--card-bg-secondary);
+  color: var(--card-fg-secondary);
+}
+
+.secondary-card.hoverable:hover,
+.secondary-card.hoverable:focus-within {
+  background-color: var(--card-bg-secondary-accent);
+}
+
+.primary-card.animated,
+.secondary-card.animated {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-card.animated:hover,
+.primary-card.animated:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 14px var(--card-bg-primary-accent);
+}
+
+.secondary-card.animated:hover,
+.secondary-card.animated:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 14px var(--card-bg-secondary-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-card.animated:hover,
+  .primary-card.animated:focus-within,
+  .secondary-card.animated:hover,
+  .secondary-card.animated:focus-within {
+    transition: none;
+    transform: none;
+  }
+}
+
+.project-stack-badge {
+  background-color: var(--badge-stack-bg);
+  color: var(--badge-stack-fg);
+}
+
+.project-cta-button-primary {
+  background-color: var(--project-cta-primary-bg);
+  color: var(--project-cta-primary-fg);
+}
+
+.project-cta-button-primary-icon {
+  color: var(--project-cta-primary-icon-fill);
+}
+
+.project-cta-button-secondary {
+  background-color: var(--project-cta-secondary-bg);
+  color: var(--project-cta-secondary-fg);
+}
+
+.project-cta-button-secondary-icon {
+  color: var(--project-cta-secondary-icon-fill);
+}
+
+.color-primary {
+  background-color: var(--color-primary);
+}
+
+.color-secondary {
+  background-color: var(--color-secondary);
+}
+
+.color-tertiary {
+  background-color: var(--color-tertiary);
+}
+
+/* Development utilities */
+
+.dev-borders {
+  border: 1px dashed black;
+}

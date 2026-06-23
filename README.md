@@ -1,43 +1,45 @@
-# Fayhen's Curriculum (fayhen-github-io)
+# Fayhen's Portfolio (fayhen-github-io)
 
-This a legacy version of my online portfolio, at the time built with Vite, Vue 3 and Quasar Framework V2.
+This is my online portfolio, built by hand with the [Astro Framework](https://astro.build/). It features:
 
-## Install the dependencies
+- I18n (en + pt-br)
+- Up-to-date projects, experience and contacts
+- Sitemap, JSON-LD and Open Graph assets
 
-```bash
-yarn
-# or
-npm install
+## Setup and running
+
+Ensure you have Node 22.12+ and [pnpm](https://pnpm.io/) available on your machine. A `.tool-versions` file is available if you use [asdf](https://asdf-vm.com/).
+
+Next, install dependencies with pnpm:
+
+```sh
+pnpm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+Then run any of the commands below:
 
-```bash
-quasar dev
-```
+| Command                   | Action                                                                   |
+| :------------------------ | :----------------------------------------------------------------------- |
+| `pnpm dev`                | Build local assets and spin local dev server                             |
+| `pnpm dev:host`           | Build local assets and spin local dev server, listening on all addresses |
+| `pnpm build`              | Build local assets and build the application for production at `./dist/` |
+| `pnpm build:assets`       | Build local assets                                                       |
+| `pnpm preview`            | Preview your build locally, before deploying                             |
+| `pnpm lint`               | Lint files                                                               |
+| `pnpm lint:style`         | Lint CSS files                                                           |
 
-### Lint the files
+Astro commands are also available:
 
-```bash
-yarn lint
-# or
-npm run lint
-```
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help`    | Get help using the Astro CLI                     |
 
-### Format the files
+## Deployment
 
-```bash
-yarn format
-# or
-npm run format
-```
+Hosted on [GitHub Pages](https://pages.github.com/) at <https://fayhen.github.io>, deployed via GitHub Actions:
 
-### Build the app for production
+- **`.github/workflows/deploy.yml`** — builds with the [official Astro action](https://github.com/withastro/action) and publishes to Pages.
+- **`.github/workflows/ci.yml`** — lints and builds every pull request targeting `main`, keeping it clean.
 
-```bash
-quasar build
-```
-
-### Customize the configuration
-
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+The deploy runner also installs the Inter font before building. Open Graph images are rasterized server-side with `sharp` and need the font available to the OS at build time.

@@ -1,0 +1,281 @@
+---
+import LangSwitch from "./LangSwitch.astro";
+import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+import Bars from "../assets/icons/fas/bars-solid-full.svg";
+import Xmark from "../assets/icons/fas/xmark-solid-full.svg";
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+
+interface Props {
+  navItems: Array<{
+    label: string;
+    href: string;
+  }>
+}
+
+const { navItems } = Astro.props;
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+---
+
+<header>
+  <div class="page-container header-container">
+    <a href={getRelativeLocaleUrl(locale, "")} aria-label={t("header.backToTop")} class="logo-wrapper">
+      <Logo />
+      <span>Fayhen</span>
+    </a>
+    <div class="actions">
+      <nav id="primary-nav">
+        <ul>
+          {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+        </ul>
+      </nav>
+      <button
+        class="menu-button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label={t("header.openMenu")}
+        data-label-open={t("header.openMenu")}
+        data-label-close={t("header.closeMenu")}
+      >
+        <Bars class="menu-icon menu-icon-open" aria-hidden="true" />
+        <Xmark class="menu-icon menu-icon-close" aria-hidden="true" />
+      </button>
+      <div class="lang-switch-wrapper">
+        <LangSwitch />
+      </div>
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    height: var(--header-height);
+    width: 100%;
+    padding: 0.5rem 0;
+    z-index: 100;
+    backdrop-filter: var(--nav-filter);
+    color: var(--nav-fg);
+    background-color: var(--nav-bg);
+    box-shadow: var(--nav-shadow)
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+    height: 3.49rem;
+    color: inherit;
+    font-size: 130%;
+    text-decoration: none;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: var(--header-height);
+    right: 0;
+    background: var(--nav-bg-secondary);
+    box-shadow: var(--nav-shadow-mobile);
+    padding: 1rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      display 0.2s allow-discrete;
+  }
+
+  nav[data-open] {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @starting-style {
+    nav[data-open] {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--link);
+    text-decoration: var(--link-decoration);
+  }
+
+  nav a:hover {
+    color: var(--link-hover);
+  }
+
+  .lang-switch-wrapper {
+    margin: 0 1rem;
+  }
+
+  .menu-button {
+    display: grid;
+    padding: 0.25rem;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+    color: var(--link-primary);
+  }
+
+  .menu-icon {
+    grid-area: 1 / 1;
+    height: 1.5rem;
+    width: 1.5rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .menu-icon-open {
+    opacity: 1;
+    transform: rotate(0);
+  }
+
+  .menu-button[aria-expanded="true"] .menu-icon-open {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+
+  .menu-icon-close {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  .menu-button[aria-expanded="true"] .menu-icon-close {
+    opacity: 1;
+    transform: rotate(0);
+  }
+
+  @media (width >= 46rem) {
+    nav {
+      display: block;
+      position: static;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    nav ul {
+      flex-direction: row;
+      gap: 0 1.5rem;
+    }
+
+    .menu-button {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    nav {
+      transition: none;
+    }
+
+    @starting-style {
+      nav[data-open] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .menu-icon {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const desktopQuery = window.matchMedia("(width >= 46rem)");
+  const menuBtn = document.querySelector<HTMLButtonElement>(".menu-button");
+  const nav = document.querySelector<HTMLElement>("#primary-nav");
+
+  const labelOpen = menuBtn?.dataset.labelOpen ?? "";
+  const labelClose = menuBtn?.dataset.labelClose ?? "";
+
+  desktopQuery.addEventListener("change", (e) => {
+    if (e.matches) {
+      closeMenu();
+    }
+  });
+
+  menuBtn?.addEventListener("click", () => {
+    toggleMenu();
+  })
+
+  nav?.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).closest("a")) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!nav) return;
+    if (!nav.hasAttribute("data-open")) return;
+    e.stopPropagation();
+    closeMenu();
+  });
+
+  document.addEventListener("pointerdown", (e) => {
+    if (!nav || !menuBtn) return;
+    if (!nav.hasAttribute("data-open")) return;
+    if (nav.contains(e.target as Node)) return;
+    if (menuBtn.contains(e.target as Node)) return;
+    closeMenu();
+  })
+
+  function closeMenu() {
+    if (!nav || !menuBtn) return;
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", labelOpen);
+    nav.removeAttribute("data-open")
+    menuBtn.focus()
+  }
+
+  function toggleMenu () {
+    if (!nav || !menuBtn) return;
+    const open = nav.toggleAttribute("data-open");
+    const ariaLabel = open ? labelClose : labelOpen;
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", ariaLabel);
+
+    if (open) {
+      nav.querySelector("a")?.focus();
+    }
+  }
+</script>

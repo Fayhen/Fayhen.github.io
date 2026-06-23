@@ -1,0 +1,118 @@
+---
+import Font from "astro/components/Font.astro";
+
+import { buildStructuredData } from "../data/structured-data";
+
+import { isLocale, stripLocaleFromPath } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props;
+const siteName = "Diego Souza";
+const fullTitle = title ? `${title} · ${siteName}` : siteName;
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const route = stripLocaleFromPath(Astro.url.pathname);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const alternates = {
+  "en": new URL(`${route}/`, Astro.site),
+  "pt-BR": new URL(route ? `pt-br/${route}/` : "pt-br/", Astro.site)
+};
+
+const ogImage = new URL(`/og-image-${locale}.jpg`, Astro.site);
+const ogLocale = locale === "pt-br" ? "pt_BR" : "en_US";
+const ogLocaleAlternate = locale === "pt-br" ? "en_US" : "pt_BR";
+
+const structuredData = buildStructuredData({
+  site: Astro.site!,
+  locale,
+  siteName,
+  imageUrl: ogImage.href
+});
+---
+
+<!doctype html>
+<html lang={locale === "pt-br" ? "pt-BR" : "en"} data-theme="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t("meta.description")}>
+    <meta name="author" content="Diego Souza">
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#4c4b4b" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={t("meta.description")} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={t("meta.ogImageDescription")} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={alternates["en"]} />
+    <link rel="alternate" hreflang="pt-BR" href={alternates["pt-BR"]}>
+    <link rel="alternate" hreflang="x-default" href={alternates["en"]}>
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <Font cssVariable="--font-inter" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <script is:inline>
+      // FOUC prevention: runs before initial paint
+      const THEMES = Object.freeze(["light", "dark", "retro-light", "retro-dark"]);
+      const browserDefault = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      const stored = window.localStorage?.getItem("theme") ?? "";
+      const theme = THEMES.includes(stored)
+        ? stored
+        : browserDefault;
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="wcag-skip-link">
+      {t("header.skipToContent")}
+    </a>
+    <slot />
+  </body>
+</html>
+
+<style>
+  .wcag-skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.75rem 1rem;
+    background: var(--nav-bg);
+    color: var(--nav-fg);
+    text-decoration: none;
+    border-radius: 0 0 0.25rem;
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .wcag-skip-link:focus,
+  .wcag-skip-link:focus-visible {
+    transform: translateY(0);
+  }
+</style>

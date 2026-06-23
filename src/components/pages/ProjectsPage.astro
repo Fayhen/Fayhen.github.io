@@ -1,0 +1,135 @@
+---
+import "../../styles/global.css";
+
+import Base from "../../layouts/Base.astro";
+import ContactMe from "../ContactMe.astro";
+import Footer from "../Footer.astro";
+import Header from "../Header.astro";
+import ProjectCTAs from "../ProjectCTAs.astro";
+import ProjectCategoryTag from "../ProjectCategoryTag.astro";
+import StackPill from "../StackPill.astro";
+
+import { projects } from "../../data/projects";
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { isLocale } from "../../i18n/locales";
+import { useTranslation } from "../../i18n";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const navItems = [
+  { label: t("nav.backHome"), href: getRelativeLocaleUrl(locale, "") },
+  { label: t("nav.projects"), href: "#intro-section" },
+  { label: t("nav.contact"), href: "#contact-section" }
+];
+---
+
+<Base title={t("projectsPage.siteTitle")}>
+  <Header {navItems} />
+
+  <main id="main-content" tabindex="-1">
+    <div id="intro-wrapper">
+      <section id="intro-section" class="page-container">
+        <h1>{t("projectsPage.title")}</h1>
+        <p>{t("projectsPage.intro")}</p>
+        <ul class="base-list">
+          {projects.map((p) =>
+            <li class="secondary-card project-list-card" data-category={p.category}>
+              <div>
+                <div class="category-tag-wrapper">
+                  <ProjectCategoryTag category={p.category} />
+                </div>
+                <h2>{p.title}</h2>
+              </div>
+              <div class="ctas">
+                <ProjectCTAs project={p} />
+              </div>
+              <p>{p.description[locale]}</p>
+              <div class="footer">
+                <ul class="base-list stacks-row">
+                  {p.stacks.map((stack) => <StackPill stack={stack} badgeClasses="project-stack-badge" />)}
+                </ul>
+              </div>
+            </li>
+          )}
+        </ul>
+      </section>
+    </div>
+
+    <div id="contact-wrapper">
+      <section id="contact-section" class="page-container">
+        <ContactMe />
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  #intro-wrapper {
+    padding-top: 4rem;
+    background-color: var(--bg-primary);
+    color: var(--color-primary);
+    border-bottom: var(--section-border-bottom-primary);
+  }
+
+  #intro-wrapper section {
+		display: flex;
+    flex-direction: column;
+		align-items: center;
+		column-gap: clamp(2rem, 8vw, 5rem);
+		padding-block: 7rem 14rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .project-list-card {
+    position: relative;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .category-tag-wrapper {
+    margin-bottom: 0.2rem;
+  }
+
+  .ctas {
+    margin-inline: auto;
+    margin-top: 0.5rem;
+  }
+
+  @media (width >= 900px) {
+    .ctas {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      margin-top: 0;
+    }
+  }
+
+  .stacks-row {
+    flex-direction: row;
+    gap: 0 1rem;
+  }
+
+  #contact-wrapper {
+    background-color: var(--bg-tertiary);
+    color: var(--color-tertiary);
+  }
+
+  #contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+		padding-block: 5rem 8rem;
+    text-align: center;
+  }
+</style>

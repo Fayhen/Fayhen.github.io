@@ -1,0 +1,66 @@
+---
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+import type { Stack } from "../data/stacks";
+
+interface Props {
+  height?: string
+  width?: string
+  stack: Stack
+}
+
+const { stack } = Astro.props;
+const height = Astro.props.height ?? "3rem";
+const width = Astro.props.width ?? "3rem";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const Original = stack.icon;
+const Themeable = stack.iconThemeable;
+---
+
+<li id={`stack-${stack.slug}`} class="stack-icon" style=`--icon-height: ${height}; --icon-width: ${width};`>
+  <a href={stack.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label=`Visit ${stack.name} documentation, opens in a new tab`
+    aria-label={t("skills.stackDocsAriaLabel", { name: stack.name })}
+  >
+    <Original class="stack-icon-svg-original" aria-hidden="true" />
+    <Themeable class="stack-icon-svg-themeable" aria-hidden="true" />
+  </a>
+</li>
+
+<style>
+  .stack-icon {
+    border-radius: 50%;
+    transition: transform ease 300ms;
+  }
+
+  .stack-icon:hover {
+    transform: translate(0, -5px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-icon,
+    .stack-icon:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  .stack-icon svg {
+    height: var(--icon-height);
+    width: var(--icon-width);
+  }
+
+  .stack-icon-svg-themeable {
+    display: none;
+    color: var(--icon-fill);
+  }
+
+  :root[data-theme="dark"] .stack-icon-svg-original { display: none; }
+  :root[data-theme="dark"] .stack-icon-svg-themeable { display: revert; }
+</style>

@@ -1,0 +1,28 @@
+---
+import { isLocale } from "../i18n/locales";
+import { useTranslation } from "../i18n";
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const xp = Math.abs(new Date().getFullYear() - 2020);
+---
+
+<div>
+  <h1>{t("intro.greeting")} <span>Diego</span></h1>
+  <p class="subtitle">{t("intro.role")}</p>
+  <p>{t("intro.aboutProfessional", { xp })}</p>
+  <p>{t("intro.aboutCasual")}</p>
+</div>
+
+<style>
+  h1 {
+    margin: 0 0 0.25rem;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+  }
+
+  .subtitle {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+  }
+</style>

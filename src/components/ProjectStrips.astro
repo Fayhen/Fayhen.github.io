@@ -1,0 +1,225 @@
+---
+import { Image } from "astro:assets";
+
+import ProjectCTAs from "./ProjectCTAs.astro";
+import ProjectCategoryTag from "./ProjectCategoryTag.astro";
+import StackPill from "./StackPill.astro";
+import { isLocale } from "../i18n/locales";
+
+import type { Project } from "../data/projects";
+
+interface Props {
+  projects: Project[]
+}
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+
+const { projects } = Astro.props;
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured).slice(0, 3);
+---
+
+<div class="project-strips-wrapper">
+  <ul class="base-list featured-grid">
+    {featured.map((p) =>
+      <li class="secondary-card project-card featured-card" data-category={p.category}>
+        <div class="hero">
+          {p.picture && <Image src={p.picture} alt={p.title} />}
+        </div>
+        <div class="category-tag-wrapper">
+          <ProjectCategoryTag category={p.category} />
+        </div>
+        <h3>{p.title}</h3>
+        <p>{p.description[locale]}</p>
+        <div class="footer">
+          <ul class="base-list stacks-row">
+            {p.stacks.map((stack) => <StackPill stack={stack} badgeClasses="project-stack-badge" />)}
+          </ul>
+          <ProjectCTAs project={p} />
+        </div>
+      </li>
+    )}
+  </ul>
+
+  <ul class="base-list others-grid">
+    {others.map((p) =>
+      <li class="secondary-card project-card default-card" data-category={p.category}>
+        <div class="category-tag-wrapper">
+          <ProjectCategoryTag category={p.category} />
+        </div>
+        <div class="description">
+          <h3>{p.title}</h3>
+          <p>{p.description[locale]}</p>
+        </div>
+        <div class="footer">
+          <ul class="base-list stacks-row">
+            {p.stacks.slice(0, 4).map(s => <StackPill stack={s} badgeClasses="project-stack-badge" />)}
+            {p.stacks.length > 4 && (
+              <li class="overflow-chip">+{p.stacks.length - 4}</li>
+            )}
+          </ul>
+          <ProjectCTAs project={p} />
+        </div>
+      </li>
+    )}
+  </ul>
+</div>
+
+<style>
+  .project-strips-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  @media (width <= 60rem) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .others-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .project-card[data-category="backend"] {
+    --accent: var(--badge-backend-fg);
+    --accent-bg: var(--badge-backend-bg);
+  }
+
+  .project-card[data-category="frontend"] {
+    --accent: var(--badge-frontend-fg);
+    --accent-bg: var(--badge-frontend-bg);
+  }
+
+  .project-card[data-category="fullstack"] {
+    --accent: var(--badge-fullstack-fg);
+    --accent-bg: var(--badge-fullstack-bg);
+  }
+
+  .featured-card {
+    display: grid;
+    grid-row: span 5;
+    grid-template-columns: 1fr;
+    grid-template-rows: subgrid;
+    align-items: start;
+    padding: 1rem;
+    row-gap: 0.5rem;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    container-type: inline-size;
+  }
+
+  @container (min-width: 28rem) {
+    .featured-card .hero {
+      grid-column: 1;
+      grid-row: 1 / -1;
+      aspect-ratio: auto;
+      align-self: stretch;
+      height: auto;
+    }
+
+    .featured-card .category-tag-wrapper,
+    .featured-card h3,
+    .featured-card p,
+    .featured-card .footer {
+      grid-column: 2;
+    }
+  }
+
+  @media (32rem <= width <= 60rem) {
+    .featured-card {
+      grid-template-columns: 1fr 1.4fr;
+      grid-template-rows: auto auto 1fr auto;
+      column-gap: 1rem;
+      grid-row: span 4;
+    }
+  }
+
+  .featured-card .hero {
+    background: var(--bg-placeholder);
+    height: 200px;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .featured-card .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .default-card {
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .default-card .description {
+    overflow: hidden;
+  }
+
+  .default-card .description p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  /* .category-tag {
+    place-self: start start;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+  } */
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .overflow-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .stacks-row {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem;
+  }
+</style>

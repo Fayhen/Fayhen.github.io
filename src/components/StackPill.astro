@@ -1,0 +1,66 @@
+---
+import type { Stack } from "../data/stacks";
+
+interface Props {
+  badgeClasses?: string
+  border?: string
+  padding?: string
+  stack: Stack
+}
+
+const { stack } = Astro.props;
+
+const badgeClasses = Astro.props.badgeClasses ?? "";
+const border = Astro.props.border ?? "none";
+const padding = Astro.props.padding ?? "0.15rem 0.5rem";
+
+const Original = stack.icon;
+const Themeable = stack.iconThemeable;
+---
+
+<li class=`${badgeClasses} pill` style=`--border: ${border}; --padding: ${padding};`>
+  <Original class="stack-icon-svg-original" aria-hidden="true" />
+  <Themeable class="stack-icon-svg-themeable" aria-hidden="true" />
+  <span>{stack.shortName}</span>
+</li>
+
+<style>
+  .pill {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-self: center;
+    gap: 0 0.3rem;
+    padding: var(--padding);
+    border: var(--border);
+    border-radius: 1rem;
+    font-size: smaller;
+    transition: transform ease 100ms;
+  }
+
+  .pill:hover {
+    transform: translate(0, -1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pill,
+    .pill:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  .pill svg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .stack-icon-svg-themeable {
+    display: none;
+    color: var(--icon-fill);
+  }
+
+  :root[data-theme="dark"] .stack-icon-svg-original { display: none; }
+  :root[data-theme="dark"] .stack-icon-svg-themeable { display: revert; }
+</style>
+

@@ -1,0 +1,155 @@
+---
+import Caret from "../assets/icons/fas/angle-down-solid-full.svg";
+
+import { isLocale } from "../i18n/locales";
+
+import type { JobExperience } from "../data/experience";
+
+interface Props {
+  cardClasses?: string
+  dropdownClasses?: string
+  iconClasses?: string
+  experience: JobExperience
+}
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const { experience } = Astro.props;
+
+const cardClasses = Astro.props.cardClasses
+  ? Astro.props.cardClasses
+  : "primary-card";
+
+const dropdownClasses = Astro.props.dropdownClasses
+  ? Astro.props.dropdownClasses
+  : "";
+---
+
+<li class=`${cardClasses} experience-card`>
+  <button
+    class="card-header"
+    aria-expanded="false"
+    aria-controls={`exp-content-${experience.slug}`}
+  >
+    <div class="experience-icon" style={`background-image: url('${experience.icon}')`}></div>
+    <div>
+      <p><strong>{experience.title}</strong></p>
+      <p>{experience.startAt} - {experience.endAt}</p>
+    </div>
+    <div class="dropdown-icon">
+      <Caret aria-hidden="true" />
+    </div>
+  </button>
+  <div
+    id={`exp-content-${experience.slug}`}
+    class=`${dropdownClasses} dropdown-content`
+    inert
+  >
+    <div class="experience-list-wrapper">
+      <ul class="experience-list">
+        {experience.items[locale].map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</li>
+
+<style>
+  .experience-card {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .experience-card p {
+    margin: 0;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+  }
+
+  .experience-icon {
+    margin-right: 1rem;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--fallback-icon-background);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .dropdown-icon {
+    margin-left: auto;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    transition: transform 400ms ease;
+  }
+
+  .card-header[aria-expanded="true"] .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown-icon,
+    .card-header[aria-expanded="true"] .dropdown-icon {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  .dropdown-content{
+    display: grid;
+    grid-template-rows: 0fr;
+    padding: 0;
+    transition: grid-template-rows 400ms ease;
+  }
+
+  .experience-card:has(.card-header[aria-expanded="true"]) .dropdown-content {
+    grid-template-rows: 1fr;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown-icon,
+    .card-header[aria-expanded="true"] .dropdown-icon,
+    .experience-card:has(.card-header[aria-expanded="true"]) .dropdown-content {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  .experience-list-wrapper {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .experience-list {
+    padding: 0 0.5rem 1rem 5.5rem;
+    list-style-position: outside;
+    list-style-type: circle;
+  }
+</style>
+
+<script>
+document.querySelectorAll<HTMLElement>(".card-header").forEach((button) => {
+  button.addEventListener("click", toggleDropdown);
+});
+
+function toggleDropdown(event: Event) {
+  const button = event.currentTarget as HTMLElement;
+  const isExpanded = button.getAttribute("aria-expanded") === "true";
+  const target = button.getAttribute("aria-controls") || "";
+  const content = document.getElementById(target);
+  button.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+  content?.toggleAttribute("inert", isExpanded);
+}
+</script>
