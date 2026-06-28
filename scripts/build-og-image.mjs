@@ -47,11 +47,13 @@ try {
 
   for (const locale of locales) {
     const role = ui[locale]["intro.role"];
+    const cta = ui[locale]["meta.ogImageCta"];
 
     const textSvg = Buffer.from(
       `<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-         <text x="640" y="300" font-family="Inter, sans-serif" font-size="76" font-weight="700" fill="#0d0d0d">${escapeXml("Diego Souza")}</text>
-         <text x="640" y="372" font-family="Inter, sans-serif" font-size="40" fill="#4a4a4a">${escapeXml(role)}</text>
+         <text x="640" y="250" font-family="Inter, sans-serif" font-size="76" font-weight="700" fill="#0d0d0d">${escapeXml("Diego Souza")}</text>
+         <text x="640" y="322" font-family="Inter, sans-serif" font-size="40" fill="#4a4a4a">${escapeXml(role)}</text>
+         <text x="640" y="402" font-family="Inter, sans-serif" font-size="34" font-weight="600" fill="#285828">${escapeXml(cta)}</text>
        </svg>`
     );
 
