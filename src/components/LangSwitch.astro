@@ -1,27 +1,33 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 
-import { stripLocaleFromPath } from "../i18n/locales";
+import { isLocale, stripLocaleFromPath } from "../i18n/locales";
+import { useTranslation } from "../i18n";
 
 const route = stripLocaleFromPath(Astro.url.pathname);
 
-const locale = Astro.currentLocale ?? "en";
+const current = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(current);
 
-const switcher = [
-  { code: "en", lang: "en", href: getRelativeLocaleUrl("en", route), label: "EN" },
-  { code: "pt-br", lang: "pt-BR", href: getRelativeLocaleUrl("pt-br", route), label: "PT" },
+const options = [
+  { code: "en", lang: "en", label: "EN", name: t("nav.langOptionEn") },
+  { code: "pt-br", lang: "pt-BR", label: "PT", name: t("nav.langOptionPt") },
 ];
+
+const target = options.find((opt) => opt.code !== current) ?? options[0];
+const href = getRelativeLocaleUrl(target.code, route);
 ---
 
-<ul class="base-list lang-switcher">
-  {switcher.map((l) => (
-    <li>
-      <a href={l.href} hreflang={l.lang} aria-current={l.code === locale ? "page" : undefined}>
-        {l.label}
-      </a>
-    </li>
+<a class="lang-switcher" href={href}
+  hreflang={target.lang}
+  aria-label={t("nav.langOptionAria", { locale: target.name })}
+>
+  {options.map((l) => (
+    <span class="lang-option" lang={l.lang} data-active={l.code === current}>
+      {l.label}
+    </span>
   ))}
-</ul>
+</a>
 
 <style>
   .lang-switcher {
@@ -30,22 +36,27 @@ const switcher = [
     padding: 0.125rem;
     border: 1px solid var(--color-primary);
     border-radius: 999px;
+    text-decoration: none;
   }
 
-  .lang-switcher a {
+  .lang-option {
     display: block;
     padding: 0.25rem 0.625rem;
     border-radius: 999px;
     color: var(--link);
-    text-decoration: none;
     line-height: 1;
   }
 
-  .lang-switcher a:hover {
+  .lang-switcher:hover .lang-option:not([data-active="true"]) {
     color: var(--link-hover);
   }
 
-  .lang-switcher a[aria-current="page"] {
+  .lang-switcher:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .lang-option[data-active="true"] {
     background: var(--nav-fg);
     color: var(--color-tertiary);
   }
