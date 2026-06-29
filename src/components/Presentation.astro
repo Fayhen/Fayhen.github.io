@@ -1,11 +1,12 @@
 ---
 import { isLocale } from "../i18n/locales";
 import { useTranslation } from "../i18n";
+import { years } from "../data/experience";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
 
-const xp = Math.abs(new Date().getFullYear() - 2020);
+const xp = years();
 ---
 
 <div>

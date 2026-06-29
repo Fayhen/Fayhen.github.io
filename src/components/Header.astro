@@ -36,7 +36,12 @@ const t = useTranslation(locale);
           {navItems.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </nav>
+      <div class="lang-switch-wrapper">
+        <LangSwitch />
+      </div>
+      <ThemeToggle />
       <button
+        type="button"
         class="menu-button"
         aria-expanded="false"
         aria-controls="primary-nav"
@@ -47,10 +52,6 @@ const t = useTranslation(locale);
         <Bars class="menu-icon menu-icon-open" aria-hidden="true" />
         <Xmark class="menu-icon menu-icon-close" aria-hidden="true" />
       </button>
-      <div class="lang-switch-wrapper">
-        <LangSwitch />
-      </div>
-      <ThemeToggle />
     </div>
   </div>
 </header>

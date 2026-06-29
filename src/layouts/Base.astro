@@ -5,6 +5,7 @@ import { buildStructuredData } from "../data/structured-data";
 
 import { isLocale, stripLocaleFromPath } from "../i18n/locales";
 import { useTranslation } from "../i18n";
+import { years } from "../data/experience";
 
 interface Props {
   title?: string
@@ -35,6 +36,8 @@ const structuredData = buildStructuredData({
   siteName,
   imageUrl: ogImage.href
 });
+
+const xp = years();
 ---
 
 <!doctype html>
@@ -42,7 +45,7 @@ const structuredData = buildStructuredData({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={t("meta.description")}>
+    <meta name="description" content={t("meta.description", { xp })}>
     <meta name="author" content="Diego Souza">
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -50,7 +53,7 @@ const structuredData = buildStructuredData({
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={t("meta.description")} />
+    <meta property="og:description" content={t("meta.description", { xp })} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:alt" content={t("meta.ogImageDescription")} />

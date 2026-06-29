@@ -82,7 +82,7 @@
   --default-dark-bg-primary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
   --default-dark-bg-secondary: oklch(27.274% 0.0001 271.152deg);
   --default-dark-bg-secondary-accent: oklch(27.274% 0.0001 271.152deg / 30%);
-  --default-dark-bg-tertiary: oklch(31.158% 0.0089 17.404deg / 58.4%);
+  --default-dark-bg-tertiary: oklch(62.017% 0.0048 16.477deg);
   --default-dark-bg-tertiary-accent: oklch(31.158% 0.0089 17.404deg / 28.4%);
   --default-dark-bg-placeholder: radial-gradient(circle,
     oklch(74.007% 0.0387 265.08deg) 0%,

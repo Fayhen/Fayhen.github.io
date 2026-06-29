@@ -87,3 +87,5 @@ export const volunteering: JobExperience[] = [
     endAt: "current"
   }
 ];
+
+export const years = () => Math.abs(new Date().getFullYear() - 2020);
