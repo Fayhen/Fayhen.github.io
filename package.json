@@ -1,7 +1,7 @@
 {
   "name": "fayhen-github-io",
   "type": "module",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Diego Souza's multilingual personal portfolio - built with Astro.",
   "author": "Diego Garcia Cordeiro Souza <diego00alfa@gmail.com>",
   "homepage": "https://fayhen.github.io",
