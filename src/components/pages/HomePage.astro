@@ -26,7 +26,7 @@ const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
 
 const navItems = [
-  { label: t("nav.home"), href: getRelativeLocaleUrl(locale, "") },
+  { label: t("nav.home"), href: "#" },
   { label: t("nav.skills"), href: "#skills-section" },
   { label: t("nav.projects"), href: "#projects-section" },
   { label: t("nav.contact"), href: "#contact-section" }
