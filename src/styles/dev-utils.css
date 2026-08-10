@@ -1,0 +1,7 @@
+/* Development utilities.
+   Used during local development, should be kept
+   outside production bundles */
+
+.dev-borders {
+  border: 1px dashed black;
+}

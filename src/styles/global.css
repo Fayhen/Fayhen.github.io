@@ -128,9 +128,3 @@ h1, h2, h3, h4, h5, h6 {
 .color-tertiary {
   background-color: var(--color-tertiary);
 }
-
-/* Development utilities */
-
-.dev-borders {
-  border: 1px dashed black;
-}
