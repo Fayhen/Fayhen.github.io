@@ -48,23 +48,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-card {
-  background-color: var(--card-bg-primary);
-  color: var(--card-fg-primary);
+  background-color: var(--surface-raised);
+  color: var(--surface-raised-text);
 }
 
 .primary-card.hoverable:hover,
 .primary-card.hoverable:focus-within {
-  background-color: var(--card-bg-primary-accent);
+  background-color: var(--surface-raised-hover);
 }
 
 .secondary-card {
-  background-color: var(--card-bg-secondary);
-  color: var(--card-fg-secondary);
+  background-color: var(--surface-raised-alt);
+  color: var(--surface-raised-alt-text);
 }
 
 .secondary-card.hoverable:hover,
 .secondary-card.hoverable:focus-within {
-  background-color: var(--card-bg-secondary-accent);
+  background-color: var(--surface-raised-alt-hover);
 }
 
 .primary-card.animated,
@@ -75,13 +75,13 @@ h1, h2, h3, h4, h5, h6 {
 .primary-card.animated:hover,
 .primary-card.animated:focus-within {
   transform: translateY(-2px);
-  box-shadow: 0 8px 14px var(--card-bg-primary-accent);
+  box-shadow: 0 8px 14px var(--surface-raised-hover);
 }
 
 .secondary-card.animated:hover,
 .secondary-card.animated:focus-within {
   transform: translateY(-2px);
-  box-shadow: 0 8px 14px var(--card-bg-secondary-accent);
+  box-shadow: 0 8px 14px var(--surface-raised-alt-hover);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -95,36 +95,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-stack-badge {
-  background-color: var(--badge-stack-bg);
-  color: var(--badge-stack-fg);
-}
-
-.project-cta-button-primary {
-  background-color: var(--project-cta-primary-bg);
-  color: var(--project-cta-primary-fg);
-}
-
-.project-cta-button-primary-icon {
-  color: var(--project-cta-primary-icon-fill);
-}
-
-.project-cta-button-secondary {
-  background-color: var(--project-cta-secondary-bg);
-  color: var(--project-cta-secondary-fg);
-}
-
-.project-cta-button-secondary-icon {
-  color: var(--project-cta-secondary-icon-fill);
-}
-
-.color-primary {
-  background-color: var(--color-primary);
-}
-
-.color-secondary {
-  background-color: var(--color-secondary);
-}
-
-.color-tertiary {
-  background-color: var(--color-tertiary);
+  background-color: var(--surface-chip);
+  color: var(--surface-chip-text);
 }

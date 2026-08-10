@@ -34,7 +34,7 @@ const href = getRelativeLocaleUrl(target.code, route);
     display: inline-flex;
     gap: 0.125rem;
     padding: 0.125rem;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--surface-nav-text);
     border-radius: 999px;
     text-decoration: none;
   }
@@ -43,21 +43,21 @@ const href = getRelativeLocaleUrl(target.code, route);
     display: block;
     padding: 0.25rem 0.625rem;
     border-radius: 999px;
-    color: var(--link);
+    color: var(--text-link);
     line-height: 1;
   }
 
   .lang-switcher:hover .lang-option:not([data-active="true"]) {
-    color: var(--link-hover);
+    color: var(--text-link-hover);
   }
 
   .lang-switcher:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }
 
   .lang-option[data-active="true"] {
-    background: var(--nav-fg);
-    color: var(--color-tertiary);
+    background: var(--surface-nav-active);
+    color: var(--surface-nav-active-text);
   }
 </style>

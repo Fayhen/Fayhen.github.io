@@ -23,12 +23,12 @@ const t = useTranslation(locale);
       <a href={project.repositoryLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="project-cta-button-secondary cta-link"
+        class="cta-button-secondary cta-link"
       >
         <GitHub
           height="1.5rem"
           width="1.5rem"
-          class="project-cta-button-secondary-icon"
+          class="cta-button-secondary-icon"
           aria-label={t("projects.sourceAriaLabel")}
         />
         {t("projects.seeCode")}
@@ -39,12 +39,12 @@ const t = useTranslation(locale);
       <a href={project.productionLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="project-cta-button-primary cta-link"
+        class="cta-button-primary cta-link"
       >
         <Globe
           height="1.5rem"
           width="1.5rem"
-          class="project-cta-button-primary-icon"
+          class="cta-button-primary-icon"
           aria-label={t("projects.websiteAriaLabel")}
         />
         {t("projects.seeLive")}
@@ -56,6 +56,16 @@ const t = useTranslation(locale);
   .ctas {
     display: flex;
     gap: 0.5rem;
+  }
+
+  .cta-button-primary {
+    background-color: var(--action-primary-surface);
+    color: var(--action-primary-surface-text);
+  }
+
+  .cta-button-secondary {
+    background-color: var(--action-secondary-surface);
+    color: var(--action-secondary-surface-text);
   }
 
   .cta-link {

@@ -65,8 +65,8 @@ const t = useTranslation(locale);
     padding: 0.5rem 0;
     z-index: 100;
     backdrop-filter: var(--nav-filter);
-    color: var(--nav-fg);
-    background-color: var(--nav-bg);
+    color: var(--surface-nav-text);
+    background-color: var(--surface-nav);
     box-shadow: var(--nav-shadow)
   }
 
@@ -96,7 +96,7 @@ const t = useTranslation(locale);
     position: absolute;
     top: var(--header-height);
     right: 0;
-    background: var(--nav-bg-secondary);
+    background: var(--surface-nav-panel);
     box-shadow: var(--nav-shadow-mobile);
     padding: 1rem;
     opacity: 0;
@@ -131,12 +131,12 @@ const t = useTranslation(locale);
   }
 
   nav a {
-    color: var(--link);
-    text-decoration: var(--link-decoration);
+    color: var(--text-link);
+    text-decoration: var(--text-link-decoration);
   }
 
   nav a:hover {
-    color: var(--link-hover);
+    color: var(--text-link-hover);
   }
 
   .lang-switch-wrapper {
@@ -149,7 +149,7 @@ const t = useTranslation(locale);
     border: none;
     cursor: pointer;
     background-color: inherit;
-    color: var(--link-primary);
+    color: var(--surface-nav-text);
   }
 
   .menu-icon {

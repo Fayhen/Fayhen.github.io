@@ -20,14 +20,14 @@ const t = useTranslation(locale);
     cursor: pointer;
   }
 
-  .sun { fill: var(--color-primary) }
+  .sun { fill: var(--surface-nav-text) }
 
   .moon { fill: transparent; }
 
   :global([data-theme="dark"]) .sun { fill: transparent; }
-  :global([data-theme="dark"]) .moon { fill: var(--color-primary); }
+  :global([data-theme="dark"]) .moon { fill: var(--surface-nav-text); }
   :global([data-theme="retro-dark"]) .sun { fill: transparent; }
-  :global([data-theme="retro-dark"]) .moon { fill: var(--color-primary); }
+  :global([data-theme="retro-dark"]) .moon { fill: var(--surface-nav-text); }
 </style>
 
 <script>
