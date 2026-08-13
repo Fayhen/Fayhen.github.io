@@ -140,6 +140,9 @@
   --brand-0: oklch(82.032% 0.0001 271.152deg);
   --border-0: 1px solid oklch(41.378% 0.0013 15.238deg);
 
+  --icon-original-display: none;
+  --icon-themeable-display: inline;
+
   --media-placeholder: radial-gradient(circle,
     oklch(74.007% 0.0387 265.08deg) 0%,
     oklch(50.537% 0.0352 228.956deg) 100%);

@@ -55,12 +55,13 @@ const Themeable = stack.iconThemeable;
     width: 1rem;
   }
 
-  .stack-icon-svg-themeable {
-    display: none;
-    color: var(--icon-brand);
+  .stack-icon-svg-original {
+    display: var(--icon-original-display, revert);
   }
 
-  :root[data-theme="dark"] .stack-icon-svg-original { display: none; }
-  :root[data-theme="dark"] .stack-icon-svg-themeable { display: revert; }
+  .stack-icon-svg-themeable {
+    display: var(--icon-themeable-display, none);
+    color: var(--icon-brand);
+  }
 </style>
 
