@@ -22,7 +22,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
 <div class="project-strips-wrapper">
   <ul class="base-list featured-grid">
     {featured.map((p) =>
-      <li class="secondary-card project-card featured-card" data-category={p.category}>
+      <li class="card project-card featured-card" data-category={p.category}>
         <div class="hero">
           {p.picture && <Image src={p.picture} alt={p.title} />}
         </div>
@@ -43,7 +43,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
 
   <ul class="base-list others-grid">
     {others.map((p) =>
-      <li class="secondary-card project-card default-card" data-category={p.category}>
+      <li class="card project-card default-card" data-category={p.category}>
         <div class="category-tag-wrapper">
           <ProjectCategoryTag category={p.category} />
         </div>
@@ -183,18 +183,6 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     line-clamp: 3;
     overflow: hidden;
   }
-
-  /* .category-tag {
-    place-self: start start;
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    background: var(--accent-bg);
-    color: var(--accent);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-  } */
 
   .footer {
     display: flex;

@@ -65,8 +65,8 @@ const t = useTranslation(locale);
     padding: 0.5rem 0;
     z-index: 100;
     backdrop-filter: var(--nav-filter);
-    color: var(--surface-nav-text);
-    background-color: var(--surface-nav);
+    color: var(--text-on-overlay);
+    background-color: var(--surface-overlay);
     box-shadow: var(--nav-shadow)
   }
 
@@ -96,7 +96,7 @@ const t = useTranslation(locale);
     position: absolute;
     top: var(--header-height);
     right: 0;
-    background: var(--surface-nav-panel);
+    background: var(--surface-overlay-panel);
     box-shadow: var(--nav-shadow-mobile);
     padding: 1rem;
     opacity: 0;
@@ -149,7 +149,7 @@ const t = useTranslation(locale);
     border: none;
     cursor: pointer;
     background-color: inherit;
-    color: var(--surface-nav-text);
+    color: var(--text-on-overlay);
   }
 
   .menu-icon {

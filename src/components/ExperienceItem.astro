@@ -6,25 +6,15 @@ import { isLocale } from "../i18n/locales";
 import type { JobExperience } from "../data/experience";
 
 interface Props {
-  cardClasses?: string
-  dropdownClasses?: string
-  iconClasses?: string
   experience: JobExperience
 }
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const { experience } = Astro.props;
 
-const cardClasses = Astro.props.cardClasses
-  ? Astro.props.cardClasses
-  : "primary-card";
-
-const dropdownClasses = Astro.props.dropdownClasses
-  ? Astro.props.dropdownClasses
-  : "";
 ---
 
-<li class=`${cardClasses} experience-card`>
+<li class="card experience-card">
   <button
     class="card-header"
     aria-expanded="false"
@@ -41,7 +31,7 @@ const dropdownClasses = Astro.props.dropdownClasses
   </button>
   <div
     id={`exp-content-${experience.slug}`}
-    class=`${dropdownClasses} dropdown-content`
+    class="dropdown-content"
     inert
   >
     <div class="experience-list-wrapper">

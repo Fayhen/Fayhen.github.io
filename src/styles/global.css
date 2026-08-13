@@ -47,54 +47,12 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-.primary-card {
+.card {
   background-color: var(--surface-raised);
-  color: var(--surface-raised-text);
-}
-
-.primary-card.hoverable:hover,
-.primary-card.hoverable:focus-within {
-  background-color: var(--surface-raised-hover);
-}
-
-.secondary-card {
-  background-color: var(--surface-raised-alt);
-  color: var(--surface-raised-alt-text);
-}
-
-.secondary-card.hoverable:hover,
-.secondary-card.hoverable:focus-within {
-  background-color: var(--surface-raised-alt-hover);
-}
-
-.primary-card.animated,
-.secondary-card.animated {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.primary-card.animated:hover,
-.primary-card.animated:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 14px var(--surface-raised-hover);
-}
-
-.secondary-card.animated:hover,
-.secondary-card.animated:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 14px var(--surface-raised-alt-hover);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .primary-card.animated:hover,
-  .primary-card.animated:focus-within,
-  .secondary-card.animated:hover,
-  .secondary-card.animated:focus-within {
-    transition: none;
-    transform: none;
-  }
+  color: var(--text-on-raised);
 }
 
 .project-stack-badge {
   background-color: var(--surface-chip);
-  color: var(--surface-chip-text);
+  color: var(--text-on-chip);
 }

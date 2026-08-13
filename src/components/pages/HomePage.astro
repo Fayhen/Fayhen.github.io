@@ -49,15 +49,15 @@ const navItems = [
         <h1>{t("skills.title")}</h1>
 
         <div class="major-areas">
-          <div class="primary-card major-area-detail">
+          <div class="card major-area-detail">
             <h2>{t("skills.fullstackTitle")}</h2>
             <p>{t("skills.fullstackBody")}</p>
           </div>
-          <div class="primary-card major-area-detail">
+          <div class="card major-area-detail">
             <h2>{t("skills.backendTitle")}</h2>
             <p>{t("skills.backendBody")}</p>
           </div>
-          <div class="primary-card major-area-detail">
+          <div class="card major-area-detail">
             <h2>{t("skills.frontendTitle")}</h2>
             <p>{t("skills.frontendBody")}</p>
           </div>
@@ -67,11 +67,11 @@ const navItems = [
           <div class="experience-column">
             <h2>{t("skills.previousXpTitle")}</h2>
             <ul class="base-list">
-              {Object.values(experience).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
+              {Object.values(experience).map((item) => <ExperienceItem experience={item} />)}
             </ul>
             <h2>{t("skills.volunteeringTitle")}</h2>
             <ul class="base-list">
-              {Object.values(volunteering).map((item) => <ExperienceItem experience={item} cardClasses="primary-card" />)}
+              {Object.values(volunteering).map((item) => <ExperienceItem experience={item} />)}
             </ul>
           </div>
 
@@ -116,7 +116,7 @@ const navItems = [
   #intro-wrapper {
     padding-top: 4rem;
     background-color: var(--surface-base);
-    color: var(--surface-base-text);
+    color: var(--text-on-base);
     border-bottom: var(--border-section);
   }
 
@@ -128,8 +128,10 @@ const navItems = [
 	}
 
   #skills-wrapper {
+    --surface-raised: var(--surface-raised-on-subtle);
+
     background-color: var(--surface-subtle);
-    color: var(--surface-subtle-text);
+    color: var(--text-on-subtle);
     border-bottom: var(--border-section);
   }
 
@@ -241,7 +243,7 @@ const navItems = [
 
   #projects-wrapper {
     background-color: var(--surface-base);
-    color: var(--surface-base-text);
+    color: var(--text-on-base);
   }
 
   #projects-section {
@@ -279,7 +281,7 @@ const navItems = [
 
   #contact-wrapper {
     background-color: var(--surface-inverse);
-    color: var(--surface-inverse-text);
+    color: var(--text-on-inverse);
   }
 
   #contact-section {

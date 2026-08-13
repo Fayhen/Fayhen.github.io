@@ -35,7 +35,7 @@ const navItems = [
         <p>{t("projectsPage.intro")}</p>
         <ul class="base-list">
           {projects.map((p) =>
-            <li class="secondary-card project-list-card" data-category={p.category}>
+            <li class="card project-list-card" data-category={p.category}>
               <div>
                 <div class="category-tag-wrapper">
                   <ProjectCategoryTag category={p.category} />
@@ -71,7 +71,7 @@ const navItems = [
   #intro-wrapper {
     padding-top: 4rem;
     background-color: var(--surface-base);
-    color: var(--surface-base-text);
+    color: var(--text-on-base);
     border-bottom: var(--border-section);
   }
 
@@ -122,7 +122,7 @@ const navItems = [
 
   #contact-wrapper {
     background-color: var(--surface-inverse);
-    color: var(--surface-inverse-text);
+    color: var(--text-on-inverse);
   }
 
   #contact-section {

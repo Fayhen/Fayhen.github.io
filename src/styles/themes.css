@@ -1,36 +1,32 @@
 :root {
   --surface-base: var(--palette-ground-0);
-  --surface-base-text: var(--palette-ink-0);
   --surface-subtle: var(--palette-ground-1);
-  --surface-subtle-text: var(--palette-ink-0);
   --surface-inverse: var(--palette-ground-2);
-  --surface-inverse-text: var(--palette-ink-1);
-  --surface-inverse-text-hover: var(--palette-ink-1-muted);
-
-  --surface-nav: var(--palette-chrome-0);
-  --surface-nav-text: var(--palette-ink-chrome);
-  --surface-nav-panel: var(--palette-chrome-1);
-  --surface-nav-active: var(--palette-ink-chrome);
-  --surface-nav-active-text: var(--palette-ink-1);
+  --surface-raised-on-base: var(--palette-raised-1);
+  --surface-raised-on-subtle: var(--palette-raised-0);
+  --surface-raised: var(--surface-raised-on-base);
+  --surface-overlay: var(--palette-chrome-0);
+  --surface-overlay-panel: var(--palette-chrome-1);
+  --surface-overlay-active: var(--palette-ink-chrome);
   --surface-footer: var(--palette-ground-0);
-  --surface-footer-text: var(--palette-ink-0);
-
-  --surface-raised: var(--palette-raised-0);
-  --surface-raised-text: var(--palette-ink-0);
-  --surface-raised-hover: var(--palette-raised-0-accent);
-  --surface-raised-alt: var(--palette-raised-1);
-  --surface-raised-alt-text: var(--palette-ink-0);
-  --surface-raised-alt-hover: var(--palette-raised-1-accent);
-
   --surface-chip: var(--palette-chip);
-  --surface-chip-text: var(--palette-ink-0);
   --surface-logo-backdrop: var(--backdrop-0);
   --surface-media-placeholder: var(--media-placeholder);
+  
+  --text-on-base: var(--palette-ink-0);
+  --text-on-subtle: var(--palette-ink-0);
+  --text-on-inverse: var(--palette-ink-1);
+  --text-on-inverse-hover: var(--palette-ink-1-muted);
+  --text-on-raised: var(--palette-ink-0);
+  --text-on-overlay: var(--palette-ink-chrome);
+  --text-on-footer: var(--palette-ink-0);
+  --text-on-selected: var(--palette-ink-1);
+  --text-on-chip: var(--palette-ink-0);
+  --text-on-action-primary: var(--palette-action-0-text);
+  --text-on-action-secondary: var(--palette-action-1-text);
 
   --action-primary-surface: var(--palette-action-0);
-  --action-primary-surface-text: var(--palette-action-0-text);
   --action-secondary-surface: var(--palette-action-1);
-  --action-secondary-surface-text: var(--palette-action-1-text);
 
   --accent-backend: var(--palette-colorful-highlight-group-backend-fg);
   --accent-backend-surface: var(--palette-colorful-highlight-group-backend-bg);
@@ -40,8 +36,8 @@
   --accent-fullstack-surface: var(--palette-colorful-highlight-group-fullstack-bg);
 
   --border-section: var(--border-0);
-  --icon-brand-tint: var(--brand-0);
-  --focus-ring: var(--brand-0, currentColor);
+  --icon-brand: var(--brand-0, currentColor);
+  --focus-ring: currentColor;
 
   --header-height: 4.5rem;
   --nav-filter: blur(10px);
@@ -74,9 +70,7 @@
   --palette-chip: oklch(100% 0.0001 271.152deg);
 
   --palette-raised-0: oklch(100% 0.0001 271.152deg);
-  --palette-raised-0-accent: oklch(100% 0.0001 271.152deg / 30%);
   --palette-raised-1: oklch(95.514% 0.0001 271.152deg);
-  --palette-raised-1-accent: oklch(95.514% 0.0001 271.152deg / 30%);
 
   --palette-action-0: oklch(49.97% 0.0007 271.152deg / 30%);
   --palette-action-0-text: oklch(0% 0 0deg);
@@ -123,9 +117,7 @@
   --palette-chip: oklch(31.158% 0.0089 17.404deg / 58.4%);
 
   --palette-raised-0: oklch(41.378% 0.0013 15.238deg);
-  --palette-raised-0-accent: oklch(41.378% 0.0013 15.238deg / 30%);
   --palette-raised-1: oklch(41.378% 0.0013 15.238deg);
-  --palette-raised-1-accent: oklch(41.378% 0.0013 15.238deg / 30%);
 
   --palette-action-0: oklch(27.274% 0.0001 271.152deg);
   --palette-action-0-text: oklch(82.032% 0.0001 271.152deg);
@@ -136,7 +128,7 @@
   --palette-colorful-highlight-group-backend-fg: oklch(86% 0.12 75deg);
   --palette-colorful-highlight-group-frontend-bg: oklch(28% 0.07 245deg);
   --palette-colorful-highlight-group-frontend-fg: oklch(82% 0.10 245deg);
-  --palette-colorful-highlight-group-fullstack-bg: oklch(31.158% 0.0089 17.404deg / 58.4%);
+  --palette-colorful-highlight-group-fullstack-bg: oklch(28% 0.07 155deg);
   --palette-colorful-highlight-group-fullstack-fg: oklch(82.032% 0.0001 271.152deg);
 
   --palette-colorful-highlight-group-b-0: oklch(72% 0.14 10deg);
@@ -172,9 +164,7 @@
   --palette-chip: oklch(95% 0.04 162deg);
 
   --palette-raised-0: oklch(69.6% 0.17 162.48deg);
-  --palette-raised-0-accent: oklch(69.6% 0.17 162.48deg / 30%);
   --palette-raised-1: oklch(82% 0.10 162deg);
-  --palette-raised-1-accent: oklch(82% 0.10 162deg / 30%);
 
   --palette-action-0: oklch(30% 0.09 162deg);
   --palette-action-0-text: oklch(90% 0.06 162deg);
@@ -221,9 +211,7 @@
   --palette-chip: oklch(42% 0.09 168deg);
 
   --palette-raised-0: oklch(37.8% 0.077 168.94deg);
-  --palette-raised-0-accent: oklch(37.8% 0.077 168.94deg / 30%);
   --palette-raised-1: oklch(28% 0.06 168deg);
-  --palette-raised-1-accent: oklch(28% 0.06 168deg / 40%);
 
   --palette-action-0: oklch(48% 0.11 165deg);
   --palette-action-0-text: oklch(90% 0.08 162deg);

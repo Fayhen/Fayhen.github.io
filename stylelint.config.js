@@ -1,7 +1,11 @@
 export default {
   "extends": ["stylelint-config-standard"],
   "rules": {
-    "custom-property-empty-line-before": null
+    "custom-property-empty-line-before": null,
+    "value-keyword-case": [
+      "lower",
+      { "camelCaseSvgKeywords": true }
+    ]
   },
   "overrides": [
     {
