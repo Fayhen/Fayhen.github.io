@@ -1,0 +1,18 @@
+:root {
+  --header-height: 4.5rem;
+
+  --motion-fast: 100ms;
+  --motion-base: 200ms;
+  --motion-slow: 400ms;
+  --motion-ease: ease;
+
+  --nav-filter: blur(10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0s;
+    --motion-base: 0s;
+    --motion-slow: 0s;
+  }
+}

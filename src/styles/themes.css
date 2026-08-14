@@ -41,8 +41,6 @@
   --icon-brand: var(--brand-0, currentColor);
   --focus-ring: currentColor;
 
-  --header-height: 4.5rem;
-  --nav-filter: blur(10px);
   --nav-shadow: var(--shadow-0);
   --nav-shadow-mobile: var(--shadow-1);
 
@@ -50,11 +48,6 @@
   --footer-highlight-made: var(--palette-colorful-highlight-group-b-1);
   --footer-highlight-me: var(--palette-colorful-highlight-group-b-2);
   --footer-highlight-this: var(--palette-colorful-highlight-group-b-3);
-
-  --motion-fast: 100ms;
-  --motion-base: 200ms;
-  --motion-slow: 400ms;
-  --motion-ease: ease;
 }
 
 :root[data-theme="light"] {
@@ -246,12 +239,4 @@
 
   --shadow-0: 0 1px 2px oklch(10% 0.04 168deg / 60%);
   --shadow-1: inset 1px 1px oklch(10% 0.04 168deg / 12%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --motion-fast: 0s;
-    --motion-base: 0s;
-    --motion-slow: 0s;
-  }
 }
