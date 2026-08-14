@@ -117,7 +117,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     align-items: start;
     padding: 1rem;
     row-gap: 0.5rem;
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     position: relative;
     container-type: inline-size;
@@ -153,7 +153,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     background: var(--surface-media-placeholder);
     height: 200px;
     overflow: hidden;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
   }
 
   .featured-card .hero img {
@@ -166,7 +166,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
   .default-card {
     position: relative;
     padding: 1rem;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
@@ -198,7 +198,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     min-width: 1.5rem;
     height: 1.5rem;
     padding: 0 0.4rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     background: var(--accent-bg);
     color: var(--accent);
     font-size: 0.7rem;

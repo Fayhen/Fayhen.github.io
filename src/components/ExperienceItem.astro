@@ -44,7 +44,7 @@ const { experience } = Astro.props;
 
 <style>
   .experience-card {
-    border-radius: 15px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
   }
 
@@ -69,7 +69,7 @@ const { experience } = Astro.props;
     margin-right: 1rem;
     width: 3.25rem;
     height: 3.25rem;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     overflow: hidden;
     background-color: var(--surface-logo-backdrop);
     background-size: contain;
@@ -81,7 +81,7 @@ const { experience } = Astro.props;
     margin-left: auto;
     width: 1.1rem;
     height: 1.1rem;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     transition: transform var(--motion-slow) var(--motion-ease);
   }
 

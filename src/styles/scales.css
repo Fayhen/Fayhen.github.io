@@ -7,6 +7,12 @@
   --motion-ease: ease;
 
   --nav-filter: blur(10px);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
 }
 
 @media (prefers-reduced-motion: reduce) {
