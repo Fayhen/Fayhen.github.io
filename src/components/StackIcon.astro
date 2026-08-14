@@ -36,7 +36,7 @@ const Themeable = stack.iconThemeable;
 <style>
   .stack-icon {
     border-radius: 50%;
-    transition: transform ease 300ms;
+    transition: transform var(--motion-base) var(--motion-ease);
   }
 
   .stack-icon:hover {
@@ -46,7 +46,6 @@ const Themeable = stack.iconThemeable;
   @media (prefers-reduced-motion: reduce) {
     .stack-icon,
     .stack-icon:hover {
-      transition: none;
       transform: none;
     }
   }

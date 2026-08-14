@@ -52,6 +52,11 @@
   --text-link: var(--palette-ink-chrome);
   --text-link-decoration: none;
   --text-link-hover: var(--palette-ink-0-muted);
+
+  --motion-fast: 100ms;
+  --motion-base: 200ms;
+  --motion-slow: 400ms;
+  --motion-ease: ease;
 }
 
 :root[data-theme="light"] {
@@ -129,7 +134,7 @@
   --palette-colorful-highlight-group-frontend-bg: oklch(28% 0.07 245deg);
   --palette-colorful-highlight-group-frontend-fg: oklch(82% 0.10 245deg);
   --palette-colorful-highlight-group-fullstack-bg: oklch(28% 0.07 155deg);
-  --palette-colorful-highlight-group-fullstack-fg: oklch(82.032% 0.0001 271.152deg);
+  --palette-colorful-highlight-group-fullstack-fg: oklch(84% 0.11 155deg);
 
   --palette-colorful-highlight-group-b-0: oklch(72% 0.14 10deg);
   --palette-colorful-highlight-group-b-1: oklch(72% 0.12 195deg);
@@ -243,4 +248,12 @@
 
   --shadow-0: 0 1px 2px oklch(10% 0.04 168deg / 60%);
   --shadow-1: inset 1px 1px oklch(10% 0.04 168deg / 12%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0s;
+    --motion-base: 0s;
+    --motion-slow: 0s;
+  }
 }

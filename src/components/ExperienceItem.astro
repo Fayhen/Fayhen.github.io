@@ -82,39 +82,22 @@ const { experience } = Astro.props;
     width: 1.1rem;
     height: 1.1rem;
     border-radius: 50%;
-    transition: transform 400ms ease;
+    transition: transform var(--motion-slow) var(--motion-ease);
   }
 
   .card-header[aria-expanded="true"] .dropdown-icon {
     transform: rotate(180deg);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .dropdown-icon,
-    .card-header[aria-expanded="true"] .dropdown-icon {
-      transition: none;
-      transform: none;
-    }
-  }
-
   .dropdown-content{
     display: grid;
     grid-template-rows: 0fr;
     padding: 0;
-    transition: grid-template-rows 400ms ease;
+    transition: grid-template-rows var(--motion-slow) var(--motion-ease);
   }
 
   .experience-card:has(.card-header[aria-expanded="true"]) .dropdown-content {
     grid-template-rows: 1fr;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .dropdown-icon,
-    .card-header[aria-expanded="true"] .dropdown-icon,
-    .experience-card:has(.card-header[aria-expanded="true"]) .dropdown-content {
-      transition: none;
-      transform: none;
-    }
   }
 
   .experience-list-wrapper {

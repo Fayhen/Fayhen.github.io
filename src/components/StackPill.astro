@@ -35,7 +35,7 @@ const Themeable = stack.iconThemeable;
     border: var(--border);
     border-radius: 1rem;
     font-size: smaller;
-    transition: transform ease 100ms;
+    transition: transform var(--motion-fast) var(--motion-ease);
   }
 
   .pill:hover {
@@ -45,7 +45,6 @@ const Themeable = stack.iconThemeable;
   @media (prefers-reduced-motion: reduce) {
     .pill,
     .pill:hover {
-      transition: none;
       transform: none;
     }
   }
