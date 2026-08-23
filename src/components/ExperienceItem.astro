@@ -44,6 +44,8 @@ const { experience } = Astro.props;
 
 <style>
   .experience-card {
+    --experience-icon-size: 3.25rem;
+
     border-radius: var(--radius-lg);
     overflow: hidden;
   }
@@ -56,7 +58,7 @@ const { experience } = Astro.props;
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0.5rem 0.8rem;
+    padding: var(--space-xs) var(--space-md);
     border: none;
     background-color: inherit;
     color: inherit;
@@ -66,9 +68,9 @@ const { experience } = Astro.props;
   }
 
   .experience-icon {
-    margin-right: 1rem;
-    width: 3.25rem;
-    height: 3.25rem;
+    margin-right: var(--space-md);
+    width: var(--experience-icon-size);
+    height: var(--experience-icon-size);
     border-radius: var(--radius-circle);
     overflow: hidden;
     background-color: var(--surface-logo-backdrop);
@@ -106,7 +108,8 @@ const { experience } = Astro.props;
   }
 
   .experience-list {
-    padding: 0 0.5rem 1rem 5.5rem;
+    padding: 0 var(--space-xs) var(--space-md)
+      calc(var(--space-md) + var(--experience-icon-size) + var(--space-md));
     list-style-position: outside;
     list-style-type: circle;
   }

@@ -32,8 +32,8 @@ const href = getRelativeLocaleUrl(target.code, route);
 <style>
   .lang-switcher {
     display: inline-flex;
-    gap: 0.125rem;
-    padding: 0.125rem;
+    gap: var(--space-3xs);
+    padding: var(--space-3xs);
     border: 1px solid var(--text-on-overlay);
     border-radius: var(--radius-pill);
     text-decoration: none;
@@ -41,7 +41,7 @@ const href = getRelativeLocaleUrl(target.code, route);
 
   .lang-option {
     display: block;
-    padding: 0.25rem 0.625rem;
+    padding: var(--space-2xs) var(--space-sm);
     border-radius: var(--radius-pill);
     color: var(--text-link);
     line-height: 1;
@@ -49,11 +49,6 @@ const href = getRelativeLocaleUrl(target.code, route);
 
   .lang-switcher:hover .lang-option:not([data-active="true"]) {
     color: var(--text-link-hover);
-  }
-
-  .lang-switcher:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
   }
 
   .lang-option[data-active="true"] {

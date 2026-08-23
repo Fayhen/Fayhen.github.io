@@ -1,4 +1,7 @@
 :root {
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
   --header-height: 4.5rem;
 
   --motion-fast: 100ms;
@@ -7,6 +10,22 @@
   --motion-ease: ease;
 
   --nav-filter: blur(10px);
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  --space-section-sm: 2rem;
+  --space-section-md: 4rem;
+  --space-section-lg: 5rem;
+  --space-section-xl: 6rem;
+  --space-section-2xl: 7rem;
+  --space-section-3xl: 8rem;
+  --space-section-4xl: 14rem;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.75rem;

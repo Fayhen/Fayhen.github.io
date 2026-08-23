@@ -26,11 +26,11 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 5vw, 1rem);
+  padding-inline: 1rem;
 }
 
 .section-container {
-  padding: 5rem 0;
+  padding: var(--space-section-lg) 0;
 }
 
 .base-list {
@@ -56,4 +56,9 @@ h1, h2, h3, h4, h5, h6 {
 .project-stack-badge {
   background-color: var(--surface-chip);
   color: var(--text-on-chip);
+}
+
+:where(a, button, summary, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset, 2px);
 }

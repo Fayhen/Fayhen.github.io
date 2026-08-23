@@ -76,7 +76,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto 1fr auto;
-    gap: 1.5rem;
+    gap: var(--space-lg);
     width: 100%;
   }
 
@@ -87,10 +87,10 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
   }
 
   .others-grid {
-    margin-top: 1.5rem;
+    margin-top: var(--space-lg);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
-    gap: 1.5rem;
+    gap: var(--space-lg);
     width: 100%;
   }
 
@@ -115,8 +115,8 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     grid-template-columns: 1fr;
     grid-template-rows: subgrid;
     align-items: start;
-    padding: 1rem;
-    row-gap: 0.5rem;
+    padding: var(--space-md);
+    row-gap: var(--space-xs);
     border-radius: var(--radius-lg);
     overflow: hidden;
     position: relative;
@@ -144,7 +144,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     .featured-card {
       grid-template-columns: 1fr 1.4fr;
       grid-template-rows: auto auto 1fr auto;
-      column-gap: 1rem;
+      column-gap: var(--space-md);
       grid-row: span 4;
     }
   }
@@ -165,11 +165,11 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
 
   .default-card {
     position: relative;
-    padding: 1rem;
+    padding: var(--space-md);
     border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: var(--space-xs);
   }
 
   .default-card .description {
@@ -187,7 +187,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
   .footer {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-sm);
     margin-top: auto;
   }
 
@@ -197,7 +197,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     justify-content: center;
     min-width: 1.5rem;
     height: 1.5rem;
-    padding: 0 0.4rem;
+    padding: 0 var(--space-xs);
     border-radius: var(--radius-pill);
     background: var(--accent-bg);
     color: var(--accent);
@@ -208,6 +208,6 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
   .stacks-row {
     display: flex;
     flex-flow: row wrap;
-    gap: 0.5rem;
+    gap: var(--space-xs);
   }
 </style>
