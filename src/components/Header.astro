@@ -202,78 +202,91 @@ const t = useTranslation(locale);
       display: none;
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    @starting-style {
-      nav[data-open] {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    .menu-icon {
-      transform: none;
-    }
-  }
 </style>
 
 <script>
-  const desktopQuery = window.matchMedia("(width >= 46rem)");
+  const header = document.querySelector<HTMLElement>("header");
   const menuBtn = document.querySelector<HTMLButtonElement>(".menu-button");
   const nav = document.querySelector<HTMLElement>("#primary-nav");
 
   const labelOpen = menuBtn?.dataset.labelOpen ?? "";
   const labelClose = menuBtn?.dataset.labelClose ?? "";
 
-  desktopQuery.addEventListener("change", (e) => {
-    if (e.matches) {
-      closeMenu();
-    }
-  });
+  const containsFocus = (el: Element | null) => {
+    return !!el?.contains(document.activeElement);
+  }
 
-  menuBtn?.addEventListener("click", () => {
-    toggleMenu();
-  })
+  const isFocusInMenu = () => {
+    return containsFocus(nav) || containsFocus(menuBtn);
+  }
+
+  const isMenuOpen = () => nav?.hasAttribute("data-open") ?? false;
+
+  function openMenu() {
+    if (!nav || !menuBtn) return;
+
+    nav.setAttribute("data-open", "");
+    menuBtn.setAttribute("aria-expanded", "true");
+    menuBtn.setAttribute("aria-label", labelClose);
+    nav.querySelector("a")?.focus();
+  }
+
+  function closeMenu({ restoreFocus = true} = {}) {
+    if (!nav || !menuBtn) return;
+
+    nav.removeAttribute("data-open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", labelOpen);
+
+    if (restoreFocus) menuBtn.focus();
+  }
+
+  function toggleMenu() {
+    if (isMenuOpen()) closeMenu();
+    else openMenu();
+  }
+
+  new ResizeObserver(() => {
+    if (!nav || !menuBtn) return;
+    const isDesktopNav = !menuBtn.checkVisibility();
+
+    if (isDesktopNav && isMenuOpen()) {
+      closeMenu({ restoreFocus: false });
+      return;
+    }
+
+    if (!isDesktopNav && !isMenuOpen() && containsFocus(nav)) {
+      menuBtn.focus();
+    }
+  }).observe(document.documentElement);
+
+  menuBtn?.addEventListener("click", toggleMenu);
 
   nav?.addEventListener("click", (e) => {
     if ((e.target as HTMLElement).closest("a")) {
-      closeMenu();
+      closeMenu({ restoreFocus: false });
     }
+  });
+
+  header?.addEventListener("focusout", (e) => {
+    if (!isMenuOpen()) return;
+
+    const nextEl = e.relatedTarget as Node | null;
+    if (nextEl && header.contains(nextEl)) return;
+
+    // close menu if user tabs outside the header
+    closeMenu({ restoreFocus: false });
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    if (!nav) return;
-    if (!nav.hasAttribute("data-open")) return;
-    e.stopPropagation();
-    closeMenu();
+    if (e.key !== "Escape" || !isMenuOpen()) return;
+    closeMenu({ restoreFocus: isFocusInMenu() });
   });
 
   document.addEventListener("pointerdown", (e) => {
-    if (!nav || !menuBtn) return;
-    if (!nav.hasAttribute("data-open")) return;
+    if (!isMenuOpen() || !nav || !menuBtn) return;
     if (nav.contains(e.target as Node)) return;
     if (menuBtn.contains(e.target as Node)) return;
-    closeMenu();
-  })
-
-  function closeMenu() {
-    if (!nav || !menuBtn) return;
-    menuBtn.setAttribute("aria-expanded", "false");
-    menuBtn.setAttribute("aria-label", labelOpen);
-    nav.removeAttribute("data-open")
-    menuBtn.focus()
-  }
-
-  function toggleMenu () {
-    if (!nav || !menuBtn) return;
-    const open = nav.toggleAttribute("data-open");
-    const ariaLabel = open ? labelClose : labelOpen;
-    menuBtn.setAttribute("aria-expanded", String(open));
-    menuBtn.setAttribute("aria-label", ariaLabel);
-
-    if (open) {
-      nav.querySelector("a")?.focus();
-    }
-  }
+    closeMenu({ restoreFocus: isFocusInMenu() });
+  });
 </script>
