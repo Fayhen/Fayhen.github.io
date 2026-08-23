@@ -5,27 +5,34 @@ import { useTranslation } from "../i18n";
 import type { Stack } from "../data/stacks";
 
 interface Props {
-  height?: string
-  width?: string
+  size?: "sm" | "md" | "lg"
   stack: Stack
 }
 
-const { stack } = Astro.props;
-const height = Astro.props.height ?? "3rem";
-const width = Astro.props.width ?? "3rem";
+const ICON_SIZES = {
+  sm: "var(--icon-size-sm)",
+  md: "var(--icon-size-md)",
+  lg: "var(--icon-size-lg)",
+} as const;
 
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
-const t = useTranslation(locale);
+const { stack, size = "lg" } = Astro.props;
+const iconSize = ICON_SIZES[size];
 
 const Original = stack.icon;
 const Themeable = stack.iconThemeable;
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
 ---
 
-<li id={`stack-${stack.slug}`} class="stack-icon" style=`--icon-height: ${height}; --icon-width: ${width};`>
+<li
+  id={`stack-${stack.slug}`}
+  class="stack-icon"
+  style={`--icon-size: ${iconSize};`}
+>
   <a href={stack.link}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label=`Visit ${stack.name} documentation, opens in a new tab`
     aria-label={t("skills.stackDocsAriaLabel", { name: stack.name })}
   >
     <Original class="stack-icon-svg-original" aria-hidden="true" />
@@ -51,8 +58,8 @@ const Themeable = stack.iconThemeable;
   }
 
   .stack-icon svg {
-    height: var(--icon-height);
-    width: var(--icon-width);
+    height: var(--icon-size);
+    width: var(--icon-size);
   }
 
   .stack-icon-svg-original {

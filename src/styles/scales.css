@@ -4,6 +4,10 @@
 
   --header-height: 4.5rem;
 
+  --icon-size-sm: 1rem;
+  --icon-size-md: 1.5rem;
+  --icon-size-lg: 3rem;
+
   --motion-fast: 100ms;
   --motion-base: 200ms;
   --motion-slow: 400ms;

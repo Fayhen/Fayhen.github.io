@@ -80,7 +80,7 @@ const t = useTranslation(locale);
     display: flex;
     align-items: center;
     gap: 0 var(--space-xs);
-    height: 3.49rem;
+    height: calc(var(--header-height) - (2 * var(--space-xs)));
     color: inherit;
     font-size: 130%;
     text-decoration: none;
@@ -153,8 +153,8 @@ const t = useTranslation(locale);
 
   .menu-icon {
     grid-area: 1 / 1;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: var(--icon-size-md);
+    width: var(--icon-size-md);
     transition:
       opacity var(--motion-base) var(--motion-ease),
       transform var(--motion-base) var(--motion-ease);

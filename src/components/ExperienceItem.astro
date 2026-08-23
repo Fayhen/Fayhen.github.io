@@ -44,7 +44,7 @@ const { experience } = Astro.props;
 
 <style>
   .experience-card {
-    --experience-icon-size: 3.25rem;
+    --logo-size: 3.25rem;
 
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -64,13 +64,13 @@ const { experience } = Astro.props;
     color: inherit;
     cursor: pointer;
     font: inherit;
-    text-align: left;
+    text-align: start;
   }
 
   .experience-icon {
     margin-right: var(--space-md);
-    width: var(--experience-icon-size);
-    height: var(--experience-icon-size);
+    height: var(--logo-size);
+    width: var(--logo-size);
     border-radius: var(--radius-circle);
     overflow: hidden;
     background-color: var(--surface-logo-backdrop);
@@ -81,8 +81,8 @@ const { experience } = Astro.props;
 
   .dropdown-icon {
     margin-left: auto;
-    width: 1.1rem;
-    height: 1.1rem;
+    height: var(--icon-size-sm);
+    width: var(--icon-size-sm);
     border-radius: var(--radius-circle);
     transition: transform var(--motion-slow) var(--motion-ease);
   }
@@ -109,9 +109,10 @@ const { experience } = Astro.props;
 
   .experience-list {
     padding: 0 var(--space-xs) var(--space-md)
-      calc(var(--space-md) + var(--experience-icon-size) + var(--space-md));
+      calc(var(--space-md) + var(--logo-size) + var(--space-md));
     list-style-position: outside;
     list-style-type: circle;
+    text-align: start;
   }
 </style>
 
