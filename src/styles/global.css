@@ -1,5 +1,6 @@
 @import url("./scales.css");
 @import url("./themes.css");
+@import url("./typography.css");
 
 *,                                                                                                                                                                                                                                  
 *::before,                                                                                                                                                                                                                          
@@ -9,16 +10,17 @@
 
 html {
   scroll-padding-top: var(--header-height);
+  font-size: clamp(var(--font-size-md), 0.75rem + 0.5vw, calc(var(--font-size-md) * 1.07));
 }
 
 html,
 body {
   margin: 0;
   font-family: var(--font-inter);
+  line-height: var(--line-height-body);
 }
 
 body {
-  font-size: clamp(100%, 1.5vw, 102.5%);
   min-height: 100dvh;
 }
 

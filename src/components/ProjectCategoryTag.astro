@@ -18,9 +18,10 @@ const { category } = Astro.props;
     border-radius: var(--radius-pill);
     background: var(--accent-bg);
     color: var(--accent);
-    font-size: 0.75rem;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.05em;
+    line-height: var(--line-height-ui);
     text-transform: uppercase;
-    letter-spacing: 0.05rem;
   }
 
   .category-tag[data-category="backend"] {

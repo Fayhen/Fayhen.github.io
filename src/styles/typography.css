@@ -1,0 +1,23 @@
+:root {
+  --font-size-sm: 0.75rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --line-height-none: 1;
+  --line-height-heading: 1.2;
+  --line-height-ui: 1.35;
+  --line-height-body: 1.6;
+
+  --link-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+}

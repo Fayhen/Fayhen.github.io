@@ -34,7 +34,6 @@
   --text-on-selected: var(--palette-ink-1);
 
   --text-link: var(--palette-ink-chrome);
-  --text-link-decoration: none;
   --text-link-hover: var(--palette-ink-0-muted);
 
   --border-section: var(--border-0);
