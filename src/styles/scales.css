@@ -1,4 +1,21 @@
+
+/* Breakpoints:
+    xs  32rem / 512px
+    sm  40rem / 640px
+    md  48rem / 768px
+    lg  60rem / 960px
+    xl  80rem / 1280px
+
+  Finding media query usages: search for the breakpoint
+  token. Each use is documented on CSS comments. */
+
 :root {
+  --bp-xs: 32rem;
+  --bp-sm: 40rem;
+  --bp-md: 48rem;
+  --bp-lg: 60rem;
+  --bp-xl: 80rem;
+
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 

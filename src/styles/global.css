@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-container {
   width: 100%;
-  max-width: 80rem;
+  max-width: var(--bp-xl);
   margin-inline: auto;
   padding-inline: 1rem;
 }

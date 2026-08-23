@@ -80,6 +80,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     width: 100%;
   }
 
+  /* Breakpoint: --bp-lg */
   @media (width <= 60rem) {
     .featured-grid {
       grid-template-columns: 1fr;
@@ -140,6 +141,7 @@ const others = projects.filter((p) => !p.featured).slice(0, 3);
     }
   }
 
+  /* Breakpoint: --bp-xs, --bp-lg */
   @media (32rem <= width <= 60rem) {
     .featured-card {
       grid-template-columns: 1fr 1.4fr;
