@@ -25,12 +25,7 @@ const t = useTranslation(locale);
         rel="noopener noreferrer"
         class="cta-button-secondary cta-link"
       >
-        <GitHub
-          height="var(--icon-size-md)"
-          width="var(--icon-size-md)"
-          class="cta-button-secondary-icon"
-          aria-label={t("projects.sourceAriaLabel")}
-        />
+        <GitHub class="cta-button-icon" aria-hidden />
         {t("projects.seeCode")}
       </a>
   }
@@ -41,12 +36,7 @@ const t = useTranslation(locale);
         rel="noopener noreferrer"
         class="cta-button-primary cta-link"
       >
-        <Globe
-          height="var(--icon-size-md)"
-          width="var(--icon-size-md)"
-          class="cta-button-primary-icon"
-          aria-label={t("projects.websiteAriaLabel")}
-        />
+        <Globe class="cta-button-icon" aria-hidden />
         {t("projects.seeLive")}
       </a>
   }
@@ -56,6 +46,13 @@ const t = useTranslation(locale);
   .ctas {
     display: flex;
     gap: var(--space-xs);
+  }
+
+  .cta-button-icon {
+    height: var(--icon-size-md);
+    width: var(--icon-size-md);
+    display: block;
+    flex-shrink: 0;
   }
 
   .cta-button-primary {
