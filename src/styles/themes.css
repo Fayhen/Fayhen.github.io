@@ -94,6 +94,8 @@
 
   --shadow-0: 0 1px 2px oklch(0% 0 0deg / 12%);
   --shadow-1: inset 1px 1px oklch(0% 0 0deg / 12%);
+  
+  color-scheme: light;
 }
 
 :root[data-theme="dark"] {
@@ -144,6 +146,8 @@
 
   --shadow-0: 0 1px 6px oklch(52.78% 0.0002 271.152deg / 12%);
   --shadow-1: inset 1px 1px oklch(52.78% 0.0002 271.152deg / 12%);
+  
+  color-scheme: dark;
 }
 
 :root[data-theme="retro-light"] {
@@ -191,6 +195,8 @@
 
   --shadow-0: 0 1px 2px oklch(18% 0.06 168deg / 30%);
   --shadow-1: inset 1px 1px oklch(18% 0.06 168deg / 12%);
+  
+  color-scheme: light;
 }
 
 :root[data-theme="retro-dark"] {
@@ -238,4 +244,6 @@
 
   --shadow-0: 0 1px 2px oklch(10% 0.04 168deg / 60%);
   --shadow-1: inset 1px 1px oklch(10% 0.04 168deg / 12%);
+  
+  color-scheme: dark;
 }
