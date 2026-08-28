@@ -1,0 +1,200 @@
+---
+import "../../styles/global.css";
+
+import Base from "../../layouts/Base.astro";
+import Header from "../Header.astro";
+
+import { COLOR_PAIRINGS } from "../../scripts/designSystem";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { isLocale } from "../../i18n/locales";
+import { useTranslation } from "../../i18n";
+
+const THEMES = ["light", "dark", "retro-light", "retro-dark"];
+const COLORS = [
+  "--surface-base",
+  "--surface-subtle",
+  "--surface-inverse",
+  "--surface-raised-on-base",
+  "--surface-raised-on-subtle",
+  "--surface-raised",
+  "--surface-overlay",
+  "--surface-overlay-panel",
+  "--surface-overlay-active",
+  "--surface-footer",
+  "--surface-action-primary",
+  "--surface-action-secondary",
+  "--surface-accent-backend",
+  "--surface-accent-frontend",
+  "--surface-accent-fullstack",
+  "--surface-chip",
+  "--surface-logo-backdrop",
+  "--surface-media-placeholder",
+  "--text-on-base",
+  "--text-on-subtle",
+  "--text-on-inverse",
+  "--text-on-inverse-hover",
+  "--text-on-raised",
+  "--text-on-overlay",
+  "--text-on-footer",
+  "--text-on-action-primary",
+  "--text-on-action-secondary",
+  "--text-on-accent-backend",
+  "--text-on-accent-frontend",
+  "--text-on-accent-fullstack",
+  "--text-on-chip",
+  "--text-on-selected",
+  "--text-link",
+  "--text-link-hover",
+  "--icon-brand",
+  "--footer-highlight-luv",
+  "--footer-highlight-made",
+  "--footer-highlight-me",
+  "--footer-highlight-this"
+];
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = useTranslation(locale);
+
+const navItems = [
+  { label: t("nav.backHome"), href: getRelativeLocaleUrl(locale, "") }
+];
+---
+
+<Base title="Design System">
+  <Header {navItems} />
+
+  <main id="main-content" tabindex="-1">
+    <section class="page-container">
+      <h1>Color pairing</h1>
+      <div class="palletes-wrapper">
+        {
+          THEMES.map(theme => (
+            <div>
+              <h3>{theme}</h3>
+              <ul class="base-list pallete-list" data-theme={theme}>
+                {
+                  COLORS.map((colorToken) => (
+                    <li>
+                      <p>{colorToken}</p>
+                      <div class="pallete-color-box" style={`background: var(${colorToken})`}></div>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <div class="palletes-wrapper-b">
+      {
+        COLOR_PAIRINGS.map(({ surface, on }) => (
+          <h3>{surface}</h3>
+          <section class="color-pairings">
+            <div class="color-pairings-row">
+              {
+                THEMES.map(theme => (
+                  <div class="color-pairing-cell">
+                    <span>{theme}</span>
+                    <div
+                      class="color-pairing-theme"
+                      data-theme={theme}
+                      style={`background-image: linear-gradient(var(${surface}), var(${surface}))`}
+                    >
+                      {
+                        on.map(({ token, kind = "body" }) => (
+                          <p
+                            class="pairing-sample"
+                            style={`color: var(${token})`}
+                            data-kind={kind}
+                            data-text={token}
+                          >
+                            {token}
+                          </p>
+                        ))
+                      }
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</Base>
+
+<style>
+  /* section:first-of-type {
+    padding-top: var(--space-section-2xl);
+  }
+
+  section:nth-child(2) {
+    padding-top: 0;
+  } */
+
+  ul {
+    margin-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  li p {
+    margin: 0;
+    font-style: italic;
+    font-size: var(--font-size-sm);
+  }
+
+  .palletes-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .pallete-list {
+    background-color: var(--surface-base);
+    color: var(--text-on-base);
+    border: 1px solid black;
+    align-self: stretch;
+    border: 1px solid var(--text-on-base);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+  }
+
+  .pallete-color-box {
+    height: var(--space-xl);
+    width: 100%;
+    border: 1px solid var(--text-on-base);
+    border-radius: var(--radius-md);
+  }
+
+  .palletes-wrapper-b {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin: var(--space-section-2xl) var(--space-section-sm);
+  }
+
+  .color-pairings {
+    border: 1px dashed red;
+  }
+
+  .color-pairing-theme {
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .color-pairings-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-md);
+  }
+
+  .color-pairing-cell span {
+    display: block;
+    text-align: center;
+  }
+</style>

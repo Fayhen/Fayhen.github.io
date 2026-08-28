@@ -1,4 +1,4 @@
-:root {
+:root, [data-theme] {
   --surface-base: var(--palette-ground-0);
   --surface-subtle: var(--palette-ground-1);
   --surface-inverse: var(--palette-ground-2);
@@ -49,7 +49,7 @@
   --footer-highlight-this: var(--palette-colorful-highlight-group-b-3);
 }
 
-:root[data-theme="light"] {
+[data-theme="light"] {
   --palette-ground-0: oklch(100% 0.0001 271.152deg);
   --palette-ground-1: oklch(95.514% 0.0001 271.152deg);
   --palette-ground-2: oklch(27.274% 0.0001 271.152deg);
@@ -98,7 +98,7 @@
   color-scheme: light;
 }
 
-:root[data-theme="dark"] {
+[data-theme="dark"] {
   --palette-ground-0: oklch(27.274% 0.0001 271.152deg);
   --palette-ground-1: oklch(27.274% 0.0001 271.152deg);
   --palette-ground-2: oklch(62.017% 0.0048 16.477deg);
@@ -150,7 +150,7 @@
   color-scheme: dark;
 }
 
-:root[data-theme="retro-light"] {
+[data-theme="retro-light"] {
   --palette-ground-0: oklch(69.6% 0.17 162.48deg);
   --palette-ground-1: oklch(82% 0.10 162deg);
   --palette-ground-2: oklch(22% 0.05 165deg);
@@ -199,7 +199,7 @@
   color-scheme: light;
 }
 
-:root[data-theme="retro-dark"] {
+[data-theme="retro-dark"] {
   --palette-ground-0: oklch(37.8% 0.077 168.94deg);
   --palette-ground-1: oklch(28% 0.06 168deg);
   --palette-ground-2: oklch(18% 0.03 168deg);
