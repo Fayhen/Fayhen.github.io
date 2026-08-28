@@ -4,53 +4,10 @@ import "../../styles/global.css";
 import Base from "../../layouts/Base.astro";
 import Header from "../Header.astro";
 
-import { COLOR_PAIRINGS } from "../../scripts/designSystem";
+import { ALL_COLORS, COLOR_PAIRINGS, THEMES } from "../../scripts/designSystem";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { isLocale } from "../../i18n/locales";
 import { useTranslation } from "../../i18n";
-
-const THEMES = ["light", "dark", "retro-light", "retro-dark"];
-const COLORS = [
-  "--surface-base",
-  "--surface-subtle",
-  "--surface-inverse",
-  "--surface-raised-on-base",
-  "--surface-raised-on-subtle",
-  "--surface-raised",
-  "--surface-overlay",
-  "--surface-overlay-panel",
-  "--surface-overlay-active",
-  "--surface-footer",
-  "--surface-action-primary",
-  "--surface-action-secondary",
-  "--surface-accent-backend",
-  "--surface-accent-frontend",
-  "--surface-accent-fullstack",
-  "--surface-chip",
-  "--surface-logo-backdrop",
-  "--surface-media-placeholder",
-  "--text-on-base",
-  "--text-on-subtle",
-  "--text-on-inverse",
-  "--text-on-inverse-hover",
-  "--text-on-raised",
-  "--text-on-overlay",
-  "--text-on-footer",
-  "--text-on-action-primary",
-  "--text-on-action-secondary",
-  "--text-on-accent-backend",
-  "--text-on-accent-frontend",
-  "--text-on-accent-fullstack",
-  "--text-on-chip",
-  "--text-on-selected",
-  "--text-link",
-  "--text-link-hover",
-  "--icon-brand",
-  "--footer-highlight-luv",
-  "--footer-highlight-made",
-  "--footer-highlight-me",
-  "--footer-highlight-this"
-];
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
@@ -64,8 +21,53 @@ const navItems = [
   <Header {navItems} />
 
   <main id="main-content" tabindex="-1">
-    <section class="page-container">
-      <h1>Color pairing</h1>
+    <div class="page-container">
+      <h1>Design system</h1>
+    </div>
+
+    <section id="color-pairings-section" class="page-container">
+      <h2>Color pairings</h2>
+      {
+        COLOR_PAIRINGS.map(({ surface, on }) => (
+          <section>
+            <h3><code>{surface}</code></h3>
+            <div class="color-pairings">
+              <div class="color-pairings-row">
+                {
+                  THEMES.map(theme => (
+                    <div class="color-pairing-cell">
+                      <span>{theme}</span>
+                      <div
+                        class="color-pairing-theme"
+                        data-theme={theme}
+                        style={`background-image: linear-gradient(var(${surface}), var(${surface}))`}
+                      >
+                        {
+                          on.map(({ token, kind = "body" }) => (
+                            <p
+                              class="pairing-sample"
+                              style={`color: var(${token})`}
+                              data-kind={kind}
+                              data-surface={surface}
+                              data-text={token}
+                            >
+                              <code>{token}</code>
+                            </p>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </section>
+        ))
+      }
+    </section>
+
+    <section id="full-pallete-section" class="page-container">
+      <h2>Raw pallete</h2>
       <div class="palletes-wrapper">
         {
           THEMES.map(theme => (
@@ -73,7 +75,7 @@ const navItems = [
               <h3>{theme}</h3>
               <ul class="base-list pallete-list" data-theme={theme}>
                 {
-                  COLORS.map((colorToken) => (
+                  ALL_COLORS.map((colorToken) => (
                     <li>
                       <p>{colorToken}</p>
                       <div class="pallete-color-box" style={`background: var(${colorToken})`}></div>
@@ -86,54 +88,13 @@ const navItems = [
         }
       </div>
     </section>
-
-    <div class="palletes-wrapper-b">
-      {
-        COLOR_PAIRINGS.map(({ surface, on }) => (
-          <h3>{surface}</h3>
-          <section class="color-pairings">
-            <div class="color-pairings-row">
-              {
-                THEMES.map(theme => (
-                  <div class="color-pairing-cell">
-                    <span>{theme}</span>
-                    <div
-                      class="color-pairing-theme"
-                      data-theme={theme}
-                      style={`background-image: linear-gradient(var(${surface}), var(${surface}))`}
-                    >
-                      {
-                        on.map(({ token, kind = "body" }) => (
-                          <p
-                            class="pairing-sample"
-                            style={`color: var(${token})`}
-                            data-kind={kind}
-                            data-text={token}
-                          >
-                            {token}
-                          </p>
-                        ))
-                      }
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </section>
-        ))
-      }
-    </div>
   </main>
 </Base>
 
 <style>
-  /* section:first-of-type {
-    padding-top: var(--space-section-2xl);
+  main {
+    padding: var(--space-section-2xl) var(--space-section-sm);
   }
-
-  section:nth-child(2) {
-    padding-top: 0;
-  } */
 
   ul {
     margin-top: var(--space-md);
@@ -148,17 +109,50 @@ const navItems = [
     font-size: var(--font-size-sm);
   }
 
+  #color-pairings-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-section-sm);
+  }
+
+  .color-pairings-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-md);
+  }
+
+  .color-pairing-cell {
+    border: 1px solid var(--text-on-base);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .color-pairing-cell span {
+    display: block;
+    padding: var(--space-3xs) 0;
+    text-align: center;
+  }
+
+  .color-pairing-theme {
+    padding: var(--space-sm);
+    background-color: var(--surface-base);
+    border-top: 1px solid var(--text-on-base);
+  }
+
+  #full-pallete-section {
+    margin-top: var(--space-section-md);
+  }
+
   .palletes-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
 
   .pallete-list {
     background-color: var(--surface-base);
     color: var(--text-on-base);
-    border: 1px solid black;
-    align-self: stretch;
     border: 1px solid var(--text-on-base);
     border-radius: var(--radius-md);
     padding: var(--space-sm);
@@ -169,32 +163,5 @@ const navItems = [
     width: 100%;
     border: 1px solid var(--text-on-base);
     border-radius: var(--radius-md);
-  }
-
-  .palletes-wrapper-b {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    margin: var(--space-section-2xl) var(--space-section-sm);
-  }
-
-  .color-pairings {
-    border: 1px dashed red;
-  }
-
-  .color-pairing-theme {
-    padding: var(--space-sm);
-    border-radius: var(--radius-md);
-  }
-
-  .color-pairings-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    gap: var(--space-md);
-  }
-
-  .color-pairing-cell span {
-    display: block;
-    text-align: center;
   }
 </style>
