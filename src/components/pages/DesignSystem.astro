@@ -34,9 +34,9 @@ const navItems = [
             <div class="color-pairings">
               <div class="color-pairings-row">
                 {
-                  THEMES.map(theme => (
+                  THEMES.map(([theme, themeName]) => (
                     <div class="color-pairing-cell">
-                      <span>{theme}</span>
+                      <span>{themeName}</span>
                       <div
                         class="color-pairing-theme"
                         data-theme={theme}
@@ -70,9 +70,9 @@ const navItems = [
       <h2>Raw pallete</h2>
       <div class="palletes-wrapper">
         {
-          THEMES.map(theme => (
+          THEMES.map(([theme, themeName]) => (
             <div>
-              <h3>{theme}</h3>
+              <h3>{themeName}</h3>
               <ul class="base-list pallete-list" data-theme={theme}>
                 {
                   ALL_COLORS.map((colorToken) => (
@@ -96,23 +96,13 @@ const navItems = [
     padding: var(--space-section-2xl) var(--space-section-sm);
   }
 
-  ul {
-    margin-top: var(--space-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  li p {
-    margin: 0;
-    font-style: italic;
-    font-size: var(--font-size-sm);
+  section h2 {
+    margin-bottom: var(--space-md);
   }
 
   #color-pairings-section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
     margin-top: var(--space-section-sm);
   }
 
@@ -120,6 +110,7 @@ const navItems = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: var(--space-md);
+    margin-bottom: var(--space-md);
   }
 
   .color-pairing-cell {
@@ -142,6 +133,23 @@ const navItems = [
 
   #full-pallete-section {
     margin-top: var(--space-section-md);
+  }
+
+  #full-pallete-section h3 {
+    text-align: center;
+  }
+
+  #full-pallete-section ul {
+    margin-top: var(--space-2xs);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  #full-pallete-section li p {
+    margin: 0;
+    font-style: italic;
+    font-size: var(--font-size-sm);
   }
 
   .palletes-wrapper {

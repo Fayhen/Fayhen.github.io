@@ -10,17 +10,23 @@ interface ColorPairing {
 type Kind = "body" | "large" | "nonText"
 
 /**
- * List of the application's themes.
+ * List of the application's themes paried with a human-readable
+ * theme name.
  */
-export const THEMES = ["light", "dark", "retro-light", "retro-dark"];
+export const THEMES = [
+  ["light", "Light"],
+  ["dark", "Dark"],
+  ["retro-light", "Retro light"],
+  ["retro-dark", "Retro dark"]
+];
 
 /**
- * Palette color pairings. Contains mappings of all
- * surface-text color token pairings accross the codebase.
+ * Palette color pairings. Contains mappings of all surface-text
+ * color token pairings accross the codebase.
  *
- * Surface tokens are used for background colors. Text
- * tokens are colors for text and other UI rendered over
- * a given surface token,
+ * Surface tokens are used for background colors. Text tokens are
+ * colors for text and other UI rendered over a given surface
+ * token.
  */
 export const COLOR_PAIRINGS: ColorPairing[] = [
   { surface: "--surface-base", on:
