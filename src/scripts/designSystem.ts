@@ -10,7 +10,7 @@ interface ColorPairing {
 type Kind = "body" | "large" | "nonText"
 
 /**
- * List of the application's themes paried with a human-readable
+ * List of the application's themes paired with a human-readable
  * theme name.
  */
 export const THEMES = [
@@ -22,7 +22,7 @@ export const THEMES = [
 
 /**
  * Palette color pairings. Contains mappings of all surface-text
- * color token pairings accross the codebase.
+ * color token pairings across the codebase.
  *
  * Surface tokens are used for background colors. Text tokens are
  * colors for text and other UI rendered over a given surface
@@ -128,7 +128,7 @@ export const COLOR_PAIRINGS: ColorPairing[] = [
 ];
 
 /**
- * Flat list of all available pallete tokens.
+ * Flat list of all available palette tokens.
  */
 export const ALL_COLORS = [
   ...new Set(

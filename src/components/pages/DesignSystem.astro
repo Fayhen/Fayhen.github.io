@@ -66,19 +66,19 @@ const navItems = [
       }
     </section>
 
-    <section id="full-pallete-section" class="page-container">
-      <h2>Raw pallete</h2>
-      <div class="palletes-wrapper">
+    <section id="full-palette-section" class="page-container">
+      <h2>Raw palette</h2>
+      <div class="palettes-wrapper">
         {
           THEMES.map(([theme, themeName]) => (
             <div>
               <h3>{themeName}</h3>
-              <ul class="base-list pallete-list" data-theme={theme}>
+              <ul class="base-list palette-list" data-theme={theme}>
                 {
                   ALL_COLORS.map((colorToken) => (
                     <li>
-                      <p>{colorToken}</p>
-                      <div class="pallete-color-box" style={`background: var(${colorToken})`}></div>
+                      <code>{colorToken}</code>
+                      <div class="palette-color-box" style={`background: var(${colorToken})`}></div>
                     </li>
                   ))
                 }
@@ -131,34 +131,33 @@ const navItems = [
     border-top: 1px solid var(--text-on-base);
   }
 
-  #full-pallete-section {
+  #full-palette-section {
     margin-top: var(--space-section-md);
   }
 
-  #full-pallete-section h3 {
+  #full-palette-section h3 {
     text-align: center;
   }
 
-  #full-pallete-section ul {
+  #full-palette-section ul {
     margin-top: var(--space-2xs);
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
   }
 
-  #full-pallete-section li p {
-    margin: 0;
+  #full-palette-section li code {
     font-style: italic;
     font-size: var(--font-size-sm);
   }
 
-  .palletes-wrapper {
+  .palettes-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: var(--space-md);
   }
 
-  .pallete-list {
+  .palette-list {
     background-color: var(--surface-base);
     color: var(--text-on-base);
     border: 1px solid var(--text-on-base);
@@ -166,7 +165,7 @@ const navItems = [
     padding: var(--space-sm);
   }
 
-  .pallete-color-box {
+  .palette-color-box {
     height: var(--space-xl);
     width: 100%;
     border: 1px solid var(--text-on-base);
