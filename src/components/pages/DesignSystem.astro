@@ -91,6 +91,35 @@ const navItems = [
   </main>
 </Base>
 
+<script>
+  import { flatten, ratio } from "../../scripts/contrast";
+
+  const samples = document.querySelectorAll<HTMLElement>(".pairing-sample");
+
+  // WCAG contrast ratio auditing pipeline
+  for (const sample of samples) {
+    console.debug(sample);
+    const cell = sample.closest<HTMLElement>(".color-pairing-theme");
+    const surfaceToken = sample.dataset.surface;
+    if (!cell || !surfaceToken) continue;
+
+    const cs = getComputedStyle(cell);
+    const base = cs.getPropertyValue("--surface-base").trim();
+    const surface = cs.getPropertyValue(surfaceToken).trim();
+    const text = getComputedStyle(sample).color;
+
+    // composite of the surface over its theme background
+    const bg = flatten(base, surface);
+
+    // composite of text over the above
+    const fg = flatten(base, surface, text);
+    if (!bg || !fg) continue;
+
+    const r = ratio(bg, fg);
+    console.debug(r);
+  }
+</script>
+
 <style>
   main {
     padding: var(--space-section-2xl) var(--space-section-sm);
@@ -144,6 +173,11 @@ const navItems = [
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+    padding: var(--space-sm);
+    border: 1px solid var(--text-on-base);
+    border-radius: var(--radius-md);
+    background-color: var(--surface-base);
+    color: var(--text-on-base);
   }
 
   #full-palette-section li code {
@@ -155,14 +189,6 @@ const navItems = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: var(--space-md);
-  }
-
-  .palette-list {
-    background-color: var(--surface-base);
-    color: var(--text-on-base);
-    border: 1px solid var(--text-on-base);
-    border-radius: var(--radius-md);
-    padding: var(--space-sm);
   }
 
   .palette-color-box {

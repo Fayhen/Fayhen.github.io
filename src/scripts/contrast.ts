@@ -98,6 +98,19 @@ const CTX: CanvasRenderingContext2D = (() => {
 const OKLCH_CONVERSION_GUARD = "#010203";
 
 /**
+ * WCAG Thresholds for different kinds of UI:
+ *
+ * - 4.5:1 body text                           (SC 1.4.3)
+ * - 3:1   large text ->=24px, >=18.66px bold  (SC 1.4.3)
+ * - 3:1   non-text UI                         (SC 1.4.11)
+ */
+export const THRESHOLDS = {
+  "body": 4.5,
+  "large": 3,
+  "nonText": 3
+};
+
+/**
  * Composites a stack of CSS colors into a single opaque sRGB
  * triple.
  *
@@ -230,11 +243,8 @@ function luminance([r, g, b]: RGB): number {
  * - Minimum contrast:  1:1 - identical colors
  * - Maximum contrast: 21:1 - white on black (1.0 + 0.05) / (0.0 + 0.05)
  *
- * WCAG Thresholds:
- * - 4.5:1 body text                           (SC 1.4.3)
- * - 3:1   large text ->=24px, >=18.66px bold  (SC 1.4.3)
- * - 3:1   non-text UI                         (SC 1.4.11)
- *
+ * For WCAG Thresholds, refer to THRESHOLDS within this
+ * module.
  *
  * @param a Opaque `[r, g, b]` color.
  * @param b Opaque `[r, g, b]` color.
