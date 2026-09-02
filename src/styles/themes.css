@@ -85,7 +85,7 @@
   --palette-colorful-highlight-group-b-3: oklch(58.044% 0.2015 26.162deg);
 
   --backdrop-0: none;
-  --brand-0: initial;
+  --brand-0: oklch(32.897% 0.0001 271.152deg);
   --border-0: none;
 
   --media-placeholder: linear-gradient(135deg,
@@ -186,7 +186,7 @@
   --palette-colorful-highlight-group-b-3: oklch(52% 0.14 75deg);
 
   --backdrop-0: none;
-  --brand-0: initial;
+  --brand-0: oklch(26.2% 0.051 172.552deg);
   --border-0: none;
 
   --media-placeholder: linear-gradient(135deg,
@@ -235,7 +235,7 @@
   --palette-colorful-highlight-group-b-3: oklch(75% 0.15 85deg);
 
   --backdrop-0: none;
-  --brand-0: initial;
+  --brand-0: oklch(84.5% 0.143 164.978deg);
   --border-0: none;
 
   --media-placeholder: linear-gradient(135deg,

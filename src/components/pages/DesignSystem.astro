@@ -4,6 +4,10 @@ import "../../styles/global.css";
 import Base from "../../layouts/Base.astro";
 import Header from "../Header.astro";
 
+import Copy from "../../assets/icons/fas/copy.svg";
+import Exclamation from "../../assets/icons/fas/exclamation.svg";
+import Palette from "../../assets/icons/fas/palette.svg";
+
 import { ALL_COLORS, COLOR_PAIRINGS, THEMES } from "../../scripts/designSystem";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { isLocale } from "../../i18n/locales";
@@ -30,8 +34,19 @@ const navItems = [
       {
         COLOR_PAIRINGS.map(({ surface, on }) => (
           <section>
-            <h3><code>{surface}</code></h3>
-            <div class="color-pairings">
+            <div class="palette-surface-title">
+              <button class="icon-circle outer-contrast">
+                <Copy class="icon" aria-hidden="true" />
+                <span class="sr-only">Copy {surface} token value</span>
+              </button>
+              <button class="icon-circle outer-contrast">
+                <Palette class="icon" aria-hidden="true" />
+                <span class="sr-only">Copy {surface} color value</span>
+              </button>
+              <h3><code>{surface}</code></h3>
+            </div>
+
+            <div>
               <div class="color-pairings-row">
                 {
                   THEMES.map(([theme, themeName]) => (
@@ -44,15 +59,48 @@ const navItems = [
                       >
                         {
                           on.map(({ token, kind = "body" }) => (
-                            <p
+                            <div
                               class="pairing-sample"
                               style={`color: var(${token})`}
                               data-kind={kind}
                               data-surface={surface}
                               data-text={token}
                             >
-                              <code>{token}</code>
-                            </p>
+                              <div class="pairing-sample-info">
+                                <code>{token}</code>
+
+                                <div hidden class="pairing-sample-details audit-success">
+                                  <div class="pairing-sample-controls">
+                                    <button class="icon-circle theme-contrast" style={`color: var(${token})`}>
+                                      <Copy class="icon" aria-hidden="true" />
+                                      <span class="sr-only">Copy {token} token name</span>
+                                    </button>
+                                    <button class="icon-circle theme-contrast" style={`color: var(${token})`}>
+                                      <Palette class="icon" aria-hidden="true" />
+                                      <span class="sr-only">Copy {token} color value</span>
+                                    </button>
+                                  </div>
+                                  <p class="pairing-contrast-info"></p>
+                                </div>
+
+                                <div hidden class="pairing-sample-details audit-failure">
+                                  <div class="pairing-sample-controls">
+                                    <button class="icon-circle error-contrast">
+                                      <Copy class="icon" aria-hidden="true" />
+                                      <span class="sr-only">Copy {token} token name</span>
+                                    </button>
+                                    <button class="icon-circle error-contrast">
+                                      <Palette class="icon" aria-hidden="true" />
+                                      <span class="sr-only">Copy {token} color value</span>
+                                    </button>
+                                    <div class="icon-circle error-contrast">
+                                      <Exclamation class="icon" aria-hidden="true" />
+                                    </div>
+                                  </div>
+                                  <p class="pairing-contrast-info"></p>
+                                </div>
+                              </div>
+                            </div>
                           ))
                         }
                       </div>
@@ -73,7 +121,7 @@ const navItems = [
           THEMES.map(([theme, themeName]) => (
             <div>
               <h3>{themeName}</h3>
-              <ul class="base-list palette-list" data-theme={theme}>
+              <ul class="base-list" data-theme={theme}>
                 {
                   ALL_COLORS.map((colorToken) => (
                     <li>
@@ -92,16 +140,21 @@ const navItems = [
 </Base>
 
 <script>
-  import { flatten, ratio } from "../../scripts/contrast";
+  import { audit, flatten, ratio, type UIKind } from "../../scripts/contrast";
 
   const samples = document.querySelectorAll<HTMLElement>(".pairing-sample");
 
   // WCAG contrast ratio auditing pipeline
   for (const sample of samples) {
-    console.debug(sample);
     const cell = sample.closest<HTMLElement>(".color-pairing-theme");
     const surfaceToken = sample.dataset.surface;
     if (!cell || !surfaceToken) continue;
+
+    const elementType = sample.dataset.kind as UIKind | undefined;
+    if (!elementType) {
+      showContrastFailure(sample, "Unresolved");
+      continue;
+    }
 
     const cs = getComputedStyle(cell);
     const base = cs.getPropertyValue("--surface-base").trim();
@@ -113,10 +166,39 @@ const navItems = [
 
     // composite of text over the above
     const fg = flatten(base, surface, text);
-    if (!bg || !fg) continue;
+    if (!bg || !fg) {
+      showContrastFailure(sample, "Unresolved");
+      continue;
+    };
 
-    const r = ratio(bg, fg);
-    console.debug(r);
+    const cr = ratio(bg, fg);
+    if (audit(cr, elementType)) {
+      showContrastInfo(sample, cr);
+    }
+    else {
+      showContrastFailure(sample, cr);
+    }
+  }
+
+  function showContrastInfo(sample: Element, ct: number) {
+    const wrapperEl = sample.querySelector<HTMLElement>(".pairing-sample-details.audit-success");
+    const infoEl = sample.querySelector<HTMLElement>(".audit-success > .pairing-contrast-info");
+    if (!wrapperEl || !infoEl) return;
+
+    infoEl.innerText = `Ratio: ${ct.toFixed(2)}`;
+    wrapperEl.hidden = false;
+  }
+
+  function showContrastFailure(sample: Element, ct: number | string) {
+    const wrapperEl = sample.querySelector<HTMLElement>(".pairing-sample-details.audit-failure");
+    const infoEl = sample.querySelector<HTMLElement>(".audit-failure > .pairing-contrast-info");
+    if (!wrapperEl || !infoEl) return;
+
+    typeof ct === "number"
+      ? infoEl.innerText = `Ratio: ${ct.toFixed(2)}`
+      : infoEl.innerText = ct;
+
+    wrapperEl.hidden = false;
   }
 </script>
 
@@ -129,10 +211,24 @@ const navItems = [
     margin-bottom: var(--space-md);
   }
 
+  p {
+    margin: 0;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
   #color-pairings-section {
     display: flex;
     flex-direction: column;
     margin-top: var(--space-section-sm);
+  }
+
+  .palette-surface-title {
+    display: flex;
+    gap: var(--space-2xs);
+    padding: var(--space-xs) 0 var(--space-xs) var(--space-sm);
   }
 
   .color-pairings-row {
@@ -145,7 +241,7 @@ const navItems = [
   .color-pairing-cell {
     border: 1px solid var(--text-on-base);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow: clip;
   }
 
   .color-pairing-cell span {
@@ -155,9 +251,81 @@ const navItems = [
   }
 
   .color-pairing-theme {
+    height: 100%;
     padding: var(--space-sm);
     background-color: var(--surface-base);
     border-top: 1px solid var(--text-on-base);
+  }
+
+  .pairing-sample {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:var(--space-2xs) 0;
+  }
+
+  .pairing-sample-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .pairing-sample-details {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-3xs);
+  }
+
+  .pairing-sample-details.audit-failure {
+    background-color: #fff;
+    color: #000;
+    border-radius: var(--radius-lg);
+  }
+
+  .pairing-sample-controls {
+    display: flex;
+    gap: var(--space-2xs);
+  }
+
+  .icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-circle);
+    height: var(--icon-size-md);
+    width: var(--icon-size-md);
+  }
+
+  .icon-circle > .icon {
+    height: var(--icon-size-sm);
+    width: var(--icon-size-sm);
+  }
+
+  .icon-circle.error-contrast {
+    background-color: #fff;
+    color: #c00;
+    border: 1px solid #c00;
+  }
+
+  .icon-circle.outer-contrast {
+    background-color: var(--surface-base);
+    color: var(--text-on-base);
+    border: 1px solid var(--text-on-base);
+  }
+
+  .icon-circle.theme-contrast {
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+  }
+
+  .pairing-contrast-info {
+    font-size: var(--font-size-sm);
+  }
+
+  .audit-failure .pairing-contrast-info {
+    color: #c00;
   }
 
   #full-palette-section {

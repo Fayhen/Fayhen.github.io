@@ -1,13 +1,13 @@
+import type { UIKind } from "./contrast";
+
 interface ColorPairing {
   surface: string
   on: Array<{
     token: string
-    kind?: Kind
+    kind?: UIKind
     note?: string
   }>
 }
-
-type Kind = "body" | "large" | "nonText"
 
 /**
  * List of the application's themes paired with a human-readable

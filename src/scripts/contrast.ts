@@ -55,9 +55,9 @@
  *
  * Furthermore, the palettes include translucent colors. A
  * translucent color does not have luminance on its own,
- * instead they have luminance over a backdrop. We handle
- * this via compositing: the process of combining visual
- * elements from different sources into a single image.
+ * instead it has luminance over a backdrop. We handle this
+ * via compositing: the process of combining visual elements
+ * from different sources into a single image.
  *
  * Here we delegate compositing to a canvas element, rather
  * than implementing by hand. Both canvas and CSS handle
@@ -71,7 +71,16 @@
  * already-composited colors.
  */
 
+/**
+ * An 8-bit sRGB triple (`[r, g, b]`). Each channel is a
+ * 0-255 integer.
+ */
 type RGB = [number, number, number];
+
+/**
+ * WCAG UI element type for contrast ratio auditing.
+ */
+export type UIKind = "body" | "large" | "nonText"
 
 /**
  * The canvas context used on OKLCH -> sRGB conversion pipelines.
@@ -100,11 +109,11 @@ const OKLCH_CONVERSION_GUARD = "#010203";
 /**
  * WCAG Thresholds for different kinds of UI:
  *
- * - 4.5:1 body text                           (SC 1.4.3)
- * - 3:1   large text ->=24px, >=18.66px bold  (SC 1.4.3)
- * - 3:1   non-text UI                         (SC 1.4.11)
+ * - 4.5:1 body text                          (SC 1.4.3)
+ * - 3:1   large text >=24px, >=18.66px bold  (SC 1.4.3)
+ * - 3:1   non-text UI                        (SC 1.4.11)
  */
-export const THRESHOLDS = {
+export const THRESHOLDS: Record<UIKind, number> = {
   "body": 4.5,
   "large": 3,
   "nonText": 3
@@ -120,7 +129,7 @@ export const THRESHOLDS = {
  *
  * - `CTX.clearRect` gives a transparent black 1px rectangle.
  * - `OKLCH_CONVERSION_GUARD` applies a known, opaque color to
- *   to read back from should `CTX.fillStyle` receive invalid
+ *   read back from should `CTX.fillStyle` receive invalid
  *   values.
  * - `CTX.fillStyle` accepts and normalizes valid CSS color
  *   strings.
@@ -201,10 +210,10 @@ export const flatten = (...colors: string[]): RGB | null => {
  * - Modern color spaces circle back to the human perceptual
  *   quirk and improve upon the older standards. CIELAB and
  *   OKLab/OKLCH both cover the entire gamut of human color
- *   perception and uses cube roots on their cores. Both were
- *   designed to tbe perceptually uniform, and OKLab/OKLCH
- *   (Ottosson, 2020) was built from scratch to fix
- *   CIELAB's shortcomings.
+ *   perception and use cube roots on their cores. Both were
+ *   designed to te perceptually uniform, and OKLab/OKLCH
+ *   (Ottosson, 2020) was built from scratch to fix CIELAB's
+ *   shortcomings.
  *
  * CHANNEL WEIGHTING: each RGB channel contributes unequally
  * to the perceived brightness. This comes from catarrhine
@@ -229,7 +238,7 @@ function luminance([r, g, b]: RGB): number {
  * Computes the WCAG contrast ratio between two opaque colors.
  *
  * Luminances are sorted so the results are symmetric. Contrast
- * is an property of the color pair, therefore, the argument
+ * is a property of the color pair, therefore, the argument
  * order must not change its value.
  *
  * The `+ 0.05` constant is modelling visual flare, such as
@@ -253,4 +262,18 @@ function luminance([r, g, b]: RGB): number {
 export function ratio(a: RGB, b: RGB): number {
   const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
   return (hi + 0.05) / (lo + 0.05);
+}
+
+/**
+ * Audits whether a contrast ratio conforms to the WCAG
+ * standards, according to its UI type.
+ *
+ * @param ct Contrast ratio in the 1-21 range.
+ * @param kind UI element type.
+ * @returns `true` if the contrast ration passes the audit,
+ *   `false` otherwise.
+ */
+export function audit(ct: number, kind: UIKind): boolean {
+  const threshold = THRESHOLDS[kind];
+  return ct >= threshold;
 }
