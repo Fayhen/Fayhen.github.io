@@ -25,6 +25,8 @@ const navItems = [
   <Header {navItems} />
 
   <main id="main-content" tabindex="-1">
+    <p id="copy-status" role="status" class="sr-only"></p>
+
     <div class="page-container">
       <h1>Design system</h1>
     </div>
@@ -35,14 +37,6 @@ const navItems = [
         COLOR_PAIRINGS.map(({ surface, on }) => (
           <section>
             <div class="palette-surface-title">
-              <button class="icon-circle outer-contrast">
-                <Copy class="icon" aria-hidden="true" />
-                <span class="sr-only">Copy {surface} token value</span>
-              </button>
-              <button class="icon-circle outer-contrast">
-                <Palette class="icon" aria-hidden="true" />
-                <span class="sr-only">Copy {surface} color value</span>
-              </button>
               <h3><code>{surface}</code></h3>
             </div>
 
@@ -50,8 +44,29 @@ const navItems = [
               <div class="color-pairings-row">
                 {
                   THEMES.map(([theme, themeName]) => (
-                    <div class="color-pairing-cell">
-                      <span>{themeName}</span>
+                    <div class="color-pairing-box">
+                      <div class="color-pairing-header">
+                        <div class="color-pairing-header-controls">
+                          <button
+                            class="icon-circle outer-contrast"
+                            data-copy="pairing-surface-token-name"
+                            type="button"
+                          >
+                            <Copy class="icon" aria-hidden="true" />
+                            <span class="sr-only">Copy {surface} token value</span>
+                          </button>
+                          <button
+                            class="icon-circle outer-contrast"
+                            data-copy={`pairing-surface-token-${theme}`}
+                            type="button"
+                          >
+                            <Palette class="icon" aria-hidden="true" />
+                            <span class="sr-only">Copy {surface} color value</span>
+                          </button>
+                        </div>
+                        <span>{themeName}</span>
+                      </div>
+
                       <div
                         class="color-pairing-theme"
                         data-theme={theme}
@@ -64,18 +79,30 @@ const navItems = [
                               style={`color: var(${token})`}
                               data-kind={kind}
                               data-surface={surface}
-                              data-text={token}
+                              data-token={token}
                             >
                               <div class="pairing-sample-info">
                                 <code>{token}</code>
 
                                 <div hidden class="pairing-sample-details audit-success">
                                   <div class="pairing-sample-controls">
-                                    <button class="icon-circle theme-contrast" style={`color: var(${token})`}>
+                                    <button
+                                      class="icon-circle theme-contrast"
+                                      style={`color: var(${token})`}
+                                      data-copy="pairing-token-name"
+                                      data-token={token}
+                                      type="button"
+                                    >
                                       <Copy class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} token name</span>
                                     </button>
-                                    <button class="icon-circle theme-contrast" style={`color: var(${token})`}>
+                                    <button
+                                      class="icon-circle theme-contrast"
+                                      style={`color: var(${token})`}
+                                      data-copy="pairing-token-value"
+                                      data-token={token}
+                                      type="button"
+                                    >
                                       <Palette class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} color value</span>
                                     </button>
@@ -85,11 +112,21 @@ const navItems = [
 
                                 <div hidden class="pairing-sample-details audit-failure">
                                   <div class="pairing-sample-controls">
-                                    <button class="icon-circle error-contrast">
+                                    <button
+                                      class="icon-circle error-contrast"
+                                      data-copy="pairing-token-name"
+                                      data-token={token}
+                                      type="button"
+                                    >
                                       <Copy class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} token name</span>
                                     </button>
-                                    <button class="icon-circle error-contrast">
+                                    <button
+                                      class="icon-circle error-contrast"
+                                      data-copy="pairing-token-value"
+                                      data-token={token}
+                                      type="button"
+                                    >
                                       <Palette class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} color value</span>
                                     </button>
@@ -140,11 +177,122 @@ const navItems = [
 </Base>
 
 <script>
+  import { copyText } from "../../scripts/clipboard";
   import { audit, flatten, ratio, type UIKind } from "../../scripts/contrast";
 
-  const samples = document.querySelectorAll<HTMLElement>(".pairing-sample");
+  listeners();
+
+  /**
+   * Sets up event listeners for this page.
+   */
+  function listeners() {
+    const main = document.getElementsByTagName("main")[0];
+
+    main?.addEventListener("click", (e) => {
+      const copyBtn = (e.target as HTMLElement)
+        .closest<HTMLButtonElement>("[data-copy]");
+
+      if (!copyBtn) return;
+
+      const copyType = copyBtn.dataset.copy ?? "";
+
+      if (copyType === "pairing-surface-token-name") {
+        return copySurfaceTokenName(copyBtn);
+      }
+
+      if (copyType.match(/^(pairing-surface-token)-(?!.*name)\w+/)) {
+        return copySurfaceTokenValue(copyBtn);
+      }
+
+      if (copyType === "pairing-token-name") {
+        return copyPairingTokenName(copyBtn);
+      }
+
+      if (copyType === "pairing-token-value") {
+        return copyPairingTokenValue(copyBtn);
+      }
+    });
+  }
+
+  /**
+   * Crawls the DOM from the clicked button to its respective
+   * theme box and copies the surface token name to the user's
+   * clipboard.
+   *
+   * @param btn Clicked button element. Expected to be on the
+   *   theme box header element.
+   */
+  function copySurfaceTokenName(btn: HTMLElement) {
+    const themedBox = btn
+      .closest(".color-pairing-box")
+      ?.querySelector<HTMLElement>(".pairing-sample");
+
+    const tokenName = themedBox?.dataset.surface;
+    if (!tokenName) return;
+
+    copyText(tokenName.trim());
+  }
+
+  /**
+   * Crawls the DOM from the clicked button to its respective
+   * theme box, computes the surface token value into its CSS
+   * color, and copies to the user's clipboard.
+   *
+   * @param btn Clicked button element. Expected to be on the
+   *   theme box header element.
+   */
+  function copySurfaceTokenValue(btn: HTMLElement) {
+    const themedBox = btn
+      .closest(".color-pairing-box")
+      ?.querySelector<HTMLElement>(".pairing-sample");
+
+    const tokenName = themedBox?.dataset.surface;
+    if (!themedBox || !tokenName) return;
+
+    const color = getComputedStyle(themedBox).getPropertyValue(tokenName);
+    copyText(color.trim());
+  }
+
+  /**
+   * Crawls the DOM from the clicked button to its respective
+   * theme box and copies the pairing token to the user's
+   * clipboard.
+   *
+   * @param btn Clicked button element. Expected to have the
+   *   pairing token name in its dataset.
+   */
+  function copyPairingTokenName(btn: HTMLElement) {
+    const tokenName = btn.dataset.token;
+    if (!tokenName) return;
+
+    copyText(tokenName.trim());
+  }
+
+  /**
+   * Crawls the DOM from the clicked button to its respective
+   * theme box, computes the pairing token value into its CSS
+   * color and, copies the pairing token to the user's
+   * clipboard.
+   *
+   * @param btn Clicked button element. Expected to have the
+   *   pairing token name in its dataset and be within its
+   *   corresponding theme box.
+   */
+  function copyPairingTokenValue(btn: HTMLElement) {
+    const themedBox = btn
+      .closest(".color-pairing-box")
+      ?.querySelector<HTMLElement>(".pairing-sample");
+
+    const tokenName = btn.dataset.token;
+    if (!themedBox || !tokenName) return;
+
+    const color = getComputedStyle(themedBox).getPropertyValue(tokenName);
+    copyText(color.trim());
+  }
 
   // WCAG contrast ratio auditing pipeline
+  const samples = document.querySelectorAll<HTMLElement>(".pairing-sample");
+
   for (const sample of samples) {
     const cell = sample.closest<HTMLElement>(".color-pairing-theme");
     const surfaceToken = sample.dataset.surface;
@@ -238,16 +386,30 @@ const navItems = [
     margin-bottom: var(--space-md);
   }
 
-  .color-pairing-cell {
+  .color-pairing-box {
     border: 1px solid var(--text-on-base);
     border-radius: var(--radius-md);
     overflow: clip;
   }
 
-  .color-pairing-cell span {
+  .color-pairing-box span {
     display: block;
     padding: var(--space-3xs) 0;
     text-align: center;
+  }
+
+  .color-pairing-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .color-pairing-header-controls {
+     position: absolute;
+     left: calc(var(--space-xs) + 0.35rem);
+     display: flex;
+     gap: var(--space-2xs);
   }
 
   .color-pairing-theme {

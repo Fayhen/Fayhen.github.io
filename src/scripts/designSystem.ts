@@ -5,7 +5,6 @@ interface ColorPairing {
   on: Array<{
     token: string
     kind?: UIKind
-    note?: string
   }>
 }
 
@@ -120,8 +119,7 @@ export const COLOR_PAIRINGS: ColorPairing[] = [
       { token: "--text-on-chip" },
       {
         token: "--icon-brand",
-        kind: "nonText",
-        note: "resolves to currentColor in light/retro — inherits, not standalone"
+        kind: "nonText"
       }
     ]
   }
