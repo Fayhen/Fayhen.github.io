@@ -49,15 +49,17 @@ const navItems = [
                         <div class="color-pairing-header-controls">
                           <button
                             class="icon-circle outer-contrast"
-                            data-copy="pairing-surface-token-name"
+                            data-copy="token-name"
+                            data-token={surface}
                             type="button"
                           >
                             <Copy class="icon" aria-hidden="true" />
-                            <span class="sr-only">Copy {surface} token value</span>
+                            <span class="sr-only">Copy {surface} token name</span>
                           </button>
                           <button
                             class="icon-circle outer-contrast"
-                            data-copy={`pairing-surface-token-${theme}`}
+                            data-copy="token-value"
+                            data-token={surface}
                             type="button"
                           >
                             <Palette class="icon" aria-hidden="true" />
@@ -89,7 +91,7 @@ const navItems = [
                                     <button
                                       class="icon-circle theme-contrast"
                                       style={`color: var(${token})`}
-                                      data-copy="pairing-token-name"
+                                      data-copy="token-name"
                                       data-token={token}
                                       type="button"
                                     >
@@ -99,7 +101,7 @@ const navItems = [
                                     <button
                                       class="icon-circle theme-contrast"
                                       style={`color: var(${token})`}
-                                      data-copy="pairing-token-value"
+                                      data-copy="token-value"
                                       data-token={token}
                                       type="button"
                                     >
@@ -114,7 +116,7 @@ const navItems = [
                                   <div class="pairing-sample-controls">
                                     <button
                                       class="icon-circle error-contrast"
-                                      data-copy="pairing-token-name"
+                                      data-copy="token-name"
                                       data-token={token}
                                       type="button"
                                     >
@@ -123,7 +125,7 @@ const navItems = [
                                     </button>
                                     <button
                                       class="icon-circle error-contrast"
-                                      data-copy="pairing-token-value"
+                                      data-copy="token-value"
                                       data-token={token}
                                       type="button"
                                     >
@@ -178,7 +180,9 @@ const navItems = [
 
 <script>
   import { copyText } from "../../scripts/clipboard";
-  import { audit, flatten, ratio, type UIKind } from "../../scripts/contrast";
+  import { audit, flatten, ratio, isUIKind } from "../../scripts/contrast";
+
+  const status = document.getElementById("copy-status");
 
   listeners();
 
@@ -193,101 +197,91 @@ const navItems = [
         .closest<HTMLButtonElement>("[data-copy]");
 
       if (!copyBtn) return;
-
-      const copyType = copyBtn.dataset.copy ?? "";
-
-      if (copyType === "pairing-surface-token-name") {
-        return copySurfaceTokenName(copyBtn);
-      }
-
-      if (copyType.match(/^(pairing-surface-token)-(?!.*name)\w+/)) {
-        return copySurfaceTokenValue(copyBtn);
-      }
-
-      if (copyType === "pairing-token-name") {
-        return copyPairingTokenName(copyBtn);
-      }
-
-      if (copyType === "pairing-token-value") {
-        return copyPairingTokenValue(copyBtn);
-      }
+      void handlePaletteCopy(copyBtn);
     });
   }
 
   /**
-   * Crawls the DOM from the clicked button to its respective
-   * theme box and copies the surface token name to the user's
+   * Copies either a palette token name or its computed value,
+   * depending on the clicked copy button, onto the user's
    * clipboard.
    *
-   * @param btn Clicked button element. Expected to be on the
-   *   theme box header element.
+   * The clicked button is expect to carry both the token
+   * name in the `data-token` attribute, and the copy mode
+   * on the `data-copy` attribute. The copy mode triggers
+   * different copy behaviors:
+   *
+   * - `token-name`: copies the token name to the user's
+   *   clipboard.
+   * - `token-value`: computes the tokens value against the
+   *   button's theme to the user's clipboard.
+   *
+   * @param btn Clicked button. Expected to carry the token
+   *   name in `data-token` and the copy mode on `data-copy`.
    */
-  function copySurfaceTokenName(btn: HTMLElement) {
-    const themedBox = btn
-      .closest(".color-pairing-box")
-      ?.querySelector<HTMLElement>(".pairing-sample");
+  async function handlePaletteCopy(btn: HTMLElement) {
+    const copyType = btn.dataset.copy;
+    const token = btn.dataset.token;
+    if (!copyType || !token) return;
 
-    const tokenName = themedBox?.dataset.surface;
-    if (!tokenName) return;
+    const text = copyType === "token-value"
+      ? evaluatePaletteTokenValue(btn, token)
+      : token;
 
-    copyText(tokenName.trim());
+    if (!text) return;
+    const copied = await copyText(text);
+
+    if (!copied) {
+      announceCopy(`Unable to copy ${token}`);
+      return;
+    }
+
+    announceCopy(
+      copyType === "token-value"
+        ? `Copied ${token}: ${text}`
+        : `Unable to copy ${token}`
+    );
   }
 
   /**
-   * Crawls the DOM from the clicked button to its respective
-   * theme box, computes the surface token value into its CSS
-   * color, and copies to the user's clipboard.
+   * Computes a palette token value against a design system
+   * theme. Uses the clicked button to target the correct
+   * theme.
    *
-   * @param btn Clicked button element. Expected to be on the
-   *   theme box header element.
+   * @param btn Clicked button.
+   * @param token Token name.
    */
-  function copySurfaceTokenValue(btn: HTMLElement) {
-    const themedBox = btn
-      .closest(".color-pairing-box")
-      ?.querySelector<HTMLElement>(".pairing-sample");
+  function evaluatePaletteTokenValue(btn: HTMLElement, token: string) {
+    const themeBox = themeBoxOf(btn);
+    if (!themeBox) return;
 
-    const tokenName = themedBox?.dataset.surface;
-    if (!themedBox || !tokenName) return;
-
-    const color = getComputedStyle(themedBox).getPropertyValue(tokenName);
-    copyText(color.trim());
+    return getComputedStyle(themeBox)
+      .getPropertyValue(token)
+      .trim();
   }
 
   /**
-   * Crawls the DOM from the clicked button to its respective
-   * theme box and copies the pairing token to the user's
-   * clipboard.
+   * Finds which theme box element a clicked button lies at.
+   * Used for the copy buttons on the palette samples.
    *
-   * @param btn Clicked button element. Expected to have the
-   *   pairing token name in its dataset.
+   * @param btn Clicked button.
    */
-  function copyPairingTokenName(btn: HTMLElement) {
-    const tokenName = btn.dataset.token;
-    if (!tokenName) return;
-
-    copyText(tokenName.trim());
+  function themeBoxOf(btn: HTMLElement) {
+    return btn.closest<HTMLElement>(".color-pairing-theme")
+      ?? btn.closest(".color-pairing-box")?.querySelector<HTMLElement>(".color-pairing-theme")
+      ?? null;
   }
 
   /**
-   * Crawls the DOM from the clicked button to its respective
-   * theme box, computes the pairing token value into its CSS
-   * color and, copies the pairing token to the user's
-   * clipboard.
+   * Announces a copy event just took place for assistive
+   * technologies.
    *
-   * @param btn Clicked button element. Expected to have the
-   *   pairing token name in its dataset and be within its
-   *   corresponding theme box.
+   * @param msg Announced message. Ex.: "Copied color token."
    */
-  function copyPairingTokenValue(btn: HTMLElement) {
-    const themedBox = btn
-      .closest(".color-pairing-box")
-      ?.querySelector<HTMLElement>(".pairing-sample");
-
-    const tokenName = btn.dataset.token;
-    if (!themedBox || !tokenName) return;
-
-    const color = getComputedStyle(themedBox).getPropertyValue(tokenName);
-    copyText(color.trim());
+  function announceCopy(msg: string) {
+    if (!status) return;
+    status.textContent = "";
+    requestAnimationFrame(() => status.textContent = msg);
   }
 
   // WCAG contrast ratio auditing pipeline
@@ -298,9 +292,9 @@ const navItems = [
     const surfaceToken = sample.dataset.surface;
     if (!cell || !surfaceToken) continue;
 
-    const elementType = sample.dataset.kind as UIKind | undefined;
-    if (!elementType) {
-      showContrastFailure(sample, "Unresolved");
+    const elementType = sample.dataset.kind;
+    if (!isUIKind(elementType)) {
+      showContrastFailure(sample, "no valid UI category");
       continue;
     }
 
@@ -315,7 +309,7 @@ const navItems = [
     // composite of text over the above
     const fg = flatten(base, surface, text);
     if (!bg || !fg) {
-      showContrastFailure(sample, "Unresolved");
+      showContrastFailure(sample, "unable to parse color");
       continue;
     };
 
@@ -333,7 +327,7 @@ const navItems = [
     const infoEl = sample.querySelector<HTMLElement>(".audit-success > .pairing-contrast-info");
     if (!wrapperEl || !infoEl) return;
 
-    infoEl.innerText = `Ratio: ${ct.toFixed(2)}`;
+    infoEl.textContent = `Ratio: ${ct.toFixed(2)}`;
     wrapperEl.hidden = false;
   }
 
@@ -343,8 +337,8 @@ const navItems = [
     if (!wrapperEl || !infoEl) return;
 
     typeof ct === "number"
-      ? infoEl.innerText = `Ratio: ${ct.toFixed(2)}`
-      : infoEl.innerText = ct;
+      ? infoEl.textContent = `Ratio: ${ct.toFixed(2)}`
+      : infoEl.textContent = ct;
 
     wrapperEl.hidden = false;
   }
@@ -392,17 +386,17 @@ const navItems = [
     overflow: clip;
   }
 
-  .color-pairing-box span {
-    display: block;
-    padding: var(--space-3xs) 0;
-    text-align: center;
-  }
-
   .color-pairing-header {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .color-pairing-header > span {
+    display: block;
+    padding: var(--space-3xs) 0;
+    text-align: center;
   }
 
   .color-pairing-header-controls {

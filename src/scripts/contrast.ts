@@ -277,3 +277,15 @@ export function audit(ct: number, kind: UIKind): boolean {
   const threshold = THRESHOLDS[kind];
   return ct >= threshold;
 }
+
+/**
+ * Type guard for arbitrary values to be assumed as the
+ * UIKind type.
+ *
+ * @param kind Any value.
+ * @returns `true` if the argument matches a valid UIKind.
+ *   `false` otherwise.
+ */
+export function isUIKind(kind: unknown): kind is UIKind {
+  return typeof kind === "string" && Object.hasOwn(THRESHOLDS, kind);
+}
