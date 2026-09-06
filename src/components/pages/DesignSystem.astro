@@ -180,9 +180,12 @@ const navItems = [
 
 <script>
   import { copyText } from "../../scripts/clipboard";
+  import { maybeLog } from "../../scripts/console";
   import { audit, flatten, ratio, isUIKind } from "../../scripts/contrast";
 
-  const status = document.getElementById("copy-status");
+  let copyStatusFlag: HTMLElement | null = null;
+  let copyStatusTimer: number | undefined;
+  const copyStatusWcagFeedback = document.getElementById("copy-status");
 
   listeners();
 
@@ -216,30 +219,56 @@ const navItems = [
    * - `token-value`: computes the tokens value against the
    *   button's theme to the user's clipboard.
    *
+   * The copy operation result result is announced both
+   * visually by flashing the button to a checkmark or x-mark,
+   * and to assistive technologies via a `#copy-status`
+   * element.
+   *
    * @param btn Clicked button. Expected to carry the token
    *   name in `data-token` and the copy mode on `data-copy`.
    */
   async function handlePaletteCopy(btn: HTMLElement) {
     const copyType = btn.dataset.copy;
     const token = btn.dataset.token;
-    if (!copyType || !token) return;
+    if (!copyType || !token) {
+      maybeLog("warn", {
+        msg: "Copy aborted: key data attributes missing.", copyType, token, btn
+      });
+      flashCopyState(btn, "failed");
+      announceCopy(`Unable to copy ${token}`);
+      return;
+    }
 
     const text = copyType === "token-value"
       ? evaluatePaletteTokenValue(btn, token)
       : token;
 
-    if (!text) return;
-    const copied = await copyText(text);
-
-    if (!copied) {
+    if (!text) {
+      maybeLog("warn", {
+        msg: "Copy aborted: failed to evaluate target value", token, text, btn
+      });
+      flashCopyState(btn, "failed");
       announceCopy(`Unable to copy ${token}`);
       return;
     }
 
+    const copied = await copyText(text);
+
+    if (!copied) {
+      maybeLog("warn", {
+         msg: "Failed copy: clipboard operation failed to resolve.", token, copied, btn
+      });
+      flashCopyState(btn, "failed");
+      announceCopy(`Unable to copy ${token}`);
+      return;
+    }
+
+    flashCopyState(btn, "copied");
+
     announceCopy(
       copyType === "token-value"
         ? `Copied ${token}: ${text}`
-        : `Unable to copy ${token}`
+        : `Copied ${token}`
     );
   }
 
@@ -279,9 +308,30 @@ const navItems = [
    * @param msg Announced message. Ex.: "Copied color token."
    */
   function announceCopy(msg: string) {
-    if (!status) return;
-    status.textContent = "";
-    requestAnimationFrame(() => status.textContent = msg);
+    if (!copyStatusWcagFeedback) return;
+    copyStatusWcagFeedback.textContent = "";
+    requestAnimationFrame(() => copyStatusWcagFeedback.textContent = msg);
+  }
+
+  /**
+   * Briefly shows either a copy success or failure feedback
+   * on the clicked button. The button icon will be swapped
+   * by a checkmark or x-mark for two seconds then reset.
+   *
+   * @param btn Clicked button.
+   * @param state Copy state, either `"copied"` or `"failed"`.
+   */
+  function flashCopyState(btn: HTMLElement, state: "copied" | "failed") {
+    clearTimeout(copyStatusTimer);
+    copyStatusFlag?.removeAttribute("data-state");
+
+    btn.dataset.state = state;
+    copyStatusFlag = btn;
+
+    copyStatusTimer = window.setTimeout(() => {
+      btn.removeAttribute("data-state");
+      copyStatusFlag = null;
+    }, 2000);
   }
 
   // WCAG contrast ratio auditing pipeline
@@ -290,7 +340,12 @@ const navItems = [
   for (const sample of samples) {
     const cell = sample.closest<HTMLElement>(".color-pairing-theme");
     const surfaceToken = sample.dataset.surface;
-    if (!cell || !surfaceToken) continue;
+    if (!cell || !surfaceToken) {
+      maybeLog("warn", {
+        msg: "Color sample auditing failed: key elements not found.", sample, cell, surfaceToken
+      });
+      continue;
+    }
 
     const elementType = sample.dataset.kind;
     if (!isUIKind(elementType)) {
@@ -445,6 +500,7 @@ const navItems = [
   }
 
   .icon-circle {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -458,6 +514,34 @@ const navItems = [
     flex: none;
     height: var(--icon-size-sm);
     width: var(--icon-size-sm);
+  }
+  .icon-circle[data-copy][data-state] > .icon {
+    display: none;
+  }
+
+  /* .icon-circle[data-copy]::after, */
+  .icon-circle[data-state]::after {
+    content: "";
+    position: absolute;
+    height: var(--icon-size-sm);
+    width: var(--icon-size-sm);
+    background-color: currentColor;
+    mask: var(--state-icon) center / contain no-repeat;
+  }
+
+  /* .icon-circle[data-copy="token-name"]::after {
+    --state-icon: url("../../assets/icons/fas/copy.svg");
+  }
+
+  .icon-circle[data-copy="token-value"]::after {
+    --state-icon: url("../../assets/icons/fas/palette.svg");
+  } */
+
+  .icon-circle[data-state="copied"] {
+    --state-icon: url("../../assets/icons/fas/check.svg");
+  }
+  .icon-circle[data-state="failed"] {
+    --state-icon: url("../../assets/icons/fas/xmark-solid-full.svg");
   }
 
   .icon-circle.error-contrast {

@@ -36,7 +36,10 @@ export default [
   {
     rules: {
       "arrow-body-style": ["error", "as-needed"],
-      "indent": ["error", 2, { "VariableDeclarator": "first" }],
+      "indent": ["error", 2, {
+        "VariableDeclarator": "first",
+        "SwitchCase": 1
+      }],
       "no-console": "warn",
       "no-empty": "warn",
       "no-invalid-this": "error",

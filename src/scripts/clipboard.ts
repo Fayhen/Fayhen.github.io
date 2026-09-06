@@ -3,6 +3,19 @@
  * onto the user's clipboard.
  */
 
+import { maybeLog } from "./console";
+
+/**
+ * Evaluates whether the Clipboard object is available
+ * to the browser.
+ *
+ * @returns `true` if the clipboard is enabled.
+ *   `false` otherwise.
+ */
+export function clipboardEnabled(): boolean {
+  return !!navigator.clipboard;
+}
+
 /**
  * Copies textual data onto the user's clipboard.
  *
@@ -12,6 +25,7 @@
  */
 export async function copyText(text: string): Promise<boolean> {
   if (!navigator.clipboard) {
+    maybeLog("warn", "Clipboard unavailable on the current execution context.");
     return false;
   }
 
