@@ -17,18 +17,18 @@ const navItems = [
 ];
 ---
 
-<Base title="Design System">
+<Base title={t("designSystemPage.title")}>
   <Header {navItems} />
 
   <main id="main-content" tabindex="-1">
     <p id="copy-status" role="status" class="sr-only"></p>
 
     <div class="page-container">
-      <h1>Design system</h1>
+      <h1>{t("designSystemPage.title")}</h1>
     </div>
 
     <section id="color-pairings-section" class="page-container">
-      <h2>Color pairings</h2>
+      <h2>{t("designSystemPage.sectionColorPairings")}</h2>
       {
         COLOR_PAIRINGS.map(({ surface, on }) => (
           <section>
@@ -49,7 +49,9 @@ const navItems = [
                             data-token={surface}
                             type="button"
                           >
-                            <span class="sr-only">Copy {surface} token name</span>
+                            <span class="sr-only">
+                              {t("designSystemPage.copyActionSurfaceTokenName", { surface })}
+                            </span>
                           </button>
                           <button
                             class="icon-circle outer-contrast"
@@ -57,7 +59,9 @@ const navItems = [
                             data-token={surface}
                             type="button"
                           >
-                            <span class="sr-only">Copy {surface} value in {themeName} theme</span>
+                            <span class="sr-only">
+                              {t("designSystemPage.copyActionSurfaceTokenValue", { surface, themeName })}
+                            </span>
                           </button>
                         </div>
                         <span>{themeName}</span>
@@ -89,7 +93,9 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <span class="sr-only">Copy {token} token name</span>
+                                      <span class="sr-only">
+                                        {t("designSystemPage.copyActionTokenName", { token })}
+                                      </span>
                                     </button>
                                     <button
                                       class="icon-circle theme-contrast"
@@ -98,7 +104,9 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <span class="sr-only">Copy {token} color value</span>
+                                      <span class="sr-only">
+                                        {t("designSystemPage.copyActionTokenValue", { token, themeName })}
+                                      </span>
                                     </button>
                                   </div>
                                   <p class="pairing-contrast-info"></p>
@@ -112,7 +120,9 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <span class="sr-only">Copy {token} token name</span>
+                                      <span class="sr-only">
+                                        {t("designSystemPage.copyActionTokenName", { token })}
+                                      </span>
                                     </button>
                                     <button
                                       class="icon-circle error-contrast"
@@ -120,7 +130,9 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <span class="sr-only">Copy {token} color value</span>
+                                      <span class="sr-only">
+                                        {t("designSystemPage.copyActionTokenValue", { token, themeName })}
+                                      </span>
                                     </button>
                                     <div class="icon-circle error-contrast alert"></div>
                                   </div>
@@ -142,7 +154,7 @@ const navItems = [
     </section>
 
     <section id="full-palette-section" class="page-container">
-      <h2>Raw palette</h2>
+      <h2>{t("designSystemPage.sectionRawPalette")}</h2>
       <div class="palettes-wrapper">
         {
           THEMES.map(([theme, themeName]) => (
@@ -170,6 +182,13 @@ const navItems = [
   import { copyText } from "../../scripts/clipboard";
   import { maybeLog } from "../../scripts/console";
   import { audit, flatten, ratio, isUIKind, WCAG_SC } from "../../scripts/contrast";
+
+  import { useTranslation } from "../../i18n";
+  import { isLocale } from "../../i18n/locales";
+
+  const rawLocale = document.documentElement.lang?.toLocaleLowerCase();
+  const locale = isLocale(rawLocale) ? rawLocale : "en";
+  const t = useTranslation(locale);
 
   let copyStatusFlag: HTMLElement | null = null;
   let copyStatusTimer: number | undefined;
@@ -224,7 +243,7 @@ const navItems = [
         msg: "Copy aborted: key data attributes missing.", copyType, token, btn
       });
       flashCopyState(btn, "failed");
-      announceCopy(`Unable to copy ${token}`);
+      announceCopy(t("designSystemPage.copyFeedbackFail", { token: `${token}`}));
       return;
     }
 
@@ -237,7 +256,7 @@ const navItems = [
         msg: "Copy aborted: failed to evaluate target value", token, text, btn
       });
       flashCopyState(btn, "failed");
-      announceCopy(`Unable to copy ${token}`);
+      announceCopy(t("designSystemPage.copyFeedbackFail", {token}));
       return;
     }
 
@@ -248,7 +267,7 @@ const navItems = [
          msg: "Failed copy: clipboard operation failed to resolve.", token, copied, btn
       });
       flashCopyState(btn, "failed");
-      announceCopy(`Unable to copy ${token}`);
+      announceCopy(t("designSystemPage.copyFeedbackFail", {token}));
       return;
     }
 
@@ -256,8 +275,8 @@ const navItems = [
 
     announceCopy(
       copyType === "token-value"
-        ? `Copied ${token}: ${text}`
-        : `Copied ${token}`
+        ? t("designSystemPage.copyFeedbackSuccessValue", { token, text })
+        : t("designSystemPage.copyFeedbackSuccessToken", { token })
     );
   }
 
@@ -348,7 +367,7 @@ const navItems = [
         maybeLog("warn", {
           msg: "Unable to compute contrast. UI type not found on element dataset.", sample, elementType
         });
-        showContrastFailure(sample, "Unable to compute contrast");
+        showContrastFailure(sample, t("designSystemPage.contrastComputeFailed"));
         continue;
       }
 
@@ -367,7 +386,7 @@ const navItems = [
         maybeLog("warn", {
           msg: "Contrast ratio computation failed.", base, surface, text
         });
-        showContrastFailure(sample, "Unable to compute contrast");
+        showContrastFailure(sample, t("designSystemPage.contrastComputeFailed"));
         continue;
       }
 
@@ -378,17 +397,17 @@ const navItems = [
       }
       else {
         const criterion = WCAG_SC[elementType];
-        showContrastFailure(sample, `Fails AA (${criterion}): ${cr.toFixed(2)}:1`);
+        showContrastFailure(sample, t("designSystemPage.contrastAuditFailure", { criterion, cr: cr.toFixed(2) }));
       }
     }
   }
 
-  function showContrastInfo(sample: Element, ct: number) {
+  function showContrastInfo(sample: Element, cr: number) {
     const wrapperEl = sample.querySelector<HTMLElement>(".pairing-sample-details.audit-success");
     const infoEl = sample.querySelector<HTMLElement>(".audit-success > .pairing-contrast-info");
     if (!wrapperEl || !infoEl) return;
 
-    infoEl.textContent = `Passes AA: ${ct.toFixed(2)}`;
+    infoEl.textContent = t("designSystemPage.contrastAuditSuccess", { cr: cr.toFixed(2) });
     wrapperEl.hidden = false;
   }
 
