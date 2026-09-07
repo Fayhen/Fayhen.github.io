@@ -107,16 +107,29 @@ const CTX: CanvasRenderingContext2D = (() => {
 const OKLCH_CONVERSION_GUARD = "#010203";
 
 /**
- * WCAG Thresholds for different kinds of UI:
+ * Minimum WCAG contrast ratio thresholds for different UI types.
+ * The WCAG Success Criterion, contrast ration and respective UI
+ * type are as follows:
  *
- * - 4.5:1 body text                          (SC 1.4.3)
- * - 3:1   large text >=24px, >=18.66px bold  (SC 1.4.3)
- * - 3:1   non-text UI                        (SC 1.4.11)
+ * - SC 1.4.3   4.5:1   body text
+ * - SC 1.4.3     3:1   large text >=24px, >=18.66px bold
+ * - SC 1.4.11    3:1   non-text UI
  */
 export const THRESHOLDS: Record<UIKind, number> = {
   "body": 4.5,
   "large": 3,
   "nonText": 3
+};
+
+/**
+ * WCAG Guideline Success Criteria (SC) for contrast between
+ * UI elements. Points to the exact WCAG specification where
+ * contrast ratio is defined for a given UI element type.
+ */
+export const WCAG_SC: Record<UIKind, string> = {
+  "body": "SC 1.4.3",
+  "large": "SC 1.4.3",
+  "nonText": "SC 1.4.11"
 };
 
 /**

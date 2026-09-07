@@ -57,7 +57,7 @@ const navItems = [
                             data-token={surface}
                             type="button"
                           >
-                            <span class="sr-only">Copy {surface} color value</span>
+                            <span class="sr-only">Copy {surface} value in {themeName} theme</span>
                           </button>
                         </div>
                         <span>{themeName}</span>
@@ -169,13 +169,14 @@ const navItems = [
 <script>
   import { copyText } from "../../scripts/clipboard";
   import { maybeLog } from "../../scripts/console";
-  import { audit, flatten, ratio, isUIKind } from "../../scripts/contrast";
+  import { audit, flatten, ratio, isUIKind, WCAG_SC } from "../../scripts/contrast";
 
   let copyStatusFlag: HTMLElement | null = null;
   let copyStatusTimer: number | undefined;
   const copyStatusWcagFeedback = document.getElementById("copy-status");
 
   listeners();
+  wcagContrastAudit();
 
   /**
    * Sets up event listeners for this page.
@@ -322,46 +323,63 @@ const navItems = [
     }, 2000);
   }
 
-  // WCAG contrast ratio auditing pipeline
-  const samples = document.querySelectorAll<HTMLElement>(".pairing-sample");
+  /**
+   * Audits contrast ratios on color pairing samples across
+   * the design system, in accordance with WCAG specification
+   * for different UI types.
+   */
+  function wcagContrastAudit() {
+    const samples = document.querySelectorAll<HTMLElement>(".pairing-sample");
 
-  for (const sample of samples) {
-    const cell = sample.closest<HTMLElement>(".color-pairing-theme");
-    const surfaceToken = sample.dataset.surface;
-    if (!cell || !surfaceToken) {
-      maybeLog("warn", {
-        msg: "Color sample auditing failed: key elements not found.", sample, cell, surfaceToken
-      });
-      continue;
-    }
+    for (const sample of samples) {
+      const cell = sample.closest<HTMLElement>(".color-pairing-theme");
+      const surfaceToken = sample.dataset.surface;
 
-    const elementType = sample.dataset.kind;
-    if (!isUIKind(elementType)) {
-      showContrastFailure(sample, "no valid UI category");
-      continue;
-    }
+      if (!cell || !surfaceToken) {
+        maybeLog("warn", {
+          msg: "Color sample auditing failed: key elements not found.", sample, cell, surfaceToken
+        });
+        continue;
+      }
 
-    const cs = getComputedStyle(cell);
-    const base = cs.getPropertyValue("--surface-base").trim();
-    const surface = cs.getPropertyValue(surfaceToken).trim();
-    const text = getComputedStyle(sample).color;
+      const elementType = sample.dataset.kind;
 
-    // composite of the surface over its theme background
-    const bg = flatten(base, surface);
+      if (!isUIKind(elementType)) {
+        maybeLog("warn", {
+          msg: "Unable to compute contrast. UI type not found on element dataset.", sample, elementType
+        });
+        showContrastFailure(sample, "Unable to compute contrast");
+        continue;
+      }
 
-    // composite of text over the above
-    const fg = flatten(base, surface, text);
-    if (!bg || !fg) {
-      showContrastFailure(sample, "unable to parse color");
-      continue;
-    };
+      const cs = getComputedStyle(cell);
+      const base = cs.getPropertyValue("--surface-base").trim();
+      const surface = cs.getPropertyValue(surfaceToken).trim();
+      const text = getComputedStyle(sample).color;
 
-    const cr = ratio(bg, fg);
-    if (audit(cr, elementType)) {
-      showContrastInfo(sample, cr);
-    }
-    else {
-      showContrastFailure(sample, cr);
+      // composite of the surface over its theme background
+      const bg = flatten(base, surface);
+
+      // composite of text over the above
+      const fg = flatten(base, surface, text);
+
+      if (!bg || !fg) {
+        maybeLog("warn", {
+          msg: "Contrast ratio computation failed.", base, surface, text
+        });
+        showContrastFailure(sample, "Unable to compute contrast");
+        continue;
+      }
+
+      const cr = ratio(bg, fg);
+
+      if (audit(cr, elementType)) {
+        showContrastInfo(sample, cr);
+      }
+      else {
+        const criterion = WCAG_SC[elementType];
+        showContrastFailure(sample, `Fails AA (${criterion}): ${cr.toFixed(2)}:1`);
+      }
     }
   }
 
@@ -370,19 +388,16 @@ const navItems = [
     const infoEl = sample.querySelector<HTMLElement>(".audit-success > .pairing-contrast-info");
     if (!wrapperEl || !infoEl) return;
 
-    infoEl.textContent = `Ratio: ${ct.toFixed(2)}`;
+    infoEl.textContent = `Passes AA: ${ct.toFixed(2)}`;
     wrapperEl.hidden = false;
   }
 
-  function showContrastFailure(sample: Element, ct: number | string) {
+  function showContrastFailure(sample: Element, reason: string) {
     const wrapperEl = sample.querySelector<HTMLElement>(".pairing-sample-details.audit-failure");
     const infoEl = sample.querySelector<HTMLElement>(".audit-failure > .pairing-contrast-info");
     if (!wrapperEl || !infoEl) return;
 
-    typeof ct === "number"
-      ? infoEl.textContent = `Ratio: ${ct.toFixed(2)}`
-      : infoEl.textContent = ct;
-
+    infoEl.textContent = reason;
     wrapperEl.hidden = false;
   }
 </script>
@@ -506,6 +521,19 @@ const navItems = [
     mask: var(--icon-mask) center / contain no-repeat;
   }
 
+  /* Escape hatch for forced colors mode. Background colors
+     are overridden with a system-defined palette, interfering
+     with icon masks in the ::after elements above.
+
+     We opt out and resupply the icon background color with
+     a system foreground color, ensuring contrast against the
+     system background. This foreground comes from the system
+     keywords below.
+
+     Note that `forced-color-adjust: none` must be followed
+     by one such system color keyword. This way we ensure user
+     choice is preserved, since a color literal would override
+     the override. */
   @media (forced-colors: active) {
     .icon-circle::after {
       forced-color-adjust: none;
@@ -516,7 +544,6 @@ const navItems = [
       background-color: CanvasText;
     }
   }
-
 
   .icon-circle[data-copy="token-name"] {
     --icon-mask: url("../../assets/icons/fas/copy.svg");
