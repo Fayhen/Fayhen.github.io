@@ -136,3 +136,31 @@ export const ALL_COLORS = [
     ])
   )
 ].sort();
+
+export const FONT_TOKENS = [
+  { property: "font-size", propertyName: "Font sizes", tokens: [
+    "--font-size-sm",
+    "--font-size-md",
+    "--font-size-lg",
+    "--font-size-xl",
+    "--font-size-3xl"
+  ] },
+  { property: "font-weight", propertyName: "Weights", tokens: [
+    "--font-weight-normal",
+    "--font-weight-medium",
+    "--font-weight-semibold"
+  ] },
+  { property: "line-height", propertyName: "Line height", tokens: [
+    "--line-height-none",
+    "--line-height-heading",
+    "--line-height-ui",
+    "--line-height-body"
+  ] },
+  { property: "text-decoration", propertyName: "Decorations", tokens: [
+    "--link-decoration"
+  ] }
+];
+
+export const TYPOGRAPHY = [
+  { fontName: "Inter", variable: "--font-inter" }
+];

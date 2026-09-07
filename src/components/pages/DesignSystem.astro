@@ -4,10 +4,17 @@ import "../../styles/global.css";
 import Base from "../../layouts/Base.astro";
 import Header from "../Header.astro";
 
-import { ALL_COLORS, COLOR_PAIRINGS, THEMES } from "../../scripts/designSystem";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { isLocale } from "../../i18n/locales";
 import { useTranslation } from "../../i18n";
+
+import {
+  ALL_COLORS,
+  COLOR_PAIRINGS,
+  FONT_TOKENS,
+  THEMES,
+  TYPOGRAPHY
+} from "../../scripts/designSystem";
 
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
@@ -15,6 +22,9 @@ const t = useTranslation(locale);
 const navItems = [
   { label: t("nav.backHome"), href: getRelativeLocaleUrl(locale, "") }
 ];
+
+const textSampleFirst = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+const textSampleSecond = "Vivamus dignissim ante aliquam, tempor orci eget, tristique sem.";
 ---
 
 <Base title={t("designSystemPage.title")}>
@@ -26,6 +36,39 @@ const navItems = [
     <div class="page-container">
       <h1>{t("designSystemPage.title")}</h1>
     </div>
+
+    <section id="typography-section" class="page-container">
+      <h2>{t("designSystemPage.sectionTypography")}</h2>
+      {
+        TYPOGRAPHY.map(({ fontName, variable }) => (
+          <div style={`font-family: var(${variable});`}>
+            <h3>{fontName}: {variable}</h3>
+            <div>
+              {
+                FONT_TOKENS.map(({ property, propertyName, tokens }) => (
+                  <h4>{propertyName}</h4>
+                  <dl class="token-box-row">
+                    {
+                      tokens.map((token) => (
+                        <div class="token-box">
+                          <dt class="token-box-header">
+                            <code>{token}</code>
+                          </dt>
+                          <dd class="token-box-body" style={`${property}: var(${token})`}>
+                            <p aria-hidden="true">{textSampleFirst}</p>
+                            <p aria-hidden="true">{textSampleSecond}</p>
+                          </dd>
+                        </div>
+                      ))
+                    }
+                  </dl>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
+    </section>
 
     <section id="color-pairings-section" class="page-container">
       <h2>{t("designSystemPage.sectionColorPairings")}</h2>
@@ -426,11 +469,19 @@ const navItems = [
     padding: var(--space-section-2xl) var(--space-section-sm);
   }
 
-  section h2 {
+  h2 {
     margin-bottom: var(--space-md);
   }
 
-  p {
+  h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  h4 {
+    margin-bottom: var(--space-xs);
+  }
+
+  p, dl, dd {
     margin: 0;
   }
 
@@ -438,23 +489,38 @@ const navItems = [
     cursor: pointer;
   }
 
-  #color-pairings-section {
+  section {
     display: flex;
     flex-direction: column;
     margin-top: var(--space-section-sm);
   }
 
-  .palette-surface-title {
-    display: flex;
-    gap: var(--space-2xs);
-    padding: var(--space-xs) 0 var(--space-xs) var(--space-sm);
+  .token-box-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .token-box {
+    border: 1px solid var(--text-on-base);
+    border-radius: var(--radius-md);
+    overflow: clip;
+  }
+
+  .token-box-header {
+    border-bottom: 1px solid var(--text-on-base);
+    padding: var(--space-xs);
+  }
+
+  .token-box-body {
+    padding: var(--space-xs);
   }
 
   .color-pairings-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: var(--space-md);
-    margin-bottom: var(--space-md);
   }
 
   .color-pairing-box {
