@@ -4,10 +4,6 @@ import "../../styles/global.css";
 import Base from "../../layouts/Base.astro";
 import Header from "../Header.astro";
 
-import Copy from "../../assets/icons/fas/copy.svg";
-import Exclamation from "../../assets/icons/fas/exclamation.svg";
-import Palette from "../../assets/icons/fas/palette.svg";
-
 import { ALL_COLORS, COLOR_PAIRINGS, THEMES } from "../../scripts/designSystem";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { isLocale } from "../../i18n/locales";
@@ -53,7 +49,6 @@ const navItems = [
                             data-token={surface}
                             type="button"
                           >
-                            <Copy class="icon" aria-hidden="true" />
                             <span class="sr-only">Copy {surface} token name</span>
                           </button>
                           <button
@@ -62,7 +57,6 @@ const navItems = [
                             data-token={surface}
                             type="button"
                           >
-                            <Palette class="icon" aria-hidden="true" />
                             <span class="sr-only">Copy {surface} color value</span>
                           </button>
                         </div>
@@ -95,7 +89,6 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <Copy class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} token name</span>
                                     </button>
                                     <button
@@ -105,7 +98,6 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <Palette class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} color value</span>
                                     </button>
                                   </div>
@@ -120,7 +112,6 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <Copy class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} token name</span>
                                     </button>
                                     <button
@@ -129,12 +120,9 @@ const navItems = [
                                       data-token={token}
                                       type="button"
                                     >
-                                      <Palette class="icon" aria-hidden="true" />
                                       <span class="sr-only">Copy {token} color value</span>
                                     </button>
-                                    <div class="icon-circle error-contrast">
-                                      <Exclamation class="icon" aria-hidden="true" />
-                                    </div>
+                                    <div class="icon-circle error-contrast alert"></div>
                                   </div>
                                   <p class="pairing-contrast-info"></p>
                                 </div>
@@ -509,39 +497,45 @@ const navItems = [
     width: var(--icon-size-md);
   }
 
-  .icon-circle > .icon {
-    display: block;
-    flex: none;
-    height: var(--icon-size-sm);
-    width: var(--icon-size-sm);
-  }
-  .icon-circle[data-copy][data-state] > .icon {
-    display: none;
-  }
-
-  /* .icon-circle[data-copy]::after, */
-  .icon-circle[data-state]::after {
+  .icon-circle::after {
     content: "";
     position: absolute;
     height: var(--icon-size-sm);
     width: var(--icon-size-sm);
     background-color: currentColor;
-    mask: var(--state-icon) center / contain no-repeat;
+    mask: var(--icon-mask) center / contain no-repeat;
   }
 
-  /* .icon-circle[data-copy="token-name"]::after {
-    --state-icon: url("../../assets/icons/fas/copy.svg");
+  @media (forced-colors: active) {
+    .icon-circle::after {
+      forced-color-adjust: none;
+      background-color: ButtonText;
+    }
+
+    .icon-circle.alert::after {
+      background-color: CanvasText;
+    }
   }
 
-  .icon-circle[data-copy="token-value"]::after {
-    --state-icon: url("../../assets/icons/fas/palette.svg");
-  } */
+
+  .icon-circle[data-copy="token-name"] {
+    --icon-mask: url("../../assets/icons/fas/copy.svg");
+  }
+
+  .icon-circle[data-copy="token-value"] {
+    --icon-mask: url("../../assets/icons/fas/palette.svg");
+  }
+
+  .icon-circle.alert {
+    --icon-mask: url("../../assets/icons/fas/exclamation.svg");
+  }
 
   .icon-circle[data-state="copied"] {
-    --state-icon: url("../../assets/icons/fas/check.svg");
+    --icon-mask: url("../../assets/icons/fas/check.svg");
   }
+
   .icon-circle[data-state="failed"] {
-    --state-icon: url("../../assets/icons/fas/xmark-solid-full.svg");
+    --icon-mask: url("../../assets/icons/fas/xmark-solid-full.svg");
   }
 
   .icon-circle.error-contrast {
