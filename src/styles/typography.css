@@ -7,6 +7,7 @@
   --font-size-xl: 1.5rem;
   --font-size-2xl: 1.875rem;
   --font-size-3xl: 2.25rem;
+  --font-size-4xl: 2.75rem;
   --font-size-5xl: clamp(2.5rem, 1.8rem + 3.5vw, 3.5rem);
   --font-size-6xl: clamp(3rem,   1.5rem + 7.5vw, 5.5rem);
 
@@ -33,6 +34,7 @@
   --text-section-title: var(--font-size-3xl);
   --text-card-title: var(--font-size-xl);
   --text-subheading: var(--font-size-lg);
+  --text-brand: var(--font-size-lg);
   --text-body-lead: var(--font-size-lg);
   --text-body: var(--font-size-md);
   --text-label: var(--font-size-sm);
@@ -93,5 +95,5 @@ h5, h6 {
 
 .text-label {
   font-size: var(--text-label);
-  list-style: var(--line-height-ui);
+  list-style: var(--line-height);
 }

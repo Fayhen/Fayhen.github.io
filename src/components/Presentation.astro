@@ -10,21 +10,14 @@ const xp = years();
 ---
 
 <div>
-  <h1>{t("intro.greeting")} <span>Diego</span></h1>
-  <p class="subtitle">{t("intro.role")}</p>
+  <h1 class="text-display">{t("intro.greeting")} <span>Diego</span></h1>
+  <p class="text-display-sub">{t("intro.role")}</p>
   <p>{t("intro.aboutProfessional", { xp })}</p>
   <p>{t("intro.aboutCasual")}</p>
 </div>
 
 <style>
-  h1 {
-    margin: 0 0 var(--space-2xs);
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
-  }
-
-  .subtitle {
-    margin: 0;
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    line-height: var(--line-height-heading);
+  .text-display-sub {
+    margin: var(--space-lg) 0;
   }
 </style>

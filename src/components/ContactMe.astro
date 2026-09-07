@@ -7,12 +7,19 @@ import { email, github, linkedIn } from "../data/contacts";
 import { isLocale } from "../i18n/locales";
 import { useTranslation } from "../i18n";
 
+interface Props {
+  titleLevel?: 2 | 3
+}
+
 const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
 const t = useTranslation(locale);
+
+const { titleLevel = 2 } = Astro.props;
+const Heading = `h${titleLevel}` as const;
 ---
 
 <div>
-  <h1>{t("contact.title")}</h1>
+  <Heading class="text-section-title">{t("contact.title")}</Heading>
   <p>{t("contact.subtitle")}</p>
   <ul class="base-list">
     <li>
@@ -44,12 +51,8 @@ const t = useTranslation(locale);
 </div>
 
 <style>
-  h1 {
-    font-size: var(--font-size-3xl);
-  }
-
   p {
-    font-size: var(--font-size-lg);
+    font-size: var(--text-body-lead);
   }
 
   ul {

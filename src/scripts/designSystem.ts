@@ -146,6 +146,7 @@ export const FONT_TOKENS = [
     "--font-size-xl",
     "--font-size-2xl",
     "--font-size-3xl",
+    "--font-size-4xl",
     "--font-size-5xl",
     "--font-size-6xl"
   ] },

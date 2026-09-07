@@ -46,30 +46,30 @@ const navItems = [
 
     <div id="skills-wrapper">
       <section id="skills-section" class="page-container">
-        <h1>{t("skills.title")}</h1>
+        <h2>{t("skills.title")}</h2>
 
         <div class="major-areas">
           <div class="card major-area-detail">
-            <h2>{t("skills.fullstackTitle")}</h2>
+            <h3>{t("skills.fullstackTitle")}</h3>
             <p>{t("skills.fullstackBody")}</p>
           </div>
           <div class="card major-area-detail">
-            <h2>{t("skills.backendTitle")}</h2>
+            <h3>{t("skills.backendTitle")}</h3>
             <p>{t("skills.backendBody")}</p>
           </div>
           <div class="card major-area-detail">
-            <h2>{t("skills.frontendTitle")}</h2>
+            <h3>{t("skills.frontendTitle")}</h3>
             <p>{t("skills.frontendBody")}</p>
           </div>
         </div>
 
         <div class="experience-wrapper">
           <div class="experience-column">
-            <h2>{t("skills.previousXpTitle")}</h2>
+            <h3>{t("skills.previousXpTitle")}</h3>
             <ul class="base-list">
               {Object.values(experience).map((item) => <ExperienceItem experience={item} />)}
             </ul>
-            <h2>{t("skills.volunteeringTitle")}</h2>
+            <h3>{t("skills.volunteeringTitle")}</h3>
             <ul class="base-list">
               {Object.values(volunteering).map((item) => <ExperienceItem experience={item} />)}
             </ul>
@@ -77,7 +77,7 @@ const navItems = [
 
           <div class="tools-column">
             <div class="stacks">
-              <h2>{t("skills.stacksTitle")}</h2>
+              <h3>{t("skills.stacksTitle")}</h3>
               <ul class="base-list stack-list">
                 {Object.values(stacks).map((stack) => <StackIcon stack={stack} />)}
               </ul>
@@ -92,7 +92,7 @@ const navItems = [
 
     <div id="projects-wrapper">
       <section id="projects-section" class="page-container">
-        <h1>{t("projects.title")}</h1>
+        <h2>{t("projects.title")}</h2>
         <p>{t("projects.description")}</p>
         <ProjectStrips {projects} />
         <a href={getRelativeLocaleUrl(locale, "projects")} class="projects-button">
@@ -135,7 +135,7 @@ const navItems = [
     border-bottom: var(--border-section);
   }
 
-  #skills-wrapper h1 {
+  #skills-wrapper h2 {
     margin: var(--space-lg) 0;
   }
 
@@ -172,7 +172,7 @@ const navItems = [
     border-radius: var(--radius-lg);
   }
 
-  .major-area-detail h2 {
+  .major-area-detail h3 {
     text-align: center;
   }
 
@@ -195,11 +195,11 @@ const navItems = [
     gap: var(--space-md) 0;
   }
 
-  .experience-column h2 + ul {
+  .experience-column h3 + ul {
     margin-top: var(--space-md);
   }
 
-  .experience-column ul + h2 {
+  .experience-column ul + h3 {
     margin-top: var(--space-xl);
   }
 
