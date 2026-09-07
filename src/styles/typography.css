@@ -1,23 +1,97 @@
 :root {
-  --font-size-sm: 0.75rem;
+  /* Primitives */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
-  --font-size-3xl: 2rem;
+  --font-size-2xl: 1.875rem;
+  --font-size-3xl: 2.25rem;
+  --font-size-5xl: clamp(2.5rem, 1.8rem + 3.5vw, 3.5rem);
+  --font-size-6xl: clamp(3rem,   1.5rem + 7.5vw, 5.5rem);
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
 
-  --line-height-none: 1;
+  --line-height-base: 1;
+  --line-height-display: 1.05;
   --line-height-heading: 1.2;
   --line-height-ui: 1.35;
   --line-height-body: 1.6;
 
   --link-decoration: none;
+
+  --tracking-display: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+
+  /* Semantic tokens */
+  --text-display: var(--font-size-6xl);
+  --text-display-sub: var(--font-size-5xl);
+  --text-page-title: var(--font-size-4xl);
+  --text-section-title: var(--font-size-3xl);
+  --text-card-title: var(--font-size-xl);
+  --text-subheading: var(--font-size-lg);
+  --text-body-lead: var(--font-size-lg);
+  --text-body: var(--font-size-md);
+  --text-label: var(--font-size-sm);
 }
 
 h1, h2, h3, h4, h5, h6 {
+  margin: 0;
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-heading);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-page-title);
+}
+
+h2 {
+  font-size: var(--text-section-title);
+}
+
+h3 {
+  font-size: var(--text-card-title);
+}
+
+h4 {
+  font-size: var(--text-subheading);
+}
+
+h5, h6 {
+  font-size: var(--text-body);
+}
+
+.text-display {
+  font-size: var(--text-display);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-display-sub {
+  font-size: var(--text-display-sub);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-page-title {
+  font-size: var(--text-page-title);
+}
+
+.text-section-title {
+  font-size: var(--text-section-title);
+}
+
+.text-card-title {
+  font-size: var(--text-card-title);
+}
+
+.text-label {
+  font-size: var(--text-label);
+  list-style: var(--line-height-ui);
 }

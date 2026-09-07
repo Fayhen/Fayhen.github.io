@@ -2,10 +2,10 @@
 @import url("./themes.css");
 @import url("./typography.css");
 
-*,                                                                                                                                                                                                                                  
-*::before,                                                                                                                                                                                                                          
-*::after {                                                                                                                                                                                                                          
-  box-sizing: border-box;                                                                                                                                                                                                           
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -24,10 +24,6 @@ body {
   min-height: 100dvh;
   background-color: var(--surface-base);
   color: var(--text-on-base);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
 }
 
 [hidden] {

@@ -139,11 +139,15 @@ export const ALL_COLORS = [
 
 export const FONT_TOKENS = [
   { property: "font-size", propertyName: "Font sizes", tokens: [
+    "--font-size-xs",
     "--font-size-sm",
     "--font-size-md",
     "--font-size-lg",
     "--font-size-xl",
-    "--font-size-3xl"
+    "--font-size-2xl",
+    "--font-size-3xl",
+    "--font-size-5xl",
+    "--font-size-6xl"
   ] },
   { property: "font-weight", propertyName: "Weights", tokens: [
     "--font-weight-normal",
@@ -151,7 +155,8 @@ export const FONT_TOKENS = [
     "--font-weight-semibold"
   ] },
   { property: "line-height", propertyName: "Line height", tokens: [
-    "--line-height-none",
+    "--line-height-base",
+    "--line-height-display",
     "--line-height-heading",
     "--line-height-ui",
     "--line-height-body"
